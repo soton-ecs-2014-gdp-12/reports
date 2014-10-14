@@ -1,5 +1,5 @@
 %% ----------------------------------------------------------------
-%% GDP.tex
+%% report.tex
 %% ---------------------------------------------------------------- 
 \documentclass{ecsgdp}         % Use the GDP Report Style
 \graphicspath{{../Figures/}}   % Location of your graphics files
@@ -9,18 +9,21 @@
 %% ----------------------------------------------------------------
 \begin{document}
 \frontmatter
-\title      {An Investigation into \dots}
-\authors    {\texorpdfstring
-             {\href{mailto:S.R.Gunn@ecs.soton.ac.uk}{Steve R. Gunn}}
-             {Steve R. Gunn}
+\title      {An Investigation into Interactive Web Video Quizzes and Polls}
+\authors    {
+             {\href{mailto:cb15g11@soton.ac.uk}{Christopher Baines}}\\
+             {\href{mailto:sb21g11@soton.ac.uk}{Samuel Bennett}}\\
+             {\href{mailto:hc13g11@soton.ac.uk}{Harry Cutts}}\\
+             {\href{mailto:cjh1e11@soton.ac.uk}{Christopher Hewett}}\\
+             {\href{mailto:ml26g11@soton.ac.uk}{Maria Lynch}}
             }
 \addresses  {\groupname\\\deptname\\\univname}
 \date       {\today}
 \subject    {}
 \keywords   {}
-\supervisor {Mr Beavis}
-\examiner   {Dr Butthead}
-\degree     {Master of Engineering}
+\supervisor {Professor Mike Wald}
+\examiner   {Unknown}
+\degree     {Master of Engineering Computer Science}
 \maketitle
 \begin{abstract}
 This work is all about \dots
@@ -35,6 +38,10 @@ This work is all about \dots
 \mainmatter
 %% ----------------------------------------------------------------
 \include{Introduction}
+\include{ProjectManagement}
+\include{VideoPlayer}
+\include{Authoring}
+\include{Analytics}
 \include{Conclusions}
 \appendix
 \include{AppendixA}

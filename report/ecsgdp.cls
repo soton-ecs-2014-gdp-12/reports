@@ -138,12 +138,12 @@
 \DEPARTMENT  {\texorpdfstring{\href{http://www.ecs.soton.ac.uk}
                 {SCHOOL OF ELECTRONICS AND COMPUTER SCIENCE}}
                 {SCHOOL OF ELECTRONICS AND COMPUTER SCIENCE}}
-\group       {\texorpdfstring{\href{http://www.isis.ecs.soton.ac.uk}
-                {Image, Speech and Intelligent Systems Group}}
-                {Image, Speech and Intelligent Systems Group}}
-\GROUP       {\texorpdfstring{\href{http://www.isis.ecs.soton.ac.uk}
-                {IMAGE, SPEECH AND INTELLIGENT SYSTEMS GROUP}}
-                {IMAGE, SPEECH AND INTELLIGENT SYSTEMS GROUP}}
+\group       {\texorpdfstring{\href{https://github.com/soton-ecs-2014-gdp-12/}
+                {Group Design Project Group 12}}
+                {Group Design Project Group 12}}
+\GROUP       {\texorpdfstring{\href{https://github.com/soton-ecs-2014-gdp-12/}
+                {GROUP DESIGN PROJECT GROUP 12}}
+                {GROUP DESIGN PROJECT GROUP 12}}
 \faculty     {\texorpdfstring{\href{http://www.engineering.soton.ac.uk}
                 {Faculty of Engineering, Science and Mathematics}}
                 {Faculty of Engineering, Science and Mathematics}}
