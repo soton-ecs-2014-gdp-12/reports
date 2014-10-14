@@ -99,6 +99,9 @@
 \usepackage[scriptsize]{subfigure}
 \usepackage{booktabs}
 \usepackage{rotating}
+\usepackage{enumitem}
+\newcounter{descriptcount}
+\renewcommand*\thedescriptcount{\arabic{descriptcount}}
 \usepackage{listings}
 \usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
    bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
@@ -147,9 +150,9 @@
 \faculty     {\texorpdfstring{\href{http://www.fpse.soton.ac.uk/}
                 {Faculty of Physical Sciences and Engineering}}
                 {Faculty of Physical Sciences and Engineering}}
-\FACULTY     {\texorpdfstring{\href{http://www.engineering.soton.ac.uk}
-                {FACULTY OF ENGINEERING, SCIENCE AND MATHEMATICS}}
-                {FACULTY OF ENGINEERING, SCIENCE AND MATHEMATICS}}
+\FACULTY     {\texorpdfstring{\href{http://www.fpse.soton.ac.uk/}
+                {FACULTY OF PHYSICAL SCIENCES AND ENGINEERING}}
+                {FACULTY OF PHYSICAL SCIENCES AND ENGINEERING}}
 \addresses   {}
 \subject     {}
 \keywords    {}
