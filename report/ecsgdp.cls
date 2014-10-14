@@ -144,9 +144,9 @@
 \GROUP       {\texorpdfstring{\href{https://github.com/soton-ecs-2014-gdp-12/}
                 {GROUP DESIGN PROJECT GROUP 12}}
                 {GROUP DESIGN PROJECT GROUP 12}}
-\faculty     {\texorpdfstring{\href{http://www.engineering.soton.ac.uk}
-                {Faculty of Engineering, Science and Mathematics}}
-                {Faculty of Engineering, Science and Mathematics}}
+\faculty     {\texorpdfstring{\href{http://www.fpse.soton.ac.uk/}
+                {Faculty of Physical Sciences and Engineering}}
+                {Faculty of Physical Sciences and Engineering}}
 \FACULTY     {\texorpdfstring{\href{http://www.engineering.soton.ac.uk}
                 {FACULTY OF ENGINEERING, SCIENCE AND MATHEMATICS}}
                 {FACULTY OF ENGINEERING, SCIENCE AND MATHEMATICS}}
