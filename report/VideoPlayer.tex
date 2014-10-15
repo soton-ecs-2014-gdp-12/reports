@@ -1,7 +1,15 @@
 %% ----------------------------------------------------------------
 %% VideoPlayer.tex
 %% ---------------------------------------------------------------- 
-\chapter{Video Player} \label{Chapter: Video Player}
-\section{Accessibility} \label{Section:Accessibility}
-Contributed to an open source repository
-\section{Compatibilty} \label{Section: Compatibility}
+\chapter{Video Player} 
+\label{Chapter:Video Player}
+\section{Accessibility} 
+\label{Section:Accessibility}
+The existing Videogular player was not accessible from a keyboard. This feature was added to the player and a pull request was accepted, making this project a contributor to an open source repository. 
+\section{Compatibilty} 
+\label{Section:Compatibility}
+One of the main focuses of this project was to make sure the application was compatible with a range of platforms, operating systems and devices. The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes. 
+
+Apple iPhones provided a problem as IOS forced the video to be played in fullscreen mode. This meant that the video paused at the correct time but as the video is in the native player the overlay was not visible unless the player is quit. There is no way of notifying the user that this needs to be done.
+
+Another issue was that the buttons did not display correctly. This was found to be a font issue.
