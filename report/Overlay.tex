@@ -1,0 +1,17 @@
+%% ----------------------------------------------------------------
+%% Overlay.tex
+%% ---------------------------------------------------------------- 
+\chapter{Overlay} \label{Chapter:Overlay}
+The overlay was built up in stages:
+\begin{enumerate}
+\item Getting an overlay to appear at a set time
+\item Adding in question types
+\item Allowing custom question sets to be used
+\item Returning the answers to a server
+\end{enumerate}
+\section{Question Sets} \label{Section:Question sets}
+One of the main issues to address early on was how to represent the quiz and poll questions. The QTI standards were investigated but these were found to be complicated and incomplete. It was decided to write our own schema and use JSON files to store the information we needed. Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed. This allowed single choice questions to be represented as multiple choice questions with a minimum and maximum selection of 1.
+\section{Front End} \label{Section:Front end}
+The appearance of the overlay depends on the question type to be shown. To begin with these were hardcoded but eventually a JSON file could be read in where all the necessary metadata was specified.
+\section{Back End} \label{Section:Back end}
+A JSON file is submitted to the server. These results are then recorded. For polls these results are collated and returned as a JSON file to be displayed to the user.
