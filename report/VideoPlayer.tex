@@ -5,11 +5,11 @@
 \label{Chapter:Video Player}
 \section{Accessibility} 
 \label{Section:Accessibility}
-The existing Videogular player was not accessible from a keyboard. This feature was added to the player and a pull request was accepted, making this project a contributor to an open source repository. 
+The existing Videogular player had HTML button controls that were not accessible from a keyboard. This feature was added to the player and a pull request was accepted, making this project a contributor to an open source repository. The changes also included the ability to use the controls when they were in focus. For example, the left and right arrows changed the position in the video when the scrub bar is in focus; the up and down arrows control the volume when the sound button is in focus.
 \section{Compatibilty} 
 \label{Section:Compatibility}
-One of the main focuses of this project was to make sure the application was compatible with a range of platforms, operating systems and devices. The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes. 
+One of the main focuses of this part of the project was to make sure the application was compatible with a range of platforms, operating systems and devices. The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes. 
 
 Apple iPhones provided a problem as IOS forced the video to be played in fullscreen mode. This meant that the video paused at the correct time but as the video is in the native player the overlay was not visible unless the player is quit. There is no way of notifying the user that this needs to be done.
 
-Another issue was that the buttons did not display correctly. This was found to be a font issue.
+CSS was used to ensure compatibility. Here colour schemes were declared to ensure a consistent appearance on all devices.
