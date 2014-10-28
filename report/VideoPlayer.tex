@@ -8,8 +8,15 @@
 The existing Videogular player had HTML button controls that were not accessible from a keyboard. This feature was added to the player and a pull request was accepted, making this project a contributor to an open source repository. The changes also included the ability to use the controls when they were in focus. For example, the left and right arrows changed the position in the video when the scrub bar is in focus; the up and down arrows control the volume when the sound button is in focus.
 \section{Compatibilty} 
 \label{Section:Compatibility}
+
 One of the main focuses of this part of the project was to make sure the application was compatible with a range of platforms, operating systems and devices. The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes. 
 
-Apple iPhones provided a problem as IOS forced the video to be played in fullscreen mode. This meant that the video paused at the correct time but as the video is in the native player the overlay was not visible unless the player is quit. There is no way of notifying the user that this needs to be done.
+Apple iPhones provided a problem as iOS forced the video to be played in fullscreen mode. This is a design choice and there is no way to play the video inline, directives to do this are ignored by the browser.
 
-CSS was used to ensure compatibility. Here colour schemes were declared to ensure a consistent appearance on all devices.
+This meant that the video paused at the correct time but as the video is in the native player the overlay was not visible unless the player is quit. There is no way of notifying the user that this needs to be done. A possible solution involves telling the user to quit out of the video when it is paused so they may answer the question. However this is not very user friendly. iOS software on Apple tablets however does not have this limitation and the video will play inline correctly as the device is large enough.
+
+Android phones correctly interpret the inline directive and will properly play this. This ensures that the overlay is correctly applied and usable. This has been the primary focus on testing on mobile devices as it represents a very large portion of the market.
+
+The overlay which displays the questions that the user is asked appears above the video and obstructs the view of the video. Placing the overlay in the middle of the screen requires a large amount of css to correctly locate it on the screen for mobile and smaller sized devices. There are still some issues with the popup location on some mobile devices because the browser reports one screen size and uses another. Until these devices are compliant with the specification it is time consuming to write code to fix each individual case.
+
+The best user experience with this application is using it on a desktop that has an updated browser. This will definitely work and display as intended. As the screen size of the device gets smaller the user experience is significantly reduced as the video and poll overlay will be much smaller than recommended. To support a number of browsers and operating systems a range of video formats are supplied to the videogular plugin so that the browser may pick one that can be played.
