@@ -12,9 +12,10 @@ As the rest of the project uses a bootstrap and Angular approach it was decided 
 
 Two different approaches were suggested for showing the advanced options for the video. A pop up approach hid these from general view to avoid confusing users with lots of options that may be unecessary. The other approach was to use the accordian structure as we had for the questions. This would be collapsed by default so the options would still be hidden. This was chosen as it was more consistent with the rest of the tool.
 
-%Put wireframes in annex??
-\begin{figure}[h]
-	\centering 
-	\includegraphics[scale=0.2]{../../authoring-tool/wireframes/gdpAuthoringAccordianVideoDefaultOptions.png} 	
-	\caption{\label{fig:sift} Accordian approach wireframe } 	
-\end{figure}
+\section{Implementation}
+\label{Section:Implementation}
+Once the wireframes were drawn up they could be turned into static HTML. Elements of this webpage were then incrementally given the functionality they required. The main challenge was assertaing how the functionality fitted in with the AngularJS Framework. 
+
+Each section of the page had to have its own directive so that independant behaviours could be achieved. This kept the HTML pages short and readable as the behaviour was dealt with by the JavaScript and the styling dealt with by the CSS.
+
+Angular allowed the dynamic nature of the data to define the appearance of the page. Sections could be set to appear only when certain attributes were set using ng-switch statements. This meant one section could potentially show many different elements depending on what was selected elsewhere on the page.
