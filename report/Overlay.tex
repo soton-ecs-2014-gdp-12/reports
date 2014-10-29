@@ -13,9 +13,13 @@ The overlay was built up in stages:
 \label{Section:Question sets}
 One of the main issues to address early on was how to represent the quiz and poll questions. The QTI standards were investigated but these were found to be complicated and incomplete. It was decided to write our own schema and use JavaScript files to store the information we needed. 
 
-An early decision was to define the difference between a poll and a quiz question. A poll is a type of quiz question that does not have a correct answer.
+An early decision was to define the difference between a poll and a quiz question. It was decided that a poll is a type of quiz question that does not have a correct answer.
 
 Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed. This allowed single choice questions to be represented as multiple choice questions with a minimum and maximum selection of 1.
+
+Many of the fields given in the schema were made optional to make the schema as flexible and expressive as possible. 
+
+By having a standard schema that uses JavaScript functions it was possible to write template functions that could be outputted from the authoring tool and read by the overlay correctly.
 \section{Front End} 
 \label{Section:Front end}
 The appearance of the overlay depends on the question type to be shown. To begin with these were hardcoded but eventually a JavaScript file could be read in where all the necessary metadata was specified.
@@ -23,6 +27,6 @@ The appearance of the overlay depends on the question type to be shown. To begin
 \label{Section:Back end}
 \subsection{Web Workers}
 \label{Subsection:WebWorkers}
-Web workers give a good way of running background scripts that are compuationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously. This is done by using message passing. 
+Web workers give a good way of running (sanboxed) background scripts that are compuationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing. 
 
-In our case, this meant passing the answer submitted by the user to the worker which would then process the information and pick the appropriate action.
+For example, when an answer is submitted by the user this would sent a message to the webworker containing the answer. The webworker can then process this information without affecting the responsiveness of the page. Once the processing is complete the webworker can send a message back to the page to tell it what to do next.
