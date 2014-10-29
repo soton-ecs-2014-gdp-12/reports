@@ -5,12 +5,17 @@
 \label{Chapter:Overall Approach}
 
 \section{3rd Party Libraries}
-
 Several pieces of third party software formed the core functionality for our project to build on.
 
 \subsection{AngularJS}
 \label{Section:AngularJS}
-AngularJS\footnote{\url{https://angularjs.org/}} is a JavaScript Framework that extends HTML attributes.
+AngularJS\footnote{\url{https://angularjs.org/}} is a JavaScript Framework that extends HTML attributes. It is an open source library made by Google.
+
+The underlying design pattern used by AngularJS is client side Model-View-Controller (MVC). This is where the data (model), appearance (view) and actions that can be applied (controller) are separated out to make encapsulation and code reuse easier. 
+
+The library allows custom HTML tags and attributes to be created using directives. Directives allow the user to specify the behaviour of specific elements they have created.
+
+One of Angular's most prominent features is its use of two-way binding. This synchronises the views with the data held in the model. This is especially useful when dealing with dynamic content as when extra content is added it is automatically shown in the view.
 
 \subsection{Videogular}
 \label{Section:Videogular}
