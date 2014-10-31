@@ -3,9 +3,37 @@
 %% ---------------------------------------------------------------- 
 \chapter{Video Player} 
 \label{Chapter:Video Player}
+
 \section{Accessibility} 
 \label{Section:Accessibility}
-The existing Videogular player had HTML button controls that were not accessible from a keyboard. This feature was added to the player and a pull request was accepted, making this project a contributor to an open source repository. The changes also included the ability to use the controls when they were in focus. For example, the left and right arrows changed the position in the video when the scrub bar is in focus; the up and down arrows control the volume when the sound button is in focus.
+Videogular has the option to display HTML controls for the video player, replacing the browser's built-in controls. However, when the project began there was no way for the user to access these controls without a mouse.The main problem was that the controls did not identify themselves as interactive elements, and so could not be 'focussed' (selected with the tab key). This also prevented them from being picked up by a screen reader.
+
+Some online video players allow the player as a whole to be focussed, and then controlled with various keyboard shortcuts. The problem with this method is that accessibility aids, such as screen readers, will not have information on these controls, and so users of those technologies will have to be instructed. It is also not accessible to users of a clicker, who can only press one key and so require individually focusable controls.
+
+Instead, the controls were made individually focusable by using semantic markup where possible, and ARIA attributes otherwise. When a control is in focus, a visual indicator is displayed to highlight it. Buttons can then be pressed using the space bar (\fref{Figure:Accessibility/Screenshots/Button}); the scrub bar can be moved using the left and right arrow keys (\fref{Figure:Accessibility/Screenshots/ScrubBar}); and the volume can be adjusted using the up and down arrow keys when the mute button is focussed (\fref{Figure:Accessibility/Screenshots/Volume}).
+
+\begin{figure}
+	\begin{subfigure}[]{\textwidth}
+		\includegraphics[width=\textwidth]{accessibility/button}
+		\caption{The play button when focussed. In this state, pressing the space bar plays or pauses the video.}
+		\label{Figure:Accessibility/Screenshots/Button}
+	\end{subfigure}
+	\begin{subfigure}[]{\textwidth}
+		\includegraphics[width=\textwidth]{accessibility/scrub-bar}
+		\caption{The scrub bar when focussed. In this state, pressing the left or right arrow keys skips backwards or forwards in the video.}
+		\label{Figure:Accessibility/Screenshots/ScrubBar}
+	\end{subfigure}
+	\begin{subfigure}[]{\textwidth}
+		\includegraphics[width=\textwidth]{accessibility/volume}
+		\caption{The mute button and volume control when the mute button is focussed. In this state, pressing the space bar toggles mute, and the up and down arrow keys change the volume.}
+		\label{Figure:Accessibility/Screenshots/Volume}
+	\end{subfigure}
+	\caption{Screenshots of the accessibility improvements made to Videogular's HTML controls.}
+	\label{Figure:Accessibility/Screenshots}
+\end{figure}
+
+This solution is not completely clicker-accessible, but could be made so by introducing buttons to skip forwards or backwards, and to raise or lower the volume. It is a significant improvement on the original state, as keyboard users can now use the player. The improvements were submitted to the Videogular project\footnote{\url{https://github.com/2fdevs/videogular/pull/108}}, and are now part of Videogular 0.6.1.
+
 \section{Compatibilty} 
 \label{Section:Compatibility}
 
