@@ -76,8 +76,6 @@
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
-\usepackage[centerlast,small,sc]{caption2}
-\setlength{\captionmargin}{20pt}
 \newcommand{\fref}[1]{Figure~\ref{#1}}
 \newcommand{\tref}[1]{Table~\ref{#1}}
 \newcommand{\eref}[1]{Equation~\ref{#1}}
@@ -96,7 +94,10 @@
 \setcounter{dbltopnumber}{9}
 \usepackage{graphicx}
 \usepackage{epstopdf}
-\usepackage[scriptsize]{subfigure}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{enumitem}
