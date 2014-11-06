@@ -27,6 +27,6 @@ The appearance of the overlay depends on the question type to be shown. To begin
 \label{Section:Back end}
 \subsection{Web Workers}
 \label{Subsection:WebWorkers}
-Web workers give a good way of running (sanboxed) background scripts that are compuationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing. 
+Web workers give a good way of running (sandboxed) background scripts that are computationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing. 
 
 For example, when an answer is submitted by the user this would sent a message to the webworker containing the answer. The webworker can then process this information without affecting the responsiveness of the page. Once the processing is complete the webworker can send a message back to the page to tell it what to do next.
