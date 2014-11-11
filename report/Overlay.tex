@@ -11,52 +11,50 @@ The overlay was built up in stages:
 \end{enumerate}
 \section{Question Sets} 
 \label{Section:Question sets}
-One of the main issues to address early on was how to represent the quiz and poll questions. The QTI (Question & Test Interoperability) specification was investigated early on, but was found to be complicated and incomplete for the project needs. It was decided to write our own schema and use JavaScript files to store the information we needed. 
+One of the main issues to address early on was how to represent the quiz and poll questions. The QTI (Question \& Test Interoperability) specification was investigated early on, but was found to be complicated and incomplete for the project needs. It was decided to write our own schema and use JavaScript files to store the information we needed. 
 
 The schema is created to allow for configurability without the need for a large number of optional boolean operators. Thus we avoid having a ``shouldShowWhenPreviousQuestionIsAnsweredIncorrectly'' field on every questions as well as many other potential options. The main aim was to be expressive enough to allow all required situations without becoming too confusing. This was achieved with the use of inline functions within the JavaScript questions files. An example schema looks as follows:
 \begin{lstlisting}
-{
-	"first-question": {
-		time: 1,
-		items: [
-			{
-				id: "first",
-				type: "single",
-				question: "Single question example. Correct is the correct answer",
-				options: [
-					{
-						name: "correct"
-					},
-					{
-						name: "incorrect"
-					}
-				],
-				correctAnswer: "correct"
-			},
-			{
-				id: "check-first",
-				type: "single",
-				question: "Answer incorrect, do you want to review the video",
-				options: [
-					{
-						name: "Yes"
-					},
-					{
-						name: "No"
-					}
-				],
-				action: function(questions, video) {
-					if (questions.get("check-first").response === "Yes") {
-						video.setTime(0);
-					}
-				},
-				condition: function(questions, result) {
-					return questions.get("first").isNotCorrect();
-				}
-			}
-		]
-	}
-}
+{"first-question": {
+  time: 1,
+  items: [
+    {
+      id: "first",
+      type: "single",
+      question: "Single question example. Correct is the correct answer",
+      options: [
+        {
+          name: "correct"
+        },
+        {
+          name: "incorrect"
+        }
+      ],
+      correctAnswer: "correct"
+    },
+    {
+      id: "check-first",
+      type: "single",
+      question: "Answer incorrect, do you want to review the video",
+      options: [
+        {
+          name: "Yes"
+        },
+        {
+          name: "No"
+        }
+      ],
+      action: function(questions, video) {
+        if (questions.get("check-first").response === "Yes") {
+          video.setTime(0);
+        }
+      },
+      condition: function(questions, result) {
+        return questions.get("first").isNotCorrect();
+      }
+    }
+  ]
+}}
 \end{lstlisting}
 Every question can have an action function along with a condition function. 
 
