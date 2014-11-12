@@ -1,7 +1,7 @@
 %% ----------------------------------------------------------------
 %% Overlay.tex
 %% ---------------------------------------------------------------- 
-\chapter{Overlay} \label{Chapter:Overlay}
+\chapter{Overlay - vgQuestions} \label{Chapter:Overlay}
 The overlay was built up in stages:
 \begin{enumerate}
 \item Getting an overlay to appear at a set time
@@ -56,18 +56,20 @@ The schema is created to allow for configurability without the need for a large 
   ]
 }}
 \end{lstlisting}
-Every question can have an action function along with a condition function. 
+Every question can have an action function along with a condition function. The action function is called when a question is answered. The condition function is called to determine which question is the question set to next show. Each function has a rich API passed along to it to allow complex actions to be performed.
+
+The reason that this function-based approach could be taken was the use of HTML5 web workers. These are sandboxed separate threads that run in the background of webpages. They run independently of standard user-space scripts. More can be found out about their use within this project in Section BLAH. 
 
 An early decision was to define the difference between a poll and a quiz question. It was decided that a poll is a type of quiz question that does not have a correct answer.
 
-Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed. This allowed single choice questions to be represented as multiple choice questions with a minimum and maximum selection of 1.
-
-Many of the fields given in the schema were made optional to make the schema as flexible and expressive as possible. 
+Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
 
 By having a standard schema that uses JavaScript functions it was possible to write template functions that could be outputted from the authoring tool and read by the overlay correctly.
 \section{Front End} 
 \label{Section:Front end}
-The appearance of the overlay depends on the question type to be shown. To begin with these were hardcoded but eventually a JavaScript file could be read in where all the necessary metadata was specified.
+The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made and user studies were done in collaboration with a third year project student.
+
+A set of example css files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own.
 \section{Back End} 
 \label{Section:Back end}
 \subsection{Web Workers}
