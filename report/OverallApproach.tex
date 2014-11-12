@@ -38,3 +38,7 @@ It is important for our project to be easily integrated into other projects, spe
 By abstracting all calls to using REST this means that other services will be able to interact with out back end services in a language independent way. To facilitate this we have had to ensure that all REST responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the REST service.
 
 These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make REST calls.
+
+\section{System Architecture}
+
+\input{SystemArchitectureDiagram}
