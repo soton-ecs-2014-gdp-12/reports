@@ -3,3 +3,41 @@
 %% ---------------------------------------------------------------- 
 \chapter{Stuff} \label{Chapter:Stuff}
 The following gets in the way of the text....
+
+\chapter{Deployment of the Poll Server} \label{Chapter:Deployment Poll Server}
+
+To deploy the poll server on using apache first you need to clone the repository.
+
+Then the apache httpd.conf file needs to be configured by adding the following entry somewhere in the file:
+
+\begin{lstlisting}
+<VirtualHost <hostname>:80>
+	ServerName <hostname>
+	WSGIDaemonProcess poll_server user=<user> group=<group> threads=5
+	WSGIScriptAlias / /<location>/poll_server.wsgi
+	ErrorLog logs/poll_server-error_log
+	CustomLog logs/poll_server-access_log common
+
+	<Directory <location>>
+		WSGIProcessGroup poll_server
+		WSGIApplicationGroup %{GLOBAL}
+		Order deny,allow
+		Allow from all
+	</Directory>
+</VirtualHost>
+\end{lstlisting}
+
+Parameters needing changes:
+
+\begin{itemize}
+\item \textless hostname\textgreater is the hostname of the server. e.g. website.domain.net
+\item \textless location\textgreater is the location of the sourcecode on the server. e.g. /var/www/poll\_server/
+\item \textless user\textgreater is the user you want the script to run under, by default apache
+\item \textless group\textgreater is the group you want the script to run under, by default apache
+\item The `ErrorLog` and `CustomLog` parameters can be changed to any location
+
+\end{itemize}
+
+
+
+Details are also available in the the README.md file in the repository.
