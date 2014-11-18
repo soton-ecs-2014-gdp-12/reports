@@ -3,6 +3,7 @@
   every matrix/.style={ampersand replacement=\&,column sep=2cm,row sep=2cm},
   source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
   vg-plugin/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
+  analytics-frontend/.style={draw,thick,rounded corners,fill=red!20,inner sep=.3cm},
   videogular/.style={draw,thick,circle,fill=blue!20},
   process/.style={draw,thick,circle,fill=blue!20},
   sink/.style={source,fill=green!20},
@@ -18,9 +19,11 @@
     \node[vg-plugin] (cuepoints) {cuepoints};
       \&
       \& \node[vg-plugin] (questions) {questions};
-      \& \node[server] (poll-server) {poll server}; \\
+      \& \node[server] (poll-server) {results server}; \\
 
-    \& \node[videogular] (videogular) {videogular}; \\
+    \& \node[videogular] (videogular) {videogular};
+      \&
+      \& \node[analytics-frontend] (analytics-frontend) {analytics-frontend}; \\
 
     \node[vg-plugin] (heatmap) {heatmap};
       \&
@@ -42,6 +45,9 @@
       node[midway,below] {acks} (analytics-server);
   \draw[to] (analytics-server) to[bend left=15] node[midway,above] {events}
       node[midway,below] {level 1} (heatmap);
+  \draw[to] (analytics-server) --
+      node[midway,right] {user interactions}
+      (analytics-frontend);
   \draw[between] (videogular) -- (cuepoints);
   \draw[between] (videogular) -- (analytics);
   \draw[between] (videogular) -- (questions);
