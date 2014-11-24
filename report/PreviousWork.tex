@@ -5,5 +5,67 @@
 \label{Chapter:Previous Work}
 \section{Academic Work} 
 \label{Section:Academic Work}
+
+\newif\ifnote
+\notefalse
+\ifnote
+In \cite{failQTI}:
+Wiki-like definitions: Moodle’s GIFT (“General Import Format Technology”) - "For more complex items, however, the syntax is no longer intuitive but more or less arbitrary"; Other wiki-like formats for describing tests include the “Aiken” format (apparently also a Moodle design, listing 3), WebCT’s text format (listing 4), and Respondus “Standard Format” (listing 5). 10 The different formats share many characteristics. For example, most formats are more or less line-oriented and require rigid adherence to the layout. No formal definitions
+"it can be assumed that the higher the complexity of the specification, the higher the likelihood for errors in the implementation."
+2.1 - “it’s deficiencies are well known and IMS does not recommend implementation of it.” - http://lists.ucles.org.uk/public/ims-qti/2009-March/001463.html
+"Due to the large number of optional items and ambiguities it is not suitable as a design specification."
+"QTI 2.0 is a very large specification with many optional parts."
+however, that the import of QTI items from unknown sources becomes very complex. Since the
+specification does not define the meaning of, say, an empty item or an item with multiple interactions,
+it is hard to guarantee that an item is imported and interpreted as originally intended by its author. This,
+in turn, means that the main purpose of an interchange format is not met."
+"QTI specification gives the following long-winded definition in natural language"
+"The specification also does not define whether identifiers may be longer than 32 characters and up to which character they have to be unique; in fact, the specification does not contain any statement on the uniqueness of identifiers"
+"The element <rubricBlock> is representative for many other shortcomings in the XML Binding. In the definition of this element the Information Model notes: “Although rubric blocks are defined as simpleBlocks they must not contain interactions.” (IMS GLC, 2005, Information Model, p. 23) The XML Schema, however, does not enforce this restriction, even though W3C XML Schema provides the necessary facilities to do so.
+"Sclater (2007, p. 70) agrees that the QTI specification is “unreadable by the vast majority of candidates likely to be undertaking an online assessment and of no concern to those setting the questions."
+"Sclater (2007) concurs that “IMS QTI is unarguably a complex and difficult specification for
+vendors to implement" \citep{Sclater2007}
+"We agree with Lazarinis et al. suggestion that a standard should be “modular,” i.e., allow for clearly defined implementation levels."
+
+In \cite{eps273063}:
+Lack of semantic interlinking between media fragments and annotations leading to insufficient index of inside content of multimedia sources
+Add addnotations to media sources they do not own
+
+In \cite{eps265979}:
+Question and Test Interoperability (QTI)
+Few real example of QTIv2 being used with no definitive reference implementation
+Lecturers would like to do more but do not have time to develop 
+learner - meaningful feedback, see how well they are progressing in understanding
+Templated (change the numbers) or adaptive questions (branching questions)
+R2Q2 (deprecated - replaced by QTI Engine)
+Constructr - constructr.qtitools.org - proof-of-concept
+Playr - playr.qtitools.org - deprecated - effectively our overlays
+
+In \cite{eps262835}:
+Lack of documentation for QTIRun - and only subset of question types
+Code needs to be rewritten in QTIRun if a different render engine was required
+Future - using Flash
+
+In \cite{eps267281}:
+Interactive - engage, participate, respond and be actively involved
+Video streaming - lack of interactivity, lack of user control
+Examples - rat stack
+Video - increase ability short to long term memory, different learning styles
+No evidence found of interactive video being used as a learning tool
+Used Flash - now not supported
+Results server - HTTP POST to a MySQL database
+Video skips when a hazard is clicked
+Likert scale (1 to 5)
+75\% agreed or strongly agreed that the interactive video had enhanced their learning experience
+
+In \cite{eps271236}:
+Need to improve eAssessment accessibility and usability
+Increase usability of eAssessment systems for the lecturer - whilst keeping time commitments reasonable
+
+In \cite{wikieassessment}:
+"The major promise of QTI is that by introduction of common format developers can concentrate on developing innovative tools, whereas teachers can focus on defining new and groundbreaking methods of how to apply those tools in an online environment. "
+"Authoring tools that implement the QTI standard are too complex and not usable enough to be operated by a teacher without sufficient knowledge of technology"
+"the standard mixes data management with data presentation features"
+\fi
 \section{Industrial Work} 
 \label{Section:Industrial Work}
