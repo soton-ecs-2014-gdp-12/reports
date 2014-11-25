@@ -5,67 +5,73 @@
 \label{Chapter:Previous Work}
 \section{Academic Work} 
 \label{Section:Academic Work}
+A Managed Learning Environment (MLE) is the overall system used by an educational establishment to facilitate and manage learning. This will be comprised of several subsystems (as seen in \autoref{Figure: MLE}).
+
+\begin{figure}[h]
+	\centering 
+		\includegraphics[scale=0.4]{../figures/MLE.png} 		
+	\caption{\label{Figure: MLE} Components of an MLE \citep{mle}} 	
+\end{figure}
+
+This project focuses on the Assessment system in the Virtual Learning Environment (VLE).
+
+\subsection{eAssessment}
+An eAssessment (also known as Computer-Aided Assessment (CAA), Computer Assisted Assessment (CAA) or Computer Based Assessment (CBA)) is the process of making, viewing and scoring assessments using a computer. In this report these processes will be carried out by several tools - the ``Authoring Tool" will be responsible for creating the questions and assembling the test and the ``Assessment Delivery System" will be responsible for displaying and scoring the assessments. These tools must be interoperable, meaning they must use data formats that are compatible with each other.
+
+This project focuses on the use of quizzes and polls within videos as a means of assessment.
+
+\subsubsection{Quiz Definition Standards}
+\label{Subsubsection:Quiz Definition Standards}
+In order to store and display the questions in an eAssessment, a schema for the questions must be defined. The only formally defined standard found was IMS Global's Question and Test Interoperability (QTI) specification\footnote{\url{http://www.imsglobal.org/question/\#version2.1} Last Accessed: 24 Nov 14}. Some other quiz (wiki-like) definitions were found including Moodle's General Import Format Technology (GIFT)\footnote{\url{https://docs.moodle.org/28/en/GIFT_format} Last Accessed: 24 Nov 14} and Aiken formats\footnote{\url{https://docs.moodle.org/23/en/Aiken_format} Last Accessed: 24 Nov 14}.
+
+GIFT is a question mark up by Moodle\footnote{\url{https://moodle.org} Last Accessed: 24 Nov 14}. It allows users to use a text editor to create questions in some simple formats. There is a strict compliance to specific syntax required and for complex questions it is no longer intuitive \citep{failQTI}. Aiken is another mark up that is designed to be more easily human-readable, again it has strict syntax that must be adhered to or the imports to Moodle would fail.
+
+QTI is an interoperability standard for quizzes. \cite{wikieassessment} state:
+\begin{quote}
+The major promise of QTI is that by introduction of common format developers can concentrate on developing innovative tools, whereas teachers can focus on defining new and groundbreaking methods of how to apply those tools in an online environment.
+\end{quote}
+It is a very complex specification with many ambiguous or optional elements. The complexity of the specification increases the likelihood for errors in the implementation as it opens up opportunities for developers to interpret the specification in different ways \citep{failQTI}. This means the intent of the original author may be lost.
+
+The QTI Specification is ``designed to facilitate interoperability between a number of systems". The Overview \citep{qtiOverview} splits the eAssessment sytem into five systems: authoring tool, item bank, test construction tool, assessment delivery system and learning system (see \autoref{Figure: QTI components}). 
+
+In the QTI definition the authoring tool is used to create individual questions. However many systems combine this with the Item Bank and Test Construction Tool. For this report ``Authoring Tool" refers to this combination and, as such, an authoring tool is used to create whole quizzes.
+
+\begin{figure}[h]
+	\centering 
+		\includegraphics[scale=0.5]{../figures/componentsQTI.png} 		
+	\caption{\label{Figure: QTI components} QTI components diagram \citep{qtiOverview}} 	
+\end{figure}
+
+QTI v2.1 was finalised in 2012 \citep{qtiOverview} but up to this point the standard was not widely used \citep{eps265979} as there were several fundamental flaws in the standard. When the v2.1 draft was withdrawn in 2009 Rib Abel (IMS GLC CEO) was quoted as saying (on v2.0) ``it’s deficiencies are well known and IMS does not recommend implementation of it\dots the only version of QTI that is fully endorsed by IMS GLC is v1.2.1"\footnote{\url{http://lists.ucles.org.uk/public/ims-qti/2009-March/001463.html}}. This standard gave definitions in natural language. These could often be long-winded and ambiguous, making the standard difficult to implement\citep{failQTI, Sclater2007}.
+
+% Templated (change the numbers) or adaptive questions (branching questions)
+
+\subsubsection{Usage of Video in eAssessment}
+\label{Subsubsection:Usage of Video in eAssessment}
+Video is often used as a medium to convey educational material as it appeals to different learning styles. When video is streamed there is a lack of interactivity and user control \citep{eps267281}. To involve the user more, interactive elements must be added. \cite{eps267281} found that 75\% of users agreed or strongly agreed that interactive video had enhanced their learning experience but at the time of the paper there was no evidence of interactive video being used as a learning tool.
+
+%Feedback - meaningful, progress in understanding \citep{eps265979}
+\subsubsection{Accessibility and Usability}
+\label{Subsubsection:Accessibility and Usability}
+To allow interoperability between the eAssessment systems the QTI specification involves both the model and the view of the data \citep{wikieassessment} making accessibility difficult to add in later. This means many systems that comply with the QTI specification are inaccessible. Moodle, for example, uses a video player to display content that is completely inaccessible to a user only using a keyboard\footnote{\url{https://tracker.moodle.org/browse/MDL-36081} Last Accessed: 24 Nov 14}.
+
+eAssessment systems require an authoring tool that is easily understood by people who do not have an in depth technical knowledge (e.g. teachers). Often authoring tools that implement the QTI standard are too technical for this \citep{wikieassessment}. These tools need to improve their accessibility and usability, keeping the time commitments for users reasonable \citep{eps271236, eps265979} or they will not be used.
+
+There are many ways of conveying content in a video and none of the methods alone will generally convey the whole message. Most video searches stay on a whole resource level as there is a lack of semantic interlinking \citep{eps273063}. Annotation systems such as Synote\footnote{\url{http://synote.org/synote/} Last Accessed: 24 Nov 14} aim to make videos accessible by adding transcripts and other annotations to them. The videos being annotated may not be owned by the annotator.
+
+\subsubsection{Analytics}
+\label{Subsubsection:Analytics}
+
+
 
 \newif\ifnote
 \notefalse
 \ifnote
-In \cite{failQTI}:
-Wiki-like definitions: Moodle’s GIFT (“General Import Format Technology”) - "For more complex items, however, the syntax is no longer intuitive but more or less arbitrary"; Other wiki-like formats for describing tests include the “Aiken” format (apparently also a Moodle design, listing 3), WebCT’s text format (listing 4), and Respondus “Standard Format” (listing 5). 10 The different formats share many characteristics. For example, most formats are more or less line-oriented and require rigid adherence to the layout. No formal definitions
-"it can be assumed that the higher the complexity of the specification, the higher the likelihood for errors in the implementation."
-2.1 - “it’s deficiencies are well known and IMS does not recommend implementation of it.” - http://lists.ucles.org.uk/public/ims-qti/2009-March/001463.html
-"Due to the large number of optional items and ambiguities it is not suitable as a design specification."
-"QTI 2.0 is a very large specification with many optional parts."
-however, that the import of QTI items from unknown sources becomes very complex. Since the
-specification does not define the meaning of, say, an empty item or an item with multiple interactions,
-it is hard to guarantee that an item is imported and interpreted as originally intended by its author. This,
-in turn, means that the main purpose of an interchange format is not met."
-"QTI specification gives the following long-winded definition in natural language"
-"The specification also does not define whether identifiers may be longer than 32 characters and up to which character they have to be unique; in fact, the specification does not contain any statement on the uniqueness of identifiers"
-"The element <rubricBlock> is representative for many other shortcomings in the XML Binding. In the definition of this element the Information Model notes: “Although rubric blocks are defined as simpleBlocks they must not contain interactions.” (IMS GLC, 2005, Information Model, p. 23) The XML Schema, however, does not enforce this restriction, even though W3C XML Schema provides the necessary facilities to do so.
-"Sclater (2007, p. 70) agrees that the QTI specification is “unreadable by the vast majority of candidates likely to be undertaking an online assessment and of no concern to those setting the questions."
-"Sclater (2007) concurs that “IMS QTI is unarguably a complex and difficult specification for
-vendors to implement" \citep{Sclater2007}
-"We agree with Lazarinis et al. suggestion that a standard should be “modular,” i.e., allow for clearly defined implementation levels."
-
-In \cite{eps273063}:
-Lack of semantic interlinking between media fragments and annotations leading to insufficient index of inside content of multimedia sources
-Add addnotations to media sources they do not own
-
 In \cite{eps265979}:
-Question and Test Interoperability (QTI)
-Few real example of QTIv2 being used with no definitive reference implementation
-Lecturers would like to do more but do not have time to develop 
-learner - meaningful feedback, see how well they are progressing in understanding
-Templated (change the numbers) or adaptive questions (branching questions)
 R2Q2 (deprecated - replaced by QTI Engine)
 Constructr - constructr.qtitools.org - proof-of-concept
 Playr - playr.qtitools.org - deprecated - effectively our overlays
-
-In \cite{eps262835}:
-Lack of documentation for QTIRun - and only subset of question types
-Code needs to be rewritten in QTIRun if a different render engine was required
-Future - using Flash
-
-In \cite{eps267281}:
-Interactive - engage, participate, respond and be actively involved
-Video streaming - lack of interactivity, lack of user control
-Examples - rat stack
-Video - increase ability short to long term memory, different learning styles
-No evidence found of interactive video being used as a learning tool
-Used Flash - now not supported
-Results server - HTTP POST to a MySQL database
-Video skips when a hazard is clicked
-Likert scale (1 to 5)
-75\% agreed or strongly agreed that the interactive video had enhanced their learning experience
-
-In \cite{eps271236}:
-Need to improve eAssessment accessibility and usability
-Increase usability of eAssessment systems for the lecturer - whilst keeping time commitments reasonable
-
-In \cite{wikieassessment}:
-"The major promise of QTI is that by introduction of common format developers can concentrate on developing innovative tools, whereas teachers can focus on defining new and groundbreaking methods of how to apply those tools in an online environment. "
-"Authoring tools that implement the QTI standard are too complex and not usable enough to be operated by a teacher without sufficient knowledge of technology"
-"the standard mixes data management with data presentation features"
 \fi
+
 \section{Industrial Work} 
 \label{Section:Industrial Work}
