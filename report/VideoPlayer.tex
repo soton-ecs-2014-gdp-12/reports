@@ -4,12 +4,17 @@
 \chapter{Video Player} 
 \label{Chapter:Video Player}
 
+Specific improvements to Videogular were made up two main sections, accessibility and compatibility. Each were conducted independently and the open source contributions accepted readily back into the main Videogular project.
+
 \section{Accessibility} 
 \label{Section:Accessibility}
+
+\subsection{Background} 
 Videogular has the option to display HTML controls for the video player, replacing the browser's built-in controls. However, when the project began there was no way for the user to access these controls without a mouse.The main problem was that the controls did not identify themselves as interactive elements, and so could not be 'focused' (selected with the tab key). This also prevented them from being picked up by a screen reader.
 
 Some online video players allow the player as a whole to be focused, and then controlled with various keyboard shortcuts. The problem with this method is that accessibility aids, such as screen readers, will not have information on these controls, and so users of those technologies will have to be instructed. It is also not accessible to users of a clicker, who can only press one key and so require individually focusable controls.
 
+\subsection{Design and Implementation} 
 Instead, the controls were made individually focusable by using semantic markup where possible, and ARIA attributes otherwise. When a control is in focus, a visual indicator is displayed to highlight it. Buttons can then be pressed using the space bar (\fref{Figure:Accessibility/Screenshots/Button}); the scrub bar can be moved using the left and right arrow keys (\fref{Figure:Accessibility/Screenshots/ScrubBar}); and the volume can be adjusted using the up and down arrow keys when the mute button is focused (\fref{Figure:Accessibility/Screenshots/Volume}).
 
 \begin{figure}
@@ -32,7 +37,9 @@ Instead, the controls were made individually focusable by using semantic markup 
 	\label{Figure:Accessibility/Screenshots}
 \end{figure}
 
+\subsection{Conclusions} 
 This solution is not completely clicker-accessible, but could be made so by introducing buttons to skip forwards or backwards, and to raise or lower the volume. It is a significant improvement on the original state, as keyboard users can now use the player. The improvements were submitted to the Videogular project\footnote{\url{https://github.com/2fdevs/videogular/pull/108}}, and are now part of Videogular 0.6.1.
+
 
 \section{Compatibility} 
 \label{Section:Compatibility}
