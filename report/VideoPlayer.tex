@@ -4,7 +4,17 @@
 \chapter{Video Player} 
 \label{Chapter:Video Player}
 
-Specific improvements to Videogular were made up two main sections, accessibility and compatibility. Each were conducted independently and the open source contributions accepted readily back into the main Videogular project.
+Specific improvements to Videogular were made up three main sections, accessibility, compatibility and scrub bar plugin creation. Each were conducted independently and the open source contributions accepted readily back into the main Videogular project.
+
+The main goals for this part of the project were to:
+\begin{itemize}
+\item investigate Videogular to allow for its use within the new version of Synote
+\item improve the accessibility of Videogular to allow for its use by users with less than normal interface  devices
+\item ensure that Videogular was as compatible on as many devices as possible
+\item add the ability to mark locations on the scrub bar
+\item produce a plugin to allow the display of statistical data along the scrub bar
+\end{itemize}
+
 
 \section{Accessibility} 
 \label{Section:Accessibility}
@@ -55,3 +65,10 @@ Android phones correctly interpret the inline directive and will properly play t
 The overlay which displays the questions that the user is asked appears above the video and obstructs the view of the video. Placing the overlay in the middle of the screen requires a large amount of CSS to correctly locate it on the screen for mobile and smaller sized devices. There are still some issues with the popup location on some mobile devices because the browser reports one screen size and uses another. Until these devices are compliant with the specification it is time consuming to write code to fix each individual case.
 
 The best user experience with this application is using it on a desktop that has an updated browser. This will definitely work and display as intended. As the screen size of the device gets smaller the user experience is significantly reduced as the video and poll overlay will be much smaller than recommended. To support a number of browsers and operating systems a range of video formats are supplied to the videogular plugin so that the browser may pick one that can be played.
+
+\section{Scrub Bar Extensions} 
+\label{Section:Scrub Bar Extensions}
+
+\subsection{Videogular Cuepoints - vgCuepoints}
+
+\subsection{Videogular Heatmaps - vgHeatmap}
