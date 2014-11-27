@@ -20,11 +20,22 @@ This project focuses on the assessment system in the \gls{VLE}.
 \section{Types of Assessment}
 \label{Section: Types of Assessment}
 
-In education, summative and formative assessments are often used to provide different types of feedback to students and show their level of progression and competence.
+In education, summative (or `assessment of learning' \citep{digiassess}) and formative (or `assessment for learning' \citep{digiassess}) assessments are often used to provide different types of feedback to students and show their level of progression and competence. The method of assessment will depend on the perspective of the assessor (see \autoref{Table: Perspectives on Learning}).
+
+\begin{longtable}{|L{0.185}|L{0.25}|L{0.21}|L{0.25}|}
+\caption[Perspectives on learning]{\label{Table: Perspectives on Learning} Perspectives on learning and approaches to assessment and feedback (from \citep{digiassess})} \\
+\hline \textbf{Perspective on learning} & \textbf{Assumption} & \textbf{Assessment} & \textbf{Feedback} \\ \hhline{|=|=|=|=|} \endhead
+\multicolumn{4}{c}{Continues on the next page...} \endfoot
+\endlastfoot
+\textbf{Associative} & \textbf{Learning as acquiring competence} \newline Learners acquire knowledge by building associations between different concepts. \newline Learners gain skills by building progressively complex actions from component skills. & Concepts and competencies frequently assessed at micro level and in combination through macro-level tasks. & - Expert feedback focusing on weaknesses in skills and conceptual understanding \newline - Interactive environments for knowledge and skills acquisition \eoline
+\textbf{Constructivist} & \textbf{Learning as achieving understanding} \newline Learners actively construct ideas by building and testing hypotheses. & Assessment by means of experimentation, discovery and inquiry-based tasks. & - Self-generated feedback arising from reflection and self-assessment \newline -Interactive discovery environments with opportunities for self-testing \eoline
+\textbf{Social constructivist} & \textbf{Learning as achieving understanding} \newline Learners actively construct new ideas through collaborative activities and dialogue. & Collaborative and cooperative tasks involving shared expression of ideas. \newline Participation by learners in the design of assessment tasks. & - Peer feedback arising from collaborative activities and dialogue \newline -Interactive environments that support sharing and peer feedback \eoline
+\textbf{Situative} & \textbf{Learning as social practice} \newline Learners develop their identities through participation in specific communities of practice. & Holistic assessment in authentic or simulated professional contexts. \newline Participation in social practices of inquiry and assessment. & - Socially produced feedback from multiple sources \newline - Feedback derived from authentic real-life tasks \newline - Interactive environments that simulate professional practice \eoline
+\end{longtable}
 
 Summative assessment is used when achievement levels need to be reported against a set of published criteria, often as an end of course evaluation. As all students are evaluated against the same criteria their results can be combined to form league tables etc. \citep{assessmentTypes}. These assessments are generally high-stakes so ``those being assessed are likely to do all they can to conceal ignorance and suggest competence" \citep{knight2001briefing}. The feedback from such assessments is usually a mark, often given as a level of achievement or competence rather than specific details on how the assessment could have been completed more successfully.
 
-Formative assessment is not strictly based on criteria but takes into account students' progress and effort \citep{assessmentTypes}. The marks given for formative assessments may use the performance of students from several occurrences. These performances may be inconsistent but these differences in behaviour can be used as a diagnostic for where any problems are \citep{assessmentTypes}. Formative assessment must be student centred as its two main aims are to get students to recognise the gap between the understanding level they have achieved and what is required, and for the students to take action to close this gap \citep{usesOfAssessment}. To identify the gap immediate feedback on how to improve is required \citep{eps265979} and the disclosure of things that are difficult needs to be encouraged \citep{knight2001briefing} to be able to provide effective feedback.
+Formative assessment is not strictly based on criteria but takes into account students' progress and effort \citep{assessmentTypes}. The marks given for formative assessments may use the performance of students from several occurrences. These performances may be inconsistent but these differences in behaviour can be used as a diagnostic for where any problems are \citep{assessmentTypes}. Formative assessment must be student centred as its two main aims are to get students to recognise the gap between the understanding level they have achieved and what is required, and for the students to take action to close this gap \citep{usesOfAssessment}. To identify the gap immediate feedback on how to improve is required \citep{eps265979} and the disclosure of things that are difficult needs to be encouraged \citep{knight2001briefing} to be able to provide effective feedback. 
 
 The choice to use formative or summative assessment will depend on the purpose of the test. If a level of competence is required then summative assessment would be more appropriate. However a test to highlight the areas that the students are struggling with would be better as a formative assessment.
 
@@ -35,9 +46,9 @@ This project focuses on the use of quizzes and polls within videos as a means of
 
 \subsection{Quiz Definition Standards}
 \label{Subsection:Quiz Definition Standards}
-In order to store and display the questions in an \gls{eAssessment}, a schema for the questions must be defined. The only formally defined standard found was IMS Global's \gls{qti} specification\footnote{\url{http://www.imsglobal.org/question/\#version2.1} Last Accessed: 24 Nov 14}. Some other quiz (wiki-like) definitions were found including Moodle's General Import Format Technology (GIFT)\footnote{\url{https://docs.moodle.org/28/en/GIFT_format} Last Accessed: 24 Nov 14} and Aiken formats\footnote{\url{https://docs.moodle.org/23/en/Aiken_format} Last Accessed: 24 Nov 14}.
+In order to store and display the questions in an \gls{eAssessment}, a schema for the questions must be defined. The only formally defined standard found was IMS Global's \gls{qti} specification\footnote{\url{http://www.imsglobal.org/question/\#version2.1} [Last Accessed: 24 Nov 14]}. Some other quiz (wiki-like) definitions were found including Moodle's General Import Format Technology (GIFT)\footnote{\url{https://docs.moodle.org/28/en/GIFT_format} [Last Accessed: 24 Nov 14]} and Aiken formats\footnote{\url{https://docs.moodle.org/23/en/Aiken_format} [Last Accessed: 24 Nov 14]}.
 
-GIFT is a question mark up by Moodle\footnote{\url{https://moodle.org} Last Accessed: 24 Nov 14}. It allows users to use a text editor to create questions in some simple formats. There is a strict compliance to specific syntax required and for complex questions it is no longer intuitive \citep{failQTI}. Aiken is another mark up that is designed to be more easily human-readable, again it has strict syntax that must be adhered to or the imports to Moodle would fail.
+GIFT is a question mark up by Moodle\footnote{\url{https://moodle.org} [Last Accessed: 24 Nov 14]}. It allows users to use a text editor to create questions in some simple formats. There is a strict compliance to specific syntax required and for complex questions it is no longer intuitive \citep{failQTI}. Aiken is another mark up that is designed to be more easily human-readable, again it has strict syntax that must be adhered to or the imports to Moodle would fail.
 
 \gls{qti} is an interoperability standard for \glspl{eAssessment}. The specification overview \citep{qtiOverview} splits the \gls{eAssessment} system into five systems: authoring tool, item bank, test construction tool, assessment delivery system and learning system (see \autoref{Figure: QTI components}).
 
@@ -49,14 +60,14 @@ GIFT is a question mark up by Moodle\footnote{\url{https://moodle.org} Last Acce
 
 In the \gls{qti} definition the authoring tool is used to create individual questions. However many systems combine this with the Item Bank and Test Construction Tool. For this report ``\gls{authoring}" refers to this combination and, as such, an authoring tool is used to create whole quizzes.
 
-\cite{wikieassessment} state:
+\Citeauthor{wikieassessment} (\citeyear{wikieassessment}) state:
 \begin{quote}
 The major promise of QTI is that by introduction of common format developers can concentrate on developing innovative tools, whereas teachers can focus on defining new and groundbreaking methods of how to apply those tools in an online environment.
 \end{quote}
 
 It is a very complex specification with many ambiguous or optional elements. The complexity of the specification increases the likelihood for errors in the implementation as it opens up opportunities for developers to interpret the specification in different ways \citep{failQTI}. This means the intent of the original author may be lost.
 
-\gls{qti} v2.1 was finalised in 2012 \citep{qtiOverview} but up to this point the standard was not widely used \citep{eps265979} as there were several fundamental flaws in the standard. When the v2.1 draft was withdrawn in 2009 Rib Abel (IMS GLC CEO) was quoted as saying (on v2.0) ``it’s deficiencies are well known and IMS does not recommend implementation of it [\dots] the only version of QTI that is fully endorsed by IMS GLC is v1.2.1"\footnote{\url{http://lists.ucles.org.uk/public/ims-qti/2009-March/001463.html}}. This standard gave definitions in natural language. These could often be long-winded and ambiguous, making the standard difficult to implement \citep{failQTI, Sclater2007}.
+\gls{qti} v2.1 was finalised in 2012 \citep{qtiOverview} but up to this point the standard was not widely used \citep{eps265979} as there were several fundamental flaws in the standard. When the v2.1 draft was withdrawn in 2009 Rib Abel (IMS GLC CEO) was quoted as saying (on v2.0) ``it’s deficiencies are well known and IMS does not recommend implementation of it [\dots] the only version of QTI that is fully endorsed by IMS GLC is v1.2.1"\footnote{\url{http://lists.ucles.org.uk/public/ims-qti/2009-March/001463.html} [Last accessed: 25 Nov 14]}. This standard gave definitions in natural language. These could often be long-winded and ambiguous, making the standard difficult to implement \citep{failQTI, Sclater2007}.
 
 \gls{qti} v2.1 defines 18 types of interaction (question, answers and response patterns) \citep{qtiImplementation}:
 \begin{multicols}{3}
@@ -90,16 +101,21 @@ Adaptive items are scored over a series of questions. Different questions are di
 
 \subsection{Usage of Video in eAssessment}
 \label{Subsection:Usage of Video in eAssessment}
-Video is often used as a medium to convey educational material as it appeals to different learning styles. When video is streamed there is a lack of interactivity and user control \citep{eps267281, DeBoer}. To involve the user more, interactive elements must be added. \Citeauthor{eps267281} found that 75\% of users agreed or strongly agreed that interactive video had enhanced their learning experience but at the time of the paper (\citeyear{eps267281}) there was no evidence of interactive video being used as a learning tool. There are now some interactive videos being used as a learning tool \citep{nadia} but not widely in \glspl{MLE}.
+Video is often used as a medium to convey educational material as it appeals to different learning styles. When video is streamed there is a lack of interactivity and user control \citep{eps267281, DeBoer}. To involve the user more, interactive elements must be added. \Citeauthor{eps267281} found that 75\% of users agreed or strongly agreed that interactive video had enhanced their learning experience but at the time of the paper (\citeyear{eps267281}) they could find no evidence of interactive video being used as a learning tool. There are now some interactive videos being used as a learning tool \citep{nadia} but not widely in \glspl{MLE}.
 
-By adding polls and quizzes into videos immediate meaningful feedback can easily be given, a key feature of formative assessment \citep{eps265979}. Having the questions integrated into the video allows the appropriate sections to be automatically re-watched. 
+Interactive videos have often been implemented in Flash \citep{interactiveVideo, eps267281}. This is no longer supported on many devices in favour of HTML5 technologies \citep{flashDead}. The interactivity in HTML5 video players is generally implemented using clickable areas or pop ups \citep{interactiveHTML5}. HTML5 video players do not require an external plug-in to run so will be browser independent \citep{epifania2011design, interactiveHTML5}. 
+
+Interactive videos including polls and quizzes is one method that could be used to give a formative assessment. This would give immediate, meaningful feedback, a key feature of formative assessment \citep{eps265979}. Having the questions integrated into the video allows the appropriate sections to be automatically re-watched, encouraging immediate action on feedback. 
+
 \subsubsection{Accessibility and Usability}
 \label{Subsubsection:Accessibility and Usability}
 To allow interoperability between the \gls{eAssessment} systems the \gls{qti} specification involves both the model and the view of the data \citep{wikieassessment} making accessibility difficult to add in later. This means many systems that comply with the \gls{qti} specification are inaccessible.
 
 \gls{eAssessment} systems require an \gls{authoring} that is easily understood by people who do not have an in depth technical knowledge (e.g. teachers). Often authoring tools that implement the \gls{qti} standard are too technical for this \citep{wikieassessment}. These tools need to improve their accessibility and usability, keeping the time commitments for users reasonable \citep{eps271236, eps265979} or they will not be used.
 
-\cite{nadia} did a check for accessibility and other features on existing applications that use video e-quizzes and found that none of them were accessible from a keyboard (see \autoref{Table: Existing Video e-Quizzes}). This means that they do not conform to the \gls{UAAG} of the \gls{WAI} \citep{uaag}.
+\cite{nadia} did a check for accessibility and other features on existing applications that use video e-quizzes and found that none of them were accessible from a keyboard (see \autoref{Table: Existing Video e-Quizzes}). This means that they do not conform to the \gls{UAAG} of the \gls{WAI} \citep{uaag}. Further research showed that Moodle also uses a video player to display content that is completely inaccessible to a user only using a keyboard\footnote{\url{https://tracker.moodle.org/browse/MDL-36081} [Last Accessed: 24 Nov 14]}. 
+
+Using a HTML5 video player keyboard accessibility is easy to implement as the player controls are HTML5 elements. These elements can individually be allowed to gain focus and have a tab order implemented to give full keyboard navigation of the player.
 
 \begin{longtable}{|L{0.17}|L{0.135}|L{0.135}|L{0.13}|L{0.15}|L{0.11}|}
 \caption[Existing Video e-Quizzes]{\label{Table: Existing Video e-Quizzes} A comparison between existing systems with interactive video e-quizzes (from \citep{nadia})} \\
@@ -114,15 +130,13 @@ To allow interoperability between the \gls{eAssessment} systems the \gls{qti} sp
 \textbf{Overlay support} & None & \CheckmarkBold & None & None & \CheckmarkBold \eoline
 \end{longtable}
 
-Further research showed that Moodle also uses a video player to display content that is completely inaccessible to a user only using a keyboard\footnote{\url{https://tracker.moodle.org/browse/MDL-36081} Last Accessed: 24 Nov 14}. 
-
-There are many ways of conveying content in a video and none of the methods alone will generally convey the whole message. Most video searches stay on a whole resource level as there is a lack of semantic interlinking \citep{eps273063}. Annotation systems such as Synote\footnote{\url{http://synote.org/synote/} Last Accessed: 24 Nov 14} aim to make videos accessible by adding transcripts and other annotations to them. The videos being annotated may not be owned by the annotator.
+There are many ways of conveying content in a video and none of the methods alone will generally convey the whole message. Most video searches stay on a whole resource level as there is a lack of semantic interlinking \citep{eps273063}. Annotation systems such as Synote\footnote{\url{http://synote.org/synote/} [Last Accessed: 24 Nov 14]} aim to make videos accessible by adding transcripts and other annotations to them. The videos being annotated may not be owned by the annotator.
 
 \subsection*{Conclusion}
 \label{Subsection: eAssessment Conclusion}
 It was decided not to use the \gls{qti} standard due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{qti} than implementing the tools.
 
-A HTML5 video player will be used to simplify the implementation of keyboard accessibility.
+A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
 
 The focus of this project would be on creating accessible quiz authoring and delivery tools.
 
@@ -136,7 +150,7 @@ Currently there is no research into viewing styles of interactive videos with qu
 \item \textbf{Zapping} - A student skips through the instructional video at intervals of relatively short viewing times
 \end{itemize}
 
-Some tools are required to analyse the
+Some tools are required to analyse the viewing patterns of interactive videos as there is currently no research in this area.
 
 \ifnote
 In \cite{eps265979}:
