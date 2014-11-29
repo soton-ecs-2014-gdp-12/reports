@@ -77,3 +77,22 @@ A set of example css files are supplied with the project that layout the questio
 Web workers give a good way of running (sandboxed) background scripts that are computationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing. 
 
 For example, when an answer is submitted by the user this would sent a message to the webworker containing the answer. The webworker can then process this information without affecting the responsiveness of the page. Once the processing is complete the webworker can send a message back to the page to tell it what to do next.
+
+\section{Interaction with Analytics}
+\label{Section:vgQuestions Analytics}
+
+Since we were writing a series of plugins we wanted to ensure that no one plugin required another to be used effectively. Instead of a custom method of communicating between two or many possible plugins we decided to use the publish/subscribe model to communicate with the vgAnalytics plugin.
+
+Using the angular broadcast system we could publish events on channels which then would be received by anyone who subscribed to that channel.
+
+The below code snippet shows how we communicated to the vgAnalytics plugin.
+
+\begin{lstlisting}[language=javascript]
+$rootScope.$broadcast('analytics','show_question', data);
+\end{lstlisting}
+
+Here we broadcast to the ``analytics'' channel an event with the name ``show\_question'' with the content of the data variable.
+
+The vgAnalytics plugin listens to the ``analytics'' channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins.
+
+By using the publish/subscribe model we can design the plugin so that if they are both being used they will work together but have no dependencies on each other. This allows any of our plugins to be used together or separately as the user wishs.
