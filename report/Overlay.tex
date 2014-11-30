@@ -2,6 +2,9 @@
 %% Overlay.tex
 %% ---------------------------------------------------------------- 
 \chapter{Overlay - vgQuestions} \label{Chapter:Overlay}
+
+\todo{I am not sure what the following list is trying to convey, should it be
+removed?}
 The overlay was built up in stages:
 \begin{enumerate}
 \item Getting an overlay to appear at a set time
@@ -9,81 +12,150 @@ The overlay was built up in stages:
 \item Allowing custom question sets to be used
 \item Returning the answers to a server
 \end{enumerate}
-\section{Question Sets} 
-\label{Section:Question sets}
-One of the main issues to address early on was how to represent the quiz and poll questions. The QTI (Question \& Test Interoperability) specification was investigated early on, but was found to be complicated and incomplete for the project needs. It was decided to write our own schema and use JavaScript files to store the information we needed. 
 
-The schema is created to allow for configurability without the need for a large number of optional boolean operators. Thus we avoid having a ``shouldShowWhenPreviousQuestionIsAnsweredIncorrectly'' field on every questions as well as many other potential options. The main aim was to be expressive enough to allow all required situations without becoming too confusing. This was achieved with the use of inline functions within the JavaScript questions files. An example schema looks as follows:
+\section{Annotations}
+\label{Section:Annotations}
+
+One of the main issues to address early on was how to represent the quiz and
+poll questions. The QTI (Question \& Test Interoperability) specification was
+investigated, but was found to be complicated and incomplete \todo{What does
+incomplete mean here?} for the project needs. It was decided to design a new
+format for representing the data and logic that is used for a particular
+application of videogular-questions.
+
+This new format separates the front end of the library (responsible for
+interacting with the DOM), from the data and logic regarding the questions by
+means of a message passing interface. This is achieved in a rigorous way in the
+browser by means of a WebWorker. This is a sandboxed separate thread that run
+in the background the webpage. They run independently of standard user-space
+scripts.  More can be found out about their use within this project in Section
+BLAH.
+
+Using JavaScript, rather than a pure data representation (e.g. JSON or XML)
+allows for the use of JavaScript to provide the logic. This makes it extremely
+flexible and concise, and the isolation provided by the WebWorker mitigates
+many security concerns with having an application that executes data given as
+input as code.
+
 \begin{lstlisting}[language=javascript]
-{"first-question": {
-  time: 1,
-  items: [
-    {
-      id: "first",
-      type: "single",
-      question: "Single question example. Correct is the correct answer",
-      options: [
-        {
-          name: "correct"
-        },
-        {
-          name: "incorrect"
-        }
-      ],
-      correctAnswer: "correct"
-    },
-    {
-      id: "check-first",
-      type: "single",
-      question: "Answer incorrect, do you want to review the video",
-      options: [
-        {
-          name: "Yes"
-        },
-        {
-          name: "No"
-        }
-      ],
-      action: function(questions, video) {
-        if (questions.get("check-first").response === "Yes") {
-          video.setTime(0);
-        }
+importScripts("../questions-worker.js");
+
+loadAnnotations({
+  "first-annotation": {
+    // the time that this annotation will show up
+    // (in seconds from the start of the video)
+    time: 1,
+    items: [
+      {
+        id: "first-question",
+        type: "single",
+        question: "What is the moon made of?",
+        options: [
+          {
+            name: "cheese"
+          },
+          {
+            name: "cheeese"
+          },
+          {
+            name: "cheeeeeese"
+          }
+        ],
+        correctAnswer: "cheese"
       },
-      condition: function(questions, result) {
-        return questions.get("first").isNotCorrect();
+      {
+        id: "check-question",
+        type: "single",
+        question: "Answer incorrect, do you want to review the video",
+        options: [
+          {
+            name: "Yes"
+          },
+          {
+            name: "No"
+          }
+        ],
+        action: function(questions, video) {
+          if (questions.get("check-question").response === "Yes") {
+            video.setTime(0);
+          }
+        },
+        condition: function(questions) {
+          return questions.get("first-question").isNotCorrect();
+        }
       }
-    }
-  ]
-}}
+    ]
+  }
+});
 \end{lstlisting}
-Every question can have an action function along with a condition function. The action function is called when a question is answered. The condition function is called to determine which question is the question set to next show. Each function has a rich API passed along to it to allow complex actions to be performed.
 
-The reason that this function-based approach could be taken was the use of HTML5 web workers. These are sandboxed separate threads that run in the background of webpages. They run independently of standard user-space scripts. More can be found out about their use within this project in Section BLAH. 
+Every item in an annotation can have an action and condition function. The
+action function is called when a item finishes. The action function is given
+the state of the annotations, such that it can make decisions and then affect
+the state of the video accordingly. For example, in the above example, this is
+used to only have the "skip back" question show, if the answer given to the
+previous question is incorrect.
 
-An early decision was to define the difference between a poll and a quiz question. It was decided that a poll is a type of quiz question that does not have a correct answer.
+The condition function is called to determine if the respective item will show.
+By default, when an annotation is shown, each item is shown in sequence.
+However, if an item has a condition function, this is evaluated, and the item
+only shown if the condition function returns true. If the condition function
+returns false, the item is skipped. This functionality is used in the above
+example to have the video skip back if the user wants it to.
 
-Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
 
-By having a standard schema that uses JavaScript functions it was possible to write template functions that could be outputted from the authoring tool and read by the overlay correctly.
-\section{Front End} 
+An early decision was to define the difference between a poll and a quiz
+question. It was decided that a poll is a type of quiz question that does not
+have a correct answer.
+
+Initially basic question types (single choice, multiple choice and scale
+questions) were focused on. A variety of visualisations was implemented
+including check boxes, radio buttons and sliding scales. Validation was needed
+to ensure that the specified minimum and maximum limits were followed.
+
+By having a standard schema that uses JavaScript functions it was possible to
+write template functions that could be outputted from the authoring tool and
+read by the overlay correctly.
+
+\section{Front End}
 \label{Section:Front end}
-The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made and user studies were done in collaboration with a third year project student.
 
-A set of example css files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own.
-\section{Back End} 
+The appearance of the overlay depends on the question type to be shown. The
+layout of these different types was carefully considered for accessibility and
+ease of use. Mockups were made and user studies were done in collaboration with
+a third year project student.
+
+A set of example css files are supplied with the project that layout the
+questions according to the feedback received. Developers using any part of the
+project can use these styles as is, or modify/develop their own.
+
+\section{Back End}
 \label{Section:Back end}
+
 \subsection{Web Workers}
 \label{Subsection:WebWorkers}
-Web workers give a good way of running (sandboxed) background scripts that are computationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing. 
 
-For example, when an answer is submitted by the user this would sent a message to the webworker containing the answer. The webworker can then process this information without affecting the responsiveness of the page. Once the processing is complete the webworker can send a message back to the page to tell it what to do next.
+Web workers give a good way of running (sandboxed) background scripts that are
+computationally intensive. They are a way of multithreading - allowing multiple
+scripts to run simultaneously, avoiding the problem of unresponsive pages due
+to long running scripts. This is done by using message passing.
+
+For example, when an answer is submitted by the user this would sent a message
+to the webworker containing the answer. The webworker can then process this
+information without affecting the responsiveness of the page. Once the
+processing is complete the webworker can send a message back to the page to
+tell it what to do next.
 
 \section{Interaction with Analytics}
 \label{Section:vgQuestions Analytics}
 
-Since we were writing a series of plugins we wanted to ensure that no one plugin required another to be used effectively. Instead of a custom method of communicating between two or many possible plugins we decided to use the publish/subscribe model to communicate with the vgAnalytics plugin.
+Since we were writing a series of plugins we wanted to ensure that no one
+plugin required another to be used effectively. Instead of a custom method of
+communicating between two or many possible plugins we decided to use the
+publish/subscribe model to communicate with the vgAnalytics plugin.
 
-Using the angular broadcast system we could publish events on channels which then would be received by anyone who subscribed to that channel.
+Using the angular broadcast system we could publish events on channels which
+then would be received by anyone who subscribed to that channel.
 
 The below code snippet shows how we communicated to the vgAnalytics plugin.
 
@@ -91,8 +163,17 @@ The below code snippet shows how we communicated to the vgAnalytics plugin.
 $rootScope.$broadcast('analytics','show_question', data);
 \end{lstlisting}
 
-Here we broadcast to the ``analytics'' channel an event with the name ``show\_question'' with the content of the data variable.
+Here we broadcast to the ``analytics'' channel an event with the name
+``show\_question'' with the content of the data variable.
 
-The vgAnalytics plugin listens to the ``analytics'' channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins.
+The vgAnalytics plugin listens to the ``analytics'' channel and they will
+receives all messages published to this. Therefore vgQuestions can publish
+information which will be received by the vgAnalytics plugin. If it has not
+been instantiated then these messages will not cause any errors which is one of
+the important factors in picking a communication method between the various
+plugins.
 
-By using the publish/subscribe model we can design the plugin so that if they are both being used they will work together but have no dependencies on each other. This allows any of our plugins to be used together or separately as the user wishs.
+By using the publish/subscribe model we can design the plugin so that if they
+are both being used they will work together but have no dependencies on each
+other. This allows any of our plugins to be used together or separately as the
+user wishs.
