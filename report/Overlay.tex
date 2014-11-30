@@ -13,11 +13,23 @@ The overlay was built up in stages:
 \item Returning the answers to a server
 \end{enumerate}
 
-\section{Question Sets} 
+\section{Annotations}
 \label{Section:Question sets}
-One of the main issues to address early on was how to represent the quiz and poll questions. The QTI (Question \& Test Interoperability) specification was investigated early on, but was found to be complicated and incomplete for the project needs. It was decided to write our own schema and use JavaScript files to store the information we needed. 
 
-The schema is created to allow for configurability without the need for a large number of optional boolean operators. Thus we avoid having a ``shouldShowWhenPreviousQuestionIsAnsweredIncorrectly'' field on every questions as well as many other potential options. The main aim was to be expressive enough to allow all required situations without becoming too confusing. This was achieved with the use of inline functions within the JavaScript questions files. An example schema looks as follows:
+One of the main issues to address early on was how to represent the quiz and
+poll questions. The QTI (Question \& Test Interoperability) specification was
+investigated early on, but was found to be complicated and incomplete for the
+project needs. It was decided to write our own schema and use JavaScript files
+to store the information we needed.
+
+The schema is created to allow for configurability without the need for a large
+number of optional boolean operators. Thus we avoid having a
+``shouldShowWhenPreviousQuestionIsAnsweredIncorrectly'' field on every
+questions as well as many other potential options. The main aim was to be
+expressive enough to allow all required situations without becoming too
+confusing. This was achieved with the use of inline functions within the
+JavaScript questions files. An example schema looks as follows:
+
 \begin{lstlisting}[language=javascript]
 {"first-question": {
   time: 1,
@@ -60,34 +72,70 @@ The schema is created to allow for configurability without the need for a large 
   ]
 }}
 \end{lstlisting}
-Every question can have an action function along with a condition function. The action function is called when a question is answered. The condition function is called to determine which question is the question set to next show. Each function has a rich API passed along to it to allow complex actions to be performed.
 
-The reason that this function-based approach could be taken was the use of HTML5 web workers. These are sandboxed separate threads that run in the background of webpages. They run independently of standard user-space scripts. More can be found out about their use within this project in Section BLAH. 
+Every question can have an action function along with a condition function. The
+action function is called when a question is answered. The condition function
+is called to determine which question is the question set to next show. Each
+function has a rich API passed along to it to allow complex actions to be
+performed.
 
-An early decision was to define the difference between a poll and a quiz question. It was decided that a poll is a type of quiz question that does not have a correct answer.
+The reason that this function-based approach could be taken was the use of
+HTML5 web workers. These are sandboxed separate threads that run in the
+background of webpages. They run independently of standard user-space scripts.
+More can be found out about their use within this project in Section BLAH.
 
-Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
+An early decision was to define the difference between a poll and a quiz
+question. It was decided that a poll is a type of quiz question that does not
+have a correct answer.
 
-By having a standard schema that uses JavaScript functions it was possible to write template functions that could be outputted from the authoring tool and read by the overlay correctly.
-\section{Front End} 
+Initially basic question types (single choice, multiple choice and scale
+questions) were focused on. A variety of visualisations was implemented
+including check boxes, radio buttons and sliding scales. Validation was needed
+to ensure that the specified minimum and maximum limits were followed.
+
+By having a standard schema that uses JavaScript functions it was possible to
+write template functions that could be outputted from the authoring tool and
+read by the overlay correctly.
+
+\section{Front End}
 \label{Section:Front end}
-The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made and user studies were done in collaboration with a third year project student.
 
-A set of example css files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own.
-\section{Back End} 
+The appearance of the overlay depends on the question type to be shown. The
+layout of these different types was carefully considered for accessibility and
+ease of use. Mockups were made and user studies were done in collaboration with
+a third year project student.
+
+A set of example css files are supplied with the project that layout the
+questions according to the feedback received. Developers using any part of the
+project can use these styles as is, or modify/develop their own.
+
+\section{Back End}
 \label{Section:Back end}
+
 \subsection{Web Workers}
 \label{Subsection:WebWorkers}
-Web workers give a good way of running (sandboxed) background scripts that are computationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing. 
 
-For example, when an answer is submitted by the user this would sent a message to the webworker containing the answer. The webworker can then process this information without affecting the responsiveness of the page. Once the processing is complete the webworker can send a message back to the page to tell it what to do next.
+Web workers give a good way of running (sandboxed) background scripts that are
+computationally intensive. They are a way of multithreading - allowing multiple
+scripts to run simultaneously, avoiding the problem of unresponsive pages due
+to long running scripts. This is done by using message passing.
+
+For example, when an answer is submitted by the user this would sent a message
+to the webworker containing the answer. The webworker can then process this
+information without affecting the responsiveness of the page. Once the
+processing is complete the webworker can send a message back to the page to
+tell it what to do next.
 
 \section{Interaction with Analytics}
 \label{Section:vgQuestions Analytics}
 
-Since we were writing a series of plugins we wanted to ensure that no one plugin required another to be used effectively. Instead of a custom method of communicating between two or many possible plugins we decided to use the publish/subscribe model to communicate with the vgAnalytics plugin.
+Since we were writing a series of plugins we wanted to ensure that no one
+plugin required another to be used effectively. Instead of a custom method of
+communicating between two or many possible plugins we decided to use the
+publish/subscribe model to communicate with the vgAnalytics plugin.
 
-Using the angular broadcast system we could publish events on channels which then would be received by anyone who subscribed to that channel.
+Using the angular broadcast system we could publish events on channels which
+then would be received by anyone who subscribed to that channel.
 
 The below code snippet shows how we communicated to the vgAnalytics plugin.
 
@@ -95,8 +143,17 @@ The below code snippet shows how we communicated to the vgAnalytics plugin.
 $rootScope.$broadcast('analytics','show_question', data);
 \end{lstlisting}
 
-Here we broadcast to the ``analytics'' channel an event with the name ``show\_question'' with the content of the data variable.
+Here we broadcast to the ``analytics'' channel an event with the name
+``show\_question'' with the content of the data variable.
 
-The vgAnalytics plugin listens to the ``analytics'' channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins.
+The vgAnalytics plugin listens to the ``analytics'' channel and they will
+receives all messages published to this. Therefore vgQuestions can publish
+information which will be received by the vgAnalytics plugin. If it has not
+been instantiated then these messages will not cause any errors which is one of
+the important factors in picking a communication method between the various
+plugins.
 
-By using the publish/subscribe model we can design the plugin so that if they are both being used they will work together but have no dependencies on each other. This allows any of our plugins to be used together or separately as the user wishs.
+By using the publish/subscribe model we can design the plugin so that if they
+are both being used they will work together but have no dependencies on each
+other. This allows any of our plugins to be used together or separately as the
+user wishs.
