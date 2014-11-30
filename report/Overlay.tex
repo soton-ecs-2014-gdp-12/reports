@@ -146,6 +146,52 @@ information without affecting the responsiveness of the page. Once the
 processing is complete the webworker can send a message back to the page to
 tell it what to do next.
 
+\begin{sequencediagram}
+  \newthread[white]{c}{Front End}
+  \newinst[4]{s}{WebWorker}
+
+  \mess{s}{annotations}{c}
+
+  \stepcounter{seqlevel}
+  \begin{call}
+    {c}{annotationStart}
+    {s}{showQuestion}
+  \end{call}
+
+  \stepcounter{seqlevel}
+  \begin{call}
+    {c}{questionResult}
+    {s}{showQuestion}
+  \end{call}
+
+  \stepcounter{seqlevel}
+  \begin{call}
+    {c}{questionResult}
+    {s}{endAnnotation}
+  \end{call}
+\end{sequencediagram}
+
+The above diagram illustrates the messages that could pass between the web
+worker, and the front end when the above example is used. Initially, the worker
+sends a annotationStart message. This contains the times which annotations will
+occur.
+
+When the first time is reached, the front end sends a annotationStart
+message to the worker, containing the id of that annotation. The worker then
+replies with a showQuestion message, containing the contents of the first
+question. Note that here, the functions are not sent to the front end, just the
+JSON representation of the question is sent.
+
+When the user responds to the question, that response is send to the worker in
+a questionResult message. In this case, the user responded incorrectly,
+therefore, when the web worker evalutated the condition on the second question,
+it evaluated to false. This meant that the worker replied with another
+showQuestion message.
+
+Once the user responds to the second question, the response is again sent to
+the web worker. In this case, this was the final question in the annotation, so
+the worker responds with an endAnnotation message.
+
 \section{Interaction with Analytics}
 \label{Section:vgQuestions Analytics}
 
