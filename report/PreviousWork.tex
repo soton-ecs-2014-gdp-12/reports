@@ -142,7 +142,7 @@ The focus of this project would be on creating accessible quiz authoring and del
 
 \section{Analytics}
 \label{Section:Analytics}
-Currently there is no research into viewing styles of interactive videos with quizzes and polls in them. For streaming (non-interactive) videos \cite{DeBoer} defines four viewing styles:
+Meaningful analysis of video data is difficult as you need to know the content of the video to understand why the sections may have been of interest to the user \citep{videoLectures}. \Citeauthor{videoLectures} proposes that extra features can be added to the video to aid automatic analysis to be useful, including: multiple (parallel) cognitive channels, semantic marking, transcripts and annotations. Video viewing styles have been researched for non-interactive videos (streaming) and in general four main styles were identified \citep{DeBoer}:
 \begin{itemize}
 \item \textbf{Linear} - A student watches a video in one-pass (uninterruptedly) from the beginning to the end
 \item \textbf{Elaboration} - A student watches a video again after finishing the first time in one-pass
@@ -150,11 +150,12 @@ Currently there is no research into viewing styles of interactive videos with qu
 \item \textbf{Zapping} - A student skips through the instructional video at intervals of relatively short viewing times
 \end{itemize}
 
-Some tools are required to analyse the viewing patterns of interactive videos as there is currently no research in this area.
+With the growing popularity of \glspl{MOOC} analysis of video tutorials has been important to increase their usage. \Citeauthor{engagement} made several findings such as:
+\begin{itemize}
+\item Shorter videos are much more engaging
+\item Khan-style tablet drawing tutorials are more engaging than PowerPoint slides or code screencast
+\item Students engage differently with lecture and tutorial videos
+\end{itemize}
+These findings would also apply to video quizzes but as the quizzes add a new element to the material the interactions will be different and there will be many more things that could be learned from studying their usage patterns.
 
-\ifnote
-In \cite{eps265979}:
-R2Q2 (deprecated - replaced by QTI Engine)
-Constructr - constructr.qtitools.org - proof-of-concept
-Playr - playr.qtitools.org - deprecated - effectively our overlays
-\fi
+Currently there is little research into viewing styles of interactive videos with quizzes and polls in them as there are few tools to capture the necessary data. \Citeauthor{videoAnalytics} created an analytics tool that showed the quizzes separately to the video\footnote{\url{http://www.socialskip.org/home} [Last accessed: 1 Dec 14]} to create graphs of video usage patterns. They used the YouTube player to collect the usage data and Google Drive to include quizzes. They chose to display this information in graphs of video time vs frequency.
