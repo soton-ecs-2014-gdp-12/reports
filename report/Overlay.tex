@@ -17,23 +17,23 @@ The overlay was built up in stages:
 \label{Section:Annotations}
 
 One of the main issues to address early on was how to represent the quiz and
-poll questions. The QTI (Question \& Test Interoperability) specification was
+poll questions. The \gls{QTI} specification was
 investigated, but was found to be complicated and incomplete \todo{What does
 incomplete mean here?} for the project needs. It was decided to design a new
 format for representing the data and logic that is used for a particular
 application of videogular-questions.
 
 This new format separates the front end of the library (responsible for
-interacting with the DOM), from the data and logic regarding the questions by
+interacting with the \gls{DOM}), from the data and logic regarding the questions by
 means of a message passing interface. This is achieved in a rigorous way in the
-browser by means of a WebWorker. This is a sandboxed separate thread that run
-in the background the webpage. They run independently of standard user-space
+browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs
+in the background of the webpage. They run independently of standard user-space
 scripts.  More can be found out about their use within this project in Section
-BLAH.
+BLAH \todo{Write and autoref this section}.
 
 Using JavaScript, rather than a pure data representation (e.g. JSON or XML)
 allows for the use of JavaScript to provide the logic. This makes it extremely
-flexible and concise, and the isolation provided by the WebWorker mitigates
+flexible and concise, and the isolation provided by the \gls{webworker} mitigates
 many security concerns with having an application that executes data given as
 input as code.
 
@@ -125,7 +125,7 @@ layout of these different types was carefully considered for accessibility and
 ease of use. Mockups were made and user studies were done in collaboration with
 a third year project student.
 
-A set of example css files are supplied with the project that layout the
+A set of example \gls{CSS} files are supplied with the project that layout the
 questions according to the feedback received. Developers using any part of the
 project can use these styles as is, or modify/develop their own.
 
@@ -141,9 +141,9 @@ scripts to run simultaneously, avoiding the problem of unresponsive pages due
 to long running scripts. This is done by using message passing.
 
 For example, when an answer is submitted by the user this would sent a message
-to the webworker containing the answer. The webworker can then process this
+to the \gls{webworker} containing the answer. The \gls{webworker} can then process this
 information without affecting the responsiveness of the page. Once the
-processing is complete the webworker can send a message back to the page to
+processing is complete the \gls{webworker} can send a message back to the page to
 tell it what to do next.
 
 \begin{sequencediagram}
@@ -171,8 +171,8 @@ tell it what to do next.
   \end{call}
 \end{sequencediagram}
 
-The above diagram illustrates the messages that could pass between the web
-worker, and the front end when the above example is used. Initially, the worker
+The above diagram illustrates the messages that could pass between the \gls{webworker}
+, and the front end when the above example is used. Initially, the worker
 sends a annotationStart message. This contains the times which annotations will
 occur.
 
@@ -184,12 +184,12 @@ JSON representation of the question is sent.
 
 When the user responds to the question, that response is send to the worker in
 a questionResult message. In this case, the user responded incorrectly,
-therefore, when the web worker evalutated the condition on the second question,
+therefore, when the \gls{webworker} evaluated the condition on the second question,
 it evaluated to false. This meant that the worker replied with another
 showQuestion message.
 
 Once the user responds to the second question, the response is again sent to
-the web worker. In this case, this was the final question in the annotation, so
+the \gls{webworker}. In this case, this was the final question in the annotation, so
 the worker responds with an endAnnotation message.
 
 \section{Interaction with Analytics}
@@ -200,7 +200,7 @@ plugin required another to be used effectively. Instead of a custom method of
 communicating between two or many possible plugins we decided to use the
 publish/subscribe model to communicate with the vgAnalytics plugin.
 
-Using the angular broadcast system we could publish events on channels which
+Using the Angular broadcast system we could publish events on channels which
 then would be received by anyone who subscribed to that channel.
 
 The below code snippet shows how we communicated to the vgAnalytics plugin.
@@ -222,4 +222,4 @@ plugins.
 By using the publish/subscribe model we can design the plugin so that if they
 are both being used they will work together but have no dependencies on each
 other. This allows any of our plugins to be used together or separately as the
-user wishs.
+user wishes.

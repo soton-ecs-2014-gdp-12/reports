@@ -9,35 +9,35 @@ Several pieces of third party software formed the core functionality for our pro
 
 \subsection{AngularJS}
 \label{Section:AngularJS}
-AngularJS\footnote{\url{https://angularjs.org/}} is a JavaScript Framework that extends HTML attributes. It is an open source library made by Google.
+\gls{AngularJS}\footnote{\url{https://angularjs.org/}} is a JavaScript Framework that extends HTML attributes. It is an open source library made by Google.
 
-The underlying design pattern used by AngularJS is client side Model-View-Controller (MVC). This is where the data (model), appearance (view) and actions that can be applied (controller) are separated out to make encapsulation and code reuse easier. 
+The underlying architectural pattern used by \gls{AngularJS} is client side \gls{MVC}. This is where the data (model), appearance (view) and actions that can be applied (controller) are separated out to make encapsulation and code reuse easier. 
 
-The library allows custom HTML tags and attributes to be created using directives. Directives allow the user to specify the behaviour of specific elements they have created.
+The framework allows custom HTML tags and attributes to be created using directives. Directives allow the user to specify the behaviour of specific elements they have created.
 
-One of Angular's most prominent features is its use of two-way binding. This synchronises the views with the data held in the model. This is especially useful when dealing with dynamic content as when extra content is added it is automatically shown in the view.
+One of \gls{AngularJS}'s most prominent features is its use of two-way binding. This synchronises the views with the data held in the model. This is especially useful when dealing with dynamic content as when extra content is added it is automatically shown in the view.
 
 \subsection{Videogular}
 \label{Section:Videogular}
-Videogular\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} provides a HTML5 video player for AngularJS. The nature of the library makes it very easy to write plugins for this to get the extra functionality required.
+\gls{Videogular}\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} provides a HTML5 video player for \gls{AngularJS}. The nature of the library makes it very easy to write plugins for this to get the extra functionality required.
 
 \subsection{Bootstrap}
 \label{Section:Bootstrap}
-Bootstrap\footnote{\url{https://github.com/twbs/bootstrap/}} will be used to give a consistent appearance to all of the user interfaces within the project. This is a HTML, CSS, and JavaScript framework for developing webpages.
+Bootstrap\footnote{\url{https://github.com/twbs/bootstrap/}} will be used to give a consistent appearance to all of the user interfaces within the project. This is a HTML, \gls{CSS}, and JavaScript framework for developing webpages.
 
-As we are using an Angular framework, any additional functionality is required to be written as directives and controllers. UIBootstrap\footnote{\url{http://angular-ui.github.io/bootstrap/}} provides some Bootstrap components written in AngularJS. This will give some of the components that we require.
+As we are using an Angular framework, any additional functionality is required to be written as directives and controllers. UIBootstrap\footnote{\url{http://angular-ui.github.io/bootstrap/}} provides some Bootstrap components written in \gls{AngularJS}. This will give some of the components that we require.
 
 \subsection{Flask}
 \label{Section:Flask}
-Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in python. We have decided to use this for all of our back end web services.
+Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python. We have decided to use this for all of our back end web services.
 
 \section{Modular Webserver Approach}
 \label{Section:Modular Approach}
-It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see section X?). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by REST calls.
+It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see section X?\todo{autoref this}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls.
 
-By abstracting all calls to using REST this means that other services will be able to interact with out back end services in a language independent way. To facilitate this we have had to ensure that all REST responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the REST service.
+By abstracting all calls to using \gls{REST} this means that other services will be able to interact with out back end services in a language independent way. To facilitate this we have had to ensure that all \gls{REST} responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the \gls{REST} service.
 
-These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make REST calls.
+These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
 

@@ -46,11 +46,11 @@ This project focuses on the use of quizzes and polls within videos as a means of
 
 \subsection{Quiz Definition Standards}
 \label{Subsection:Quiz Definition Standards}
-In order to store and display the questions in an \gls{eAssessment}, a schema for the questions must be defined. The only formally defined standard found was IMS Global's \gls{qti} specification\footnote{\url{http://www.imsglobal.org/question/\#version2.1} [Last Accessed: 24 Nov 14]}. Some other quiz (wiki-like) definitions were found including Moodle's General Import Format Technology (GIFT)\footnote{\url{https://docs.moodle.org/28/en/GIFT_format} [Last Accessed: 24 Nov 14]} and Aiken formats\footnote{\url{https://docs.moodle.org/23/en/Aiken_format} [Last Accessed: 24 Nov 14]}.
+In order to store and display the questions in an \gls{eAssessment}, a schema for the questions must be defined. The only formally defined standard found was IMS Global's \gls{QTI} specification\footnote{\url{http://www.imsglobal.org/question/\#version2.1} [Last Accessed: 24 Nov 14]}. Some other quiz (wiki-like) definitions were found including Moodle's General Import Format Technology (GIFT)\footnote{\url{https://docs.moodle.org/28/en/GIFT_format} [Last Accessed: 24 Nov 14]} and Aiken formats\footnote{\url{https://docs.moodle.org/23/en/Aiken_format} [Last Accessed: 24 Nov 14]}.
 
 GIFT is a question mark up by Moodle\footnote{\url{https://moodle.org} [Last Accessed: 24 Nov 14]}. It allows users to use a text editor to create questions in some simple formats. There is a strict compliance to specific syntax required and for complex questions it is no longer intuitive \citep{failQTI}. Aiken is another mark up that is designed to be more easily human-readable, again it has strict syntax that must be adhered to or the imports to Moodle would fail.
 
-\gls{qti} is an interoperability standard for \glspl{eAssessment}. The specification overview \citep{qtiOverview} splits the \gls{eAssessment} system into five systems: authoring tool, item bank, test construction tool, assessment delivery system and learning system (see \autoref{Figure: QTI components}).
+\gls{QTI} is an interoperability standard for \glspl{eAssessment}. The specification overview \citep{qtiOverview} splits the \gls{eAssessment} system into five systems: authoring tool, item bank, test construction tool, assessment delivery system and learning system (see \autoref{Figure: QTI components}).
 
 \begin{figure}[h]
 	\centering 
@@ -58,7 +58,7 @@ GIFT is a question mark up by Moodle\footnote{\url{https://moodle.org} [Last Acc
 	\caption{\label{Figure: QTI components} QTI components diagram \citep{qtiOverview}} 	
 \end{figure}
 
-In the \gls{qti} definition the authoring tool is used to create individual questions. However many systems combine this with the Item Bank and Test Construction Tool. For this report ``\gls{authoring}" refers to this combination and, as such, an authoring tool is used to create whole quizzes.
+In the \gls{QTI} definition the authoring tool is used to create individual questions. However many systems combine this with the Item Bank and Test Construction Tool. For this report ``\gls{authoring}" refers to this combination and, as such, an authoring tool is used to create whole quizzes.
 
 \Citeauthor{wikieassessment} (\citeyear{wikieassessment}) state:
 \begin{quote}
@@ -67,9 +67,9 @@ The major promise of QTI is that by introduction of common format developers can
 
 It is a very complex specification with many ambiguous or optional elements. The complexity of the specification increases the likelihood for errors in the implementation as it opens up opportunities for developers to interpret the specification in different ways \citep{failQTI}. This means the intent of the original author may be lost.
 
-\gls{qti} v2.1 was finalised in 2012 \citep{qtiOverview} but up to this point the standard was not widely used \citep{eps265979} as there were several fundamental flaws in the standard. When the v2.1 draft was withdrawn in 2009 Rib Abel (IMS GLC CEO) was quoted as saying (on v2.0) ``it’s deficiencies are well known and IMS does not recommend implementation of it [\dots] the only version of QTI that is fully endorsed by IMS GLC is v1.2.1"\footnote{\url{http://lists.ucles.org.uk/public/ims-qti/2009-March/001463.html} [Last accessed: 25 Nov 14]}. This standard gave definitions in natural language. These could often be long-winded and ambiguous, making the standard difficult to implement \citep{failQTI, Sclater2007}.
+\gls{QTI} v2.1 was finalised in 2012 \citep{qtiOverview} but up to this point the standard was not widely used \citep{eps265979} as there were several fundamental flaws in the standard. When the v2.1 draft was withdrawn in 2009 Rib Abel (IMS GLC CEO) was quoted as saying (on v2.0) ``it’s deficiencies are well known and IMS does not recommend implementation of it [\dots] the only version of QTI that is fully endorsed by IMS GLC is v1.2.1"\footnote{\url{http://lists.ucles.org.uk/public/ims-qti/2009-March/001463.html} [Last accessed: 25 Nov 14]}. This standard gave definitions in natural language. These could often be long-winded and ambiguous, making the standard difficult to implement \citep{failQTI, Sclater2007}.
 
-\gls{qti} v2.1 defines 18 types of interaction (question, answers and response patterns) \citep{qtiImplementation}:
+\gls{QTI} v2.1 defines 18 types of interaction (question, answers and response patterns) \citep{qtiImplementation}:
 \begin{multicols}{3}
 \begin{enumerate}
 \item Choice
@@ -109,9 +109,9 @@ Interactive videos including polls and quizzes is one method that could be used 
 
 \subsubsection{Accessibility and Usability}
 \label{Subsubsection:Accessibility and Usability}
-To allow interoperability between the \gls{eAssessment} systems the \gls{qti} specification involves both the model and the view of the data \citep{wikieassessment} making accessibility difficult to add in later. This means many systems that comply with the \gls{qti} specification are inaccessible.
+To allow interoperability between the \gls{eAssessment} systems the \gls{QTI} specification involves both the model and the view of the data \citep{wikieassessment} making accessibility difficult to add in later. This means many systems that comply with the \gls{QTI} specification are inaccessible.
 
-\gls{eAssessment} systems require an \gls{authoring} that is easily understood by people who do not have an in depth technical knowledge (e.g. teachers). Often authoring tools that implement the \gls{qti} standard are too technical for this \citep{wikieassessment}. These tools need to improve their accessibility and usability, keeping the time commitments for users reasonable \citep{eps271236, eps265979} or they will not be used.
+\gls{eAssessment} systems require an \gls{authoring} that is easily understood by people who do not have an in depth technical knowledge (e.g. teachers). Often authoring tools that implement the \gls{QTI} standard are too technical for this \citep{wikieassessment}. These tools need to improve their accessibility and usability, keeping the time commitments for users reasonable \citep{eps271236, eps265979} or they will not be used.
 
 \cite{nadia} did a check for accessibility and other features on existing applications that use video e-quizzes and found that none of them were accessible from a keyboard (see \autoref{Table: Existing Video e-Quizzes}). This means that they do not conform to the \gls{UAAG} of the \gls{WAI} \citep{uaag}. Further research showed that Moodle also uses a video player to display content that is completely inaccessible to a user only using a keyboard\footnote{\url{https://tracker.moodle.org/browse/MDL-36081} [Last Accessed: 24 Nov 14]}. 
 
@@ -134,7 +134,7 @@ There are many ways of conveying content in a video and none of the methods alon
 
 \subsection*{Conclusion}
 \label{Subsection: eAssessment Conclusion}
-It was decided not to use the \gls{qti} standard due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{qti} than implementing the tools.
+It was decided not to use the \gls{QTI} standard due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
 
 A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
 

@@ -3,7 +3,7 @@
 %% ---------------------------------------------------------------- 
 \chapter{Authoring Tool} 
 \label{Chapter:Authoring Tool}
-An authoring tool was required to allow users to create their own question sets. This also avoids the necessity to use hardcoded files. The options given were based on the metadata that would be exported as a JSON file, as specified for the video overlay.
+An \gls{authoring} was required to allow users to create their own question sets. This also avoids the necessity to use hard-coded files. The options given were based on the metadata that would be exported as a JSON file, as specified for the video overlay.
 
 The authoring tool allows users to create polls and quizzes and overlay them at the desired locations in videos. The video chosen would come from a URL and question sets can be added at any point in the video. There could be any number of questions in a set and these could be of many different types.
 \section{Design} 
@@ -14,8 +14,8 @@ Two different approaches were suggested for showing the advanced options for the
 
 \section{Implementation}
 \label{Section:Implementation}
-Once the wireframes were drawn up they could be turned into static HTML. Elements of this webpage were then incrementally given the functionality they required. The main challenge was ascertaining how the functionality fitted in with the AngularJS Framework. 
+Once the wireframes were drawn up they could be turned into static HTML. Elements of this webpage were then incrementally given the functionality they required. The main challenge was ascertaining how the functionality fitted in with the \gls{AngularJS} Framework. 
 
-Each section of the page had to have its own directive so that independent behaviours could be achieved. This kept the HTML pages short and readable as the behaviour was dealt with by the JavaScript and the styling dealt with by the CSS.
+Each section of the page had to have its own directive so that independent behaviours could be achieved. This kept the HTML pages short and readable as the behaviour was dealt with by the JavaScript and the styling dealt with by the \gls{CSS}.
 
 Angular allowed the dynamic nature of the data to define the appearance of the page. Sections could be set to appear only when certain attributes were set using ng-switch statements. This meant one section could potentially show many different elements depending on what was selected elsewhere on the page.
