@@ -20,12 +20,26 @@ To ensure this all our services use an open standard to communicate using either
 
 The core of the project uses \gls{AngularJS} and the \gls{Videogular} player as this was recommended as the latest version of Synote will be written in Angular. All of the plugins were written for the \gls{Videogular} player and therefore will be able to be easily integrated into the primary Synote codebase. The plugins are the only part that will be integrated into Synote directly and therefore were best suited to be written in Angular. The other services will communicate with Synote and therefore did not need to be written in Angular.
 
-\subsection{Mobile Interfaces - Second Screening}
+\subsection{Additional Video Players}
 
-A previous project [cite] worked on the possibility of creating a second screening application that worked with Synote. This allowed you to have two views of Synote and display different data on a second screen. This screen would usually be a mobile device for audience members \todo{is this true?}.
+Since our plugins is build upon the \gls{Videogular} system we have not been concerned with how the video is played. The base \gls{Videogular} system plays the common video formats.
 
-Creating interfaces that work well with mobile interfaces is a difficult task and therefore we have only spent the time to ensure that our basic examples work on mobile devices.
+To further expand our system we could look at fixing the \gls{Videogular} YouTube Plugin\footnote{\url{https://github.com/NamPNQ/bower-videogular-youtube}}. This would allow users to specify a youtube video to use for the quiz and removes the problems with getting all formats of video for all browsers.
 
-If we had time to continue our work we would look into extending the plugin that we have developed to have a "second screen" option for users. This would allow users to turn their mobile device into a second screen for our popups to allow them to answer the questions on their device. Further work would be concerned with getting the plugin to work on all devices as iPhones have shown to have significant issues with playing video and overlaying content (see \autoref{Section:Compatibility}).
+\subsection{Video Encoding}
+
+Talk about how we could produce something that removes this requirement
+
+\subsection{Mobile Interfaces}
+
+Creating interfaces that work well with mobile interfaces is a difficult task and therefore we have only spent the time to ensure that our basic examples work on most mobile devices.
+
+Further work would be concerned with getting the plugin to work on all devices as iPhones have shown to have significant issues with playing video and overlaying content (see \autoref{Section:Compatibility}).
+
+\subsection{Second Screen}
+
+A previous project \todo{cite} worked on the possibility of creating a second screening application that worked with Synote. This allowed you to have two views of Synote and display different data on a second screen. This screen would usually be a mobile device for audience members \todo{is this true?}.
+
+If we had time to continue our work we would look into extending the plugin that we have developed to have a "second screen" option for users. This would allow users to turn their mobile device into a second screen for our popups to allow them to answer the questions on their device.
 
 This would also allow a user to take advantage of additional lecture features such as subtitling. Another project is currently being ran to get in lecture subtitles and this could be a feature added as one of our plugins.
