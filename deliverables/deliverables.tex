@@ -78,17 +78,51 @@ The plugin source code licensed under the MIT licence is available to download a
 
 \url{https://github.com/soton-ecs-2014-gdp-12/videogular-cuepoints}
 
+The example for this is at end of this document in the Videogular Questions example.
+
 \section*{Videogular Heat Maps}
 
 The plugin source code licensed under the MIT licence is available to download at our respository located at 
 
 \url{https://github.com/soton-ecs-2014-gdp-12/videogular-heatmap}
 
+The example for this is in the Videogular Analytics example below.
+
 \section*{Videogular Analytics}
 
 The plugin source code licensed under the MIT licence is available to download at our respository located at 
 
 \url{https://github.com/soton-ecs-2014-gdp-12/videogular-analytics}
+
+\subsection*{Analytics emitted events}
+
+The videogular analytics plugin emits a number of events which can be sent to a webserver for collection. This guide is the list of events that are currently emitted, what and when is emitted.
+
+The plugin is designed so that events can be easily added by sending emitting events to the `analytics' channel. These are automatically collected and prepared for sending to the given webserver.
+
+\begin{tabular}{p{3.2cm} p{7cm} p{4cm}}
+
+\textbf{Event name} & \textbf{Event emitted reason} & \textbf{Expected Payload} \\ 
+\hline 
+show\_question & This occurs when a question is shown to the user & All of the associated question data will be sent \\ 
+\hline 
+end\_question & This occurs when the annotation being shown has finished & No additional data will be sent \\ 
+\hline 
+show\_results & This occurs when there are results that will be shown & The results data being shown will be sent \\ 
+\hline 
+submitted\_question & This occurs when the user has submitted a question & The chosen question response \\ 
+\hline 
+skipped\_question & This occurs when a question is skipped & none \\ 
+\hline 
+continue\_question & This occurs when a results page is closed by pressing the continue button & none \\ 
+\hline 
+play & This occurs when the video starts to play & Timestamp the video plays from \\ 
+\hline 
+pause & This occurs when the video is paused & Timestamp the video pauses at \\ 
+\hline 
+stop & This occurs when the video is stopped & Timestamp the video was stopped at \\
+\end{tabular} 
+
 
 \section*{Authoring tool}
 
@@ -132,7 +166,6 @@ The simple example should show a very basic example, this will be similar to Sin
 
 The poll simple example should show an example 
 
-Caesar Example is used to demonstrate a number of features being used. This has Videogular Cuepoints enabled so you will be able to see where the questions are shown.
-
+Caesar Example is used to demonstrate a number of features being used. This has Videogular Cuepoints enabled so you will be able to see where the questions are shown. The second question at the end of the example will have a poll so you will be able to see the results of all those who have answered the question.
 
 \end{document}
