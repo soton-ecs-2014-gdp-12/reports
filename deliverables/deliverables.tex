@@ -43,6 +43,8 @@ ELEC6200 MEng Group Design Project, Group 12
 
 It has been agreed during the weekly customer meeting on 1st December 2014 that the following deliverables shall be produced as part of the final project.
 
+Where links to the website \url{http://kanga-cb15g11.ecs.soton.ac.uk} are present you will need to be inside the ECS network as the ECS firewall prevents access from outside. Accessing this machine from a lab machine or directly networked computer will work however WiFi connections on eduroam will not be able to access this without being on the ECS VPN.
+
 \begin{itemize}
 \item Videogular Questions - A plugin which allows a user to add polls and questions on videos
 	\begin{itemize}
@@ -183,9 +185,32 @@ The authoring tool has been set up as a demo here
 
 \subsection{Expected Features}
 
+The authoring tool is being delivered as a working prototype and allows you to create a JavaScript file for the Videogular Questions plugin.
 
+In addition we have adding the Videogular Questions into the authoring tool which provides a preview of how the questions will look. There will be minor display changes when going from the authoring tool to a working example as the user may style the questions freely.
 
-\subsection{User Story Walkthrough}
+Pressing export will provide you with a JavaScript file which can be used. Pressing the Preview button will reset the video back to the start, generate and load up the questions to Videogular Questions and begin playing.
+
+All 5 question types are implemented and as suggested the Single type question (with radio buttons) is merged with the Multiple type question. If you create a Multiple type question with one correct answer and allow the user to select a minimum and maximum of 1 answers a Single type question will be generated.
+
+The authoring tool has been set up to use the Caesar Cipher example to allow for ease of use to demonstrate. Once the YouTube plugin has been fixed for the current version of Videogular this will be easier to modify however this was agreed not to be a priority for our project.
+
+It is possible to generate a number of JavaScript files which produce invalid or odd questions. Such as being able to make a question with a rating of minimum 0 and maximum 0. To more easily allow further improvements to the authoring tool it has been decided that we shall not limit what the user can create.
+
+At a future date the tool could be made `safe' so that no user can create invalid configuration. However leaving the user to create a quiz precisely how they wish by not limiting the large number of options allows them much more power.
+
+\subsection{Full Feature Walkthrough}
+
+To ensure that the functionality of the authoring tool works we have designed a number of tests. Below is the process we have been going through to ensure that the functionality works as expected. After each step the preview button is pressed to confirm that the JavaScript file is correct and the Export button is correct and the JavaScript file validated by checking over it manually.
+
+\begin{itemize}
+\item A Question set it added at a specific time
+\item A single Question is added then tested to ensure it appears
+\item Each question type is tested along with common options
+\item Skipping is testing for one question
+\item Recording responses and viewing them is tested for one question
+\item The interface is reloaded then a number of question sets and random questions are created and tested, ensuring that they appear at t he correct times.
+\end{itemize}
 
 \section{Videogular Questions}
 
