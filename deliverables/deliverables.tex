@@ -7,6 +7,7 @@
 \usepackage[intoc]{nomencl}
 \usepackage{caption}
 \usepackage{parskip}
+\usepackage{menukeys}
 
 \usepackage{pdfpages}
 \usepackage{todonotes}
@@ -100,7 +101,7 @@ The plugin source code is available to download from our repository located at
 
 The example analytics back end has been set up as a demo at
 
-\url{FIXME}
+\url{http://kanga-cb15g11.ecs.soton.ac.uk:5001/}
 
 \subsection{Feature Walkthrough}
 
@@ -122,7 +123,7 @@ The following demonstration features have been implemented:
 \item Per user statistics
 	\begin{itemize}
 	\item The watched video segments are processed to show how much of the video each user has viewed.
-	\item The data is also processed to show which how many times each segment has been watched. There is a known bug with Videogular reporting odd times, causing this statistic to display incorrectly. We have been investigating this, but the data demonstrates a processing possibility.
+	\item The data is also processed to show which how many times each segment has been watched. There is a known bug with Videogular reporting odd times, causing this statistic to display incorrectly. We have been investigating this, but the data demonstrates a processing possibility. This is the numerical form of the data displayed using the heatmap.
 	\end{itemize}
 
 \item Results page
@@ -176,7 +177,7 @@ The plugin source code is available to download from our repository located at
 
 The authoring tool has been set up as a demo at
 
-\url{FIXME}
+\url{http://kanga-cb15g11.ecs.soton.ac.uk:5002/app/#/authoring}
 
 \subsection{Features}
 
@@ -184,7 +185,7 @@ The authoring tool is being delivered as a working prototype and allows you to c
 
 Videogular Questions provides a preview of the questions being created. There will be minor display changes when going from the authoring tool to a working example as the user may style the questions freely.
 
-Pressing export will provide you with a JavaScript file which can be used. Pressing the Preview button will reset the video back to the start, load the questions into the preview, and begin playing.
+Pressing \keys{Export} will provide you with a JavaScript file which can be used. Pressing \keys{Preview} will reset the video back to the start, load the questions into the preview, and begin playing.
 
 All 5 question types are implemented and, as suggested, the Single choice question (with radio buttons) is merged with the Multiple choice question. If you create a Multiple choice question with one correct answer and allow the user to select a minimum and maximum of 1 answer a Single choice question will be generated.
 
@@ -215,14 +216,14 @@ The plugin source code is available to download from our repository located at
 
 An example site can be found at
 
-\url{FIXME}
+\url{http://kanga-cb15g11.ecs.soton.ac.uk:8000/app/#/simple-example}
 
 \subsection{Features}
 
 \begin{itemize}
 \item Single Question provides radio buttons to select at most one answer.
-\item Question Multiple provides checkboxes to select one or more results. The min/max values should be shown and submit should be disabled if these requirements are not met.
-\item Questions Star should allow you to click on the stars and select one rating. The Min/Max values should be shown and submit should be disabled if these requirements are not met.
+\item Question Multiple provides checkboxes to select one or more results. The min/max values should be shown and \keys{Submit} should be disabled if these requirements are not met.
+\item Questions Star should allow you to click on the stars and select one rating. The Min/Max values should be shown and \keys{Submit} should be disabled if these requirements are not met.
 \item Questions Text should allow you to enter a textual value before submitting.
 \item Question Range should present a slider which allows you to choose a range of values. The min/max values should be shown on the slider.
 \end{itemize}
