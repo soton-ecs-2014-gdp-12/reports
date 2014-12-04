@@ -51,7 +51,7 @@ To deploy the poll server on using apache first you need to clone the repository
 
 Then the apache httpd.conf file needs to be configured by adding the following entry somewhere in the file:
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={\label{code:apacheConfig} Apache configuration}]
 <VirtualHost <hostname>:80>
 	ServerName <hostname>
 	WSGIDaemonProcess poll_server user=<user> group=<group> threads=5
@@ -94,7 +94,7 @@ To do this mod\_proxy needs to be installed, web searches will find guides to in
 
 Then the apache httpd.conf file needs to be configured by adding the following entry somewhere in the file:
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={\label{code:apacheConfig2} Apache configuration}]
 <VirtualHost <hostname>:80>
 	ServerName <hostname>
 	ErrorLog logs/analytics-error_log
