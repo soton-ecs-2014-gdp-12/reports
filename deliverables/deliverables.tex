@@ -175,41 +175,41 @@ stop & the video is stopped & The time the video was stopped at \\
 
 \section{Authoring tool}
 
-The plugin source code licensed under the MIT licence is available to download at our repository located at 
+The plugin source code is available to download from our repository located at 
 
 \url{https://github.com/soton-ecs-2014-gdp-12/authoring-tool}
 
-The authoring tool has been set up as a demo here
+The authoring tool has been set up as a demo at
 
 \url{FIXME}
 
-\subsection{Expected Features}
+\subsection{Features}
 
 The authoring tool is being delivered as a working prototype and allows you to create a JavaScript file for the Videogular Questions plugin.
 
-In addition we have adding the Videogular Questions into the authoring tool which provides a preview of how the questions will look. There will be minor display changes when going from the authoring tool to a working example as the user may style the questions freely.
+Videogular Questions provides a preview of the questions being created. There will be minor display changes when going from the authoring tool to a working example as the user may style the questions freely.
 
-Pressing export will provide you with a JavaScript file which can be used. Pressing the Preview button will reset the video back to the start, generate and load up the questions to Videogular Questions and begin playing.
+Pressing export will provide you with a JavaScript file which can be used. Pressing the Preview button will reset the video back to the start, load the questions into the preview, and begin playing.
 
-All 5 question types are implemented and as suggested the Single type question (with radio buttons) is merged with the Multiple type question. If you create a Multiple type question with one correct answer and allow the user to select a minimum and maximum of 1 answers a Single type question will be generated.
+All 5 question types are implemented and, as suggested, the Single choice question (with radio buttons) is merged with the Multiple choice question. If you create a Multiple choice question with one correct answer and allow the user to select a minimum and maximum of 1 answer a Single choice question will be generated.
 
-The authoring tool has been set up to use the Caesar Cipher example to allow for ease of use to demonstrate. Once the YouTube plugin has been fixed for the current version of Videogular this will be easier to modify however this was agreed not to be a priority for our project.
+For demonstration purposes, the authoring tool has been set up with the Caesar Cipher example. Once Videogular's YouTube plugin has been fixed for the current version this will be easier to modify, however this was agreed not to be a priority for our project.
 
-It is possible to generate a number of JavaScript files which produce invalid or odd questions. Such as being able to make a question with a rating of minimum 0 and maximum 0. To more easily allow further improvements to the authoring tool it has been decided that we shall not limit what the user can create.
+It is possible to generate a number of JavaScript files which produce invalid or odd questions, such as a rating question with a minimum of 0 and a maximum of 0. To more easily allow further improvements to the authoring tool, it has been decided that we shall not limit what the user can create.
 
-At a future date the tool could be made `safe' so that no user can create invalid configuration. However leaving the user to create a quiz precisely how they wish by not limiting the large number of options allows them much more power.
+In future, the tool could be made `safe' so that no user can create an invalid question. However, leaving the user to create a quiz precisely how they wish, not limiting the large number of options, allows them much more power.
 
 \subsection{Full Feature Walkthrough}
 
-To ensure that the functionality of the authoring tool works we have designed a number of tests. Below is the process we have been going through to ensure that the functionality works as expected. After each step the preview button is pressed to confirm that the JavaScript file is correct and the Export button is correct and the JavaScript file validated by checking over it manually.
+We have designed a number of tests for the authoring tool. Below is the process we have been going through to ensure that the functionality works as expected. After each step the preview button is pressed to confirm that the JavaScript file is correct, and the JavaScript file is validated by checking it manually.
 
 \begin{itemize}
-\item A Question set it added at a specific time
-\item A single Question is added then tested to ensure it appears
-\item Each question type is tested along with common options
-\item Skipping is testing for one question
-\item Recording responses and viewing them is tested for one question
-\item The interface is reloaded then a number of question sets and random questions are created and tested, ensuring that they appear at t he correct times.
+\item A question set is added at a specific time.
+\item A single question is added, then tested to ensure it appears.
+\item Each question type is tested along with common options.
+\item Skipping is tested for one question.
+\item Recording responses and viewing them is tested for one question.
+\item The interface is reloaded, then a number of question sets and random questions are created and tested, ensuring that they appear at the correct times.
 \end{itemize}
 
 \section{Videogular Questions}
