@@ -104,41 +104,41 @@ The example analytics back end has been set up as a demo at
 
 \subsection{Walkthrough}
 
-The example that we have written for the Videogular Analytics has a storage and replay facility. You can store a list of events received with a JSON file and load them up as needed. This allows you to post-process events as needed.
+The example that we have written for the Videogular Analytics plugin has a storage and replay facility. You can store a list of events received with a JSON file and replay them later. This allows you to post-process events as needed.
 
-Therefore we have loaded up the example website with some data already collected to more easily demonstrate the features in the analytics back end.
+To demonstrate the features of the analytics back end, we have loaded some sample data into the example website.
 
-However since this is only an example of how you can use the analytics and not a deliverable product it is not fully featured. Future work could be done to specialise on the information required but all current features work.
+However, since this is only an example of how you can use the analytics, not a deliverable product, it is not fully featured. Further processing methods could be implemented in future, but all current features work.
 
-A list of features that have been implemented to demonstrate how the analytics could be used are below
+The following demonstration features have been implemented:
 
 \begin{itemize}
-\item Videogular Heatmaps
+\item Videogular Heatmap
 	\begin{itemize}
 	\item Due to the below bug this does not currently work. TODO: try and get this working?
 	\end{itemize}
 
 \item Events Log page
 	\begin{itemize}
-	\item The top of the page lists all events received. This shows some of the possible events received, the time received and the data held by the events.
-	\item The bottom of the page shows the combined sections that a user has watched. Here the UUID is used to show different users and does not identify a user in any way keeping it anonymous.
+	\item The top of the page lists all events received, including the event type, the time received, and the data held by the events.
+	\item The bottom of the page shows the sections of the video that each user has watched. The UUID is used to show different users, but does not identify a user in any way.
 	\end{itemize}
-	
+
 \item Per user statistics
 	\begin{itemize}
-	\item The Per User viewed of total processes the video watched segments to work out exactly what has been viewed and the percentage and time representation.
-	\item The data is also processed to show which how much each segment has been watched. There is a known bug with Videogular reporting odd times causing this statistic to display incorrectly. We have been doing investigations into the Videogular player currently but this demonstrates what can be processed. This data is the numerical view of the heatmap.
+	\item The watched video segments are processed to show how much of the video each user has viewed.
+	\item The data is also processed to show which how many times each segment has been watched. There is a known bug with Videogular reporting odd times, causing this statistic to display incorrectly. We have been investigating this, but the data demonstrates a processing possibility. This is the numerical form of the data displayed using the heatmap.
 	\end{itemize}
 
 \item Results page
 	\begin{itemize}
-	\item This shows the results of each possible question and the correct answer where possible.
+	\item This shows the results of each question, and the correct answer where possible.
 	\end{itemize}
 
 \item Results Correlation
 	\begin{itemize}
-	\item The \% watched by correct answers and Time watched by correct answers graphs show two ways you could possible represent the data in a different way.
-	\item Both of these examples use random data but the majority of the code, producing the graphs, has been written. We have abstracted the scatter graph creation code so that arbitrary data sets can be given to the scatter plots. This should reduced much of the required code if this example were to be expanded.
+	\item The ``\% watched by correct answers'' and ``Time watched by correct answers'' graphs show two ways you could represent the data in a different way.
+	\item Both of these examples use random data but the majority of the code for producing the graphs has been written. We have abstracted the scatter graph creation code so that arbitrary data sets can be given to the scatter plots.
 	\end{itemize}
 
 \end{itemize}
