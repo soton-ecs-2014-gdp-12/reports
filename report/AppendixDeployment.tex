@@ -1,13 +1,26 @@
 %% ----------------------------------------------------------------
 %% AppendixDeployment.tex
 %% ---------------------------------------------------------------- 
-\chapter{Deployment of the Poll Server} \label{Chapter:Deployment Poll Server}
+\chapter{Deployment of Webservers} \label{Chapter:Deployment of Webservers}
 
-To deploy the poll server on using apache first you need to clone the repository.
+This is divided into the different types of web server applications we have used.
+We have used different web technologies based on their strengths on what was needed to be produced.
+
+Each repository has a section in the README.MD file detailing how to setup and install the tool. The individual guides have been reproduced below.
+
+\section{Deployment of all projects}
+
+To deploy many of these projects they require you to run \lstinline|npm install| which will also run \lstinline|bower install|. The specific requirements for each application is defined in the README.MD file in each repository.
+
+\section{Deployment of Flask Applications} \label{Section:Deployment Flask Applications}
+
+The only flask application is the poll server therefore this guide is customised to deploy the poll server.
+
+To deploy the poll server using apache first you need to clone the repository.
 
 Then the apache httpd.conf file needs to be configured by adding the following entry somewhere in the file:
 
-\begin{lstlisting}[caption={\label{code:apacheConfig} Apache configuration}]
+\begin{lstlisting}[caption={\label{code:apacheConfig_flask} Apache configuration}]
 <VirtualHost <hostname>:80>
 	ServerName <hostname>
 	WSGIDaemonProcess poll_server user=<user> group=<group> threads=5
@@ -31,17 +44,17 @@ Parameters needing changes:
 \item \textless location\textgreater is the location of the sourcecode on the server. e.g. /var/www/poll\_server/
 \item \textless user\textgreater is the user you want the script to run under, by default apache
 \item \textless group\textgreater is the group you want the script to run under, by default apache
-\item The `ErrorLog` and `CustomLog` parameters can be changed to any location
+\item The \lstinline|ErrorLog| and \lstinline|CustomLog| parameters can be changed to any location
 
 \end{itemize}
 
-Details are also available in the the README.md file in the repository.
+\section{Deployment of Node.js servers} \label{Section:Deployment of Node.js servers}
 
-\chapter{Deployment of the Analytics Server} \label{Chapter:Deployment Analytics Server}
+The only Node.js application is the example analytics backend therefore this guide is customised to deploy this.
 
-Apache cannot directly run node.js webservices therefore it needs to be ran by node itself.
+Apache cannot directly run Node.js webservices therefore it needs to be ran by node itself.
 
-This can be run by using `npm start` which will run the node server. This needs to be running on the server all the time you want the server to be accessible.
+This can be run by using \lstinline|npm start| which will run the node server. This needs to be running on the server all the time you want the server to be accessible.
 A web search will return details of how to turn a node.js webserver into a service however it can just be run from the command line using screen or a similar program.
 
 You can configure apache to proxy any connections to the node server. This is how we suggest integrating an apache server with node.
@@ -50,7 +63,7 @@ To do this mod\_proxy needs to be installed, web searches will find guides to in
 
 Then the apache httpd.conf file needs to be configured by adding the following entry somewhere in the file:
 
-\begin{lstlisting}[caption={\label{code:apacheConfig2} Apache configuration}]
+\begin{lstlisting}[caption={\label{code:apacheConfig_nodejs} Apache configuration}]
 <VirtualHost <hostname>:80>
 	ServerName <hostname>
 	ErrorLog logs/analytics-error_log
@@ -75,7 +88,15 @@ Parameters needing changes:
 \begin{itemize}
 \item \textless hostname\textgreater is the hostname of the server. e.g. hostname.domain.com
 \item \textless analytics address\textgreater is the URL for the analytics server. This is displayed when npm start is run. by default this is `http://localhost:5001/`
-\item The `ErrorLog` and `CustomLog` parameters can be changed to any location
+\item The \lstinline|ErrorLog| and \lstinline|CustomLog| parameters can be changed to any location
 \end{itemize}
 
-Details are also available in the the README.md file in the repository.
+\section{Deployment of AngularJs Files} \label{Section:Deployment of AngularJs Files}
+
+The authoring tool and videogular questions example respositories are both written in AngularJS.
+
+AngularJS files are JavaScript and therefore can be run on a normal Apache webserver.
+
+To install these repositories you must clone the repository to a location served by apache and then install the dependencies by running \lstinline|npm install|
+
+Once this has been performed the application will be able to be used.
