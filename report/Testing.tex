@@ -43,9 +43,47 @@ Client had reservations about UX testing due to toolkit style nature of the proj
 
 \section{Example poll server}
 
-Flask testing
+For the example poll server we had a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is a therefore well suited to individual unit tests.
 
-Load testing
+The flask library had a test client and recommended test skeleton\footnote{\url{http://flask.pocoo.org/docs/0.10/testing/}} which we made use of to run the unit tests. This used the unittest standard python library which meant it was easy to test with but also allowed calling of methods by simulating HTTP requests.
+
+These tests are recommended to be run before committing new code to the repository and formed one part of the quality assurance testing. Any tests that failed were reviewed before committing and fixed if they were at fault. No code should have been committed to master branches that caused tests to fail. All code on the master branch was expected to pass these tests on checkout.
+
+We split the testing into 6 areas to test the main components of the application.
+
+\subsection{Cross-Origin Resource Sharing tests}
+
+One of the main requirements by the customer \todo{Reference the requirement when they have been written} was that these units should be able to be accessed via REST calls. In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these REST calls will not fail we need to implement cross origin resource sharing headers as discussed in \autoref{Section:Modular Approach}.
+
+This checks to ensure that the CORS header is correctly sent in the HTTP reply. If this is not set the web browser will likely reject the loading of the page and the application will fail.
+
+In addition, it ensures that the response is the one expected and not an error state to ensure that the web application is also sending the correct content.
+
+\subsection{Routing tests}
+
+The routing tests are to ensure that the application correctly starts and is accessible.
+
+If this fails to load up the testing URL which returns "Hello World!" then it is unlikely to be able to perform some of the more complex functions.
+
+\subsection{Database Setup tests}
+
+Before the application can be used it needs have its database set up. This is performed by accessing "/setup". This set of unit tests test setting up a database and ensure that if this URL is visited twice, it successfully detects that the database is already set up and does not recreate it. 
+
+This is important to ensure that the database is set up correctly and that when setup is visited again data in the database is not lost.
+
+\subsection{Voting tests}
+
+These tests try a number of different ways to vote by sending a number of different formats of invalid and valid data to check if the application correctly deals with the data. All return codes and responses are checked to ensure no invalid vote is accepted or valid one rejected.
+
+\subsection{Getting results tests}
+
+A number of valid votes are constructed and then sent into the system. Then these are attempted to be retrieved. The returned values are checked to ensure that they have not been corrupted. This submits one and multiple votes to ensure that all votes are correctly collated and returned.
+
+If the ability to vote does not work then this will fail as it relies on being able to put votes into the system.
+
+\subsection{Load testing}
+
+To be planned
 
 \section{Example Analytics Server}
 
