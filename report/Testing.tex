@@ -83,7 +83,44 @@ If the ability to vote does not work then this will fail as it relies on being a
 
 \subsection{Load testing}
 
-To be planned
+For load testing we have used Locust\footnote{\url{http://locust.io/}} which spawns a number of testing clients and executes a defined pattern of clients.
+
+We chose three patterns of site usage for the voting:
+
+\begin{itemize}
+\item Visiting the root page - This is to determine that the webserver is still responding to basic HTTP requests
+\item Voting - This is to test that the voting functionality is still accessible
+\item Requesting data - This is to test that the server is still able to return data
+\end{itemize}
+
+These three URL's were visited repeatedly by the user clients over a period of time.
+
+\begin{table}
+\caption{Time taken for each request to complete in milliseconds while stress testing the example poll server}
+\begin{tabular}{l c  c c c c c c c c c }
+\hline 
+& & \multicolumn{9}{c}{Percentile} \\
+Name & \# Requests & 50\% & 66\% & 75\% & 80\% & 90\% & 95\% & 98\% & 99\% & 100\% \\ 
+\hline 
+GET / & 535 & 5 & 6 & 50 & 67 & 110 & 170 & 240 & 360 & 601 \\ 
+\hline 
+GET /results/*/* & 1599 & 6 & 8 & 26 & 46 & 100 & 136 & 233 & 326 & 326 \\ 
+\hline 
+POST /vote & 1129 & 120 & 130 & 150 & 170 & 210 & 250 & 360 & 460 & 638 \\ 
+\hline 
+Total / Average & 3263 & 32 & 110 & 110 & 120 & 160 & 210 & 270 & 400 & 638 \\ 
+\hline 
+\end{tabular}
+\label{Table:stress_testing_poll_server}
+\end{table}
+
+\autoref{Table:stress_testing_poll_server} shows the time taken for a response to be handled and returned.
+
+Here you can see that the time taken for result requests takes less than 6 milliseconds 50\% of the time and all requests were dealt with in at most 326 milliseconds. The voting REST point takes slightly longer as it needs to store data to the sqlite database but still took at max 638 milliseconds. All these tests were performed when 50 Locust users were using the website continuously and therefore we feel the performance wills scale. This is because one user will only ever make one vote and one results request per poll and this tested for 50 users continuously making these requests.
+
+Although this is only an example this ties in with requirement \todo{reference requirement} that the poll server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of a couple minutes.
+
+There is also scope to move the backend database to something that is purely in memory to further increase the speed, as the major factor will be writing the data back to the hard disk.
 
 \section{Example Analytics Server}
 
