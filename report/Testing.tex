@@ -67,7 +67,7 @@ If this fails to load up the testing URL which returns "Hello World!" then it is
 
 \subsection{Database Setup tests}
 
-Before the application can be used it needs have its database set up. This is performed by accessing "/setup". This set of unit tests test setting up a database and ensure that if this URL is visited twice, it successfully detects that the database is already set up and does not recreate it. 
+Before the application can be used it needs have its database set up. This is performed by accessing `/setup'. This set of unit tests test setting up a database and ensure that if this URL is visited twice, it successfully detects that the database is already set up and does not recreate it. 
 
 This is important to ensure that the database is set up correctly and that when setup is visited again data in the database is not lost.
 
@@ -83,9 +83,9 @@ If the ability to vote does not work then this will fail as it relies on being a
 
 \subsection{Load testing}
 
-For load testing we have used Locust\footnote{\url{http://locust.io/}} which spawns a number of testing clients and executes a defined pattern of clients.
+For load testing we have used Locust\footnote{\url{http://locust.io/}} which spawns a number of testing clients and executes a defined pattern of site usage.
 
-We chose three patterns of site usage for the voting:
+We chose three patterns to test the example poll server:
 
 \begin{itemize}
 \item Visiting the root page - This is to determine that the webserver is still responding to basic HTTP requests

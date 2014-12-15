@@ -28,11 +28,10 @@ interacting with the \gls{DOM}), from the data and logic regarding the questions
 means of a message passing interface. This is achieved in a rigorous way in the
 browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs
 in the background of the webpage. They run independently of standard user-space
-scripts.  More can be found out about their use within this project in Section
-BLAH \todo{Write and autoref this section}.
+scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}
 
 Using JavaScript, rather than a pure data representation (e.g. JSON or XML)
-allows for the use of JavaScript to provide the logic. This makes it extremely
+allows you to include logic for the application to follow. This makes it extremely
 flexible and concise, and the isolation provided by the \gls{webworker} mitigates
 many security concerns with having an application that executes data given as
 input as code.
@@ -113,6 +112,7 @@ questions) were focused on. A variety of visualisations was implemented
 including check boxes, radio buttons and sliding scales. Validation was needed
 to ensure that the specified minimum and maximum limits were followed.
 
+\todo{I believe schema is a "banned word", this needs to be rewritten in some way}
 By having a standard schema that uses JavaScript functions it was possible to
 write template functions that could be outputted from the authoring tool and
 read by the overlay correctly.
@@ -146,6 +146,8 @@ information without affecting the responsiveness of the page. Once the
 processing is complete the \gls{webworker} can send a message back to the page to
 tell it what to do next.
 
+\begin{figure}
+
 \begin{sequencediagram}
   \newthread[white]{c}{Front End}
   \newinst[4]{s}{WebWorker}
@@ -170,10 +172,12 @@ tell it what to do next.
     {s}{endAnnotation}
   \end{call}
 \end{sequencediagram}
+\caption{Sequence diagram showing interactions between the front end and webworker}
+\label{Figure:sequence_diagram_frontend_webworker}
 
-The above diagram illustrates the messages that could pass between the \gls{webworker}
-, and the front end when the above example is used. Initially, the worker
-sends a annotationStart message. This contains the times which annotations will
+\end{figure}
+
+\autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the above example is used. Initially, the worker sends an annotationStart message which contains the times which annotations will
 occur.
 
 When the first time is reached, the front end sends a annotationStart
@@ -205,13 +209,12 @@ publish/subscribe model to communicate with the vgAnalytics plugin.
 Using the Angular broadcast system we could publish events on channels which
 then would be received by anyone who subscribed to that channel.
 
-The below code snippet shows how we communicated to the vgAnalytics plugin.
-
-\begin{lstlisting}[language=javascript]
+\begin{lstlisting}[language=javascript,caption={\label{code:analytics_message_passing} AngularJS demonstrating the message passing interface used in the Analytics plugin}]
 $rootScope.$broadcast('analytics','show_question', data);
 \end{lstlisting}
 
-Here we broadcast to the ``analytics'' channel an event with the name
+\todo{Autoref seems to fail to nicely add text for the lstlisting labels}
+In \autoref{code:analytics_message_passing} we broadcast to the ``analytics'' channel an event with the name
 ``show\_question'' with the content of the data variable.
 
 The vgAnalytics plugin listens to the ``analytics'' channel and they will
@@ -221,7 +224,5 @@ been instantiated then these messages will not cause any errors which is one of
 the important factors in picking a communication method between the various
 plugins.
 
-By using the publish/subscribe model we can design the plugin so that if they
-are both being used they will work together but have no dependencies on each
-other. This allows any of our plugins to be used together or separately as the
+By using the publish/subscribe model we can design the plugin so that they will work together when both are used but have no dependencies on each other. This allows any of our plugins to be used together or separately as the
 user wishes.
