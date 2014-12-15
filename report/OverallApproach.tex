@@ -56,7 +56,7 @@ As we are using an Angular framework, any additional functionality is required t
 
 \subsection{Flask}
 \label{Section:Flask}
-Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python. We have decided to use this for all of our back end web services.
+Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python.
 
 \section{Modular Webserver Approach}
 \label{Section:Modular Approach}
@@ -67,5 +67,7 @@ By abstracting all calls to using \gls{REST} this means that other services will
 These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
+
+\todo{The arrows all need some form of labels, or reasons why some dont and some do}
 
 \input{SystemArchitectureDiagram}
