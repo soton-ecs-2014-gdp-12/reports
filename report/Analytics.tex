@@ -5,6 +5,35 @@
 
 \section{Design}
 
+\subsection{Analytics emitted events}
+
+The Videogular Analytics plugin emits a number of events which can be sent to a Web server for collection. The table below describes these events.
+
+The plugin is designed so that events can easily be added by sending events to the `analytics' channel. These are automatically collected and prepared for sending to the given Web server.
+
+\begin{tabular}{p{3.2cm} p{7cm} p{4cm}}
+
+\textbf{Event name} & \textbf{Emitted when} & \textbf{Expected Payload} \\
+\hline 
+show\_question & a question is shown to the user & All of the associated question data \\
+\hline 
+end\_question & the annotation being shown has finished & None \\
+\hline 
+show\_results & there are results that will be shown & The results data being shown \\
+\hline 
+submitted\_question & the user submits a question & The chosen question response \\
+\hline 
+skipped\_question & the user skips a question & None \\
+\hline 
+continue\_question & a results page is closed by pressing the continue button & None \\
+\hline 
+play & the video starts to play & The time the video plays from \\
+\hline 
+pause & the video is paused & The time the video pauses at \\
+\hline 
+stop & the video is stopped & The time the video was stopped at \\
+\end{tabular}
+
 \section{Implementation}
 
 \section{Testing}
