@@ -15,6 +15,60 @@ The overlay was built up in stages:
 \item Returning the answers to a server
 \end{enumerate}
 
+\section{Architecture}
+\label{Section:Architecture}
+
+To use vgQuestions, you must provide a web worker file that will talk to
+vgQuestions in the defined way over the message passing interface. This makes
+the plugin very flexible, but this is something that most users will not
+interact with.
+
+Most users will either through use of the authoring tool, or write manually a
+javascript file that uses the questions-worker.js library, that handles the
+communication with vgQuestions. It loads a javascript object that contains
+within it a description of the quiz.
+
+\begin{figure}
+
+\begin{tikzpicture}[
+  font=\sffamily,
+  every matrix/.style={ampersand replacement=\&,column sep=2cm,row sep=2cm},
+  source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
+  vg-plugin/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
+  analytics-frontend/.style={draw,thick,rounded corners,fill=red!20,inner sep=.3cm},
+  videogular/.style={draw,thick,circle,fill=blue!20},
+  process/.style={draw,thick,circle,fill=blue!20},
+  sink/.style={source,fill=green!20},
+  datastore/.style={draw,very thick,shape=datastore,inner sep=.3cm},
+  server/.style={source,fill=green!20},
+  dots/.style={gray,scale=2},
+  to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+  between/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+  every node/.style={align=center}]
+
+  \matrix{
+    \node[videogular] (videogular) {videogular}; \&
+    \node[vg-plugin] (vg-questions) {vgQuestions}; \&
+    \node[vg-plugin] (questions-worker) {questions-worker.js}; \&
+    \node[server] (quiz) {quiz.js}; \\
+  };
+
+  \draw[between] (videogular) --
+      node[midway,above] {commands}
+      node[midway,below] {video state} (vg-questions);
+  \draw[between] (vg-questions) --
+      node[midway,above] {commands}
+      node[midway,below] {user interactions} (questions-worker);
+  \draw[between] (questions-worker) --
+      node[midway,above] {quiz description}
+      node[midway,below] {utility function} (quiz);
+\end{tikzpicture}
+
+\caption{vgQuestions Architecture}
+\label{Figure:vgquestions-architecture}
+
+\end{figure}
+
 \section{Annotations}
 \label{Section:Annotations}
 
