@@ -6,7 +6,8 @@
 A videogular plugin was written to provide the core functionality. This plugin is called videogular-questions or vgQuestions for short. It executes the JavaScript file\todo{What should the JavaScript file be called?}, and provides an api over a message passing interface that allows for the display of questions, results and notification of when events occur (e.g. a question is answered).
 
 \todo{I am not sure what the following list is trying to convey, should it be
-removed?}
+removed? ||| I believe its trying to convey the process we worked on creating the solution, however Im not sure the reasoning ~Chewett}
+
 The overlay was built up in stages:
 \begin{enumerate}
 \item Getting an overlay to appear at a set time
@@ -27,6 +28,8 @@ Most users will either through use of the authoring tool, or write manually a
 javascript file that uses the questions-worker.js library, that handles the
 communication with vgQuestions. It loads a javascript object that contains
 within it a description of the quiz.
+
+\todo{This needs the image fixing so the text isnt crushed together}
 
 \begin{figure}
 
@@ -172,6 +175,21 @@ to ensure that the specified minimum and maximum limits were followed.
 By having a standard schema that uses JavaScript functions it was possible to
 write template functions that could be outputted from the authoring tool and
 read by the overlay correctly.
+
+In reviewing the types of questions we would support we produced a class diagram (\autoref{Figure:questions_class_diagram}) to represent the type of data that the questions would have. This gave us the eventual list of 5 question types we would implement.
+
+If the record\_response type was set to a true value, the question would become a poll and report back the results to a server. If the correct\_answer attribute was set then the question would have a true value and would be shown to the user, if requested. This allows a user to possible have a poll type question that stores the data collected and also has a right answer. This provides maximum usability and therefore doesn't distinguish between a quiz or a poll in the underlying code.
+
+Single question is a sub type of Multiple question where min and max (the minimum and maximum selected number of answers) is 1.
+
+Similarly, the stars question is similar to the range question where the step value is 1.
+
+\begin{figure}
+\centering
+\includegraphics[width=12cm]{../figures/questions_class_diagram.png}
+\caption{A class diagram representing what attributes each question type needs to detail}
+\label{Figure:questions_class_diagram}
+\end{figure}
 
 \section{Front End}
 \label{Section:Front end}
