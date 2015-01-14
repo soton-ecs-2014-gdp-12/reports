@@ -1,21 +1,23 @@
 \begin{tikzpicture}[font=\rmfamily]
 \draw [thick,->]  (0,0) -- coordinate (x axis mid) (13,0);
 \draw [thick,->]  (0,0) -- coordinate (y axis mid) (0,9);
-\filldraw[fill=blue!40!white, draw=black] (0,0) rectangle (6,4) node[pos=.5] {Monitor};
-\filldraw[fill=green!40!white, draw=black] (6,0) rectangle (12,4) node[pos=.5] {Keep Informed};
-\filldraw[fill=red!40!white, draw=black] (0,4) rectangle (6,8) node[pos=.5] {Keep Satisfied};
-\filldraw[fill=yellow!40!white, draw=black] (6,4) rectangle (12,8) node[pos=.5] {Manage Closely};
+\filldraw[fill=blue!20!white, draw=black] (0,0) rectangle (6,4) node[pos=.5] {Monitor};
+\filldraw[fill=green!20!white, draw=black] (6,0) rectangle (12,4) node[pos=.5] {Keep Informed};
+\filldraw[fill=red!20!white, draw=black] (0,4) rectangle (6,8) node[pos=.5] {Keep Satisfied};
+\filldraw[fill=yellow!20!white, draw=black] (6,4) rectangle (12,8) node[pos=.5] {Manage Closely};
 %labels      
 \node[xshift=-0.5cm, below=0.6cm] (xlabel) at (x axis mid) {{\large Interest}};
 \node[rotate=90, left=0.8cm] (ylabel) at (y axis mid) {{\large Power}};
 \begin{axis}[nodes near coords, xmin=0, xmax=13, ymin=0, ymax=9, width=13cm, height=9cm, axis x line=none, axis y line=none, scale only axis, enlargelimits=false]
 \addplot+[only marks, point meta=explicit symbolic] coordinates { 
-(12,5) [Mike Wald] 
+(11.5,7.5) [Prof Mike Wald] 
 (7,3.5) [2fdevs] 
-(10,3) [Shameem] 
-(11,7) [Yunjia] 
-(12,7) [Developers] 
-(7, 2) [Users] };
+(10,3) [Shameem Bajar] 
+(11,6) [Yunjia Li] 
+(11.5,6.5) [Developers] 
+(7, 2) [Users]
+(1,7) [UoS]
+ };
 \end{axis}
 \node[xshift=-5cm, above=0.2cm] at (xlabel) {Low};
 \node[xshift=5cm, above=0.2cm] at (xlabel) {High};
