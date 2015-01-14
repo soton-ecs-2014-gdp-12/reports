@@ -3,27 +3,16 @@
 %% ---------------------------------------------------------------- 
 \chapter{Overall Approach} 
 \label{Chapter:Overall Approach}
-\section{Stakeholder Analysis}
-\begin{figure}[h!]
-\centering
-\input{StakeholderMatrix}
-\caption{Stakeholder matrix for the project\label{fig:Stakeholder matrix}}
-\end{figure}
+\section{Client Requirements}
+With the end aim of integrating this project into the new version of Synote there were some specific requirements that our client had with regards to implementation.
 
-\section{Requirements Analysis}
+The overlaid video player should be written in AngularJS and HTML5 to make it easily compatible with the new version of Synote. From our analysis of available HTML5 video players it was agreed that \gls{Videogular} should be used.
 
-\subsection{Client Requirements}
+Video polls must also be included.
 
-AngularJS
-
-Video polls
-
-\subsection{User requirements}
-
-What the user wants to be able to do with the software
-
-\section{3rd Party Libraries}
-Several pieces of third party software formed the core functionality for our project to build on.
+\subsection{Synote}
+\label{Section:Synote}
+Synote\footnote{\url{http://www.synote.org/synote/} (Accessed: 14 Jan 15)} is a multimedia annotation system designed with accessibility in mind. 
 
 \subsection{AngularJS}
 \label{Section:AngularJS}
@@ -38,6 +27,47 @@ One of \gls{AngularJS}'s most prominent features is its use of two-way binding. 
 \subsection{Videogular}
 \label{Section:Videogular}
 \gls{Videogular}\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} provides a HTML5 video player for \gls{AngularJS}. The nature of the library makes it very easy to write plugins for this to get the extra functionality required.
+
+\section{Stakeholder Analysis}
+For an approach for the project to be decided on the stakeholders needed to be identified and analysed. 
+\begin{figure}[h!]
+\centering
+\input{StakeholderMatrix}
+\caption{Stakeholder matrix for the project\label{fig:Stakeholder matrix}}
+\end{figure}
+
+Our supervisor and client, Professor Mike Wald, had the most interest and power in the project. As the proposer it would be his ideas that would form the basis of the project.
+
+Yunjia Li is the lead developer for the new version of Synote. As the aim of the project was to provide code that could be used within this he had a lot of interest in the project. His requirements would need to be taken into account to ensure interoperability between the two systems which gave him power in the project.
+
+Due to the nature of the project the developers on the project would be major stakeholders. All work would need to be evenly distributed to allow all members of the group to attain the same marks.
+
+The University of Southampton sets the mark scheme and guidelines for the project. These would need to be satisfied to make the project successful.
+
+2fdevs are the development team that created the \gls{Videogular} player. The project would be creating plugins for this player so would rely on certain attributes of \gls{Videogular} such as accessibility. 
+
+Shameem Bajar is a 3rd year student who has an Individual Project based around this project. 
+
+The users... 
+
+\section{Requirements Analysis}
+\label{Section:Requirements Analysis}
+
+\subsection{Functional Requirements}
+\begin{requirement}[%
+ label=\textbf{F\arabic*}]
+\item \textbf{Browser Compatibility}  \hfill \\ The overlaid video player must work on Internet Explorer, Firefox and Chrome \label{Req:Browser Compatibility}
+\end{requirement}
+
+\subsection{Non-Functional Requirements}
+\begin{requirement}[%
+ label=\textbf{N\arabic*}]
+\item \textbf{Extensibility}  \hfill \\ The overlaid video player must be extensible so that further features can be added \label{Req:Extensibility} %
+\end{requirement}
+ 
+
+\section{3rd Party Libraries}
+Several pieces of third party software formed the core functionality for our project to build on. see
 
 \subsection{Bootstrap}
 \label{Section:Bootstrap}
