@@ -80,11 +80,12 @@ The users...
 \subsection{Non-Functional Requirements}
 \begin{requirement}[%
  label=\textbf{N\arabic*}]
-\item \textbf{Browser Compatibility}  \hfill \\ The overlaid video player must work on Internet Explorer, Firefox and Chrome \label{Req:Browser Compatibility}
+\item \textbf{Browser Compatibility} \hfill \\ The overlaid video player must work on Internet Explorer, Firefox and Chrome \label{Req:Browser Compatibility}
 \item \textbf{Operating System Compatibility} \hfill \\ The overlaid video player must work on Windows, OSX and Android \label{Req:OS Compatibility}
 \item \textbf{Keyboard Accessibility} \hfill \\ The overlaid video player and authoring tool must be completely accessible to a keyboard-only user \label{Req:Keyboard Accessibility}
-\item \textbf{Extensibility}  \hfill \\ The overlaid video player must be extensible so that further features can be added \label{Req:Extensibility} 
-
+\item \textbf{Extensibility} \hfill \\ The overlaid video player must be extensible so that further features can be added \label{Req:Extensibility} 
+\item \textbf{User Interface} \hfill \\ A Graphical User Interface (GUI) must be provided for the Authoring Tool so that non-technical users can create quizzes \label{Req:User Interface}
+\item \textbf{Documentation} \hfill \\ The plugins built should have usage examples documented to allow less technical users to implement their own system \label{Req:Documentation}
 \end{requirement}
  
 
@@ -103,7 +104,7 @@ Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framew
 
 \section{Modular Webserver Approach}
 \label{Section:Modular Approach}
-It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see section X?\todo{autoref this}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls.
+It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see \autoref{Section:Synote}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls.
 
 By abstracting all calls to using \gls{REST} this means that other services will be able to interact with out back end services in a language independent way. To facilitate this we have had to ensure that all \gls{REST} responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the \gls{REST} service.
 
