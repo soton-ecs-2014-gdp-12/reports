@@ -20,8 +20,6 @@ The main goals for this part of the project were to:
 
 \section{Accessibility} 
 \label{Section:Accessibility}
-
-\subsection{Background} 
 \gls{Videogular} has the option to display HTML controls for the video player, replacing the browser's built-in controls. However, when the project began there was no way for the user to access these controls without a mouse. The main problem was that the controls did not identify themselves as interactive elements, and so could not be `focused' (selected with the tab key). This also prevented them from being picked up by a screen reader.
 
 Some online video players allow the player as a whole to be focused, and then controlled with various keyboard shortcuts. The problem with this method is that accessibility aids, such as screen readers, will not have information on these controls, and so users of those technologies will have to be instructed. It is also not accessible to users of a clicker, who can only press one key and so require individually focusable controls.
@@ -73,15 +71,26 @@ The best user experience with this application is using it on a desktop that has
 
 \gls{Videogular} has been designed and implemented in such a way as to allow for directive-based plugins to be developed to extend its functionality. When using the \gls{Videogular} Controls (vgControls) the native browser controls are replaced with an HTML based interface. It is this interface we have improved the accessibility of, and it is the scrub bar within this interface we have created plugins for.
 
-\subsection{Videogular Cuepoints - vgCuepoints}
-
-\subsection{Background} 
-\gls{Videogular} Cuepoints is a \gls{Videogular} plugin for displaying 'cuepoints', marks on the scrub bar which can be positioned at a particular time. For example, cuepoints could be used to indicate the start of a section in the video, or a time when a pop-up will appear.
-
 The team behind \gls{Videogular}, 2fdev, are actively seeking members of the community to develop new plugins for their system, and as such are willing to discuss future plugins and their architectural design.
 
-\subsection{Design and Implementation}
+\subsection{Videogular Cuepoints - vgCuepoints}
+\label{Subsection:vgCuepoints}
+\gls{Videogular} Cuepoints is a \gls{Videogular} plugin for displaying `cuepoints', marks on the scrub bar which can be positioned at a particular time. For example, cuepoints could be used to indicate the start of a section in the video, or a time when a pop-up will appear.
 
-\subsection{Conclusions} 
+\subsubsection{Design and Implementation}
+
+\subsubsection{Conclusions} 
 
 \subsection{Videogular Heatmaps - vgHeatmap}
+\gls{Videogular} Heatmaps is a \gls{Videogular} plugin for giving areas of the scrub bar different colours. In our examples this is used to give a visual representation of the number of times each section of the video has been watched.
+
+\subsubsection{Design and Implementation}
+An early design decision was to use \gls{CSS} to colour the sections as this would allow different colours to be specified (see \cref{Req:Use of colour}). This also would allow developers to develop their own colour schemes with meanings if they desired.
+
+Sections and colours can be specified in a \texttt{config} object which is given as a parameter when the heat map is used. 
+
+The schema for defining the configuration parameters was made consistent with vgCuepoints (see \autoref{Subsection:vgCuepoints}) to improve usability.
+
+One problem found during implementation was that the heat map cannot be displayed before the video has begun playing. This is due to \gls{Videogular} not setting the video length variable until it begins playing, thus this variable cannot be used to calculate the widths of the sections until it is set. This was accepted as the colouring does not have any context for a user until they have watched the video.
+
+\subsubsection{Conclusions} 
