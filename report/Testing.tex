@@ -60,6 +60,8 @@ Client had reservations about UX testing due to toolkit style nature of the proj
 
 For the example poll server we had a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is a therefore well suited to individual unit tests.
 
+Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python.
+
 The flask library had a test client and recommended test skeleton\footnote{\url{http://flask.pocoo.org/docs/0.10/testing/}} which we made use of to run the unit tests. This used the unittest standard python library which meant it was easy to test with but also allowed calling of methods by simulating HTTP requests.
 
 These tests are recommended to be run before committing new code to the repository and formed one part of the quality assurance testing. Any tests that failed were reviewed before committing and fixed if they were at fault. No code should have been committed to master branches that caused tests to fail. All code on the master branch was expected to pass these tests on checkout.
