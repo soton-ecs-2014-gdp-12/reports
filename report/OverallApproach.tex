@@ -75,6 +75,7 @@ The users...
 \item \textbf{Jumping to content} \hfill \\ There should be a feature to jump to specific content if a question is answered incorrectly \label{Req:Jumping to content}
 \item \textbf{Analytics events} \hfill \\ Video and question events should be emitted from the overlaid video player in order than analytics data can be calculated \label{Req:Analytics events}
 \item \textbf{Cuepoints} \hfill \\ The locations of the questions should be marked visually on the scrub bar of the video \label{Req:Cuepoints}
+\item \textbf{Poll responses} \hfill \\ The responses to polls must be able to be sent to and recorded on a server to allow viewing of the results \label{Req:Poll responses}
 \end{requirement}
 
 \subsection{Non-Functional Requirements}
@@ -86,6 +87,9 @@ The users...
 \item \textbf{Extensibility} \hfill \\ The overlaid video player must be extensible so that further features can be added \label{Req:Extensibility} 
 \item \textbf{User Interface} \hfill \\ A Graphical User Interface (GUI) must be provided for the Authoring Tool so that non-technical users can create quizzes \label{Req:User Interface}
 \item \textbf{Documentation} \hfill \\ The plugins built should have usage examples documented to allow less technical users to implement their own system \label{Req:Documentation}
+\item \textbf{Server architecture} \hfill \\ Any server behaviour should be accessed by \gls{REST} calls with no requirement that all servers should be on the same host \label{Req:Server architecture}
+\item \textbf{Standalone} \hfill \\ The plugins created should be standalone code but still be easy to integrate into the new version of Synote \label{Req:Standalone}
+\item \textbf{Use of colour} \hfill \\ The use of colour should not be the only method of conveying information. Any colours used should be customisable \label{Req:Use of colour}
 \end{requirement}
 
 \section{Modular Webserver Approach}

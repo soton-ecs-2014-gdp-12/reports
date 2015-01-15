@@ -70,7 +70,7 @@ We split the testing into 6 areas to test the main components of the application
 
 \subsection{Cross-Origin Resource Sharing tests}
 
-One of the main requirements by the customer \todo{Reference the requirement when they have been written} was that these units should be able to be accessed via REST calls. In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these REST calls will not fail we need to implement cross origin resource sharing headers as discussed in \autoref{Section:Modular Approach}.
+One of the main requirements by the customer was that these units should be able to be accessed via REST calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these REST calls will not fail we need to implement cross origin resource sharing headers as discussed in \autoref{Section:Modular Approach}.
 
 This checks to ensure that the CORS header is correctly sent in the HTTP reply. If this is not set the web browser will likely reject the loading of the page and the application will fail.
 
