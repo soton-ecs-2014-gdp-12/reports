@@ -95,7 +95,7 @@ flexible and concise, and the isolation provided by the \gls{webworker} mitigate
 many security concerns with having an application that executes data given as
 input as code.
 
-\begin{lstlisting}[language=javascript,caption={\label{code:questionworker} Code for loading an annotation}]
+\begin{lstlisting}[language=javascript,caption={Code for loading an annotation},label={code:questionworker} ]
 importScripts("../questions-worker.js");
 
 loadAnnotations({
@@ -285,11 +285,10 @@ publish/subscribe model to communicate with the vgAnalytics plugin.
 Using the Angular broadcast system we could publish events on channels which
 then would be received by anyone who subscribed to that channel.
 
-\begin{lstlisting}[language=javascript,caption={\label{code:analytics_message_passing} AngularJS demonstrating the message passing interface used in the Analytics plugin}]
+\begin{lstlisting}[language=javascript,caption={AngularJS demonstrating the message passing interface used in the Analytics plugin},label={code:analytics_message_passing}]
 $rootScope.$broadcast('analytics','show_question', data);
 \end{lstlisting}
 
-\todo{Autoref seems to fail to nicely add text for the lstlisting labels}
 In \autoref{code:analytics_message_passing} we broadcast to the ``analytics'' channel an event with the name
 ``show\_question'' with the content of the data variable.
 
