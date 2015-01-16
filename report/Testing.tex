@@ -22,29 +22,15 @@ Motivation for this.
 
 {for section in sections: describe section}
 
-\section{Videogular}
+\section{Videogular Questions Example} 
+\label{Section:Videogular Questions Example}
+
+\subsection{Videogular}
 
 Comment on testing the video player
 
-\section{Videogular Cuepoints}
-
-Cuepoints, user stories, run through
-
-\section{Videogular Heatmap}
-
-Heatmap, user stories, run through
-
-\section{Videogular Analytics}
-
-Testing of sending events
-
-\section{Authoring Tool}
-
-Accessibility testing, List of objectives
-
-Deliverable report had a basic list of actions to "test"
-
-\section{Videogular Questions}
+\subsection{Videogular Questions}
+\label{Subsection:Videogular Questions in example}
 
 There are several tests written for the vgQuestions plugin. These use Jasmine, and can be run in an automated way using karma.
 
@@ -56,9 +42,13 @@ regression tests using
 
 Client had reservations about UX testing due to toolkit style nature of the project. Shameem did so, results were interesting (possibly useful)
 
-\section{Example poll server}
+\subsection{Videogular Cuepoints}
+\label{Subsection:Videogular Cuepoints in example}
+Cuepoints, user stories, run through
 
-For the example poll server we had a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is a therefore well suited to individual unit tests.
+\subsection{Example Results Server}
+\label{Subsection:Example Results Server in example}
+For the example results server we had a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is a therefore well suited to individual unit tests.
 
 Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python.
 
@@ -68,7 +58,7 @@ These tests are recommended to be run before committing new code to the reposito
 
 We split the testing into 6 areas to test the main components of the application.
 
-\subsection{Cross-Origin Resource Sharing tests}
+\subsubsection{Cross-Origin Resource Sharing tests}
 
 One of the main requirements by the customer was that these units should be able to be accessed via REST calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these REST calls will not fail we need to implement cross origin resource sharing headers as discussed in \autoref{Section:Modular Approach}.
 
@@ -76,13 +66,13 @@ This checks to ensure that the CORS header is correctly sent in the HTTP reply. 
 
 In addition, it ensures that the response is the one expected and not an error state to ensure that the web application is also sending the correct content.
 
-\subsection{Routing tests}
+\subsubsection{Routing tests}
 
 The routing tests are to ensure that the application correctly starts and is accessible.
 
 If this fails to load up the testing URL which returns "Hello World!" then it is unlikely to be able to perform some of the more complex functions.
 
-\subsection{Database Setup tests}
+\subsubsection{Database Setup tests}
 
 Before the application can be used it needs have its database set up. This is performed by accessing `/setup'. This set of unit tests test setting up a database and ensure that if this URL is visited twice, it successfully detects that the database is already set up and does not recreate it. 
 
@@ -92,17 +82,17 @@ This is important to ensure that the database is set up correctly and that when 
 
 These tests try a number of different ways to vote by sending a number of different formats of invalid and valid data to check if the application correctly deals with the data. All return codes and responses are checked to ensure no invalid vote is accepted or valid one rejected.
 
-\subsection{Getting results tests}
+\subsubsection{Getting results tests}
 
 A number of valid votes are constructed and then sent into the system. Then these are attempted to be retrieved. The returned values are checked to ensure that they have not been corrupted. This submits one and multiple votes to ensure that all votes are correctly collated and returned.
 
 If the ability to vote does not work then this will fail as it relies on being able to put votes into the system.
 
-\subsection{Load testing}
+\subsubsection{Load testing}
 
 For load testing we have used Locust\footnote{\url{http://locust.io/}} which spawns a number of testing clients and executes a defined pattern of site usage.
 
-We chose three patterns to test the example poll server:
+We chose three patterns to test the example results server:
 
 \begin{itemize}
 \item Visiting the root page - This is to determine that the webserver is still responding to basic HTTP requests
@@ -113,7 +103,7 @@ We chose three patterns to test the example poll server:
 These three URL's were visited repeatedly by the user clients over a period of time.
 
 \begin{table}
-\caption{Time taken for each request to complete in milliseconds while stress testing the example poll server}
+\caption{Time taken for each request to complete in milliseconds while stress testing the example results server}
 \begin{tabular}{l c  c c c c c c c c c }
 \hline 
 & & \multicolumn{9}{c}{Percentile} \\
@@ -128,20 +118,36 @@ POST /vote & 1129 & 120 & 130 & 150 & 170 & 210 & 250 & 360 & 460 & 638 \\
 Total / Average & 3263 & 32 & 110 & 110 & 120 & 160 & 210 & 270 & 400 & 638 \\ 
 \hline 
 \end{tabular}
-\label{Table:stress_testing_poll_server}
+\label{Table:stress_testing_results_server}
 \end{table}
 
-\autoref{Table:stress_testing_poll_server} shows the time taken for a response to be handled and returned.
+\autoref{Table:stress_testing_results_server} shows the time taken for a response to be handled and returned.
 
 Here you can see that the time taken for result requests takes less than 6 milliseconds 50\% of the time and all requests were dealt with in at most 326 milliseconds. The voting REST point takes slightly longer as it needs to store data to the sqlite database but still took at max 638 milliseconds. All these tests were performed when 50 Locust users were using the website continuously and therefore we feel the performance wills scale. This is because one user will only ever make one vote and one results request per poll and this tested for 50 users continuously making these requests.
 
-Although this is only an example this ties in with requirement \todo{reference requirement} that the poll server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of a couple minutes.
+Although this is only an example this ties in with requirement \todo{reference requirement} that the results server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of a couple minutes.
 
 There is also scope to move the backend database to something that is purely in memory to further increase the speed, as the major factor will be writing the data back to the hard disk.
 
-\section{Example Analytics Server}
+\section{Example Analytics}
+
+\subsection{Back End - Example Analytics Server}
+\label{Subsection:Analytics server in example}
+Testing of sending events
 
 Load testing
+
+\subsection{Front End}
+\subsubsection{Videogular Heatmaps}
+\label{Subsubsection:Videogular Heatmaps in example}
+Heatmap, user stories, run through
+
+\section{Authoring Tool}
+
+Accessibility testing, List of objectives
+
+Deliverable report had a basic list of actions to "test"
+
 
 \section{Conclusion}
 

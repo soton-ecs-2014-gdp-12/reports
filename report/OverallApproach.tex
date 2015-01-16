@@ -104,7 +104,7 @@ By abstracting all calls to using \gls{REST} this means that other services will
 These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
-In order to meet the requirements a set of deliverables were agreed:
+As the expected behaviour of our plugins would depend on the application they were used in a set of examples would be required to test our plugins. The following set of deliverables was agreed in order to meet the requirements:
 \begin{itemize}
 \item Videogular Questions: a plugin for adding polls and questions to videos
 \begin{itemize}
@@ -116,15 +116,16 @@ In order to meet the requirements a set of deliverables were agreed:
 \item Source code, under the MIT licence
 \item Demonstration of usage in Videogular Questions example site
 \end{itemize}
-\item Videogular Heatmap: a plugin which displays heat map information on the scrub bar of a video
-\begin{itemize}
-\item Source code, under the MIT licence
-\end{itemize}
 \item Videogular Analytics: a plugin for reporting of events within the Videogular player
 \begin{itemize}
 \item Source code, under the MIT licence
 \item An API specification for Videogular Analytics
 \item An example site showing basic usage of the analytics data collected from the plugin
+\end{itemize}
+\item Videogular Heatmap: a plugin which displays heat map information on the scrub bar of a video
+\begin{itemize}
+\item Source code, under the MIT licence
+\item Demonstration of usage in Videogular Analytics example site
 \end{itemize}
 \item Authoring tool: a Web application to produce the JavaScript file to be used with Videogular Questions
 \begin{itemize}
