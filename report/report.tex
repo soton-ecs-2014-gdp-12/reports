@@ -21,6 +21,8 @@
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1\linewidth}}
 \newcommand{\eoline}{\tabularnewline \hline}
 
+\newcommand*\rot{\rotatebox{90}}
+
 \usepackage{enumitem}
 \usepackage[nameinlink]{cleveref}
 \newlist{requirement}{enumerate}{1}
@@ -164,6 +166,7 @@ This work is all about \dots
 \appendix
 \include{AppendixProjectManagement}
 \include{AppendixDeployment}
+\include{AppendixAccessibilityStandards}
 \include{AppendixRepositories}
 \include{AppendixGanttCharts}
 %TC:endignore
