@@ -7,21 +7,22 @@
 To create quality products an overall approach for the project were decided on. This was done by reviewing the previous work undertaken, getting specific requirements from the client and analysing the needs of the project stakeholders. This led to a list of requirements that the project would need to meet.
 
 \section{Reviewing Previous Work}
-Having reviewed the \href{Chapter:Previous Work}{previous work} some basic requirements for the project could be proposed to the client. 
+Having reviewed the \href{Chapter:Previous Work}{previous work} some design decisions for the project could be proposed to the client. 
+
+A basic quiz standard would need to be defined to allow interoperability between the authoring tool and overlaid video player. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
 
 One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.
 
-A basic quiz standard would need to be defined. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
-
 A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
 
+The overlaid video player will need to emit events that can be captured and used to analyse the viewing patterns of the interactive videos. This would allow the viewing patterns to be compared and contrasted with traditional videos.
 
 \section{Client Requirements}
 With the end aim of integrating this project into the new version of Synote there were some specific requirements that our client had with regards to implementation.
 
-The overlaid video player must be written in AngularJS and HTML5 to make it easily compatible with the new version of Synote. With this new requirement it was agreed that \gls{Videogular} should be used.
+The new version of Synote will be written in AngularJS and HTML5. To make it more easily compatible the overlaid video player should also be written using this framework. With this new requirement it was agreed that \gls{Videogular}\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} should be used. This is a HTML5 video player for \gls{AngularJS}. The nature of the library makes it very easy to write plugins for this to get the extra functionality required.
 
-Video polls must also be included.
+In addition to quizzes, the inclusion of polls must be supported within the overlaid video player.
 
 \subsection{AngularJS}
 \label{Section:AngularJS}
@@ -32,10 +33,6 @@ The underlying architectural pattern used by \gls{AngularJS} is client side \gls
 The framework allows custom HTML tags and attributes to be created using directives. Directives allow the user to specify the behaviour of specific elements they have created.
 
 One of \gls{AngularJS}'s most prominent features is its use of two-way binding. This synchronises the views with the data held in the model. This is especially useful when dealing with dynamic content as when extra content is added it is automatically shown in the view.
-
-\subsection{Videogular}
-\label{Section:Videogular}
-\gls{Videogular}\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} provides a HTML5 video player for \gls{AngularJS}. The nature of the library makes it very easy to write plugins for this to get the extra functionality required.
 
 \section{Stakeholder Analysis}
 For an approach for the project to be decided on the stakeholders needed to be identified and analysed. Their requests have been prioritised by categorising each stakeholder (see \autoref{fig:Stakeholder matrix}).
@@ -90,7 +87,7 @@ Looking at the needs of all the stakeholders a set of requirements for the proje
 
 \section{Modular Webserver Approach}
 \label{Section:Modular Approach}
-It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see \autoref{Section:Synote}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls.
+It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see \autoref{Subsection:Synote}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls.
 
 By abstracting all calls to using \gls{REST} this means that other services will be able to interact with out back end services in a language independent way. To facilitate this we have had to ensure that all \gls{REST} responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the \gls{REST} service.
 
