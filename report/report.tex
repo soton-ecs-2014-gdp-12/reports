@@ -17,11 +17,43 @@
 \usepackage{pgfplots}
 \usepackage{bbding}
 \usepackage{pgfgantt}
+\usepackage[explicit]{titlesec}
+\usetikzlibrary{calc}
 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1\linewidth}}
 \newcommand{\eoline}{\tabularnewline \hline}
 
 \newcommand*\rot{\rotatebox{90}}
+
+\DeclareFixedFont{\chapternumberfont}{T1}{ppl}{m}{n}{1.5in}
+
+\newcommand\brectangles{%
+\begin{tikzpicture}[overlay, remember picture]
+\fill[cyan] 
+  (current page.north west) rectangle ( $ (current page.north east) + (0,-7cm) $);
+
+\end{tikzpicture}%
+}
+
+%From http://tex.stackexchange.com/questions/99310/fancy-chapter-title-page-for-entire-document
+\titleformat{\chapter}[display]
+  {\Huge\bfseries\color{white}}
+  {\brectangles}
+  {-1.75in}
+  {%
+  \parbox[b]{.65\linewidth}{#1}%
+  \raisebox{0.8in}{\parbox{.15\linewidth}{\large\rmseries\bfseries\chaptertitlename}}%
+  \parbox[b]{.2\linewidth}{\chapternumberfont\thechapter}%
+  }
+  [\vspace*{1in}]
+
+\titleformat{name=\chapter,numberless}[display]
+  {\Huge\bfseries\rmfamily\color{white}}
+  {\thispagestyle{empty}\brectangles} 
+  {-1in}
+  {\parbox[b]{.65\linewidth}{#1}}
+  [\vspace*{1in}]
+
 
 \usepackage{enumitem}
 \usepackage[nameinlink]{cleveref}
@@ -104,10 +136,10 @@
 \setcounter{tocdepth}{2} %down to subsection shown in contents
 \setcounter{secnumdepth}{2} %down to subsection numbered
 
-
-
 \newcommand{\chapterpreamble}[1] {
+	\vspace*{\stretch{1}}
 	\textbf{\textit{\large{#1}}}
+	\vspace{\stretch{2}}
 	\clearpage
 }
 
