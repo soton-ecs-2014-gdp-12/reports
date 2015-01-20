@@ -3,32 +3,26 @@
 %% ---------------------------------------------------------------- 
 \chapter{Overall Approach} 
 \label{Chapter:Overall Approach}
+
+To create quality products an overall approach for the project were decided on. This was done by reviewing the previous work undertaken, getting specific requirements from the client and analysing the needs of the project stakeholders. This led to a list of requirements that the project would need to meet.
+
+\section{Reviewing Previous Work}
+Having reviewed the \href{Chapter:Previous Work}{previous work} some basic requirements for the project could be proposed to the client. 
+
+One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.
+
+A basic quiz standard would need to be defined. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
+
+A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
+
+
 \section{Client Requirements}
 With the end aim of integrating this project into the new version of Synote there were some specific requirements that our client had with regards to implementation.
 
-The overlaid video player must be written in AngularJS and HTML5 to make it easily compatible with the new version of Synote. From our analysis of available HTML5 video players it was agreed that \gls{Videogular} should be used.
+The overlaid video player must be written in AngularJS and HTML5 to make it easily compatible with the new version of Synote. With this new requirement it was agreed that \gls{Videogular} should be used.
 
 Video polls must also be included.
 
-\subsection{Synote}
-\label{Section:Synote}
-Synote\footnote{\url{http://www.synote.org/synote/} (Accessed: 14 Jan 15)} is a web multimedia annotation system designed with accessibility in mind. 
-
-The application aims to make multimedia content accessible by synchronising the multimedia in many different formats (see \autoref{Figure:Synote}). The formats used are textual, video/audio, bookmarks and images. 
-
-\begin{figure}[h!]
-	\centering 
-		\includegraphics[scale=0.4]{../figures/synote_sync.png} 		
-	\caption{\label{Figure:Synote} Screenshot of a Synote replay correctly synchronised (\url{http://www.synote.org/synote/recording/replay/114674/0} (Accessed: 15 Jan 15))}
-\end{figure}
-
-The textual element is a transcript of the video/audio. This aims to make the presentations more accessible for people with hearing impairments and cognitive difficulties. It also makes the presentation more easily searchable.
-
-The bookmarks (known as Synmarks) can be used for many reasons. For example they could be used to provide summaries of the slides, make notes on the presentation or provide a direct copy of the text from the slides.
-
-The images can be PowerPoint slides that are used in the presentation so that there can be other video to explain the slides at the same time.
-
-Using the print function a screen reader friendly version of the presentation can be produced\footnote{\url{http://www.synote.org/synote/recording/handlePrint?id=114674&_part=&part=on&from=&to=&_synmarked=&_synmarked-user-1771=&_transcript=&transcript=on&_presentation=&presentation=on&slideHeight=&_synmarks=&synmarks=on&_synmarks-user-1771=&synmarks-user-1771=on&_synmarkId=&synmarkId=on&_synmarkTiming=&synmarkTiming=on&_synmarkTitle=&synmarkTitle=on&_synmarkNote=&synmarkNote=on&_synmarkTags=&synmarkTags=on&_synmarkOwner=&synmarkOwner=on&_synmarkNext=&synmarkNext=on}(Accessed: 15 Jan 15)}. This provides the transcripts, bookmarks and images in sequential order so that a screen reader can read all the text. This will be particularly useful to visually impaired users.
 \subsection{AngularJS}
 \label{Section:AngularJS}
 \gls{AngularJS}\footnote{\url{https://angularjs.org/}} is a JavaScript Framework that extends HTML attributes. It is an open source library made by Google.
@@ -77,6 +71,7 @@ Looking at the needs of all the stakeholders a set of requirements for the proje
 \item \textbf{Analytics events} \hfill \\ Video and question events should be emitted from the overlaid video player in order than analytics data can be calculated \label{Req:Analytics events}
 \item \textbf{Cuepoints} \hfill \\ The locations of the questions should be marked visually on the scrub bar of the video \label{Req:Cuepoints}
 \item \textbf{Poll responses} \hfill \\ The responses to polls must be able to be sent to and recorded on a server to allow viewing of the results \label{Req:Poll responses}
+\item \textbf{Instant feedback} \hfill \\ Once a question or set of questions have been answered there must be a way of receiving instant feedback on performance
 \end{requirement}
 
 \subsection{Non-Functional Requirements}

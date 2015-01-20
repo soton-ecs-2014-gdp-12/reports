@@ -109,8 +109,8 @@ Interactive videos have often been implemented in Flash \citep{interactiveVideo,
 
 Interactive videos including polls and quizzes is one method that could be used to give a formative assessment. This would give immediate, meaningful feedback, a key feature of formative assessment \citep{eps265979}. Having the questions integrated into the video allows the appropriate sections to be automatically re-watched, encouraging immediate action on feedback. 
 
-\subsubsection{Accessibility and Usability}
-\label{Subsubsection:Accessibility and Usability}
+\subsection{Accessibility and Usability}
+\label{Subsection:Accessibility and Usability}
 To allow interoperability between the \gls{eAssessment} systems the \gls{QTI} specification involves both the model and the view of the data \citep{wikieassessment} making accessibility difficult to add in later. This means many systems that comply with the \gls{QTI} specification are inaccessible.
 
 \gls{eAssessment} systems require an \gls{authoring} that is easily understood by people who do not have an in depth technical knowledge (e.g. teachers). Often authoring tools that implement the \gls{QTI} standard are too technical for this \citep{wikieassessment}. These tools need to improve their accessibility and usability, keeping the time commitments for users reasonable \citep{eps271236, eps265979} or they will not be used.
@@ -134,13 +134,25 @@ To allow interoperability between the \gls{eAssessment} systems the \gls{QTI} sp
 
 There are many ways of conveying content in a video and none of the methods alone will generally convey the whole message. Most video searches stay on a whole resource level as there is a lack of semantic interlinking \citep{eps273063}. Annotation systems such as Synote\footnote{\url{http://synote.org/synote/} (Accessed: 24 Nov 14)} aim to make videos accessible by adding transcripts and other annotations to them. The videos being annotated may not be owned by the annotator.
 
-\subsection*{Conclusion}
-\label{Subsection: eAssessment Conclusion}
-It was decided not to use the \gls{QTI} standard due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
+\subsubsection{Synote}
+\label{Subsection:Synote}
+Synote\footnote{\url{http://www.synote.org/synote/} (Accessed: 14 Jan 15)} is a web multimedia annotation system designed with accessibility in mind. 
 
-A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
+The application aims to make multimedia content accessible by synchronising the multimedia in many different formats (see \autoref{Figure:Synote}). The formats used are textual, video/audio, bookmarks and images. 
 
-The focus of this project would be on creating accessible quiz authoring and delivery tools.
+\begin{figure}[h!]
+	\centering 
+		\includegraphics[scale=0.4]{../figures/synote_sync.png} 		
+	\caption{\label{Figure:Synote} Screenshot of a Synote replay correctly synchronised (\url{http://www.synote.org/synote/recording/replay/114674/0} (Accessed: 15 Jan 15))}
+\end{figure}
+
+The textual element is a transcript of the video/audio. This aims to make the presentations more accessible for people with hearing impairments and cognitive difficulties. It also makes the presentation more easily searchable.
+
+The bookmarks (known as Synmarks) can be used for many reasons. For example they could be used to provide summaries of the slides, make notes on the presentation or provide a direct copy of the text from the slides.
+
+The images can be PowerPoint slides that are used in the presentation so that there can be other video to explain the slides at the same time.
+
+Using the print function a screen reader friendly version of the presentation can be produced\footnote{\url{http://www.synote.org/synote/recording/handlePrint?id=114674&_part=&part=on&from=&to=&_synmarked=&_synmarked-user-1771=&_transcript=&transcript=on&_presentation=&presentation=on&slideHeight=&_synmarks=&synmarks=on&_synmarks-user-1771=&synmarks-user-1771=on&_synmarkId=&synmarkId=on&_synmarkTiming=&synmarkTiming=on&_synmarkTitle=&synmarkTitle=on&_synmarkNote=&synmarkNote=on&_synmarkTags=&synmarkTags=on&_synmarkOwner=&synmarkOwner=on&_synmarkNext=&synmarkNext=on}(Accessed: 15 Jan 15)}. This provides the transcripts, bookmarks and images in sequential order so that a screen reader can read all the text. This will be particularly useful to visually impaired users.
 
 \section{Analytics}
 \label{Section:Analytics}
