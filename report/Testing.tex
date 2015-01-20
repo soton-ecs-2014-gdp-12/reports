@@ -1,6 +1,7 @@
 %% ----------------------------------------------------------------
 %% Testing.tex
 %% ---------------------------------------------------------------- 
+
 \chapter{Testing} \label{Chapter: Testing}
 
 Talk about testing and how we will perform it.
@@ -29,16 +30,16 @@ Motivation for this.
 
 Comment on testing the video player
 
+\todo{Do we want about testing videogular itself here, it has some tests, but I have not been able to get them to run yet.}
+
 \subsection{Videogular Questions}
 \label{Subsection:Videogular Questions in example}
 
 There are several tests written for the vgQuestions plugin. These use Jasmine, and can be run in an automated way using karma.
 
-These tests exercise the vgQuestions plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
+These tests exercise the web worker component of the vgQuestions plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
 
-Example site as a test
-
-regression tests using 
+The examples created in the (videogular-questions-example) repository, use individual or collections of features. These were used in the development of these features, and in the demonstration of these features to the customer.  These examples complement the Jasmine tests, as they exercise the display elements of the plugin.
 
 Client had reservations about UX testing due to toolkit style nature of the project. Shameem did so, results were interesting (possibly useful)
 
