@@ -173,26 +173,26 @@
     \vskip 60\p@
     \begin{center}
       \setlength{\parskip}{0pt}
-      {\large\textbf{\UNIVNAME}\par}
+      {\Large\textbf{\UNIVNAME}\par}
       {\large \facname \par}
       \vfill
       {\large A group design project report submitted for}
-      {\large the award of \par \degreename \par}
+      {\large the award of \\ \par \degreename \par}
       \vfill
       {\normalsize Supervisor: \supname \par}
       {\normalsize Examiner: \examname \par}
       \vfill
-      \hspace{6mm}\parbox[t][51mm][s]{89mm}{
+      \hspace{6mm}\parbox[t][51mm][s]{130mm}{
         \center
         \vfill
-        {\large \bf \@title \par}
+        {\Large \bf \@title \par}
         \vfill
         {\normalsize by \authornames \par}
         \vfill
         {\normalsize \@date \par}
         \vfill
       }
-      \parbox[t][95mm][s]{89mm}{}
+      \parbox[t][95mm][s]{130mm}{}
     \end{center}
     \par
     \@thanks
@@ -223,8 +223,6 @@
     {\underline{ABSTRACT} \par}
     \bigskip
     {\normalsize \FACNAME \par}
-    \bigskip
-    {\normalsize \underline{A group design project report submitted for the award of \degreename}\par}
     \bigskip
     {\normalsize\bf \@title \par}
     \medskip
