@@ -3,19 +3,27 @@
 %% ---------------------------------------------------------------- 
 \chapter{Authoring Tool} 
 \label{Chapter:Authoring Tool}
-An \gls{authoring} was required to allow users to create their own question sets. This also avoids the necessity to use hard-coded files. The options given were based on the metadata that would be exported as a JSON file, as specified for the video overlay.
+An accessible \gls{authoring} was required to allow users to create their own question sets. Within the authoring tool users can create polls and quizzes and overlay them at chosen locations in a video. This avoided the necessity for users of the framework to learn the javascript quiz schema, thus significantly reducing the technical barrier to entry. 
 
-The authoring tool allows users to create polls and quizzes and overlay them at the desired locations in videos. The video chosen would come from a URL and question sets can be added at any point in the video. There could be any number of questions in a set and these could be of many different types.
+One key consideration during the implementation of the authoring tool was accessibility. The WCAG 2.0 guidelines were kept in mind at all times and adhered to as much as possible.
+
+Care has been taken to ensure that the authoring tool can be easily used within other angularJS projects, and thorough documentation has been provided to ease this process.
 
 \section{Design} 
 \label{Section:Design}
+
+Within the authoring tool users have the ability to create questions sets within a video. There could be any number of questions in a set and these could be of many different types. A range of options are given to modify the functionality of each question so as allow the user to create exactly what they need.
+
+At any point the user can preview the quiz they have created on the inbuilt video player. Once they are satisfied with the quiz they can export it for use with videogular-questions externally from the tool.
+
 It was decided to use Bootstrap\footnote{\url{https://github.com/twbs/bootstrap/}} to give a consistent appearance to all of the user interfaces components within the project. This is a HTML, \gls{CSS}, and JavaScript framework for developing webpages.
 
 As an Angular framework is used, any additional functionality is required to be written as directives and controllers. UIBootstrap\footnote{\url{http://angular-ui.github.io/bootstrap/}} provides some Bootstrap components written in \gls{AngularJS}. This provides some of the components required. 
 
 Wireframes were created using this style so that they could easily be directly coded as static HTML to allow a quick demo to be created. 
 
-Two different approaches were suggested for showing the advanced options for the video. A pop up approach hid these from general view to avoid confusing users with lots of options that may be unnecessary. The other approach was to use the accordion structure as we had for the questions. This would be collapsed by default so the options would still be hidden. This was chosen as it was more consistent with the rest of the tool.
+Two different approaches were suggested for showing the advanced options for the video. A pop up approach hid these from general view to avoid confusing users with lots of options that may be unnecessary. The other approach was to use the accordion structure as we had for the questions. This would be collapsed by default so the options would still be hidden. This was chosen as it was more consistent with the rest of the tool. Wireframes were created to allow for feedback from users and the customer. They can be found in \autoref{Chapter:Authoring Tool Wireframes};
+\todo{Is this true anymore?}
 
 \section{Implementation}
 \label{Section:Implementation}
