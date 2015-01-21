@@ -41,7 +41,7 @@ This structure meant that planning and the monitoring of the project happened fo
                 xlabel=Hours,                                       %7
                 scatter/@pre marker code/.code={
                     \pgfmathparse{                                  %12
-                        \pgfplotspointmetatransformed/1000*8}   %13
+                        sqrt(\pgfplotspointmetatransformed)/50*12}   %13
                     \def\markopts{                                  %14
                         mark=*,                                     %15
                         color=black,                     %16
@@ -52,7 +52,7 @@ This structure meant that planning and the monitoring of the project happened fo
                     \endscope},
                 symbolic y coords={Sun,Sat,Fri,Thu,Wed,Tue,Mon},
                 xtick={0,...,23},
-                x=0.6cm,
+                x=0.55cm,
                 y=0.9cm]
             \addplot[only marks,scatter]
                 table[x index=0, y index=1, meta index=2] {punchcard.dat};
