@@ -65,12 +65,29 @@ This structure meant that planning and the monitoring of the project happened fo
   \label{fig:key}
 \end{figure}
 
-
-
 To allow for collaborative work a GitHub organisation\footnote{\url{https://github.com/soton-ecs-2014-gdp-12/}} was used. This acted as our central source code repository for not only all directly related work, but also work on presentations and reports. Separate repositories for each area of the project are located here for ease of access. Using GitHub made it easier to interact with other open source projects, and all our pull requests and releases were directed from here. 
 
 GitHub also provided an issue management system on a repository by repository basis. This allowed us to track conversations around different bugs and enhancements as the project progressed.
 The group used \url{http://www.waffle.io} to manage the issues backlog from a project wide perspective as this would interface directly with GitHub.
+
+%Sam has the code to generate this form the Github API
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+	scale=1.5,
+	ylabel={Tasks completed},
+	xlabel= {Week Number},
+	enlargelimits=0.05,
+	ybar interval=0.7,
+]
+\addplot[black,fill=black]
+	coordinates {(1, 0) (2, 0) (3, 17) (4, 19) (5, 12) (6, 21) (7, 15) (8, 3) (9, 17) (10, 24) (11, 5) (12, 1) (13, 0) (14, 0) (15, 1) (16, 4) (17, 8) (18, 0) (19, 0) (20, 0) (21, 0) (22, 0) };
+\end{axis}
+\end{tikzpicture}
+  \caption{Caption}
+  \label{fig:key}
+\end{figure}
 
 \section{Communication} 
 \label{Section:Communication}
