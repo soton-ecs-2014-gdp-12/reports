@@ -29,6 +29,42 @@ This structure meant that planning and the monitoring of the project happened fo
 
 \todo{Burndown charts and other statistics}
 
+%http://tex.stackexchange.com/questions/86114/github-like-punchcard-with-the-help-of-pgfplots
+\begin{figure}
+  \makebox[\textwidth][c]{
+\begin{tikzpicture}                                             %1
+        \begin{axis}[                                               %2
+                grid=major,                                         %3
+                point meta=explicit,
+                xmin=-1,
+                xmax=24,
+                xlabel=Hours,                                       %7
+                scatter/@pre marker code/.code={
+                    \pgfmathparse{                                  %12
+                        \pgfplotspointmetatransformed/1000*8}   %13
+                    \def\markopts{                                  %14
+                        mark=*,                                     %15
+                        color=black,                     %16
+                        fill=black,                      %17
+                        mark size=\pgfmathresult}                   %18
+                    \expandafter\scope\expandafter[\markopts]},
+                scatter/@post marker code/.code={
+                    \endscope},
+                symbolic y coords={Sun,Sat,Fri,Thu,Wed,Tue,Mon},
+                xtick={0,...,23},
+                x=0.6cm,
+                y=0.9cm]
+            \addplot[only marks,scatter]
+                table[x index=0, y index=1, meta index=2] {punchcard.dat};
+        \end{axis}
+\end{tikzpicture}
+  }%
+  \caption{Caption}
+  \label{fig:key}
+\end{figure}
+
+
+
 To allow for collaborative work a GitHub organisation\footnote{\url{https://github.com/soton-ecs-2014-gdp-12/}} was used. This acted as our central source code repository for not only all directly related work, but also work on presentations and reports. Separate repositories for each area of the project are located here for ease of access. Using GitHub made it easier to interact with other open source projects, and all our pull requests and releases were directed from here. 
 
 GitHub also provided an issue management system on a repository by repository basis. This allowed us to track conversations around different bugs and enhancements as the project progressed.
