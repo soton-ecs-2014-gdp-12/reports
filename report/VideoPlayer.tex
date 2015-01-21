@@ -79,7 +79,6 @@ The team behind \gls{Videogular}, 2fdev, are actively seeking members of the com
 
 \subsubsection{Design and Implementation}
 
-\subsubsection{Conclusions} 
 
 \subsection{Videogular Heatmaps - vgHeatmap}
 \gls{Videogular} Heatmaps is a \gls{Videogular} plugin for giving areas of the scrub bar different colours. In our examples this is used to give a visual representation of the number of times each section of the video has been watched.
@@ -93,4 +92,7 @@ The schema for defining the configuration parameters was made consistent with vg
 
 One problem found during implementation was that the heat map cannot be displayed before the video has begun playing. This is due to \gls{Videogular} not setting the video length variable until it begins playing, thus this variable cannot be used to calculate the widths of the sections until it is set. This was accepted as the colouring does not have any context for a user until they have watched the video.
 
-\subsubsection{Conclusions} 
+An extra option that was added for improved accessibility was the ability to label each heat map section with the frequency. Extra hidden text was added so that a screen reader user could still access all the data shown in the heat map. 
+
+\section{Conclusions} 
+\todo{Overarching video player conclusion}

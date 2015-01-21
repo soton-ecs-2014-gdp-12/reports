@@ -7,16 +7,13 @@
 \chapterpreamble{To create a quality framework an overall approach for the project was decided on. \\ This was done by first summarising the research conducted into previous work, as well as defining where this project fits within that ecosystem. Specific requirements were gathered from the client and an analysis of the needs of other project stakeholders conducted. This led to a list of requirements that the project would need to meet. Additionally though was put into the general system design of the framework.}
 
 \section{Reviewing Previous Work}
-Having reviewed the \href{Chapter:Previous Work}{previous work} some design decisions for the project could be proposed to the client. 
-
-A basic quiz standard would need to be defined to allow interoperability between the authoring tool and overlaid video player. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
-
-One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.
-
-A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
-
-The overlaid video player will need to emit events that can be captured and used to analyse the viewing patterns of the interactive videos. This would allow the viewing patterns to be compared and contrasted with traditional videos.
-
+Having reviewed the \href{Chapter:Previous Work}{previous work} some design decisions for the project could be proposed to the client:
+\begin{itemize}
+\item A basic quiz standard would need to be defined to allow interoperability between the authoring tool and overlaid video player. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
+\item One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.
+\item A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
+\item The overlaid video player will need to emit events that can be captured and used to analyse the viewing patterns of the interactive videos. This would allow the viewing patterns to be compared and contrasted with traditional videos.
+\end{itemize}
 \section{Client Requirements}
 With the end aim of integrating this project into the new version of Synote there were some specific requirements that our client had with regards to implementation.
 
@@ -63,26 +60,61 @@ Requirements from all stakeholders will be considered but any conflicts will be 
 Looking at the needs of all the stakeholders a set of requirements for the project were agreed.
 \subsection{Functional Requirements}
 \begin{requirement}[label=\textbf{F\arabic*}]
-\item \textbf{Question types}  \hfill \\ The overlaid video player must be able to display single choice, multiple choice, range selector, rating and text based answer types\label{Req:Question types}
-\item \textbf{Jumping to content} \hfill \\ There should be a feature to jump to specific content if a question is answered incorrectly \label{Req:Jumping to content}
-\item \textbf{Analytics events} \hfill \\ Video and question events should be emitted from the overlaid video player in order than analytics data can be calculated \label{Req:Analytics events}
-\item \textbf{Cuepoints} \hfill \\ The locations of the questions should be marked visually on the scrub bar of the video \label{Req:Cuepoints}
-\item \textbf{Poll responses} \hfill \\ The responses to polls must be able to be sent to and recorded on a server to allow viewing of the results \label{Req:Poll responses}
-\item \textbf{Instant feedback} \hfill \\ Once a question or set of questions have been answered there must be a way of receiving instant feedback on performance
+\item \textbf{Question types}  \label{Req:Question types} \hfill \\
+The overlaid video player must be able to display single choice, multiple choice, range selector, rating and text based answer types.
+
+\textit{The users to ask questions that require set responses.}
+\item \textbf{Jumping to content} \label{Req:Jumping to content} \hfill \\ 
+There should be a feature to jump to specific content if a question is answered incorrectly.
+
+\textit{This is a method of giving instant feedback which was one of the things found to be important in the Previous Work (see \autoref{Chapter:Previous Work}).}
+\item \textbf{Analytics events} \label{Req:Analytics events} \hfill \\ 
+Video and question events should be emitted from the overlaid video player in order than analytics data can be calculated 
+
+\textit{Analysis of existing work showed a lack of analysis of video usage behaviour so this would help facilitate new analysis.}
+\item \textbf{Cuepoints} \label{Req:Cuepoints} \hfill \\ The locations of the questions should be marked visually on the scrub bar of the video.
+
+\textit{Users wish to see where the questions are in the video.}
+\item \textbf{Poll responses} \label{Req:Poll responses} \hfill \\ The responses to polls must be able to be sent to and recorded on a server to allow viewing of the results.
+
+\textit{One of our client's requirements}
+\item \textbf{Instant feedback} \label{Req:Instant feedback} \hfill \\ Once a question or set of questions have been answered there must be a way of receiving instant feedback on performance.
+
+\textit{Found to be important in the analysis of existing work}
 \end{requirement}
 
 \subsection{Non-Functional Requirements}
 \begin{requirement}[label=\textbf{N\arabic*}]
-\item \textbf{Video player used} \hfill \\ Videogular should be used as the video player with components written in AngularJS and HTML5 \label{Req:Video player used}
-\item \textbf{Standalone} \hfill \\ The plugins created should be standalone code but still be easy to integrate into the new version of Synote \label{Req:Standalone}
-\item \textbf{Browser compatibility} \hfill \\ The overlaid video player must work on Internet Explorer, Firefox and Chrome \label{Req:Browser compatibility}
-\item \textbf{Operating System Compatibility} \hfill \\ The overlaid video player must work on Windows, OSX and Android \label{Req:OS compatibility}
-\item \textbf{Extensibility} \hfill \\ The overlaid video player must be extensible so that further features can be added \label{Req:Extensibility} 
-\item \textbf{Keyboard Accessibility} \hfill \\ The overlaid video player and authoring tool must be completely accessible to a keyboard-only user \label{Req:Keyboard accessibility}
-\item \textbf{Use of colour} \hfill \\ Any colours used should be customisable \label{Req:Use of colour}
-\item \textbf{User interface} \hfill \\ A Graphical User Interface (GUI) must be provided for the Authoring Tool so that non-technical users can create quizzes \label{Req:User interface}
-\item \textbf{Documentation} \hfill \\ The plugins built should have usage examples documented to allow less technical users to implement their own system \label{Req:Documentation}
-\item \textbf{Server architecture} \hfill \\ Any server behaviour should be accessed by \gls{REST} calls with no requirement that all servers should be on the same host \label{Req:Server architecture}
+\item \textbf{Video player used} \label{Req:Video player used} \hfill \\ Videogular should be used as the video player with components written in AngularJS and HTML5.
+
+\textit{One of Yunjia's requirements.}
+\item \textbf{Standalone} \label{Req:Standalone} \hfill \\ The plugins created should be standalone code but still be easy to integrate into the new version of Synote.
+
+\textit{One of the client's requirements}
+\item \textbf{Browser compatibility} \label{Req:Browser compatibility} \hfill \\ The overlaid video player must work on Internet Explorer, Firefox and Chrome 
+
+\textit{One of the client's requirements.}
+\item \textbf{Operating System Compatibility} \label{Req:OS compatibility} \hfill \\ The overlaid video player must work on Windows, OSX and Android 
+
+\textit{One of the client's requirements.}
+\item \textbf{Extensibility} \label{Req:Extensibility} \hfill \\ The overlaid video player must be extensible so that further features can be added 
+
+\textit{Makes incremental development easier for the developers and any missing features that are wanted for integration into Synote could easily be added.}
+\item \textbf{Keyboard Accessibility}\label{Req:Keyboard accessibility} \hfill \\ The overlaid video player and authoring tool must be completely accessible to a keyboard-only user.
+
+\textit{Users may not be able to use a mouse so the applications need to be accessible to a keyboard only user.}
+\item \textbf{Use of colour}\label{Req:Use of colour} \hfill \\ Any colours used should be customisable.
+
+\textit{Users may have visual impairments such as colour blindness so they may be able to use the application only if it is in certain colours.}
+\item \textbf{User interface} \label{Req:User interface} \hfill \\ A Graphical User Interface (GUI) must be provided for the Authoring Tool so that non-technical users can create quizzes.
+
+\textit{One of the client's requirements to reduce the barrier to entry.}
+\item \textbf{Documentation} \label{Req:Documentation} \hfill \\ The plugins built should have usage examples documented to allow less technical users to implement their own system.
+
+\textit{One of the client's requirements to reduce the barrier to entry.}
+\item \textbf{Server architecture} \label{Req:Server architecture} \hfill \\ Any server behaviour should be accessed by \gls{REST} calls with no requirement that all servers should be on the same host.
+
+\textit{One of Yunjia's requirements to allow more easy integration into Synote.}
 \end{requirement}
 
 \section{Modular Webserver Approach}
