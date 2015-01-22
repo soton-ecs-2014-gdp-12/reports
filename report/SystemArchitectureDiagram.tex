@@ -1,6 +1,6 @@
 \begin{tikzpicture}[
   font=\sffamily,
-  every matrix/.style={ampersand replacement=\&,column sep=2cm,row sep=2cm},
+  every matrix/.style={ampersand replacement=\&,column sep=1.4cm,row sep=2cm},
   source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
   vg-plugin/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
   analytics-frontend/.style={draw,thick,rounded corners,fill=red!20,inner sep=.3cm},
@@ -10,8 +10,8 @@
   datastore/.style={draw,very thick,shape=datastore,inner sep=.3cm},
   server/.style={source,fill=green!20},
   dots/.style={gray,scale=2},
-  to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
-  between/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+  to/.style={->,>=stealth',shorten >=1pt, shorten <=1pt,semithick,font=\sffamily\footnotesize},
+  between/.style={<->,>=stealth',shorten >=1pt, shorten <=1pt,semithick,font=\sffamily\footnotesize},
   every node/.style={align=center}]
 
   % Position the nodes using a matrix layout
@@ -31,25 +31,27 @@
       \& \node[server] (analytics-server) {analytics server}; \\
   };
 
-  \draw[between] (questions) --
-      node[midway,above] {user responses}
-      node[midway,below] {results} (poll-server);
+  \draw[to] (questions.17) --
+      node[midway,above] {user responses} (poll-server.166);
+  \draw[to] (poll-server.-166) --
+      node[midway,below] {results} (questions.-17);
   \draw[to] (questions) --
       node[midway,right] {user interactions}
       (analytics);
   \draw[to] (questions) --
       node[midway,above] {question times}
       (cuepoints);
-  \draw[between] (analytics) --
-      node[midway,above] {data}
-      node[midway,below] {acks} (analytics-server);
-  \draw[to] (analytics-server) to[bend left=15] node[midway,above] {events}
+  \draw[to] (analytics.18) --
+      node[midway,above] {data} (analytics-server.168);
+  \draw[to] (analytics-server.-168) --
+      node[midway,below] {acks} (analytics.-18);
+  \draw[to] (analytics-server) to[bend left=22] node[midway,above] {events}
       node[midway,below] {level 1} (heatmap);
   \draw[to] (analytics-server) --
       node[midway,right] {user interactions}
       (analytics-frontend);
-  \draw[between] (videogular) -- (cuepoints);
-  \draw[between] (videogular) -- (analytics);
-  \draw[between] (videogular) -- (questions);
-  \draw[between] (videogular) -- (heatmap);
+  \draw[between] (videogular) -- node[midway,above,sloped] {events} (cuepoints);
+  \draw[between] (videogular) -- node[midway,above,sloped] {events}(analytics);
+  \draw[between] (videogular) -- node[midway,above,sloped] {events}(questions);
+  \draw[between] (videogular) -- node[midway,above,sloped] {events}(heatmap);
 \end{tikzpicture}
