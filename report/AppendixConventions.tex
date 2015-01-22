@@ -1,0 +1,234 @@
+\chapter{Coding Conventions} \label{Chapter:Coding Conventions}
+
+This appendix contains our coding conventions, from our GitHub repository
+\footnote{\url{https://github.com/soton-ecs-2014-gdp-12/conventions}}.
+
+\section{General}
+
+File names should be in Unix form (lower-case, words separated by
+hyphens, e.g. \texttt{a-directory/my-file.type}).
+
+\section{CSS coding conventions}
+
+Tabs should be used for indentation.
+
+\subsection{Property ordering}
+
+In general, properties further towards the top should affect layout,
+while properties towards the bottom should affect appearance.
+
+Specifically, the most common properties should be in this order:
+
+\begin{lstlisting}
+.class {
+	position
+	display
+
+	flex /* etc. */
+
+	top
+	bottom
+	left
+	right
+	z-index
+
+	width  /* also min-, max- */
+	height /* also min-, max- */
+
+	padding
+	border
+	margin
+
+	font /* etc. */
+	text-align
+	background /* etc. */
+	color
+}
+\end{lstlisting}
+
+\section{HTML coding conventions}
+
+All full HTML pages should specify
+\texttt{\textless{}!DOCTYPE html\textgreater{}}.
+
+\subsection{Indentation}
+
+Tabs should be used up to the indent level, with spaces for lining up
+tags which break over multiple lines.
+
+\subsection{Attributes}
+
+Attribute values should be quoted.
+
+The \texttt{id} attribute should always be first after the tag name,
+followed by the \texttt{class} attribute. For meta tags, the
+\texttt{name} should be specified first.
+
+\subsection{Scripts}
+
+Where possible, scripts should be imported at the end of the body. For
+JavaScript files, the optional \texttt{type} attribute should be
+omitted.
+
+\section{Issue tracker usage guidelines}
+
+If an issue doesn't seem to fit with any particular repository, file it
+against the \texttt{videogular-questions} repository.
+
+The issue type should be described with a label (one of bug,
+enhancement, or investigate).
+
+\subsection{waffle.io and Sprint management}
+
+We have a waffle.io board
+\footnote{\url{https://waffle.io/soton-ecs-2014-gdp-12/videogular-questions/}}
+for tracking our Sprints.
+
+Each Sprint will have a milestone on each repository, named ``Sprint '',
+with the due date set to that of the Sprint Retrospective meeting. When
+an issue is added to a Sprint, it should be added to that Sprint's
+milestone.
+
+\section{JavaScript coding
+conventions}
+
+Strict mode should be used (\texttt{'use strict';}). Semicolons should
+never be omitted.
+
+In object definitions, trailing commas should always be used. For
+example:
+
+\begin{lstlisting}[language=javascript]
+obj = {
+    foo: 'bar',
+    baz: 'quux',
+}
+\end{lstlisting}
+
+\subsection{Indentation}
+
+Indentation should be done with tabs up to the indent level, and then
+spaces for lining up multi-line statements. For example (where a
+\texttt{\textgreater{}} is a tab and a \texttt{.} is a space):
+
+\begin{lstlisting}[language=javascript]
+function foo() {
+>   if (bar === 4) {
+>   >   baz("Some really ridiculously long string that should be "
+>   >   ....+ "avoided, even mentioned in the coding conventions.");
+>   }
+}
+\end{lstlisting}
+
+This allows other developers to choose indent sizes without messing up
+neatly lined-up parts.
+
+\subsection{Naming}
+
+Names should be camel case. The first letter should be lower-case,
+except for class names or constructors:
+
+\begin{lstlisting}[language=javascript]
+LightBulb = (function() {
+    function LightBulb() {
+        // ...
+    }
+
+    return LightBulb;
+})();
+
+var numberOfEngineers = 5;
+function changeLightBulb(bulb) {
+    // ...
+}
+\end{lstlisting}
+
+File names should still be in Unix form (e.g. \texttt{light-bulb.js}).
+Unit test files should have the same name as the file which they test,
+followed by \texttt{\_test} (e.g. \texttt{light-bulb\_test.js}).
+
+\subsection{Types}
+
+The section of JavaScript Garden on Types
+\footnote{\url{https://bonsaiden.github.io/JavaScript-Garden/\#types}}
+gives a number of guidelines (in the conclusion paragraphs) which should
+be followed.
+
+\subsection{JSHint}
+
+JSHint directive comments should be kept to a minimum, with
+configuration moved into the \texttt{.jshintrc} file where possible. If
+file-specific configuration is necessary, it should go at the top of the
+file (before \texttt{'use strict';}) unless:
+
+\begin{itemize}
+\item
+  it is specific to a section of the file, or
+\item
+  it describes the changes made to the environment by a particular line
+  of code, for example by the \texttt{importScripts} method in a Web
+  Worker. In this case the directive should be on the next line,
+  indented. For example:
+
+\begin{lstlisting}[language=javascript]
+importScripts("../../app/bower_components/videogular-questions/questions-worker.js");
+    /* global loadAnnotations */
+\end{lstlisting}
+\end{itemize}
+
+\subsection{AngularJS}
+
+\subsubsection{Dependency injection}
+
+When defining a directive, service, view, controller, etc., and
+dynamically injecting dependencies, make sure to pass the parameter name
+as a string into the array. For example:
+
+\begin{lstlisting}[language=javascript]
+angular.module("com.example.foobar", [])
+    .directive(
+    "ngFooBar",
+    ["$window", "VG_STATES", function($window, VG_STATES) {
+        ...
+    }])
+\end{lstlisting}
+
+This stops minifiers from breaking the dependency information when they
+rename parameters.
+
+\section{LaTeX}
+
+\subsection{TODOs}
+
+For todo notes, use the \texttt{\textbackslash{}todo} command. For
+example:
+
+\begin{lstlisting}[language=tex]
+\todo{Discuss farming in the Middle East.}
+\end{lstlisting}
+
+\subsection{References}
+
+When making references, use \texttt{autoref}, like so:
+
+\begin{lstlisting}[language=tex]
+\autoref{my-label}
+\end{lstlisting}
+
+\subsection{Labelling scheme}
+
+Figure labels should begin with \texttt{Figure:}, chapter labels with
+\texttt{Chapter:}, and section labels with \texttt{Section:}.
+
+\section{Python coding conventions}
+
+PEP8 \footnote{\url{http://legacy.python.org/dev/peps/pep-0008/}} should be
+followed.
+
+\subsection{File names}
+
+File names should be Python style, that is, words separated by
+underscores (e.g. \texttt{voluminous\_octopus.py}).
+
+When a virtual environment is used, it should be called \texttt{venv}.
+Any dependencies should be defined in \texttt{requirements.txt}.
