@@ -63,9 +63,17 @@ The team behind \gls{Videogular}, 2fdev, are actively seeking members of the com
 
 \subsection{Videogular Cuepoints - vgCuepoints}
 \label{Subsection:vgCuepoints}
-\gls{Videogular} Cuepoints is a \gls{Videogular} plugin for displaying `cuepoints', marks on the scrub bar which can be positioned at a particular time. For example, cuepoints could be used to indicate the start of a section in the video, or a time when a pop-up will appear.
+\gls{Videogular} Cuepoints is a \gls{Videogular} plugin for displaying `cuepoints', marks on the scrub bar which can be positioned at different times. For example, cuepoints could be used to indicate the start of a section in the video, or (in this case) a time when a pop-up will appear.
 
 \subsubsection{Design and Implementation}
+Like the rest of Videogular Controls, each cuepoint is represented by an HTML element which is positioned using \gls{CSS}. This allows users of the plugin to style them with their own stylesheets.
+
+Cuepoint positions are specified in the \texttt{config} object which is given as a parameter when cuepoints are used, and a stylesheet for custom theming can be specified in the same way.
+
+One problem found during implementation was that the cuepoints cannot be displayed before the video has begun playing. This is due to \gls{Videogular} not setting the video length variable until it begins playing, thus this variable cannot be used to calculate the positions of the cuepoints until it is set.
+
+\subsubsection{Further Work}
+In future, the ability to specify a different \gls{CSS} class for each cuepoint could very easily be added, allowing visual differentiation of the markers. It would also be useful to make the cuepoints more accessible, for example by providing alternative text for screen readers.
 
 
 \subsection{Videogular Heatmaps - vgHeatmap}
@@ -78,7 +86,7 @@ Sections and colours can be specified in a \texttt{config} object which is given
 
 The schema for defining the configuration parameters was made consistent with vgCuepoints (see \autoref{Subsection:vgCuepoints}) to improve usability.
 
-One problem found during implementation was that the heat map cannot be displayed before the video has begun playing. This is due to \gls{Videogular} not setting the video length variable until it begins playing, thus this variable cannot be used to calculate the widths of the sections until it is set. This was accepted as the colouring does not have any context for a user until they have watched the video.
+The same issue that was encountered with the Cuepoints plugin, which prevents display until the video plays, was a problem for the heat map plugin. This was accepted as the colouring does not have any context for a user until they have watched the video.
 
 An extra option that was added for improved accessibility was the ability to label each heat map section with the frequency. Extra hidden text was added so that a screen reader user could still access all the data shown in the heat map. 
 
