@@ -29,13 +29,11 @@ javascript file that uses the questions-worker.js library, that handles the
 communication with vgQuestions. It loads a javascript object that contains
 within it a description of the quiz.
 
-\todo{This needs the image fixing so the text isnt crushed together}
-
 \begin{figure}
-
+\makebox[\textwidth][c]{
 \begin{tikzpicture}[
   font=\sffamily,
-  every matrix/.style={ampersand replacement=\&,column sep=2cm,row sep=2cm},
+  every matrix/.style={ampersand replacement=\&,column sep=1.6cm,row sep=1.6cm},
   source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
   vg-plugin/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
   analytics-frontend/.style={draw,thick,rounded corners,fill=red!20,inner sep=.3cm},
@@ -45,8 +43,8 @@ within it a description of the quiz.
   datastore/.style={draw,very thick,shape=datastore,inner sep=.3cm},
   server/.style={source,fill=green!20},
   dots/.style={gray,scale=2},
-  to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
-  between/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+  to/.style={->,>=stealth',shorten >=1pt,shorten <=1pt, semithick,font=\sffamily\footnotesize},
+  between/.style={<->,>=stealth',shorten >=1pt,shorten <=1pt,semithick,font=\sffamily\footnotesize},
   every node/.style={align=center}]
 
   \matrix{
@@ -56,17 +54,22 @@ within it a description of the quiz.
     \node[server] (quiz) {quiz.js}; \\
   };
 
-  \draw[between] (videogular) --
-      node[midway,above] {commands}
-      node[midway,below] {video state} (vg-questions);
-  \draw[between] (vg-questions) --
-      node[midway,above] {commands}
-      node[midway,below] {user interactions} (questions-worker);
-  \draw[between] (questions-worker) --
-      node[midway,above] {quiz description}
-      node[midway,below] {utility function} (quiz);
+  \draw[to] (videogular.-20) --
+      node[midway,below] {video states} (vg-questions.195);
+  \draw[to] (vg-questions.-195) --
+      node[midway,above] {command} (videogular.20);
+      
+  \draw[to] (vg-questions.-14) --
+      node[midway,below] {user interactions} (questions-worker.190);
+    \draw[to] (questions-worker.-190) --
+      node[midway,above] {commands} (vg-questions.14);
+      
+  \draw[to] (questions-worker.-10) --
+      node[midway,below] {utility function} (quiz.201); 
+  \draw[to] (quiz.-201) --
+      node[midway,above] {quiz description} (questions-worker.10);
 \end{tikzpicture}
-
+}
 \caption{vgQuestions Architecture}
 \label{Figure:vgquestions-architecture}
 
