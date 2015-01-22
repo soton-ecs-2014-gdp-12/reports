@@ -3,14 +3,20 @@
 %% ---------------------------------------------------------------- 
 \chapter{Authoring Tool} 
 \label{Chapter:Authoring Tool}
-An accessible \gls{authoring} was required to allow users to create their own question sets. Within the authoring tool users can create polls and quizzes and overlay them at chosen locations in a video. This avoided the necessity for users of the framework to learn the javascript quiz schema, thus significantly reducing the technical barrier to entry. 
 
-One key consideration during the implementation of the authoring tool was accessibility. The WCAG 2.0 guidelines were kept in mind at all times and adhered to as much as possible.
+\chapterpreamble{The authoring tool section details the motivation for creating a tool that is able to produce the JavaScript file used by the VideogularQuestions plugin. One of the key features was that the tool should be accessible and is able to describe the wide range of features the VideogularQuestions plugin supports.}
 
-Care has been taken to ensure that the authoring tool can be easily used within other angularJS projects, and thorough documentation has been provided to ease this process.
+\section{Introduction}
+\label{Section:Authoring_Introduction}
+
+An accessible \gls{authoring} was required to allow users to create their own question sets. Within the authoring tool users can create polls and quizzes and overlay them at chosen locations in a video. This avoided the necessity for users of the framework to learn the JavaScript quiz format, thus significantly reducing the technical barrier to entry. 
+
+One key consideration during the implementation of the authoring tool was accessibility. The \gls{WCAG} 2.0 guidelines were kept in mind at all times and adhered to as much as possible.
+
+Care has been taken to ensure that the authoring tool can be easily used within other AngularJS projects, and thorough documentation has been provided to ease this process.
 
 \section{Design} 
-\label{Section:Design}
+\label{Section:Authoring_Design}
 
 Within the authoring tool users have the ability to create questions sets within a video. There could be any number of questions in a set and these could be of many different types. A range of options are given to modify the functionality of each question so as allow the user to create exactly what they need.
 
@@ -22,11 +28,10 @@ As an Angular framework is used, any additional functionality is required to be 
 
 Wireframes were created using this style so that they could easily be directly coded as static HTML to allow a quick demo to be created. 
 
-Two different approaches were suggested for showing the advanced options for the video. A pop up approach hid these from general view to avoid confusing users with lots of options that may be unnecessary. The other approach was to use the accordion structure as we had for the questions. This would be collapsed by default so the options would still be hidden. This was chosen as it was more consistent with the rest of the tool. Wireframes were created to allow for feedback from users and the customer. They can be found in \autoref{Chapter:Authoring Tool Wireframes};
-\todo{Is this true anymore?}
+Two different approaches were suggested for showing the advanced options for the video. A pop up approach hid these from general view to avoid confusing users with lots of options that may be unnecessary. The other approach was to use the accordion structure as we had for the questions. This would be collapsed by default so the options would still be hidden. This was chosen as it was more consistent with the rest of the tool. Wireframes were created to allow for feedback from users and the customer. They can be found in \autoref{Chapter:Authoring Tool Wireframes}.
 
 \section{Implementation}
-\label{Section:Implementation}
+\label{Section:Authoring_Implementation}
 Once the wireframes were drawn up they could be turned into static HTML. Elements of this webpage were then incrementally given the functionality they required. The main challenge was ascertaining how the functionality fitted in with the \gls{AngularJS} Framework. 
 
 Each section of the page had to have its own directive so that independent behaviours could be achieved. This kept the HTML pages short and readable as the behaviour was dealt with by the JavaScript and the styling dealt with by the \gls{CSS}.
@@ -71,4 +76,21 @@ A controller holding model data stores the state of the controller which is repr
 
 \autoref{Figure: Authoring two way binding} shows the process of the view changing and updating its parent. Each time the model is updated the controller runs any appropriate action to change the display of the view then sends the updated model to its parent. This change is bubbled upwards each level until it reaches the root controller who stores the new data in its global model.
 
+\subsection{Exporting of Data}
+
+Descriptions how exporting the data works
+
+\subsection{Preview tool}
+
+Describes how the preview tool works, link in from export
+
 \section{Conclusion}
+\label{Section:Authoring_Conclusion}
+
+It works, is accessible, other things.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=\textwidth]{../figures/authoring_tool_example.png} 		
+	\caption{\label{Figure:Authoring_Tool} Image showing the final authoring tool being used} 	
+\end{figure}
