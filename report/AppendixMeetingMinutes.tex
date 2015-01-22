@@ -1,0 +1,475 @@
+\chapter{Minutes of Meetings} \label{Chapter:Minutes of Meetings}
+
+This appendix contains the minutes of meetings held with the group's supervisor, client and second examiner, as recorded by Harry Cutts. It also contains minutes for our Sprint Retrospectives, where there were any.
+
+Unless otherwise stated, all five group members attended all meetings. Mike Wald attended all client/supervisor meetings as both client and supervisor.
+
+\section{29th September 2014}\label{Minutes:2014-09-29}
+
+\subsection{Client/supervisor meeting}
+
+Yunjia Li (lead developer on Synote) also attended.
+
+\subsubsection{History of Synote}
+
+Mike Wald started by giving a brief history of Synote.
+
+The 2008 version (which is the version running on \texttt{synote.org})
+was built with Google Web Toolkit and Grails.
+
+The 2010 version replaced the front-end, but re-used the back-end. A
+mobile interface was later added to this version.
+
+A version for the Raspberry Pi was produced.
+
+The new version of Synote is to be built with a node.js back-end, which
+will interact with an AngularJS front-end via a ReST API. The code is to
+be hosted on GitHub.
+
+\subsubsection{Our task}
+
+Our task is to work on software for interactive video quizzes to be
+integrated with Synote at a later date. The solution must be accessible.
+We may wish to use the QTI standard for defining quizzes.
+
+This has been done before by a Masters student called Nadia, but her
+work was not compatible with AngularJS. Mike will send Nadia's
+implementation and report to us. There is also an existing AngularJS
+library for interactive video quizzes, which we could fork.
+
+Other requirements:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Use ReSTful APIs to connect the front-end and back-end
+\item
+  Define a data structure which we can statically serve for the proof of
+  concept
+\item
+  Consider mobile browsers
+\item
+  Make proper tests
+\item
+  We'll need to choose a framework
+\item
+  Later in the project, create a quiz authoring tool
+\end{itemize}
+
+The project should be managed in an Agile way. Harry suggested that we
+follow SCRUM. Yunjia recommended the RallyDev application for issue
+management.
+
+We will hold these meetings with Mike regularly at 14:00 on Mondays. The
+group will meet after the GDP briefing on Wednesday.
+
+\subsection{After-meeting}
+
+Sam suggests that we create a very basic prototype and then ask whether
+this is what they want.
+
+Harry suggested not scheduling anything over Christmas.
+
+We should find some users and talk to them
+
+SCRUM (with 1 week sprints) would be good to try.
+
+We each should:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Read Nadia's report
+\item
+  Have a look at the AngularJS Video Quiz module (Chris will email us the link)
+\end{itemize}
+
+Harry will create the Google Drive folder, upload the minutes, create a
+GitHub organisation and add everyone in the group.
+
+\section{6th October 2014}\label{Minutes:2014-10-06}
+
+\subsection{Client/supervisor meeting}
+
+Shameem Bajar, a third-year student of Information Technology in
+Organisations, also attended.
+
+We presented a prototype system built on Videogular over the last week.
+
+Videogular Quiz wasn't worth building on.
+
+Shameem is doing a third-year project, and will be interacting with
+users.
+
+Aspects which we haven't covered in our prototype:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Jumping back to sections when questions are answered incorrectly
+\item
+  Analytics on user behaviour around the quiz
+\end{itemize}
+
+A big use case for this project is for the live version. Another is for
+MOOCs.
+
+Our technical goals are to overlay quiz questions and polls over online
+videos, with analytics support.
+
+Over the next week, we will:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  write the brief (sending a draft to Mike),
+\item
+  make the prototype code more robust, and
+\item
+  test the prototype on multiple platforms, building up a list of
+  issues.
+\end{itemize}
+
+As soon as possible, we will get a demo working which can be used by
+Shameem to get user feedback and stories.
+
+\subsection{After-meeting}
+
+We could draw some state machines of possible quizzes.
+
+Some questions for us to answer:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Would MediaElement.js be worth investigating?
+\item
+  Is Videogular's accessibility up to Mike's standards?
+\end{itemize}
+
+\section{13th October 2014}\label{Minutes:2014-10-13}
+
+\subsection{Client/supervisor meeting}
+
+We demonstrated our progress on the prototype, including it running on a
+phone and a tablet. Mike reiterated that the user should be able to jump
+back in the video when a question is answered incorrectly.
+
+We asked how we are to acquire realistic data with which to test the
+analytics system. Mike rejected our selection of him using a prototype
+system for a lecture, but suggested that Shameem could use focus groups
+to acquire data.
+
+He also clarified that the actual analysis of the data is basically as a
+proof-of-concept. The important part is to have the front-end collect
+the data (in the form of event logs).
+
+We attempted to demonstrate some accessibility improvements which we
+have made and contributed to Videogular, but they had not yet been
+deployed on the demonstration machine.
+
+We asked whether we could access the code for the new version of Synote,
+and learned that Yunjia hasn't started on the new Synote yet.
+
+\section{20th October 2014}\label{Minutes:2014-10-20}
+
+\subsection{Client/supervisor meeting}
+
+We demonstrated:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Videogular accessibility improvements
+\item
+  Skipping back in the video when a wrong answer is given
+\item
+  The new stars question type
+\end{itemize}
+
+We explained the architecture on which we had decided for the questions
+front-end, in which a WebWorker (a sandboxed JavaScript thread) is used
+to execute potentially unsafe quiz definitions. This allows us to use
+JavaScript to define quizzes in a flexible manner without a complicated
+markup language.
+
+Mike said he would think about organising a focus group to collect data
+from.
+
+We reported on our first sprint of the project.
+
+We said we would prepare a stable demo for Wednesday, and give the link
+to Shameem for user feedback.
+
+\subsubsection{The presentation}
+
+We discussed how to pitch the idea of our project in the up-coming
+progress presentation.
+
+Chris Hewett suggested we `sell' the idea of teaching in small chunks
+and testing on each individual chunk. Small chucks can be revisited
+easily, but splitting a video into those small chunks is very
+time-consuming. Instead, our project will allow questions to be inserted
+at the end of each chunk in a longer video.
+
+\subsection{Sprint retrospective}
+
+In the traditional SCRUM way, we discussed how well our first sprint had
+gone.
+
+\subsubsection{The good}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  We got everything that was assigned in the planning meeting done.
+\item
+  We communicated well.
+\end{itemize}
+
+\subsubsection{The bad}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  We underestimated the amount of work we could get done.
+\item
+  Our points allocations were out of whack quite a bit.
+\end{itemize}
+
+\section{27th October 2014}\label{Minutes:2014-10-27}
+
+There was no meeting this week as Mike was away.
+
+\subsection{Retrospective}
+
+We didn't all make our points targets this week. This was mostly due to
+the presentation.
+
+Poll and Cuepoints issues weren't well defined enough.
+
+Chewett is blocking on lack of documentation and schemas when creating
+examples. We should create issues to finalise schemas.
+
+\section{10th November 2014}\label{Minutes:2014-11-10}
+
+\subsection{Client/supervisor meeting}
+
+Yunjia Li and Shameem Bajar also attended.
+
+We demonstrated:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Charts showing results of in-video polls.
+\item
+  The heat map plug-in for Videogular.
+\item
+  Our Videogular Analytics plug-in acquiring analytics data, and it
+  being processed into a heat map.
+\end{itemize}
+
+We mentioned that we need to use HTML5 events (including seek) instead
+of watches to detect changes in the video state. We also need to display
+the heat map data using the plug-in we've created for Videogular.
+
+Yunjia raised concerns about the perceived difficulty of deploying our
+server-side code. We said we would write a document describing the
+deployment process to an Apache server.
+
+\subsubsection{Shameem's study}
+
+Shameem presented some initial results of her user studies. The
+presentation will be sent to us shortly.
+
+Feedback on the idea was positive. No users mentioned mobile devices,
+except that a participant would submit poll responses from a phone
+during a lecture (which is out of the scope of our project).
+
+Many suggestions were made by users, some of which were out of scope.
+The following were in scope:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Add number of attempts field to authoring tool.
+\item
+  Give a grade at the end of the quiz.
+\item
+  Recommend further videos on the same topic after the video is finished
+  (which we could display as custom HTML on a results page).
+\end{itemize}
+
+We discussed the upcoming presentation, during which we are planning to
+demonstrate the analytics view.
+
+\subsection{Retrospective}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  We have inconsistency between tabs and spaces for indentation in some
+  files.
+\item
+  Some external libraries are stored inconsistently (e.g.~Bootstrap is a
+  submodule in the analytics back-end, d3 is a file in the repository).
+\item
+  We can use \texttt{bower link} instead of the shell script for using
+  Bower with modules which are in development. This will be done in the
+  next sprint.
+\end{itemize}
+
+\section{17th November 2014}\label{Minutes:2014-11-17}
+
+\subsection{Sprint retrospective}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Number of points per person was good
+\end{itemize}
+
+\subsection{Client/supervisor meeting}
+
+We demonstrated the authoring tool UI which has been designed, but not
+made functional.
+
+We showed the presentation planned for Wednesday. Mike suggested to
+mention the interactive features such as skipping back in the video.
+
+\section{24th November 2014}\label{Minutes:2014-11-24}
+
+\subsection{Meeting with Gary Wills}
+
+\begin{itemize}
+\item
+  Report is what Gary's going to mark
+\item
+  UML in design section
+\item
+  Why didn't we present it to users for evaluation?
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    The customer (Mike) thinks that it is not viable.
+  \end{itemize}
+\item
+  Write about testing and/or scenario based testing instead.
+\item
+  Could evaluate based on ``How well does this output suit your
+  requirements?''
+\item
+  Doing team skills audit will improve mark
+\item
+  Don't include `if we have time' things in goals
+\item
+  Should have a consistent voice throughout the report
+\item
+  We \textbf{should not} be working through Christmas
+\item
+  Manage the customer (Mike)
+\item
+  ``The key to good assessment is instant feedback.''
+\item
+  Go through report with fine-tooth spelling and grammar comb before
+  submitting report.
+\end{itemize}
+
+\subsection{Client/supervisor meeting}
+
+Mike said he was generally happy with our latest progress presentation.
+
+Looking at the authoring tool:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  It would be good to make single choice question type a special case of
+  multiple choice question.
+\item
+  A ``Load current time'' button next to the time selector would be
+  useful.
+\end{itemize}
+
+We should mention that (some) server implementations are example only
+and have no scalability guarantees.
+
+\section{1st December 2014}\label{Minutes:2014-12-01}
+
+\subsection{Client/supervisor meeting}
+
+Yunjia Li also attended.
+
+We demonstrated the authoring tool.
+
+Yunjia suggested something for the Further Work report section: making
+encoding the video for different browsers/platforms more user-friendly.
+
+Chewett proposed a list of deliverables:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Videogular Questions
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    Example proof-of-concept site (Videogular Questions Example)
+  \end{itemize}
+\item
+  Videogular Cuepoints
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    As demonstrated is Videogular Questions Example
+  \end{itemize}
+\item
+  Videogular Heat Maps
+\item
+  Videogular Analytics
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    API specification for Videogular Analytics
+  \item
+    Analytics back-end is an example only
+  \end{itemize}
+\item
+  Authoring tool
+\end{itemize}
+
+Mobile browsing will be part of future work.
+
+Mike approved that list of deliverables.
+
+\section{8th December 2014}\label{Minutes:2014-12-08}
+
+\subsection{Client/supervisor meeting}
+
+Yunjia Li also attended.
+
+\subsubsection{Sign off on deliverables}
+
+The deliverables had been sent to Mike last Thursday. He had found that
+the heat map did not appear in the analytics interface in Google Chrome.
+We clarified a misunderstanding about the vertical scales on results
+charts.
+
+Yunjia asked about the status of the seek event in the analytics
+plug-in, which has not been implemented but should not be problematic.
+
+Mike and Yunjia said that they were satisfied with the deliverables.
+Yunjia said they were `pretty cool'.
+
+Mike said he'd be happy to comment on draft report stuff we send him.
+
+\subsection{After-meeting}
+
+We discussed the report structure, and decided to put all the testing in
+one section (with subsections for each component), to emphasize the
+range of testing methods we used.
