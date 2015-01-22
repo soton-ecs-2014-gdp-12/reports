@@ -41,7 +41,7 @@
 
 \titleformat{name=\chapter,numberless}[display]
   {\Huge\bfseries\rmfamily\color{black}}
-  {\thispagestyle{empty}} 
+  {} 
   {-1in}
   {\parbox[b]{.65\linewidth}{#1}}
   []
@@ -205,6 +205,15 @@ Dr Gary Wills for acting as an external source of help regarding the coursework.
 \include{Testing}
 \include{FutureWork}
 \include{Conclusions}
+
+\newpage
+\bibliographystyle{ecs}
+\bibliography{ECS}
+
+\newpage
+\phantomsection
+\markboth{GLOSSARY}{Glossary}
+\printglossary
 %TC:ignore
 \appendix
 \include{AppendixProjectManagement}
@@ -214,13 +223,6 @@ Dr Gary Wills for acting as an external source of help regarding the coursework.
 \include{AppendixGanttCharts}
 \include{AppendixAuthoringToolWireframes}
 %TC:endignore
-\newpage
-\phantomsection
-\markboth{GLOSSARY}{Glossary}
-\printglossary
 
-\backmatter
-\bibliographystyle{ecs}
-\bibliography{ECS}
 \end{document}
 %% ----------------------------------------------------------------
