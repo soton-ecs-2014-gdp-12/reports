@@ -33,4 +33,42 @@ Each section of the page had to have its own directive so that independent behav
 
 Angular allowed the dynamic nature of the data to define the appearance of the page. Sections could be set to appear only when certain attributes were set using ng-switch statements. This meant one section could potentially show many different elements depending on what was selected elsewhere on the page.
 
+\subsection{Data Bubbling}
+
+With the authoring tool we have leveraged the ability to use two way binding and watches with AngularJS. This allows us to template a number of reusable elements such as the time picker and means we don't have to rewrite the class each time we wish to use it. This has reduced the time taken to produce the authoring tool.
+
+The root controller holds the global state of the authoring tool. This global state is updated by the child controllers who each own specific parts of the global model. This bubbling of data up the controllers is the key to how the authoring tool has been built.
+
+The preview and generation features utilise this model in the root controller composed from the bubbled models over the child controllers.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.4]{../figures/authoring_tool/controller_bubbling.png} 		
+	\caption{\label{Figure: Bubbling model data} Bubbling of model data up controllers} 	
+\end{figure}
+
+\autoref{Figure: Bubbling model data} shows the general structure of the controllers and how we have implemented the bubbling up of data. In our implementation we have a large number of controllers and levels to encapsulate the different ways of quiz creation. In this diagram controller A and B will bubble their model data up to the root controller if it changes. If model data in controller B1 or B2 changes, their new model will bubble up to controller B. Controller B will then will then bubble its model combined with the new model data it has received to the root controller.
+
+This bubbling technique works for any number or levels of children provided the model data is correctly bubbled up each layer. It also makes adding new controllers at any point simple as you only need to handle the bubbling of the data up the levels.
+
+Each controller may have one or more children who may or may not hold model data.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.6]{../figures/authoring_tool/bubbling_to_root.png} 		
+	\caption{\label{Figure: Bubbling to root} State diagram illustrating decisions when bubbling data to root} 	
+\end{figure}
+
+\autoref{Figure: Bubbling to root} demonstrates the decision making process to determine how the controller bubbles the data. Any controller that does not hold important model data will only bubble any information sent to it to the root controller. Any controller that has a model will also bubble its own model and model data received upwards. Therefore the global model is slowly accumulated by bubbling up the data. When it reaches the root controller the global model has been built and is saved for later use.
+
+A controller holding model data stores the state of the controller which is represented by a HTML view. Each view is bound to its specific model using two way data binding. This means when the view is changed by the user the model will be automatically updated.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.6]{../figures/authoring_tool/two_way_binding.png} 		
+	\caption{\label{Figure: Authoring two way binding} Two way binding bubbling method illustrated in an state diagram} 	
+\end{figure}
+
+\autoref{Figure: Authoring two way binding} shows the process of the view changing and updating its parent. Each time the model is updated the controller runs any appropriate action to change the display of the view then sends the updated model to its parent. This change is bubbled upwards each level until it reaches the root controller who stores the new data in its global model.
+
 \section{Conclusion}
