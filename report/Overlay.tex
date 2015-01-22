@@ -87,58 +87,6 @@ flexible and concise, and the isolation provided by the \gls{webworker} mitigate
 many security concerns with having an application that executes data given as
 input as code.
 
-\begin{lstlisting}[language=javascript,caption={Code for loading an annotation},label={code:questionworker} ]
-importScripts("../questions-worker.js");
-
-loadAnnotations({
-  "first-annotation": {
-    // the time that this annotation will show up
-    // (in seconds from the start of the video)
-    time: 1,
-    items: [
-      {
-        id: "first-question",
-        type: "single",
-        question: "What is the moon made of?",
-        options: [
-          {
-            name: "cheese"
-          },
-          {
-            name: "cheeese"
-          },
-          {
-            name: "cheeeeeese"
-          }
-        ],
-        correctAnswer: "cheese"
-      },
-      {
-        id: "check-question",
-        type: "single",
-        question: "Answer incorrect, do you want to review the video",
-        options: [
-          {
-            name: "Yes"
-          },
-          {
-            name: "No"
-          }
-        ],
-        action: function(questions, video) {
-          if (questions.get("check-question").response === "Yes") {
-            video.setTime(0);
-          }
-        },
-        condition: function(questions) {
-          return questions.get("first-question").isNotCorrect();
-        }
-      }
-    ]
-  }
-});
-\end{lstlisting}
-
 Every item in an annotation can have an action and condition function. The
 action function is called when a item finishes. The action function is given
 the state of the annotations, such that it can make decisions and then affect
@@ -176,6 +124,9 @@ Single question is a sub type of Multiple question where min and max (the minimu
 
 Similarly, the stars question is similar to the range question where the step value is 1.
 
+\autoref{code:questionworker} shows an example of the quiz definition file that could be used by the VideogularQuestions plugin.
+
+
 \begin{figure}
 \centering
 \includegraphics[width=12cm]{../figures/questions_class_diagram.png}
@@ -186,14 +137,9 @@ Similarly, the stars question is similar to the range question where the step va
 \section{Front End}
 \label{Section:Front end}
 
-The appearance of the overlay depends on the question type to be shown. The
-layout of these different types was carefully considered for accessibility and
-ease of use. Mockups were made and user studies were done in collaboration with
-a third year project student.
+The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made and user studies were done in collaboration with a third year project student.
 
-A set of example \gls{CSS} files are supplied with the project that layout the
-questions according to the feedback received. Developers using any part of the
-project can use these styles as is, or modify/develop their own.
+A set of example \gls{CSS} files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own.
 
 \section{Back End}
 \label{Section:Back end}
@@ -201,16 +147,9 @@ project can use these styles as is, or modify/develop their own.
 \subsection{Web Workers}
 \label{Subsection:WebWorkers}
 
-Web workers give a good way of running (sandboxed) background scripts that are
-computationally intensive. They are a way of multithreading - allowing multiple
-scripts to run simultaneously, avoiding the problem of unresponsive pages due
-to long running scripts. This is done by using message passing.
+Web workers give a good way of running (sandboxed) background scripts that are computationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing.
 
-For example, when an answer is submitted by the user this would sent a message
-to the \gls{webworker} containing the answer. The \gls{webworker} can then process this
-information without affecting the responsiveness of the page. Once the
-processing is complete the \gls{webworker} can send a message back to the page to
-tell it what to do next.
+For example, when an answer is submitted by the user this would sent a message to the \gls{webworker} containing the answer. The \gls{webworker} can then process this information without affecting the responsiveness of the page. Once the processing is complete the \gls{webworker} can send a message back to the page to tell it what to do next.
 
 \begin{figure}
 
@@ -248,34 +187,20 @@ tell it what to do next.
 \autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the above example is used. Initially, the worker sends an annotationStart message which contains the times which annotations will
 occur.
 
-When the first time is reached, the front end sends a annotationStart
-message to the worker, containing the id of that annotation. The worker then
-replies with a showQuestion message, containing the contents of the first
-question. Note that here, the functions are not sent to the front end, just the
-JSON representation of the question is sent.
+When the first time is reached, the front end sends a annotationStart message to the worker, containing the id of that annotation. The worker then replies with a showQuestion message, containing the contents of the first question. Note that here, the functions are not sent to the front end, just the JSON representation of the question is sent.
 
-When the user responds to the question, that response is send to the worker in
-a questionResult message. In this case, the user responded incorrectly,
-therefore, when the \gls{webworker} evaluated the condition on the second question,
-it evaluated to false. This meant that the worker replied with another
-showQuestion message.
+When the user responds to the question, that response is send to the worker in a questionResult message. In this case, the user responded incorrectly, therefore, when the \gls{webworker} evaluated the condition on the second question, it evaluated to false. This meant that the worker replied with another showQuestion message.
 
-Once the user responds to the second question, the response is again sent to
-the \gls{webworker}. In this case, this was the final question in the annotation, so
-the worker responds with an endAnnotation message.
+Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the annotation, so the worker responds with an endAnnotation message.
 
 \section{Interaction with Analytics}
 \label{Section:vgQuestions Analytics}
 
 \todo{Move this to subsection within analytics section, add forward reference}
 
-Since we were writing a series of plugins we wanted to ensure that no one
-plugin required another to be used effectively. Instead of a custom method of
-communicating between two or many possible plugins we decided to use the
-publish/subscribe model to communicate with the vgAnalytics plugin.
+Since we were writing a series of plugins we wanted to ensure that no one plugin required another to be used effectively. Instead of a custom method of communicating between two or many possible plugins we decided to use the publish/subscribe model to communicate with the vgAnalytics plugin.
 
-Using the Angular broadcast system we could publish events on channels which
-then would be received by anyone who subscribed to that channel.
+Using the Angular broadcast system we could publish events on channels which then would be received by anyone who subscribed to that channel.
 
 \begin{lstlisting}[language=javascript,caption={AngularJS demonstrating the message passing interface used in the Analytics plugin},label={code:analytics_message_passing}]
 $rootScope.$broadcast('analytics','show_question', data);
@@ -284,12 +209,8 @@ $rootScope.$broadcast('analytics','show_question', data);
 In \autoref{code:analytics_message_passing} we broadcast to the ``analytics'' channel an event with the name
 ``show\_question'' with the content of the data variable.
 
-The vgAnalytics plugin listens to the ``analytics'' channel and they will
-receives all messages published to this. Therefore vgQuestions can publish
-information which will be received by the vgAnalytics plugin. If it has not
-been instantiated then these messages will not cause any errors which is one of
-the important factors in picking a communication method between the various
-plugins.
+The vgAnalytics plugin listens to the ``analytics'' channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not
+been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins.
 
 By using the publish/subscribe model we can design the plugin so that they will work together when both are used but have no dependencies on each other. This allows any of our plugins to be used together or separately as the
 user wishes.

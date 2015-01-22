@@ -1,0 +1,63 @@
+\chapter{Code Fragments} \label{Chapter:Code Fragments}
+
+\chapterpreamble{``Measuring programming progress by lines of code is like measuring aircraft building progress by weight.''  \\ - \small{Bill Gates}}
+
+\section{Videogular Examples Code Fragments}
+
+These code fragments have been taken from the videogular Examples repository \autoref{Section:Repo_videogular-questions-example}.
+
+\subsection{Videogular Questions Example Question Definition File}
+
+\autoref{code:questionworker} is an example of the Question definition file used by the VideogularQuestions repository.
+
+\begin{lstlisting}[language=javascript,caption={Code for loading an annotation},label={code:questionworker} ]
+importScripts("../questions-worker.js");
+
+loadAnnotations({
+  "first-annotation": {
+    // the time that this annotation will show up
+    // (in seconds from the start of the video)
+    time: 1,
+    items: [
+      {
+        id: "first-question",
+        type: "single",
+        question: "What is the moon made of?",
+        options: [
+          {
+            name: "cheese"
+          },
+          {
+            name: "cheeese"
+          },
+          {
+            name: "cheeeeeese"
+          }
+        ],
+        correctAnswer: "cheese"
+      },
+      {
+        id: "check-question",
+        type: "single",
+        question: "Answer incorrect, do you want to review the video",
+        options: [
+          {
+            name: "Yes"
+          },
+          {
+            name: "No"
+          }
+        ],
+        action: function(questions, video) {
+          if (questions.get("check-question").response === "Yes") {
+            video.setTime(0);
+          }
+        },
+        condition: function(questions) {
+          return questions.get("first-question").isNotCorrect();
+        }
+      }
+    ]
+  }
+});
+\end{lstlisting}
