@@ -155,9 +155,22 @@ The added feature of displaying the frequencies was also tested. These displayed
 
 \section{Authoring Tool}
 
-Accessibility testing, List of objectives
+List of objectives
 
 Deliverable report had a basic list of actions to "test"
+
+\subsection{Accessibility}
+The authoring tool was found to be generally accessible conforming to most of the WCAG 2.0 standards. The areas that were lacking were providing textual alternatives and error checking.
+
+There were no alternatives provided for the video. However as this would be used with Synote transcripts could be used from there. In future, support for extra accessibility features such as transcripts, captions or signed versions could be included in the authoring tool.
+
+In creating the questions there is no help provided for error checking. This is because it was decided not to narrow the options available to the users. In the occurrences where errors are identified these are generally highlighted by surrounding the component with a red border. More information on how the system would be used would be required in order to create helpful error messages.
+
+\todo{Chrome's lack of multiple select}
+
+Another issue found was in the use of the \texttt{\textless select\textgreater} element as the colour of highlighted options is not editable in the \gls{CSS}. To solve this issue the elements would all need rewriting to take a completely different structure to allow the \gls{CSS} to modify the colours used.
+
+Accessibility in the authoring tool was good but there are improvements that could be made in future including adding support for accessibility features such as subtitles, providing error correction support and rewriting the \texttt{\textless select\textgreater} elements to allow editing of colours.
 
 
 \section{Conclusion}
