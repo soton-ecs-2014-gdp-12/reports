@@ -14,6 +14,10 @@ During development we used a number of testing methods for each section of the p
 
 \section{Tools}
 
+\subsection{JSHint}
+
+JSHint is a tool for static code analysis of JavaScript, which can detect many instances of bad coding practice in source files before they cause errors. Included in each of our repositories which contain JavaScript is a configuration file for JSHint, which enforces use of ECMAScript 5 Strict Mode, and prohibits use of undeclared variables or type coercion. JSHint was run at regularly during the project and any issues it highlighted were fixed.
+
 \subsection{karma}
 
 Karma allows tests to be run in browsers (or headlessly) in an automated manor.  It then also aggregates and displays the results making it easy to see if the tests have passed or failed.
