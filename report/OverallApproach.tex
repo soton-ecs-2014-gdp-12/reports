@@ -109,10 +109,13 @@ Video and question events should be emitted from the overlaid video player in or
 \textit{Users may have visual impairments such as colour blindness so they may be able to use the application only if it is in certain colours.}
 \item \textbf{User interface} \label{Req:User interface} \hfill \\ A Graphical User Interface (GUI) must be provided for the Authoring Tool so that non-technical users can create quizzes.
 
-\textit{One of the client's requirements to reduce the barrier to entry.}
+\textit{One of the client's requirements is to reduce the barrier to entry.}
 \item \textbf{Documentation} \label{Req:Documentation} \hfill \\ The plugins built should have usage examples documented to allow less technical users to implement their own system.
 
-\textit{One of the client's requirements to reduce the barrier to entry.}
+\textit{One of the client's requirements is to reduce the barrier to entry.}
+\item \textbf{Testing Examples} \label{Req:Testing Examples} \hfill \\ The plugins built should have usage examples created as a proof of concept.
+
+\textit{One of the client's requirements is ensure the framework is easy to integrate.}
 \item \textbf{Server architecture} \label{Req:Server architecture} \hfill \\ Any server behaviour should be accessed by \gls{REST} calls with no requirement that all servers should be on the same host.
 
 \textit{One of Yunjia's requirements to allow more easy integration into Synote.}
@@ -187,13 +190,7 @@ The heatmap plugin is used by the analytics frontend as a way of visualising the
 \section{Testing}
 \label{Section:Overall_Testing}
 
-Talk about how the testing needs to be done.
+Software testing is necessary on projects of all sizes, especially on large projects such as this. To ensure quality throughout the project each part of the framework has been thoroughly tested.
 
-Example sites will be created using the angular.
-
-example sites (angular-seed)
-
-end to end
-
-unit
+One method of doing that is with example sites, this satisfies \cref{Req:Documentation} and \cref{Req:Testing Examples}. Due to the free-form nature of AngularJS's project structure we decided to sue one of the industry standards, angular-seed\footnote{url{https://github.com/angular/angular-seed}}. angular-seed is a skeleton in which one can create AngularJS web apps. It includes two testing frameworks all ready set up, Karma and Jasmine. More details about Karma, Jasmine and other tests performed can be found in \autoref{Chapter: Testing}.
 
