@@ -4,7 +4,6 @@
 
 \chapter{Analytics} \label{Chapter: Analytics}
 
-
 \begin{preamble}
 	\preamblequote{I never guess. It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.}{Sir Arthur Conan Doyle, Author of Sherlock Holmes stories}
 \end{preamble}
@@ -54,7 +53,7 @@ stop & the video is stopped & The time the video was stopped at \\
 
 The plugin itself watches videogular, and triggers events when videogular's state changes. Other plugins can report events by sending a event to angular with the name ``analytics''.
 
-The plugin will then forward all the events to all of the servers.
+The plugin will then forward all the events to all of the servers. It does this in a standard format that make it easy to process all the events, and just select the ones that are required for the analysis that is being performed.
 
 If the plugin is not in use, then any events reported by other plugins will simply not be processed, as there will be nothing listing for the events called ``analytics''.
 
