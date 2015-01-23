@@ -1,11 +1,12 @@
 %% ----------------------------------------------------------------
 %% VideoPlayer.tex
 %% ---------------------------------------------------------------- 
-\chapter{Video Player} 
+
+\chapter{Video Player}
 \label{Chapter:Video Player}
 
 \begin{preamble}
-Specific improvements to \gls{Videogular} were made up three main sections, accessibility, compatibility and scrub bar plugin creation. Each were conducted independently and the open source contributions accepted readily back into the main \gls{Videogular} project.
+Specific improvements to \gls{Videogular} were made up three main sections, accessibility, compatibility and scrub bar plugin creation. Each were conducted independently and the contributions accepted readily back into the \gls{Videogular} project.
 
 The main goals for this part of the project were to:
 \begin{itemize}
@@ -17,13 +18,13 @@ The main goals for this part of the project were to:
 \end{itemize}
 \end{preamble}
 
-\section{Accessibility} 
+\section{Accessibility}
 \label{Section:Accessibility}
 \gls{Videogular} has the option to display HTML controls for the video player, replacing the browser's built-in controls. However, when the project began there was no way for the user to access these controls without a mouse. The main problem was that the controls did not identify themselves as interactive elements, and so could not be `focused' (selected with the tab key). This also prevented them from being picked up by a screen reader.
 
 Some online video players allow the player as a whole to be focused, and then controlled with various keyboard shortcuts. The problem with this method is that accessibility aids, such as screen readers, will not have information on these controls, and so users of those technologies will have to be instructed. It is also not accessible to users of a clicker, who can only press one key and so require individually focusable controls.
 
-\subsection{Design and Implementation} 
+\subsection{Design and Implementation}
 Instead, the controls were made individually focusable by using semantic markup where possible, and \gls{ARIA} attributes otherwise. When a control is in focus, a visual indicator is displayed to highlight it. Buttons can then be pressed using the space bar (\fref{Figure:Accessibility/Screenshots/Button}); the scrub bar can be moved using the left and right arrow keys (\fref{Figure:Accessibility/Screenshots/ScrubBar}); and the volume can be adjusted using the up and down arrow keys when the mute button is focused (\fref{Figure:Accessibility/Screenshots/Volume}).
 
 \begin{figure}
@@ -46,14 +47,14 @@ Instead, the controls were made individually focusable by using semantic markup 
 	\label{Figure:Accessibility/Screenshots}
 \end{figure}
 
-\subsection{Conclusions} 
+\subsection{Conclusions}
+
 This solution is not completely clicker-accessible, but could be made so by introducing buttons to skip forwards or backwards, and to raise or lower the volume. It is a significant improvement on the original state, as keyboard users can now use the player. The improvements were submitted to the \gls{Videogular} project\footnote{\url{https://github.com/2fdevs/videogular/pull/108}}, and are now part of \gls{Videogular} 0.6.1.
 
-
-\section{Compatibility} 
+\section{Compatibility}
 \label{Section:Compatibility}
 
-One of the main focuses of this part of the project was to make sure the application was compatible with a range of platforms, operating systems and devices. The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes. 
+One of the main focuses during this part of the project was to make sure the application was compatible with a range of platforms, operating systems and devices. The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes.
 
 Apple iPhones provided a problem as iOS forced the video to be played in fullscreen mode. This is a design choice and there is no way to play the video inline, directives to do this are ignored by the browser.
 
@@ -65,7 +66,7 @@ The overlay which displays the questions that the user is asked appears above th
 
 The best user experience with this application is using it on a desktop that has an updated browser. This will definitely work and display as intended. As the screen size of the device gets smaller the user experience is significantly reduced as the video and poll overlay will be much smaller than recommended. To support a number of browsers and operating systems a range of video formats are supplied to the \gls{Videogular} plugin so that the browser may pick one that can be played.
 
-\section{Scrub Bar Extensions} 
+\section{Scrub Bar Extensions}
 \label{Section:Scrub Bar Extensions}
 
 \gls{Videogular} has been designed and implemented in such a way as to allow for directive-based plugins to be developed to extend its functionality. When using the \gls{Videogular} Controls (vgControls) the native browser controls are replaced with an HTML based interface. It is this interface we have improved the accessibility of, and it is the scrub bar within this interface we have created plugins for.
@@ -86,20 +87,23 @@ One problem found during implementation was that the cuepoints cannot be display
 \subsubsection{Further Work}
 In future, the ability to specify a different \gls{CSS} class for each cuepoint could very easily be added, allowing visual differentiation of the markers. It would also be useful to make the cuepoints more accessible, for example by providing alternative text for screen readers.
 
-
 \subsection{Videogular Heatmaps - vgHeatmap}
 \gls{Videogular} Heatmaps is a \gls{Videogular} plugin for giving areas of the scrub bar different colours. In our examples this is used to give a visual representation of the number of times each section of the video has been watched.
 
 \subsubsection{Design and Implementation}
 An early design decision was to use \gls{CSS} to colour the sections as this would allow different colours to be specified (see \cref{Req:Use of colour}). This also would allow developers to develop their own colour schemes with meanings if they desired.
 
-Sections and colours can be specified in a \texttt{config} object which is given as a parameter when the heat map is used. 
+Sections and colours can be specified in a \texttt{config} object which is given as a parameter when the heat map is used.
 
 The format for defining the configuration parameters was made consistent with vgCuepoints (see \autoref{Subsection:vgCuepoints}) to improve usability.
 
 The same issue that was encountered with the Cuepoints plugin, which prevents display until the video plays, was a problem for the heat map plugin. This was accepted as the colouring does not have any context for a user until they have watched the video.
 
-An extra option that was added for improved accessibility was the ability to label each heat map section with the frequency. Extra hidden text was added so that a screen reader user could still access all the data shown in the heat map. 
+An extra option that was added for improved accessibility was the ability to label each heat map section with the frequency. Extra hidden text was added so that a screen reader user could still access all the data shown in the heat map.
 
-\section{Conclusions} 
-\todo{Overarching video player conclusion}
+\section{Conclusions}
+
+Several improvements to Videogular were made during the course of the project. All of these have been adopted by the Videogular project. There are issues with the standard web browser in iOS which cannot be fixed.
+
+To implement the cuepoints and heatmap functionality in the scrub bar, two Videogular plugins were written.
+
