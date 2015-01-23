@@ -192,6 +192,14 @@ One of the analytics used in the example site is the \gls{Videogular} Heatmap. W
 
 The added feature of displaying the frequencies was also tested. These displayed well and matched the frequencies represented by the colours used. A screen reader could still access the data as it was declared in hidden text.
 
+\subsubsection{Accessibility}
+
+The example analytics site generally conformed to the WCAG 2.0 standards (see \autoref{Chapter:Accessibility Standards}). The non-conformances found were a lack of alternatives for the video and graphs.
+
+The video issues were the same as for the Videogular Questions Example site (see \autoref{Subsection: vqe accessibility}). However the cuepoints were not used. The heatmaps had a textual option that could be displayed which gave additional methods for conveying the information.
+
+Using graphs has created many accessibility issues for visually impaired or cognitively impaired users as the data is not described in text. This would be an important consideration for any developer using our plugins in their own site. As a proof-of-concept our example site purely shows that graphs could be used as a method of automatically producing a visual representation of the data.
+
 \section{Authoring Tool}
 
 The authoring tool is primary deliverable as it is the only item that is designed as a tool and not as a proof of concept example site deliverable. Therefore the primary types of testing are deliverable signoff tests and accessibility testing.
