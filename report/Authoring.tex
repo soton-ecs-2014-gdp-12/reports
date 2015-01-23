@@ -39,6 +39,7 @@ Each section of the page had to have its own directive so that independent behav
 Angular allowed the dynamic nature of the data to define the appearance of the page. Sections could be set to appear only when certain attributes were set using ng-switch statements. This meant one section could potentially show many different elements depending on what was selected elsewhere on the page.
 
 \subsection{Data Bubbling}
+\label{Section:Authoring_Data_bubbling}
 
 With the authoring tool we have leveraged the ability to use two way binding and watches with AngularJS. This allows us to template a number of reusable elements such as the time picker and means we don't have to rewrite the class each time we wish to use it. This has reduced the time taken to produce the authoring tool.
 
@@ -78,7 +79,65 @@ A controller holding model data stores the state of the controller which is repr
 
 \subsection{Exporting of Data}
 
-Descriptions how exporting the data works
+As the user is selecting the options for their quiz, the data will be bubbled up as described in \autoref{Section:Authoring_Data_bubbling}. Once they have finished creating their quiz they will be able to press the export button. When this is pressed the global model is reviewed, and the corresponding JavaScript file is generated. \todo{Agree name for schema/javascript file and rename it all}
+
+\begin{lstlisting}[language=javascript,caption={Base template for authoring tool JavaScript file generation},label={code:authoringToolTemplate} ]
+test
+/* jshint worker: true */
+"use strict";
+
+importScripts("WORKER_URL");
+
+/* global loadAnnotations */
+loadAnnotations(ANNOTATION_DATA);
+\end{lstlisting}
+
+First the global options are processed and the basic file is created. This uses a default template which is stored in the authoring tool. The current template used is shown in \autoref{code:authoringToolTemplate}. This has two sections that are replaced with content that are generated in a later stage. These are `WORKER\_URL' and `ANNOTATION\_DATA'. `WORKER\_URL' is currently replaced by the URL as guessed by the authoring tool. This may need to be modified if the vgQuestions plugin has been modified to move the web worker position. `ANNOTATION\_DATA' is replaced with the generated question data that is generated below.
+
+Once the template has been created, each question set is processed. This involves taking all the settings for the question set, storing it the question set format, and then processing and generating JavaScript for each question in the question set.
+
+When generating the JavaScript for each question the question type is used to generate a set of attributes specific to that question type. The attributes generated are as defined in the class diagram \autoref{Figure:questions_class_diagram} and these are added to the question.
+
+\begin{lstlisting}[language=javascript,caption={Base template for a question asking if the viewer wishs to review the video section they answered incorrectly},label={code:authoringToolTemplateRewatchSection} ]
+{
+	id: "incorrect-QUESTION_ID",
+	type: "single",
+	question: "Answer incorrect, do you want to review the video",
+	options: [
+		{
+			name: "Yes"
+		},
+		{
+			name: "No"
+		}
+	],
+	action: function(questions, video) {
+		var question = questions.get("QUESTION_ID");
+		if (question.response !== question.correctAnswer) {
+			video.setTime(TIME);
+		}
+	},
+	condition: function(questions) {
+		return questions.get("QUESTION_ID").isNotCorrect();
+	}
+}
+\end{lstlisting}
+
+For some questions, there will be a number of different annotation questions added to the question set. One example is when the quiz author has selected that a user may return to a specific point if they fail a question. This will add a question asking the user if they wish to review the section of the video containing the answer to the question. This template is shown in \autoref{code:authoringToolTemplateRewatchSection} and has the variables `QUESTION\_ID' and `TIME' which will be replaced with the data from the question the user has enabled the option on.
+
+Once an individual question has been generated the next question in the question set will be processed.
+
+Once all of the questions in a question set has been processed it will continue onto the next question set.
+
+Some options allow you to add results at the end of the video. These settings are stored up and once the all question sets have been processed this is added onto the end of the `ANNOTATION\_DATA' string.
+
+\begin{lstlisting}[language=javascript,caption={The final JavaScript file is offered for downloading using a data blob URL},label={code:authoringToolFileDownload} ]
+var url = "data:text/json;charset=utf8," + encodeURIComponent(data);
+window.open(url, "_blank");
+window.focus();
+\end{lstlisting}
+
+Once all of these options have been calculated the final template is produced. The template string have their content inserted to generate the finished JavaScript file. To allow the user to download the file easily we construct a blob url with the code in \autoref{code:authoringToolFileDownload}. Without using a data URL we would require the user to copy the text generated and save it. As this was not a user friendly option so we investigated possible other uses. Offering a file for download was problematic because JavaScript does not have any write permission for files since it is client side. The data blob URL solution provides an acceptable solution by mocking up file URL with data. This may encounter issues with larger files due to the max length permitted in a URL but we have not yet seen these issues occur.
 
 \subsection{Preview tool}
 
@@ -94,3 +153,5 @@ It works, is accessible, other things.
 		\includegraphics[width=\textwidth]{../figures/authoring_tool_example.png} 		
 	\caption{\label{Figure:Authoring_Tool} Image showing the final authoring tool being used} 	
 \end{figure}
+
+There may be some more work needed to investigate how large a JavaScript quiz file may be produced when using the data blob URL approach to allow the user to download the file. While no limits problems have occurred during testing this is something that will need to be kept in mind.
