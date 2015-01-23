@@ -1,0 +1,58 @@
+\chapter{Firefox Bug Report} \label{Chapter:Firefox Bug Report}
+
+\begin{preamble}
+	This is the contents of the bug we filed in the Mozilla bug tracker (number 1106045) \citep{FirefoxFocusLoopBug}, reporting the occurrence of ``focus loops'' in certain HTML structures. It was later discovered that these structures were invalid HTML, and so the bug will likely go unfixed.
+\end{preamble}
+
+\section{What did you do?}\label{what-did-you-do}
+
+I was testing a Web application for keyboard accessibility. In the
+application there were some HTML structures like the following:
+
+\begin{lstlisting}[language=html]
+<a href="#">
+    <div>
+        The link text
+        <button type="button">Button 1</button>
+        <button type="button">Button 2</button>
+    </div>
+</a>
+\end{lstlisting}
+
+(I have created a JSFiddle illustrating the problem at
+\url{http://jsfiddle.net/jjxuL1tz/5/}.)
+
+I attempted to tab through this structure to focus elements further on
+in the HTML.
+
+\section{What happened?}\label{what-happened}
+
+I became stuck in a focus cycle. That is, pressing Tab when Button 2 was
+focussed returned focus to the parent
+\texttt{\textless{}a\textgreater{}} tag, so the focus went as follows:
+
+\begin{verbatim}
+<a> -> Button 1 -> Button 2 -> <a> -> Button 1 -> ...
+\end{verbatim}
+
+When \texttt{\textless{}a\textgreater{}} was focussed, I could press
+Shift+Tab to get out of the cycle and focus the previous element in the
+document, but I could not focus the element after the cycle without
+using the mouse.
+
+\section{What should have happened?}\label{what-should-have-happened}
+
+With Button 2 focussed, I should have been able to press Tab to focus
+the next element on the page.
+
+\section{Workaround}\label{workaround}
+
+The problem does not occur if the
+\texttt{\textless{}button\textgreater{}}s are replaced with
+\texttt{\textless{}a\textgreater{}}s; indeed, adding one
+\texttt{\textless{}a\textgreater{}} tag as a sibling of the
+\texttt{\textless{}button\textgreater{}}s fixes the problem, even if it
+has its \texttt{tabindex} attribute set to -1.
+
+An example of this can be found in the JSFiddle
+(\url{http://jsfiddle.net/jjxuL1tz/5/}).
