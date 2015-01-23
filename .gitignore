@@ -28,3 +28,4 @@
 *.bak
 *.bib~
 .gitignore~
+*.db
