@@ -54,7 +54,7 @@ This solution is not completely clicker-accessible, but could be made so by intr
 \section{Compatibility}
 \label{Section:Compatibility}
 
-One of the main focuses during this part of the project was to make sure the application was compatible with a range of platforms, operating systems and devices. The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes.
+One of the main focuses during this part of the project was to make sure the application was compatible with a range of platforms, operating systems and devices (\cref{Req:Browser compatibility}, \cref{Req:OS compatibility}). The first challenge was to ensure that the player and overlay displayed correctly at a variety of resolutions and screen/window sizes.
 
 Apple iPhones provided a problem as iOS forced the video to be played in fullscreen mode. This is a design choice and there is no way to play the video inline, directives to do this are ignored by the browser.
 
@@ -63,6 +63,8 @@ This meant that the video paused at the correct time but as the video is in the 
 Android phones correctly interpret the inline directive and will properly play this. This ensures that the overlay is correctly applied and usable. This has been the primary focus on testing on mobile devices as it represents a very large portion of the market.
 
 The overlay which displays the questions that the user is asked appears above the video and obstructs the view of the video. Placing the overlay in the middle of the screen requires a large amount of \gls{CSS} to correctly locate it on the screen for mobile and smaller sized devices. There are still some issues with the popup location on some mobile devices because the browser reports one screen size and uses another. Until these devices are compliant with the specification it is time consuming to write code to fix each individual case.
+
+All tablets tested, including iOS and android tablets display the popup fine. This is because they allow a video to be played inline and have content appear above the video. They also did not need a large amount of \gls{CSS} to style the popup as they normally had laptop sized screens (> 1024 pixels wide) which did not require any video scaling (video was at max size 700px wide).
 
 The best user experience with this application is using it on a desktop that has an updated browser. This will definitely work and display as intended. As the screen size of the device gets smaller the user experience is significantly reduced as the video and poll overlay will be much smaller than recommended. To support a number of browsers and operating systems a range of video formats are supplied to the \gls{Videogular} plugin so that the browser may pick one that can be played.
 
