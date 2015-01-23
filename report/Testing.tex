@@ -172,6 +172,8 @@ In creating the questions there is no help provided for error checking. This is 
 
 Two keyboard accessibility issues were found, both of which were due to browser bugs. The first was that Google Chrome and Chromium did not allow multiple items to be selected in a \texttt{\textless select multiple\textgreater} element using only the keyboard. During the course of the project, a fix was made to Google Chrome and Chromium which allowed multiple \textit{adjacent} items to be selected with the keyboard \citep{ChromiumMultipleSelectBug}, which is an improvement but still not a complete fix.
 
+The second keyboard accessibility issue was that collapsible section headings caused ``focus loops'' in Mozilla Firefox, where pressing the Tab key from the last button on the heading caused the focus to move back to the heading itself, preventing the user from focussing any content after the heading. This was reported on the Mozilla bug tracker \citep{FirefoxFocusLoopBug} (see \autoref{Chapter:Firefox Bug Report}), where another user pointed out that the HTML causing the bug was invalid. We rewrote the HTML to be valid, which fixed the issue.
+
 Another issue found was in the use of the \texttt{\textless select\textgreater} element as the colour of highlighted options is not editable in the \gls{CSS}. To solve this issue the elements would all need rewriting to take a completely different structure to allow the \gls{CSS} to modify the colours used.
 
 Accessibility in the authoring tool was good but there are improvements that could be made in future including adding support for accessibility features such as subtitles, providing error correction support and rewriting the \texttt{\textless select\textgreater} elements to allow editing of colours.
