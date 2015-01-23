@@ -161,6 +161,9 @@ Load testing
 
 \subsection{Deliverable signoff tests}
 
+These tests were presented to the client as the deliverable items for the example analytics tool.
+
+These tests were ran on the analytics tool example using preloaded data so that we had a repeatable set of data that was always valid.
 
 \begin{center}
 \begin{longtable}{|L{0.9}|L{0.03}|} 
@@ -170,11 +173,16 @@ Load testing
 \hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
 \multicolumn{2}{c}{Continues on the next page...} \endfoot
 \endlastfoot
-Pressing \keys{Export} will provide you with a \gls{DF} which can be used. & \CheckmarkBold \eoline
-Pressing \keys{Preview} will reset the video back to the start, load the questions into the preview, and begin playing & \CheckmarkBold \eoline
-All 5 question types are implemented and, as suggested, the Single choice question (with radio buttons) is merged with the Multiple choice question. & \CheckmarkBold \eoline
+All events are listed at the top of the events log page, including the type and details of the events & \CheckmarkBold \eoline
+The sections that the users have watched are correctly calculated and shown at the bottom & \CheckmarkBold \eoline
+Watched video segments are calculated correctly and show how many times all users have viewed a section. & \CheckmarkBold \eoline
+The results page shows the user responses. & \CheckmarkBold \eoline
+The results page also shows correct answers and whether users rewatched sections. & \CheckmarkBold \eoline
+The ``\% watched by correct answers'' and ``Time watched by correct answers'' graphs show two ways you could represent the data in a different way. & \XSolidBrush \eoline
 \end{longtable}
 \end{center}
+
+Here the final requirement was queried by the customer. The example graphs shown did not have an vertical axis. This was fixed by adding an axis after the customer meeting however during the meeting this did not affect signoff since it was an example of possible graphs that could be created.
 
 \subsection{Front End}
 
