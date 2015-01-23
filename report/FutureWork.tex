@@ -9,7 +9,7 @@ This framework is very much just the beginning, there are a number of interestin
 
 \section{Introduction}
 
-During the project we have found a number of areas that could have been expanded. Some of these we have looked into but have not had time to further add to the project and others have been suggested as points of future work by our client. The most important items of future work have been detailed below.
+During the project we have found a number of areas that could have been expanded. Some of these we have looked into but have not had time to further add to the project and others have been suggested as points of future work by our client. A number of the important items of future work have been detailed below.
 
 \section{Integration with Synote}
 
@@ -33,11 +33,13 @@ This was not worked on due to the possible time requirement and was decided out 
 
 \section{Video Encoding}
 
-Video can be in many formats, there is software to perform the conversion, but to make this usable and transparent to the end user it would need to be integrated in to the video hosting/authoring tool.
+To display video using the default Videogular plugin you need to have the video in a number of formats to ensure all browsers can play the video. Therefore if the user wishes to use their own video they will need to manually convert the video to all required formats before it will be usable on all operating systems/browsers.
 
-The workflow would be as follows. User opens the authoring tool, and uploads a video. The server handing the video upload would then convert the video in to the set of required formats (assuming it is not in the single required format already).
+The process of converting the video to each of the required formats is not triveal. In addition finding what video formats are required requires knowledge of what you are looking for. This has a high barrier to entry and therefore could prevent possible users being able to use the tools.
 
-This would be helpful to reduce the barrier to entry (\cref{Req:User interface}) as the user would not need to convert the video to the correct format.
+There are a number of open source video conversion tools that could be used. An idea for an improvement would be to modify the authoring tool to allow a user to upload a video. Once this has been uploaded it will be automatically stored and converted to the correct formats. The server would then store these new formats and either set up the quiz with the video or give the user the newly converted video URL's for inclusion to their quiz.
+
+This would be helpful to reduce the barrier to entry (\cref{Req:User interface}) as the user would not need to convert the video to the correct format which can be highly technical.
 
 \section{Mobile Interfaces}
 
