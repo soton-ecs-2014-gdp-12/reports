@@ -164,13 +164,13 @@ Deliverable report had a basic list of actions to "test"
 \subsection{Accessibility}
 \label{Section:Testing_Authoring_tool_accessibility}
 
-The authoring tool was found to be generally accessible conforming to most of the WCAG 2.0 standards. The areas that were lacking were providing textual alternatives and error checking.
+The authoring tool was found to be generally accessible conforming to most of the \gls{WCAG} 2.0 standards. The areas that were lacking were providing textual alternatives and error checking.
 
 There were no alternatives provided for the video. However as this would be used with Synote transcripts could be used from there. In future, support for extra accessibility features such as transcripts, captions or signed versions could be included in the authoring tool.
 
 In creating the questions there is no help provided for error checking. This is because it was decided not to narrow the options available to the users. In the occurrences where errors are identified these are generally highlighted by surrounding the component with a red border. More information on how the system would be used would be required in order to create helpful error messages.
 
-\todo{Chrome's lack of multiple select}
+Two keyboard accessibility issues were found, both of which were due to browser bugs. The first was that Google Chrome and Chromium did not allow multiple items to be selected in a \texttt{\textless select multiple\textgreater} element using only the keyboard. During the course of the project, a fix was made to Google Chrome and Chromium which allowed multiple \textit{adjacent} items to be selected with the keyboard, which is an improvement but still not a complete fix.
 
 Another issue found was in the use of the \texttt{\textless select\textgreater} element as the colour of highlighted options is not editable in the \gls{CSS}. To solve this issue the elements would all need rewriting to take a completely different structure to allow the \gls{CSS} to modify the colours used.
 
