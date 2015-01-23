@@ -12,8 +12,7 @@
 Having reviewed the \href{Chapter:Previous Work}{previous work} some design decisions for the project could be proposed to the client:
 \begin{itemize}
 \item A basic quiz standard would need to be defined to allow interoperability between the authoring tool and overlaid video player. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
-\item One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.
-\item A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
+\item One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.  \item A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
 \item The overlaid video player will need to emit events that can be captured and used to analyse the viewing patterns of the interactive videos. This would allow the viewing patterns to be compared and contrasted with traditional videos.
 \end{itemize}
 \section{Client Requirements}
@@ -128,7 +127,11 @@ By abstracting all calls to using \gls{REST} this means that other services will
 These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
+
+\todo{The following paragraph needs reworking a bit}
 As the expected behaviour of our plugins would depend on the application they were used in a set of examples would be required to test our plugins. The following set of deliverables was agreed in order to meet the requirements:
+
+\todo{Should this list be moved somewhere else}
 \begin{itemize}
 \item Videogular Questions: a plugin for adding polls and questions to videos
 \begin{itemize}
@@ -164,4 +167,19 @@ These elements would have a range of interactions (see \autoref{fig:System archi
 \input{SystemArchitectureDiagram}
 \caption{System architecture diagram for the project \label{fig:System architecture diagram}}
 \end{figure}
+
+\todo{Do we need to make this diagram accessible and not use colour for the
+components?}
+
+\todo{The analytics frontend probably wants to link to the analytics server?}
+
+There are two server components shown in green on the diagram. The results server is used to store the results of polls and quizes, while the analytics server is used to store the analytics data.
+
+The four plugins around videogular are four of the main deliverables.
+
+The questions plugin can use the cuepoints plugin to display cuepoints where the questions are on the scrub bar.
+
+The questions plugin also intergrates with the analytics plugin to report events.
+
+The heatmap plugin is used by the analytics frontend as a way of visualising the data regarding how users have watched the video.
 
