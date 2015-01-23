@@ -12,6 +12,14 @@ Software testing is necessary on projects of all sizes, especially on large proj
 
 During development we used a number of testing methods for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\autoref{Chapter:Deliverable Report}).
 
+A number of sections have a deliverable signoff table. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. This was usually done during the client/supervisor meetings. During final tests we created a number 
+
+
+
+(\autoref{table:Deliverable signoff tests} that demonstrate the features that the client wanted and used these as manual regression tests.
+
+
+
 \section{Tools}
 
 \subsection{JSHint}
@@ -33,14 +41,14 @@ Jasmine was also included in Angular seed \autoref{Section:Overall_Testing}.
 \section{Videogular Questions Example} 
 \label{Section:Videogular Questions Example}
 
-The Videogular Questions Example site was written as testing and documentation for how Videogular Questions and Videogular Cuepoints could be used. This is helps to fulfil \cref{Req:Documentation} and \cref{Req:Testing Examples}.
+The Videogular Questions Example site was written as testing and documentation for how Videogular Questions, Videogular Cuepoints and Example results server could be used. This is helps to fulfil \cref{Req:Documentation} and \cref{Req:Testing Examples}.
 
 \subsection{Videogular Questions}
 \label{Subsection:Videogular Questions in example}
 
-There are several tests written for the vgQuestions plugin. These use Jasmine, and can be run in an automated way using karma.
+There are several tests written for the \gls{vgQuestions} plugin. These use Jasmine, and can be run in an automated way using karma.
 
-These tests exercise the web worker component of the vgQuestions plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
+These tests exercise the web worker component of the \gls{vgQuestions} plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
 
 The examples created in the (videogular-questions-example) repository, use individual or collections of features. These were used in the development of these features, and in the demonstration of these features to the customer.  These examples complement the Jasmine tests, as they exercise the display elements of the plugin.
 
@@ -141,7 +149,21 @@ Testing of sending events
 
 Load testing
 
+\subsection{Deliverable signoff tests}
+
+Theses relate to the deliverable report (\autoref{Chapter:Deliverable Report}) that was presented to the client and signed off. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. During tests and final work we created a number of tests (\autoref{table:Deliverable signoff tests} that demonstrate the features that the client wanted and used these as manual regression tests.
+
+\begin{longtable}{|L{0.9}|L{0.03}|} 
+\caption{\label{table:Deliverable signoff tests}Deliverable signoff tests} \\
+\hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
+\multicolumn{2}{c}{Continues on the next page...} \endfoot
+\endlastfoot
+Pressing \keys{Export} will provide you with a \gls{DF} which can be used. & \CheckmarkBold \eoline
+Pressing \keys{Preview} will reset the video back to the start, load the questions into the preview, and begin playing & \CheckmarkBold \eoline
+All 5 question types are implemented and, as suggested, the Single choice question (with radio buttons) is merged with the Multiple choice question. & \CheckmarkBold \eoline
+
 \subsection{Front End}
+
 \subsubsection{Videogular Heatmaps}
 \label{Subsubsection:Videogular Heatmaps in example}
 %Heatmap, user stories, run through
