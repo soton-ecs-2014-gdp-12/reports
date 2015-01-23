@@ -9,6 +9,7 @@ This framework is very much just the beginning, there are a number of interestin
 
 \section{Introduction}
 
+During the project we have found a number of areas that could have been expanded. Some of these we have looked into but have not had time to further add to the project and others have been suggested as points of future work by our client. The most important items of future work have been detailed below.
 
 \section{Integration with Synote}
 
@@ -18,7 +19,7 @@ Therefore during the process we have been in communication with the current deve
 
 One key requirement was that the work we are doing should be able to stand alone and not require any additional Synote framework but that Synote should be able to communicate with these pieces of work easily (see \cref{Req:Standalone}).
 
-To ensure this all, our services use an open standard to communicate using either \gls{REST} calls, with an associated documentation of each call and how it can be used, or protocols such as web sockets. These services can be run as small webservers which will allow Synote to communicate with them easily. In addition since these are standalone we have been able to pick the best language for the associated service. This has decreased the complexity of our services which should reduce the time needed to learn how the software works in order to continue our work.
+To ensure this all, our services use an open standard to communicate using either \gls{REST} calls (\cref{Req:Server architecture}), with an associated documentation of each call and how it can be used, or protocols such as web sockets. These services can be run as small webservers which will allow Synote to communicate with them easily. In addition since these are standalone we have been able to pick the best language for the associated service. This has decreased the complexity of our services which should reduce the time needed to learn how the software works in order to continue our work.
 
 The core of the project uses \gls{AngularJS} and the \gls{Videogular} player as this was recommended as the latest version of Synote will be written in Angular. All of the plugins were written for the \gls{Videogular} player and therefore will be able to be easily integrated into the primary Synote codebase. The plugins are the only part that will be integrated into Synote directly and therefore were best suited to be written in Angular. The other services will communicate with Synote and therefore did not need to be written in Angular.
 
@@ -28,11 +29,15 @@ Since our plugins are built upon the \gls{Videogular} system we have not been co
 
 To further expand our system we could look at fixing the \gls{Videogular} YouTube Plugin\footnote{\url{https://github.com/NamPNQ/bower-videogular-youtube}}. This would allow users to specify a youtube video to use for the quiz and removes the problems with getting all formats of video for all browsers.
 
+This was not worked on due to the possible time requirement and was decided out of scope by the client. However some work was done looking into the changes required and it appeared to be possible to fix for the latest version.
+
 \section{Video Encoding}
 
-Video can be in many formats, there is software to perform the conversion, but to make this usable and transparent to the end user it would need to be intergrated in to the video hosting/authoring tool.
+Video can be in many formats, there is software to perform the conversion, but to make this usable and transparent to the end user it would need to be integrated in to the video hosting/authoring tool.
 
 The workflow would be as follows. User opens the authoring tool, and uploads a video. The server handing the video upload would then convert the video in to the set of required formats (assuming it is not in the single required format already).
+
+This would be helpful to reduce the barrier to entry (\cref{Req:User interface}) as the user would not need to convert the video to the correct format.
 
 \section{Mobile Interfaces}
 
@@ -70,3 +75,15 @@ The elements used to create dropdowns and multiple select boxes could also be re
 In our Example Analytics site graphs have been used as a representation but they have no textual alternative. In future, any graphs used should be made accessible to screen readers and users with cognitive impairments. 
 
 \section{Conclusions}
+
+The primary focus of our project towards future work has always been easing the integration into Synote. We have followed the requirements to ease integration (\cref{Req:Standalone}) to aid this.
+
+As we have based our project on the Videogular player as a plugin, we have the ability to look into fixing the YouTube plugin. This will lower the barrier to entry (\cref{Req:User interface}) as users will not need to upload video and encode it correctly for different browsers. This was decided out of scope by the client. Another way of doing this would be automatically re-encoding the video on upload, which is a possible improvement too.
+
+We did some research into mobile interfaces and found a number of problems with browser and differing phone behaviour and sizes. This is a very hard problem and therefore to focus on our original problem we did not look at doing this.
+
+Previous work with second screening could be reviewed and re-implemented using out software but this would primarily rely on having the tools work on mobile devices (which are generally used for the second screening application).
+
+Angular 2 does not look like it will present a problem as Angular 1 is likely to be around for a long time. Therefore the support of the application will not become problematic as deprecation of Angular 1 is not going to be soon.
+
+Accessibility is a general topic that can be improved in all areas of our applications but much of these problems fall down to making the videos more accessible by adding captions and reducing the use of colours as the sole mean of conveying information. Keyboard accessibility (\cref{Req:Keyboard accessibility}) has been focussed on in terms of accessibility as this was one of the original requirements.
