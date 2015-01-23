@@ -1,26 +1,24 @@
 %% ----------------------------------------------------------------
 %% Overlay.tex
-%% ---------------------------------------------------------------- 
+%% ----------------------------------------------------------------
+
 \chapter{Overlay - vgQuestions} \label{Chapter:Overlay}
 
 \begin{preamble}
-A videogular plugin was written to provide the core functionality. It is an overlay built as a plugin for videogular that displays questions on top of the video and allows for the user to interact with it.
+A videogular plugin was written to provide the core functionality. It allows for questions to be overlayed on top of the video and handles user interaction.
 
-This plugin is called videogular-questions or \gls{vgQuestions} for short. It loads and executes the \gls{DF}, and provides an API over a message passing interface that allows for the display of questions, results and notification of when events occur (e.g. a question is answered).
+This plugin is called videogular-questions or \gls{vgQuestions} for short.
+
+It provides a utility library which wraps the messaging passing interface making it easy to create content (used for the \gls{DF}).
+
 \end{preamble}
 
 \section{Architecture}
 \label{Section:Architecture}
 
-To use vgQuestions, you must provide a web worker file that will talk to
-vgQuestions in the defined way over the message passing interface. This makes
-the plugin very flexible, but this is something that most users will not
-interact with.
+To use vgQuestions, you must provide a JavaScript file (loaded in a WebWorker) that will talk to vgQuestions in the defined way over the message passing interface. This makes the plugin very flexible, but this is something that most users will not interact with.
 
-Most users will either through use of the authoring tool, or write manually a
-javascript file that uses the questions-worker.js library, that handles the
-communication with vgQuestions. It loads a javascript object that contains
-within it a description of the quiz.
+Most users will either through use of the authoring tool, or write manually a JavaScript file that uses the questions-worker.js library, that handles the communication with vgQuestions. It loads a javascript object that contains within it a description of the quiz.
 
 \begin{figure}
 \makebox[\textwidth][c]{
@@ -51,12 +49,12 @@ within it a description of the quiz.
       node[midway,below] {video states} (vg-questions.195);
   \draw[to] (vg-questions.-195) --
       node[midway,above] {command} (videogular.20);
-      
+
   \draw[to] (vg-questions.-14) --
       node[midway,below] {user interactions} (questions-worker.190);
     \draw[to] (questions-worker.-190) --
       node[midway,above] {commands} (vg-questions.14);
-      
+
   \draw[to] (questions-worker.-10) --
       node[midway,below] {utility function} (quiz.201); 
   \draw[to] (quiz.-201) --
@@ -71,20 +69,15 @@ within it a description of the quiz.
 \section{Annotations}
 \label{Section:Annotations}
 
-One of the main issues to address early on was how to represent the quiz and poll questions. The \gls{QTI} specification was
-investigated, but was found to be complicated and incomplete \todo{What does incomplete mean here?} for the project needs. It was decided to design a new format for representing the data and logic that is used for a particular application of videogular-questions.
+One of the main issues to address early on was how to represent the quiz and poll questions. The \gls{QTI} specification was investigated, but was found to be complicated and incomplete \todo{What does incomplete mean here?} for the project needs. It was decided to design a new format for representing the data and logic that is used for a particular application of videogular-questions.
 
-This new format separates the front end of the library (responsible for
-interacting with the \gls{DOM}), from the data and logic regarding the questions by means of a message passing interface. This is achieved in a rigorous way in the browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs in the background of the webpage. They run independently of standard user-space scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}
+This new format separates the front end of the library (responsible for interacting with the \gls{DOM}), from the data and logic regarding the questions by means of a message passing interface. This is achieved in a rigorous way in the browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs in the background of the webpage. They run independently of standard user-space scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}
 
-Using JavaScript, rather than a pure data representation (e.g. JSON or XML)
-allows you to include logic for the application to follow. This makes it extremely flexible and concise, and the isolation provided by the \gls{webworker} mitigates many security concerns with having an application that executes data given as input as code.
+Using JavaScript, rather than a pure data representation (e.g. JSON or XML) allows you to include logic for the application to follow. This makes it extremely flexible and concise, and the isolation provided by the \gls{webworker} mitigates many security concerns with having an application that executes data given as input as code.
 
-Every item in an annotation can have an action and condition function. The
-action function is called when a item finishes. The action function is given the state of the annotations, such that it can make decisions and then affect the state of the video accordingly. For example, in the above example, this is used to only have the "skip back" question show, if the answer given to the previous question is incorrect.
+Every item in an annotation can have an action and condition function. The action function is called when a item finishes. The action function is given the state of the annotations, such that it can make decisions and then affect the state of the video accordingly. For example, in the above example, this is used to only have the "skip back" question show, if the answer given to the previous question is incorrect.
 
 The condition function is called to determine if the respective item will show. By default, when an annotation is shown, each item is shown in sequence. However, if an item has a condition function, this is evaluated, and the item only shown if the condition function returns true. If the condition function returns false, the item is skipped. This functionality is used in the above example to have the video skip back if the user wants it to.
-
 
 An early decision was to define the difference between a poll and a quiz question. It was decided that a poll is a type of quiz question that does not have a correct answer.
 
@@ -101,7 +94,6 @@ Single question is a sub type of Multiple question where min and max (the minimu
 Similarly, the stars question is similar to the range question where the step value is 1.
 
 \autoref{code:questionworker} shows an example of the quiz definition file that could be used by the VideogularQuestions plugin.
-
 
 \begin{figure}
 \centering
@@ -160,8 +152,7 @@ For example, when an answer is submitted by the user this would sent a message t
 
 \end{figure}
 
-\autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the above example is used. Initially, the worker sends an annotationStart message which contains the times which annotations will
-occur.
+\autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the above example is used. Initially, the worker sends an annotationStart message which contains the times which annotations will occur.
 
 When the first time is reached, the front end sends a annotationStart message to the worker, containing the id of that annotation. The worker then replies with a showQuestion message, containing the contents of the first question. Note that here, the functions are not sent to the front end, just the JSON representation of the question is sent.
 
@@ -185,8 +176,6 @@ $rootScope.$broadcast('analytics','show_question', data);
 In \autoref{code:analytics_message_passing} we broadcast to the ``analytics'' channel an event with the name
 ``show\_question'' with the content of the data variable.
 
-The vgAnalytics plugin listens to the ``analytics'' channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not
-been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins.
+The vgAnalytics plugin listens to the ``analytics'' channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins.
 
-By using the publish/subscribe model we can design the plugin so that they will work together when both are used but have no dependencies on each other. This allows any of our plugins to be used together or separately as the
-user wishes.
+By using the publish/subscribe model we can design the plugin so that they will work together when both are used but have no dependencies on each other. This allows any of our plugins to be used together or separately as the user wishes.
