@@ -71,54 +71,26 @@ within it a description of the quiz.
 \section{Annotations}
 \label{Section:Annotations}
 
-One of the main issues to address early on was how to represent the quiz and
-poll questions. The \gls{QTI} specification was
-investigated, but was found to be complicated and incomplete \todo{What does
-incomplete mean here?} for the project needs. It was decided to design a new
-format for representing the data and logic that is used for a particular
-application of videogular-questions.
+One of the main issues to address early on was how to represent the quiz and poll questions. The \gls{QTI} specification was
+investigated, but was found to be complicated and incomplete \todo{What does incomplete mean here?} for the project needs. It was decided to design a new format for representing the data and logic that is used for a particular application of videogular-questions.
 
 This new format separates the front end of the library (responsible for
-interacting with the \gls{DOM}), from the data and logic regarding the questions by
-means of a message passing interface. This is achieved in a rigorous way in the
-browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs
-in the background of the webpage. They run independently of standard user-space
-scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}
+interacting with the \gls{DOM}), from the data and logic regarding the questions by means of a message passing interface. This is achieved in a rigorous way in the browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs in the background of the webpage. They run independently of standard user-space scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}
 
 Using JavaScript, rather than a pure data representation (e.g. JSON or XML)
-allows you to include logic for the application to follow. This makes it extremely
-flexible and concise, and the isolation provided by the \gls{webworker} mitigates
-many security concerns with having an application that executes data given as
-input as code.
+allows you to include logic for the application to follow. This makes it extremely flexible and concise, and the isolation provided by the \gls{webworker} mitigates many security concerns with having an application that executes data given as input as code.
 
 Every item in an annotation can have an action and condition function. The
-action function is called when a item finishes. The action function is given
-the state of the annotations, such that it can make decisions and then affect
-the state of the video accordingly. For example, in the above example, this is
-used to only have the "skip back" question show, if the answer given to the
-previous question is incorrect.
+action function is called when a item finishes. The action function is given the state of the annotations, such that it can make decisions and then affect the state of the video accordingly. For example, in the above example, this is used to only have the "skip back" question show, if the answer given to the previous question is incorrect.
 
-The condition function is called to determine if the respective item will show.
-By default, when an annotation is shown, each item is shown in sequence.
-However, if an item has a condition function, this is evaluated, and the item
-only shown if the condition function returns true. If the condition function
-returns false, the item is skipped. This functionality is used in the above
-example to have the video skip back if the user wants it to.
+The condition function is called to determine if the respective item will show. By default, when an annotation is shown, each item is shown in sequence. However, if an item has a condition function, this is evaluated, and the item only shown if the condition function returns true. If the condition function returns false, the item is skipped. This functionality is used in the above example to have the video skip back if the user wants it to.
 
 
-An early decision was to define the difference between a poll and a quiz
-question. It was decided that a poll is a type of quiz question that does not
-have a correct answer.
+An early decision was to define the difference between a poll and a quiz question. It was decided that a poll is a type of quiz question that does not have a correct answer.
 
-Initially basic question types (single choice, multiple choice and scale
-questions) were focused on. A variety of visualisations was implemented
-including check boxes, radio buttons and sliding scales. Validation was needed
-to ensure that the specified minimum and maximum limits were followed.
+Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
 
-\todo{I believe schema is a "banned word", this needs to be rewritten in some way}
-By having a standard schema that uses JavaScript functions it was possible to
-write template functions that could be outputted from the authoring tool and
-read by the overlay correctly.
+By having a standard \gls{DF} that uses JavaScript functions it was possible to write template functions that could be outputted from the authoring tool and read by the overlay correctly.
 
 In reviewing the types of questions we would support we produced a class diagram (\autoref{Figure:questions_class_diagram}) to represent the type of data that the questions would have. This gave us the eventual list of 5 question types we would implement.
 
