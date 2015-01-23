@@ -158,9 +158,29 @@ The added feature of displaying the frequencies was also tested. These displayed
 
 \section{Authoring Tool}
 
-List of objectives
+The authoring tool is primary deliverable as it is the only item that is designed as a tool and not as a proof of concept example site deliverable. Therefore the primary types of testing are deliverable signoff tests and accessibility testing.
 
-Deliverable report had a basic list of actions to "test"
+\subsection{Deliverable signoff tests}
+
+Theses relate to the deliverable report (\autoref{Chapter:Deliverable Report}) that was presented to the client and signed off. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. During tests and final work we created a number of tests (\autoref{table:Deliverable signoff tests} that demonstrate the features that the client wanted and used these as manual regression tests.
+
+\begin{longtable}{|L{0.9}|L{0.03}|} 
+\caption{\label{table:Deliverable signoff tests}Deliverable signoff tests} \\
+\hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
+\multicolumn{2}{c}{Continues on the next page...} \endfoot
+\endlastfoot
+Pressing \keys{Export} will provide you with a \gls{DF} which can be used. & \CheckmarkBold \eoline
+Pressing \keys{Preview} will reset the video back to the start, load the questions into the preview, and begin playing & \CheckmarkBold \eoline
+All 5 question types are implemented and, as suggested, the Single choice question (with radio buttons) is merged with the Multiple choice question. & \CheckmarkBold \eoline
+A question set is able to be added at a specific time. & \CheckmarkBold \eoline
+Once a single question has been added the \keys{Preview} button is used to ensure this is shown properly & \CheckmarkBold \eoline
+Each question type is tested along with common options and displays as expected. & \CheckmarkBold \eoline
+Skipping is tested for one question and works as expected. & \CheckmarkBold \eoline
+When checked, the record button sends the poll data to the poll server. & \CheckmarkBold \eoline
+A full walkthrough is attempted, all question types are able to be added and previewing, and exporting works & \CheckmarkBold \eoline
+\end{longtable}
+
+The Pass marks show each test was tested by us and was successful, and also accepted by the client after review of the deliverable report.
 
 \subsection{Accessibility}
 \label{Section:Testing_Authoring_tool_accessibility}
