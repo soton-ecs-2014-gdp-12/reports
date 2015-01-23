@@ -86,7 +86,7 @@ Before the application can be used it needs have its database set up. This is pe
 
 This is important to ensure that the database is set up correctly and that when setup is visited again data in the database is not lost.
 
-\subsection{Voting tests}
+\subsubsection{Voting tests}
 
 These tests try a number of different ways to vote by sending a number of different formats of invalid and valid data to check if the application correctly deals with the data. All return codes and responses are checked to ensure no invalid vote is accepted or valid one rejected.
 
@@ -136,6 +136,20 @@ Here you can see that the time taken for result requests takes less than 6 milli
 Although this is only an example this ties in with requirement \todo{reference requirement} that the results server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of a couple minutes.
 
 There is also scope to move the backend database to something that is purely in memory to further increase the speed, as the major factor will be writing the data back to the hard disk.
+
+\subsection{Accessibility}
+\label{Subsection: vqe accessibility}
+
+The \gls{Videogular} Questions Example was mostly accessible by the WCAG 2.0 standards(see \autoref{Chapter:Accessibility Standards}). However the lack of alternatives for the video and the cuepoints using only colour may cause issues for some users.
+
+The lack of captions or signed versions of the videos was down to the videos used so not was an issue with the page overall as it is a proof-of-concept.
+
+A textual alternative was not provided because the idea is to integrate this into Synote which provides a transcript. Thus, this feature would be duplicated.
+
+The cuepoints are only conveyed through the changing of colour on the scrub bar. In future extra behaviour could be added to these to make them accessible through other means.
+
+As a proof-of-concept this site showed that it is possible to create an accessible overlaid video player when combined with Synote.
+
 
 \section{Example Analytics}
 
@@ -205,7 +219,7 @@ The Pass marks show each test was tested by us and was successful, and also acce
 \subsection{Accessibility}
 \label{Section:Testing_Authoring_tool_accessibility}
 
-The authoring tool was found to be generally accessible conforming to most of the \gls{WCAG} 2.0 standards. The areas that were lacking were providing textual alternatives and error checking.
+The authoring tool was found to be generally accessible conforming to most of the \gls{WCAG} 2.0 standards (see \autoref{Chapter:Accessibility Standards}). The areas that were lacking were providing textual alternatives and error checking.
 
 There were no alternatives provided for the video. However as this would be used with Synote transcripts could be used from there. In future, support for extra accessibility features such as transcripts, captions or signed versions could be included in the authoring tool.
 
