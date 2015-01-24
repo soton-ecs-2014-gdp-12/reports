@@ -99,31 +99,6 @@ Once the template has been created, each question set is processed. This involve
 
 When generating the JavaScript for each question the question type is used to generate a set of attributes specific to that question type. The attributes generated are as defined in the class diagram \autoref{Figure:questions_class_diagram} and these are added to the question.
 
-\begin{lstlisting}[language=javascript,caption={Base template for a question asking if the viewer wishs to review the video section they answered incorrectly},label={code:authoringToolTemplateRewatchSection} ]
-{
-	id: "incorrect-QUESTION_ID",
-	type: "single",
-	question: "Answer incorrect, do you want to review the video",
-	options: [
-		{
-			name: "Yes"
-		},
-		{
-			name: "No"
-		}
-	],
-	action: function(questions, video) {
-		var question = questions.get("QUESTION_ID");
-		if (question.response !== question.correctAnswer) {
-			video.setTime(TIME);
-		}
-	},
-	condition: function(questions) {
-		return questions.get("QUESTION_ID").isNotCorrect();
-	}
-}
-\end{lstlisting}
-
 For some questions, there will be a number of different annotation questions added to the question set. One example is when the quiz author has selected that a user may return to a specific point if they fail a question. This will add a question asking the user if they wish to review the section of the video containing the answer to the question. This template is shown in \autoref{code:authoringToolTemplateRewatchSection} and has the variables `QUESTION\_ID' and `TIME' which will be replaced with the data from the question the user has enabled the option on.
 
 Once an individual question has been generated the next question in the question set will be processed.

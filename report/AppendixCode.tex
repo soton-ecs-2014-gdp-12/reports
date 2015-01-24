@@ -64,3 +64,36 @@ loadAnnotations({
   }
 });
 \end{lstlisting}
+
+\section{Authoring Tool Code Fragments}
+
+These code fragments have been taken from the authoring tool repository \autoref{Section:Repo_authoring_tool}.
+
+\subsection{Authoring tool rewatch template}
+
+\autoref{code:authoringToolTemplateRewatchSection} is an example of the template used when the user is asked if they wish to review the video.
+
+\begin{lstlisting}[language=javascript,caption={Base template for a question asking if the viewer wishs to review the video section they answered incorrectly},label={code:authoringToolTemplateRewatchSection} ]
+{
+	id: "incorrect-QUESTION_ID",
+	type: "single",
+	question: "Answer incorrect, do you want to review the video",
+	options: [
+		{
+			name: "Yes"
+		},
+		{
+			name: "No"
+		}
+	],
+	action: function(questions, video) {
+		var question = questions.get("QUESTION_ID");
+		if (question.response !== question.correctAnswer) {
+			video.setTime(TIME);
+		}
+	},
+	condition: function(questions) {
+		return questions.get("QUESTION_ID").isNotCorrect();
+	}
+}
+\end{lstlisting}
