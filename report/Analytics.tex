@@ -80,6 +80,7 @@ By ensuring that all events that will be sent to the analytics server are publis
 
 The deliverable API is listed in \autoref{Table:analytics_api} and describes all messages that are sent from the vgQuestions and vgAnalytics plugin to the configured server.
 
+\begin{table}[h]
 \begin{tabular}{p{3.2cm} p{6cm} p{4cm}}
 \caption{\label{Table:analytics_api}API of the emitted analytics events and their data payload}
 \textbf{Event name} & \textbf{Emitted when} & \textbf{Expected Payload} \\
@@ -102,6 +103,7 @@ pause & the video is paused & The time the video pauses at \\
 \hline
 stop & the video is stopped & The time the video was stopped at \\
 \end{tabular}
+\end{table}
 
 \section{Conclusion}
 
