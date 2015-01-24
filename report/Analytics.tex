@@ -17,7 +17,7 @@ This plugin will monitor how the user uses the \gls{Videogular} video player and
 
 \section{Design}
 
-The reason for designing the plugin to be separate from the main vgQuestions plugin is because not all users of the core functionality will also want to perform analytics. This means that for users that are not interested their will be no overhead of collecting the data. This can be important on mobile devices that have smaller processing power available.
+The reason for designing the plugin to be separate from the main \gls{vgQuestions} plugin is because not all users of the core functionality will also want to perform analytics. This means that for users that are not interested their will be no overhead of collecting the data. This can be important on mobile devices that have smaller processing power available.
 
 In addition, implementing this as a separate plugin means that it is not dependant on any of the other plugins and therefore fulfils \cref{Req:Standalone}.
 
@@ -29,14 +29,14 @@ In the event that the server is unable to be contacted it should queue the resul
 
 \section{Implementation}
 
-To ensure that vgQuestions does not need vgAnalytics to work and is still able to communicate we decided to use the publish/subscribe model. This allows messages to be sent to specific channels. Any modules listening to the channel will receive all messages sent to the channel. There is a specific Angular broadcast system which can be used to facilitate creation of this publish/subcribe model.
+To ensure that vgQuestions does not need vgAnalytics to work and is still able to communicate we decided to use the publish/subscribe model. This allows messages to be sent to specific channels. Any modules listening to the channel will receive all messages sent to the channel. There is a specific Angular broadcast system which can be used to facilitate creation of this publish/subscribe model.
 
 \begin{lstlisting}[language=javascript,caption={AngularJS demonstrating the message passing interface used in the Analytics plugin},label={code:analytics_message_passing}]
 $rootScope.$broadcast('analytics','show_question', data);
 \end{lstlisting}
 
-In \autoref{code:analytics_message_passing} we broadcast to the \pre{analytics} channel an event with the name
-\pre{show\_question} with the content of the data variable. This is used in \gls{vgQuestions} to detail how people are using the overlay.
+In \autoref{code:analytics_message_passing} we broadcast to the \lstinline|analytics| channel an event with the name
+\lstinline|show\_question| with the content of the data variable. This is used in \gls{vgQuestions} to detail how people are using the overlay.
 
 \begin{figure}
 \centering
@@ -70,19 +70,19 @@ In \autoref{code:analytics_message_passing} we broadcast to the \pre{analytics} 
 \label{Figure:sequence_diagram_vgAnalytics}
 \end{figure}
 
-The vgAnalytics plugin listens to the \pre{analytics} channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins. The sequence diagram in \autoref{Figure:sequence_diagram_vgAnalytics} shows an illustration of the messages sent between each of the different modules. Here you can see two distinct parts of the system joined by the analytics channel.
+The vgAnalytics plugin listens to the \lstinline|analytics| channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins. The sequence diagram in \autoref{Figure:sequence_diagram_vgAnalytics} shows an illustration of the messages sent between each of the different modules. Here you can see two distinct parts of the system joined by the analytics channel.
 
 By using the publish/subscribe model we can design the plugin so that they will work together when both are used but have no dependencies on each other. This allows any of our plugins to be used together or separately as the user wishes.
 
-In addition to listening to the messages sent by the \gls{vgQuestions} plugin the \gls{vgAnalytics} plugin also listens to a number of \gls{Videogular} video events. This is to track information such as when the user pauses, continues and stops the video. These hooks are placed onto the videogular object and then are emitted on the \pre{analytics} channel.
+In addition to listening to the messages sent by the \gls{vgQuestions} plugin the vgAnalytics plugin also listens to a number of \gls{Videogular} video events. This is to track information such as when the user pauses, continues and stops the video. These hooks are placed onto the videogular object and then are emitted on the \lstinline|analytics| channel.
 
-By ensuring that all events that will be sent to the analytics server are published to the \pre{analytics} channel we ease the introduction of further plugins. If they wish to process the statistics generated on the client they  can listen to this channel without interacting with the vgAnalytics plugin. This keeps the plugin a very seperate unit (\cref{Req:Standalone}) while allowing easy access to the data that it uses.
+By ensuring that all events that will be sent to the analytics server are published to the \lstinline|analytics| channel we ease the introduction of further plugins. If they wish to process the statistics generated on the client they  can listen to this channel without interacting with the vgAnalytics plugin. This keeps the plugin a very seperate unit (\cref{Req:Standalone}) while allowing easy access to the data that it uses.
 
 The deliverable API is listed in \autoref{Table:analytics_api} and describes all messages that are sent from the vgQuestions and vgAnalytics plugin to the configured server.
 
 \begin{table}[h]
-\begin{tabular}{p{3.2cm} p{6cm} p{4cm}}
 \caption{\label{Table:analytics_api}API of the emitted analytics events and their data payload}
+\begin{tabular}{p{3.2cm} p{6cm} p{4cm}}
 \textbf{Event name} & \textbf{Emitted when} & \textbf{Expected Payload} \\
 \hline
 show\_question & a question is shown to the user & All of the associated question data \\
@@ -109,4 +109,4 @@ stop & the video is stopped & The time the video was stopped at \\
 
 The analytics plugin has been designed to interact with the \gls{vgQuestions} plugin only by communicating via the publish/subscriber model. This means that it is simple to access the events with another plugin or include additional events to be sent to the server without modification of this plugin.
 
-We have created a well documented analytics \gls{API} (\autoref{Table:analytics_api}) to ensure that the events sent are able to be understood and used easily in another application. The ability to add more events makes this a dynamic plugin which can be easily adapted for specific research uses.
+We have created a well documented analytics \gls{API} (see \autoref{Table:analytics_api}) to ensure that the events sent are able to be understood and used easily in another application. The ability to add more events makes this a dynamic plugin which can be easily adapted for specific research uses.

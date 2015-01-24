@@ -12,7 +12,7 @@ Software testing is necessary on projects of all sizes, especially on large proj
 
 During development we used a number of testing methods for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\autoref{Chapter:Deliverable Report}).
 
-A number of sections have a deliverable signoff table. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. This was usually done during the client/supervisor meetings. During final tests we created a number deliverable signoff tests that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report (\autoref{Chapter:Deliverable Report}) that was presented to the client and signed off.
+A number of sections have a deliverable signoff table. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. This was usually done during the client/supervisor meetings. During final tests we created a number deliverable signoff tests that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report that was presented to the client and signed off.
 
 These deliverable signoff tests were used as manual regression tests. These were used during the final changes and bug fixes to ensure the functionality that the client wished were still present and working correctly.
 
@@ -26,13 +26,13 @@ JSHint is a tool for static code analysis of JavaScript, which can detect many i
 
 Karma allows tests to be run in browsers (or headlessly) in an automated manor.  It then also aggregates and displays the results making it easy to see if the tests have passed or failed.
 
-Karma is included within Angular seed, which means it was available from the start \autoref{Section:Overall_Testing}.
+Karma is included within Angular seed (see \autoref{Section:Overall_Testing}), which means it was available from the start.
 
 \subsection{Jasmine}
 
 Jasmine is a testing framework for JavaScript. It has simple syntax and works well with Karma.
 
-Jasmine was also included in Angular seed \autoref{Section:Overall_Testing}.
+Jasmine was also included in Angular seed (see \autoref{Section:Overall_Testing}).
 
 \section{Videogular Questions Example} 
 \label{Section:Videogular Questions Example}
@@ -140,7 +140,7 @@ There is also scope to move the backend database to something that is purely in 
 \subsection{Accessibility}
 \label{Subsection: vqe accessibility}
 
-The \gls{Videogular} Questions Example was mostly accessible by the WCAG 2.0 standards(see \autoref{Chapter:Accessibility Standards}). However the lack of alternatives for the video and the cuepoints using only colour may cause issues for some users.
+The \gls{Videogular} Questions Example was mostly accessible by the WCAG 2.0 standards (see \autoref{table: vqe conformance}). However the lack of alternatives for the video and the cuepoints using only colour may cause issues for some users.
 
 The lack of captions or signed versions of the videos was down to the videos used so not was an issue with the page overall as it is a proof-of-concept.
 
@@ -202,7 +202,7 @@ The added feature of displaying the frequencies was also tested. These displayed
 
 \subsubsection{Accessibility}
 
-The example analytics site generally conformed to the WCAG 2.0 standards (see \autoref{Chapter:Accessibility Standards}). The non-conformances found were a lack of alternatives for the video and graphs.
+The example analytics site generally conformed to the WCAG 2.0 standards (see \autoref{table: va conformance}). The non-conformances found were a lack of alternatives for the video and graphs.
 
 The video issues were the same as for the Videogular Questions Example site (see \autoref{Subsection: vqe accessibility}). However the cuepoints were not used. The heatmaps had a textual option that could be displayed which gave additional methods for conveying the information.
 
@@ -241,7 +241,7 @@ The Pass marks show each test was tested by us and was successful, and also acce
 \subsection{Accessibility}
 \label{Section:Testing_Authoring_tool_accessibility}
 
-The authoring tool was found to be generally accessible conforming to most of the \gls{WCAG} 2.0 standards (see \autoref{Chapter:Accessibility Standards}). The areas that were lacking were providing textual alternatives and error checking.
+The authoring tool was found to be generally accessible conforming to most of the \gls{WCAG} 2.0 standards (see \autoref{table: authoring tool conformance}). The areas that were lacking were providing textual alternatives and error checking.
 
 There were no alternatives provided for the video. However as this would be used with Synote transcripts could be used from there. In future, support for extra accessibility features such as transcripts, captions or signed versions could be included in the authoring tool.
 

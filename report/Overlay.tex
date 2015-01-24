@@ -65,7 +65,7 @@ This plugin was one of the primary focusses of the project, being able to have a
 
 \end{figure}
 
-The core of \gls{vgQuestions} is a \gls{DF} that is loaded in a WebWorker that will talk to \gls{vgQuestions}. This uses a well defined message passing interface to allow easy communication. As the \gls{DF} is provided by the user this makes the plugin exceptionally flexible. Many items of this can easily be changed to create a dynamic set of questions however most users will not interact with this directly.
+The core of \gls{vgQuestions} is a \gls{DF} that is loaded in a WebWorker that will talk to \gls{vgQuestions} as shown in \autoref{Figure:vgquestions-architecture}. This uses a well defined message passing interface to allow easy communication. As the \gls{DF} is provided by the user this makes the plugin exceptionally flexible. Many items of this can easily be changed to create a dynamic set of questions however most users will not interact with this directly.
 
 The general use case is that the \gls{DF} will be generated through use of the authoring tool however the ability to manually create this file is open. This lets the user interface with the questions-worker.js library and configure the actions of the questions. The questions-worker.js library handles communication with vgQuestions, loading a JavaScript object that contains description of the quiz.
 
