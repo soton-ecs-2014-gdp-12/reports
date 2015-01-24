@@ -159,23 +159,3 @@ When the first time is reached, the front end sends a annotationStart message to
 When the user responds to the question, that response is send to the worker in a questionResult message. In this case, the user responded incorrectly, therefore, when the \gls{webworker} evaluated the condition on the second question, it evaluated to false. This meant that the worker replied with another showQuestion message.
 
 Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the annotation, so the worker responds with an endAnnotation message.
-
-\section{Interaction with Analytics}
-\label{Section:vgQuestions Analytics}
-
-\todo{Move this to subsection within analytics section, add forward reference}
-
-Since we were writing a series of plugins we wanted to ensure that no one plugin required another to be used effectively. Instead of a custom method of communicating between two or many possible plugins we decided to use the publish/subscribe model to communicate with the vgAnalytics plugin.
-
-Using the Angular broadcast system we could publish events on channels which then would be received by anyone who subscribed to that channel.
-
-\begin{lstlisting}[language=javascript,caption={AngularJS demonstrating the message passing interface used in the Analytics plugin},label={code:analytics_message_passing}]
-$rootScope.$broadcast('analytics','show_question', data);
-\end{lstlisting}
-
-In \autoref{code:analytics_message_passing} we broadcast to the ``analytics'' channel an event with the name
-``show\_question'' with the content of the data variable.
-
-The vgAnalytics plugin listens to the ``analytics'' channel and they will receives all messages published to this. Therefore vgQuestions can publish information which will be received by the vgAnalytics plugin. If it has not been instantiated then these messages will not cause any errors which is one of the important factors in picking a communication method between the various plugins.
-
-By using the publish/subscribe model we can design the plugin so that they will work together when both are used but have no dependencies on each other. This allows any of our plugins to be used together or separately as the user wishes.
