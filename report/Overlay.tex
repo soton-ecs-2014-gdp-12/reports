@@ -70,13 +70,14 @@ The core of \gls{vgQuestions} is a \gls{DF} that is loaded in a \gls{webworker} 
 The general use case is that the \gls{DF} will be generated through use of the authoring tool however the ability to manually create this file is open. This lets the user interface with the questions-worker.js library and configure the actions of the questions. The questions-worker.js library handles communication with vgQuestions, loading a JavaScript object that contains description of the quiz.
 
 \section{Implementation}
+The implementation of the overlaid video player was split into three sections. The first was deciding how to represent the question sets internally. Next was how to represent the questions within the user interface. The final section was implementing the back end communication between the question representations and the video.
 
 \subsection{Annotations}
 \label{Section:Annotations}
 
 One of the main issues to address early on was how to represent the quiz and poll questions. The \gls{QTI} specification was investigated, but was found to be complicated and incomplete \todo{What does incomplete mean here?} for the project needs. It was decided to design a new format for representing the data and logic that is used for a particular application of videogular-questions.
 
-This new format separates the front end of the library (responsible for interacting with the \gls{DOM}), from the data and logic regarding the questions by means of a message passing interface. This is achieved in a rigorous way in the browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs in the background of the webpage. They run independently of standard user-space scripts.  More can be found out about their use within this project in \autoref{Subsubsection:WebWorkers}
+This new format separates the front end of the library (responsible for interacting with the \gls{DOM}), from the data and logic regarding the questions by means of a message passing interface. This is achieved in a rigorous way in the browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs in the background of the webpage. They run independently of standard user-space scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}
 
 Using JavaScript, rather than a pure data representation (e.g. JSON or XML) allows you to include logic for the application to follow. This makes it extremely flexible and concise, and the isolation provided by the \gls{webworker} mitigates many security concerns with having an application that executes data given as input as code.
 
@@ -107,16 +108,14 @@ Similarly, the stars question is similar to the range question where the \lstinl
 \label{Figure:questions_class_diagram}
 \end{figure}
 
-\subsection{Front End}
+\subsection{Front End - User Interface}
 
 The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made and user studies were done in collaboration with a third year project student.
 
 A set of example \gls{CSS} files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own.
 
-\subsection{Back End}
-
-\subsubsection{WebWorkers}
-\label{Subsubsection:WebWorkers}
+\subsection{Back End - WebWorkers}
+\label{Subsection:WebWorkers}
 
 \Glspl{webworker} give a good way of running (sandboxed) background scripts that are computationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing.
 
@@ -164,3 +163,4 @@ When the user responds to the question, that response is send to the worker in a
 Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the annotation, so the worker responds with an \lstinline|endAnnotation| message.
 
 \section{Conclusion}
+An internal representation of the questions is given by the \acrlong{DF} that is used to display the questions to the user in the overlays. \gls{CSS} is used to keep the appearance of the questions consistent. \Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur.
