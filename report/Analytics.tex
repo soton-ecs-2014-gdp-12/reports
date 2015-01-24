@@ -22,7 +22,7 @@ In addition, implementing this as a separate plugin means that it is not dependa
 
 Since the plugin is the published deliverable it will be used with an external server to capture the data. This will be able to aggregates this and store it in some format. It is configured to post data via \gls{REST} calls (\cref{Req:Server architecture}) to a server defined in the analytics configuration file.
 
-There will be a published \gls{API} to be used with the analytics plugin that will detail all events will be published form the plugin. This will let developers create a services that can collect and use the data.
+There will be a published \gls{API} to be used with the analytics plugin that will detail all events will be published form the plugin. A well documented API is important (\cref{Req:Documentation}) so that developers can easily create a service that collects and uses the data.
 
 In the event that the server is unable to be contacted it should queue the results until it comes back online. Once a request fails to be sent the plugin should try sending all queued events at an interval until the server comes back online or the application is closed. If the application is closed before the server comes back online the data will be lost.
 

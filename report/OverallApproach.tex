@@ -118,14 +118,15 @@ Video and question events should be emitted from the overlaid video player in or
 \textit{One of the client's requirements is ensure the framework is easy to integrate.}
 \item \textbf{Server architecture} \label{Req:Server architecture} \hfill \\ Any server behaviour should be accessed by \gls{REST} calls with no requirement that all servers should be on the same host.
 
-\textit{One of Yunjia's requirements to allow more easy integration into Synote.}
+\textit{One of Yunjia's requirements to allow easier integration into Synote.}
 \end{requirement}
 
 \section{Modular Webserver Approach}
 \label{Section:Modular Approach}
-It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see \autoref{Subsection:Synote}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls.
 
-By abstracting all calls to using \gls{REST} this means that other services will be able to interact with out back end services in a language independent way. To facilitate this we have had to ensure that all \gls{REST} responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the \gls{REST} service.
+It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see \autoref{Subsection:Synote}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls as set out by \cref{Req:Server architecture}.
+
+By abstracting all calls to using \gls{REST} this means that other services will be able to interact with out back end services in a language independent way which will also allow the application to be standalone (\cref{Req:Standalone}). To facilitate this we have had to ensure that all \gls{REST} responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the \gls{REST} service.
 
 These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make \gls{REST} calls.
 
