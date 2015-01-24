@@ -28,6 +28,38 @@ In the event that the server is unable to be contacted it should queue the resul
 
 \subsection{Analytics emitted events}
 
+\begin{figure}
+\centering
+\begin{sequencediagram}
+  \newinst[0.5]{q}{vgQuestions plugin}
+  \newinst[0.3]{c}{analytics channel}
+  \newinst[0.3]{a}{vgAnalytics}
+  \newinst[1.4]{r}{REST Service}
+
+  \begin{sdblock}{vgQuestions}{}
+  	\begin{call}
+  	  {q}{Video Events}
+  	  {c}{}
+  	\end{call}
+  \end{sdblock}
+
+  \begin{sdblock}{vgAnalytics}{}
+
+  \mess{c}{Video Events}{a}
+
+  \stepcounter{seqlevel}  
+    \begin{call}
+    {a}{Analytic event}
+    {r}{Acknowledgement}
+  \end{call}
+  
+  \end{sdblock}
+
+\end{sequencediagram}
+\caption{Sequence diagram showing the process of events being emitted by vgQuestions plugin and sent to the REST service by the vgAnalytics plugin}
+\label{Figure:sequence_diagram_vgAnalytics}
+\end{figure}
+
 The Videogular Analytics plugin emits a number of events which can be sent to a Web server for collection. \autoref{Table:analytics_api} describes all events emitted from the analytics plugin.
 
 The plugin is designed so that events can easily be added by sending events to the \pre{analytics} channel. These are automatically collected and prepared for sending to the given Web server.
