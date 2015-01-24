@@ -13,14 +13,13 @@ It provides a utility library which wraps the messaging passing interface making
 
 \end{preamble}
 
-\section{Architecture}
-\label{Section:Architecture}
+\section{Introduction}
 
-To use vgQuestions, you must provide a JavaScript file (loaded in a WebWorker) that will talk to vgQuestions in the defined way over the message passing interface. This makes the plugin very flexible, but this is something that most users will not interact with.
+This plugin was one of the primary focusses of the project, being able to have an accessible system presenting the user with questions overlayed on a video. A number of features were explicitly requested by the client such as question types (\cref{Req:Question types}) and the ability to let users rewatch content easily if questions were answered incorrectly (\cref{Req:Jumping to content}).
 
-Most users will either through use of the authoring tool, or write manually a JavaScript file that uses the questions-worker.js library, that handles the communication with vgQuestions. It loads a javascript object that contains within it a description of the quiz.
+\section{Design}
 
-\begin{figure}
+\begin{figure}[h]
 \makebox[\textwidth][c]{
 \begin{tikzpicture}[
   font=\sffamily,
@@ -66,7 +65,13 @@ Most users will either through use of the authoring tool, or write manually a Ja
 
 \end{figure}
 
-\section{Annotations}
+The core of \gls{vgQuestions} is a \gls{DF} that is loaded in a WebWorker that will talk to \gls{vgQuestions}. This uses a well defined message passing interface to allow easy communication. As the \gls{DF} is provided by the user this makes the plugin exceptionally flexible. Many items of this can easily be changed to create a dynamic set of questions however most users will not interact with this directly.
+
+The general use case is that the \gls{DF} will be generated through use of the authoring tool however the ability to manually create this file is open. This lets the user interface with the questions-worker.js library and configure the actions of the questions. The questions-worker.js library handles communication with vgQuestions, loading a JavaScript object that contains description of the quiz.
+
+\section{Implementation}
+
+\subsection{Annotations}
 \label{Section:Annotations}
 
 One of the main issues to address early on was how to represent the quiz and poll questions. The \gls{QTI} specification was investigated, but was found to be complicated and incomplete \todo{What does incomplete mean here?} for the project needs. It was decided to design a new format for representing the data and logic that is used for a particular application of videogular-questions.
@@ -102,18 +107,15 @@ Similarly, the stars question is similar to the range question where the step va
 \label{Figure:questions_class_diagram}
 \end{figure}
 
-\section{Front End}
-\label{Section:Front end}
+\subsection{Front End}
 
 The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made and user studies were done in collaboration with a third year project student.
 
 A set of example \gls{CSS} files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own.
 
-\section{Back End}
-\label{Section:Back end}
+\subsection{Back End}
 
-\subsection{Web Workers}
-\label{Subsection:WebWorkers}
+\subsubsection{Web Workers}
 
 Web workers give a good way of running (sandboxed) background scripts that are computationally intensive. They are a way of multithreading - allowing multiple scripts to run simultaneously, avoiding the problem of unresponsive pages due to long running scripts. This is done by using message passing.
 
@@ -159,3 +161,5 @@ When the first time is reached, the front end sends a annotationStart message to
 When the user responds to the question, that response is send to the worker in a questionResult message. In this case, the user responded incorrectly, therefore, when the \gls{webworker} evaluated the condition on the second question, it evaluated to false. This meant that the worker replied with another showQuestion message.
 
 Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the annotation, so the worker responds with an endAnnotation message.
+
+\section{Conclusion}
