@@ -10,24 +10,30 @@
 
 \section{Introduction}
 
-For the framework to fulfill the requirements, allowing for analysis of how users are interacting with the system is crucial. This plugin allows for getting the necessary data from each users device to a server where it can be aggregated and processed.
+One of the main requirements states  that video and question events should be emitted from the Videogular player (\cref{Req:Analytics events}. We decided that instead of putting analytics events directly into the \gls{vgQuestions} plugin we would make a new plugin to handle analytics.
+
+This plugin will monitor how the user uses the videogular video player and the vgQuestions plugin and store events related to this. If a server is configured this will send the users data to a server where it can be aggregated and processed.
 
 \section{Design}
 
-The analytics functionality is separate from the main vgQuestions plugin as not all users of the core functionality will also want to perform analytics.
+The reason for designing the plugin to be separate from the main vgQuestions plugin is because not all users of the core functionality will also want to perform analytics. This means that for users that are not interested their will be no overhead of collecting the data. This can be important on mobile devices that have smaller processing power available.
 
-Implementing this as a separate plugin means that its not dependant on any of the other plugins written as a part of this project.
+In addition, implementing this as a separate plugin means that it is not dependant on any of the other plugins and therefore fulfils \cref{Req:Standalone}.
 
-This plugin needs to provide a api such that other plugins can send data to a set of analytics servers. This should be done in such a way that does not prevent the operation of the client plugin if the analytic plugin is not available.
+Since the plugin is the published deliverable it will be used with an external server to capture the data. This will be able to aggregates this and store it in some format. It is configured to post data via \gls{REST} calls (\cref{Req:Server architecture}) to a server defined in the analytics configuration file.
+
+There will be a published \gls{API} to be used with the analytics plugin that will detail all events will be published form the plugin. This will let developers create a services that can collect and use the data.
+
+In the event that the server is unable to be contacted it should queue the results until it comes back online. Once a request fails to be sent the plugin should try sending all queued events at an interval until the server comes back online or the application is closed. If the application is closed before the server comes back online the data will be lost.
 
 \subsection{Analytics emitted events}
 
-The Videogular Analytics plugin emits a number of events which can be sent to a Web server for collection. The table below describes these events.
+The Videogular Analytics plugin emits a number of events which can be sent to a Web server for collection. \autoref{Table:analytics_api} describes all events emitted from the analytics plugin.
 
-The plugin is designed so that events can easily be added by sending events to the `analytics' channel. These are automatically collected and prepared for sending to the given Web server.
+The plugin is designed so that events can easily be added by sending events to the \pre{analytics} channel. These are automatically collected and prepared for sending to the given Web server.
 
 \begin{tabular}{p{3.2cm} p{6cm} p{4cm}}
-
+\caption{\label{Table:analytics_api}API of the emitted analytics events and their data payload}
 \textbf{Event name} & \textbf{Emitted when} & \textbf{Expected Payload} \\
 \hline
 show\_question & a question is shown to the user & All of the associated question data \\
