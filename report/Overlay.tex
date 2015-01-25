@@ -156,11 +156,16 @@ For example, when an answer is submitted by the user this would sent a message t
 
 \autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the above example is used. Initially, the worker sends an \lstinline|annotationStart| message which contains the times which annotations will occur.
 
-When the first time is reached, the front end sends a \lstinline|annotationStart| message to the worker, containing the id of that annotation. The worker then replies with a \lstinline|showQuestion| message, containing the contents of the first question. Note that here, the functions are not sent to the front end, just the JSON representation of the question is sent.
+When the first time point is reached, the front end sends a \lstinline|annotationStart| message to the worker containing the id of that annotation. The worker then replies with a \lstinline|showQuestion| message containing the contents of the first question. Note that here the functions are not sent to the front end and it is just the JSON representation of the question is sent.
 
-When the user responds to the question, that response is send to the worker in a \lstinline|questionResult| message. In this case, the user responded incorrectly, therefore, when the \gls{webworker} evaluated the condition on the second question, it evaluated to \lstinline|false|. This meant that the worker replied with another \lstinline|showQuestion| message.
+When the user responds to the question, that response is sent to the worker in a \lstinline|questionResult| message. In this case the user responded incorrectly, therefore when the \gls{webworker} evaluated the condition on the second question it evaluated to \lstinline|false|. This meant that the worker replied with another \lstinline|showQuestion| message.
 
 Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the annotation, so the worker responds with an \lstinline|endAnnotation| message.
 
 \section{Conclusions}
-An internal representation of the questions is given by the \acrlong{DF} that is used to display the questions to the user in the overlays. \gls{CSS} is used to keep the appearance of the questions consistent. \Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur.
+
+An internal representation of the questions is given by the \acrlong{DF} that is used to display the questions to the user in the overlays. This allows all aspects of the questions presented to the user to be customised. This \gls{DF} can be manually written or it can be created by an authoring tool (\autoref{Chapter:Authoring Tool}).
+
+We have used \gls{CSS} to keep the appearance of the questions consistent but this also allows a developer to quickly change how the questions are shown with little technical knowledge of the system helping to fulfil \cref{Req:Use of colour}.
+
+\Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur. By abstracting this to another thread we have been able to utilise additional processing and ensure that the user has a good experience since the page is not likely to freeze due to the additional thread. In addition, separating the front end and back end and only communicating via a message passing system provides low coupling which will allows customising one without affecting the other.
