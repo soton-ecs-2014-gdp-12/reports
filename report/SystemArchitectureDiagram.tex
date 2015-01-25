@@ -21,14 +21,14 @@
       \& \node[vg-plugin] (questions) {questions};
       \& \node[server] (poll-server) {results server}; \\
 
-    \& \node[videogular] (videogular) {videogular};
-      \&
-      \& \node[analytics-frontend] (analytics-frontend) {analytics-frontend}; \\
+    \& \node[videogular] (videogular) {videogular}; \\
 
     \node[vg-plugin] (heatmap) {heatmap};
       \&
       \& \node[vg-plugin] (analytics) {analytics};
       \& \node[server] (analytics-server) {analytics server}; \\
+
+    \& \& \& \node[analytics-frontend] (analytics-frontend) {analytics-frontend}; \\
   };
 
   \draw[to] (questions.17) --
@@ -45,8 +45,8 @@
       node[midway,above] {data} (analytics-server.168);
   \draw[to] (analytics-server.-168) --
       node[midway,below] {acks} (analytics.-18);
-  \draw[to] (analytics-server) to[bend left=22] node[midway,above] {events}
-      node[midway,below] {level 1} (heatmap);
+  \draw[to] (analytics-frontend) to[bend left=22] node[midway,above] {}
+      node[midway,below] {events} (heatmap);
   \draw[to] (analytics-server) --
       node[midway,right] {user interactions}
       (analytics-frontend);
