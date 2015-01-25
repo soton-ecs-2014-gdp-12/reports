@@ -135,7 +135,7 @@ Total / Average & 3263 & 32 & 110 & 120 & 160 & 210 & 270 & 400 & 638 \\
 
 Here you can see that the time taken for result requests takes less than 6 milliseconds 50\% of the time and all requests were dealt with in at most 326 milliseconds. The voting REST point takes slightly longer as it needs to store data to the sqlite database but still took at max 638 milliseconds. All these tests were performed when 50 Locust users were using the website continuously and therefore we feel the performance wills scale. This is because one user will only ever make one vote and one results request per poll and this tested for 50 users continuously making these requests.
 
-Although this is only an example this ties in with requirement \todo{reference requirement} that the results server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of a couple minutes.
+Although this is only an example this ties in with \cref{Req:Scalability} that the results server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of a couple minutes.
 
 There is also scope to move the backend database to something that is purely in memory to further increase the speed, as the major factor will be writing the data back to the hard disk.
 
