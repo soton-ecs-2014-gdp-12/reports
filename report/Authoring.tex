@@ -119,7 +119,7 @@ Once all of these options have been calculated the final template is produced. T
 
 The preview tool works similar to the export tool (\autoref{Section:Authoring_export_data}) by generating the \gls{DF} and creating the blob URL. Once this has been done this is passed to the vgQuestion plugin embedded in the authoring tool which loads up the newly created quiz.
 
-This allows for immediate feedback when creating the quiz and makes it easier to create a quiz for non technical users (\cref{Req:User interface}). Since we have embedded the vgQuestions plugin we will be sure that this will react the same when added to a website using the plugin.
+This allows for immediate feedback when creating the quiz and makes it easier to create a quiz for non technical users (\cref{Req:User friendliness}). Since we have embedded the vgQuestions plugin we will be sure that this will react the same when added to a website using the plugin.
 
 \section{Conclusion}
 \label{Section:Authoring_Conclusion}
@@ -130,7 +130,7 @@ The tool we have produced allows a user to create the \gls{DF} in the correct fo
 
 \autoref{Figure:Authoring_Tool} is an image showing our final user interface. The colour scheme was chosen to be high contrasting to fulfil \cref{Req:Use of colour}. In addition the CSS used to set this colour scheme is in a single place and is easy to change as to a users requirement.
 
-To further decrease the barrier to entry (\cref{Req:User interface}) we used the \gls{Videogular} and \gls{vgQuestions} plugin to allow a preview of the quiz they have created. One of the useful side effects of \cref{Req:Standalone} has meant that it has been easy to integrate \gls{vgQuestions} into the authoring tool.
+To further decrease the barrier to entry (\cref{Req:User friendliness}) we used the \gls{Videogular} and \gls{vgQuestions} plugin to allow a preview of the quiz they have created. One of the useful side effects of \cref{Req:Standalone} has meant that it has been easy to integrate \gls{vgQuestions} into the authoring tool.
 
 There may be some more work needed to investigate how large a JavaScript quiz file may be produced when using the data blob URL approach to allow the user to download the file. While no limits problems have occurred during testing this is something that will need to be kept in mind. \todo{What is this trying to say?}
 
