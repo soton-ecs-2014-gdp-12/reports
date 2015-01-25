@@ -104,13 +104,14 @@ Sections and colours can be specified in a \texttt{config} object which is given
 
 The format for defining the configuration parameters was made consistent with vgCuepoints (see \autoref{Subsection:vgCuepoints}) to improve usability.
 
-The same issue that was encountered with the Cuepoints plugin, which prevents display until the video plays, was a problem for the heat map plugin. This was accepted as the colouring does not have any context for a user until they have watched the video.
+The same issue that was encountered with the Cuepoints plugin, which prevents display until the video plays, was a problem for the heat map plugin. This is less of an issue for this plugin as the colouring does not have any context for a user until they have watched the video.
 
 An extra option that was added for improved accessibility was the ability to label each heat map section with the frequency. Extra hidden text was added so that a screen reader user could still access all the data shown in the heat map.
 
 \section{Conclusions}
 
-Several improvements to Videogular were made during the course of the project. All of these have been adopted by the Videogular project. There are issues with the standard web browser in iOS which cannot be fixed.
+Several improvements to Videogular were made during the course of the project primarily focussing on accessibility. With these changes the Videogular player is now accessible to users who only navigate websites using the keyboard. All changes noted have been adopted by the Videogular project. Compatibility with a number platforms and devices were reviewed and the only main problem found was issues with the standard web browser in iOS which cannot be fixed due to device limitations.
 
-To implement the cuepoints and heatmap functionality in the scrub bar, two Videogular plugins were written.
+We created two \gls{Videogular} plugins to allow us to add statistical data to the scrub bar and overlay marks (cuepoints) onto this. Both of these have been designed for use in our example websites, cuepoints for points where questions are and the heatmap to demonstrate how often sections of a video have been watched.
+
 
