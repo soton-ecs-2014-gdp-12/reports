@@ -115,7 +115,7 @@ Once an individual question has been generated the next question in the question
 
 Once all of the questions in a question set has been processed it will continue onto the next question set.
 
-Some options allow you to add results at the end of the video. These settings are stored up and once the all question sets have been processed this is added onto the end of the \lstinline|ANNOTATION\_DATA| string.
+Some options allow you to add results at the end of the video. These settings are stored up and once the all question sets have been processed this is added onto the end of the \lstinline|ANNOTATION_DATA| string.
 
 \begin{lstlisting}[language=javascript,caption={The final \gls{DF} is offered for downloading using a data blob URL},label={code:authoringToolFileDownload} ]
 var url = "data:text/json;charset=utf8," + encodeURIComponent(data);
@@ -123,26 +123,26 @@ window.open(url, "_blank");
 window.focus();
 \end{lstlisting}
 
-Once all of these options have been calculated the final template is produced. The template string have their content inserted to generate the finished \gls{DF}. To allow the user to download the file easily we construct a blob url with the code in \autoref{code:authoringToolFileDownload}. Without using a data URL we would require the user to copy the text generated and save it. As this was not a user friendly option so we investigated possible other uses. Offering a file for download was problematic because JavaScript does not have any write permission for files since it is client side. The data blob URL solution provides an acceptable solution by mocking up file URL with data. This may encounter issues with larger files due to the max length permitted in a URL but we have not yet seen these issues occur.
+Once all of these options have been calculated the final template is produced. The template string is processed and content is inserted to generate the finished \gls{DF}. To allow the user to download the file easily we construct a blob url with the code in \autoref{code:authoringToolFileDownload}. Without using a data URL we would require the user to copy the text generated and save it. This was not a user friendly option so we investigated possible other uses. Offering a file for download was problematic as JavaScript does not have any write permission for files due to its client side nature. A data blob URL provides an acceptable solution by mocking up a file URL. This may encounter issues with larger files due to the max length permitted in a URL but we have not yet seen these issues occur.
 
 \subsection{Preview tool}
 
-The preview tool works similar to the export tool (\autoref{Section:Authoring_export_data}) by generating the \gls{DF} and creating the blob URL. Once this has been done this is passed to the vgQuestion plugin embedded in the authoring tool which loads up the newly created quiz.
+The preview tool works similarly to the export tool (\autoref{Section:Authoring_export_data}) by generating the \gls{DF} and creating the blob URL. Once this has been done this is passed to the vgQuestions plugin embedded in the authoring tool, which loads up the newly created set of questions.
 
-This allows for immediate feedback when creating the quiz and makes it easier to create a quiz for non technical users (\cref{Req:User friendliness}). Since we have embedded the vgQuestions plugin we will be sure that this will react the same when added to a website using the plugin.
+This allows for immediate feedback when creating the set of questions and makes it easier to create a set for non technical users (\cref{Req:User friendliness}). Since we have embedded the vgQuestions plugin we will be sure that this will react the same when added to a website using the plugin.
 
 \section{Conclusions}
 \label{Section:Authoring_Conclusion}
 
 The tool we have produced allows a user to create the \gls{DF} in the correct format that can be used vgQuestions to display user created quizzes.
 
-\cref{Req:Keyboard accessibility} outlines the importance of accessibility so we have designed the authoring tool to be as accessible as possible. \autoref{Section: Conformance of Authoring Tool} details our conformance to the \gls{WCAG} standards. In \autoref{Section:Testing_Authoring_tool_accessibility} we have ran through a number of testing methods applied to the authoring tool to demonstrate that it is accessible and outlined any further issues.
+\cref{Req:Keyboard accessibility} outlines the importance of accessibility so we have designed the authoring tool to be as accessible as possible and \autoref{Section: Conformance of Authoring Tool} details our conformance to the \gls{WCAG} standards. In \autoref{Section:Testing_Authoring_tool_accessibility} we have ran through a number of testing methods applied to the authoring tool to demonstrate that it is accessible and outlined any further issues.
 
 \autoref{Figure:Authoring_Tool} is an image showing our final user interface. The colour scheme was chosen to be high contrasting to fulfil \cref{Req:Use of colour}. In addition the CSS used to set this colour scheme is in a single place and is easy to change as to a users requirement.
 
-To further decrease the barrier to entry (\cref{Req:User friendliness}) we used the \gls{Videogular} and \gls{vgQuestions} plugin to allow a preview of the quiz they have created. One of the useful side effects of \cref{Req:Standalone} has meant that it has been easy to integrate \gls{vgQuestions} into the authoring tool.
+To further decrease the barrier to entry (\cref{Req:User friendliness}) we used the \gls{Videogular} and \gls{vgQuestions} plugin to allow a preview of the question set they have created. One of the useful side effects of \cref{Req:Standalone} has meant that it has been easy to integrate \gls{vgQuestions} into the authoring tool.
 
-There may be some more work needed to investigate how large a JavaScript quiz file may be produced when using the data blob URL approach to allow the user to download the file. While no limits problems have occurred during testing this is something that will need to be kept in mind. \todo{What is this trying to say?}
+Some more work may needed to investigate how large a \gls{DF} may be produced when using the data blob URL approach to allow the user to download the file. While no problems have occurred during testing, \autoref{Section:Authoring_export_data} identifies possible issues that may occur for exceptionally large question sets.
 
 \begin{landscape}
 
