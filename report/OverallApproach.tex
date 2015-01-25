@@ -14,9 +14,14 @@ This was done by first summarising the research conducted into previous work, as
 Having reviewed the \href{Chapter:Previous Work}{previous work} some design decisions for the project could be proposed to the client:
 \begin{itemize}
 \item A basic quiz standard would need to be defined to allow interoperability between the authoring tool and overlaid video player. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
-\item One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.  \item A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
+
+\item One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.
+
+\item A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
+
 \item The overlaid video player will need to emit events that can be captured and used to analyse the viewing patterns of the interactive videos. This would allow the viewing patterns to be compared and contrasted with traditional videos.
 \end{itemize}
+
 \section{Client Requirements}
 With the end aim of integrating this project into the new version of Synote there were some specific requirements that our client had with regards to implementation.
 
@@ -35,7 +40,7 @@ The framework allows custom HTML tags and attributes to be created using directi
 One of \gls{AngularJS}'s most prominent features is its use of two-way binding. This synchronises the views with the data held in the model. This is especially useful when dealing with dynamic content as when extra content is added it is automatically shown in the view.
 
 \section{Stakeholder Analysis}
-For an approach for the project to be decided on the stakeholders needed to be identified and analysed. Their requests have been prioritised by categorising each stakeholder (see \autoref{fig:Stakeholder matrix}).
+To decide on an approach for the project the project the stakeholders needed to be identified and analysed. Their requests have been prioritised by categorising each stakeholder (see \autoref{fig:Stakeholder matrix}).
 \begin{figure}[h!]
 \centering
 \input{StakeholderMatrix}
