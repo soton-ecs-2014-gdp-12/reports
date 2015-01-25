@@ -103,19 +103,19 @@ importScripts("WORKER_URL");
 loadAnnotations(ANNOTATION_DATA);
 \end{lstlisting}
 
-First the global options are processed and the basic file is created. This uses a default template which is stored in the authoring tool. The current template used is shown in \autoref{code:authoringToolTemplate}. This has two sections that are replaced with content that are generated in a later stage. These are `WORKER\_URL' and `ANNOTATION\_DATA'. `WORKER\_URL' is currently replaced by the URL as guessed by the authoring tool. This may need to be modified if the vgQuestions plugin has been modified to move the web worker position. `ANNOTATION\_DATA' is replaced with the generated question data that is generated below.
+First the global options are processed and the basic file is created. This uses a default template which is stored in the authoring tool. The current template used is shown in \autoref{code:authoringToolTemplate}. This has two sections that are replaced with content that are generated in a later stage. These are \lstinline|WORKER_URL| and \lstinline|ANNOTATION_DATA|. \lstinline|WORKER_URL| is currently replaced by the URL as guessed by the authoring tool. This may need to be modified if the vgQuestions plugin has been modified to move the web worker position. \lstinline|ANNOTATION_DATA| is replaced with the generated question data that is generated below.
 
 Once the template has been created, each question set is processed. This involves taking all the settings for the question set, storing it the question set format, and then processing and generating JavaScript for each question in the question set.
 
 When generating the JavaScript for each question the question type is used to generate a set of attributes specific to that question type. The attributes generated are as defined in the class diagram \autoref{Figure:questions_class_diagram} and these are added to the question.
 
-For some questions, there will be a number of different annotation questions added to the question set. One example is when the quiz author has selected that a user may return to a specific point if they fail a question. This will add a question asking the user if they wish to review the section of the video containing the answer to the question. This template is shown in \autoref{code:authoringToolTemplateRewatchSection} and has the variables `QUESTION\_ID' and `TIME' which will be replaced with the data from the question the user has enabled the option on.
+For some questions, there will be a number of different annotation questions added to the question set. One example is when the quiz author has selected that a user may return to a specific point if they fail a question. This will add a question asking the user if they wish to review the section of the video containing the answer to the question. This template is shown in \autoref{code:authoringToolTemplateRewatchSection} and has the variables \lstinline|QUESTION_ID| and \lstinline|TIME| which will be replaced with the data from the question the user has enabled the option on.
 
 Once an individual question has been generated the next question in the question set will be processed.
 
 Once all of the questions in a question set has been processed it will continue onto the next question set.
 
-Some options allow you to add results at the end of the video. These settings are stored up and once the all question sets have been processed this is added onto the end of the `ANNOTATION\_DATA' string.
+Some options allow you to add results at the end of the video. These settings are stored up and once the all question sets have been processed this is added onto the end of the \lstinline|ANNOTATION\_DATA| string.
 
 \begin{lstlisting}[language=javascript,caption={The final \gls{DF} is offered for downloading using a data blob URL},label={code:authoringToolFileDownload} ]
 var url = "data:text/json;charset=utf8," + encodeURIComponent(data);
