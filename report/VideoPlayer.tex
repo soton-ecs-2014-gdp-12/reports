@@ -92,6 +92,8 @@ One problem found during implementation was that the cuepoints cannot be display
 \subsubsection{Further Work}
 In future, the ability to specify a different \gls{CSS} class for each cuepoint could very easily be added, allowing visual differentiation of the markers. It would also be useful to make the cuepoints more accessible, for example by providing alternative text for screen readers.
 
+There may also be scope for investigating why the Videogular player does not set the length variable before it starts playing and if there are any fixes for this. Initial investigation concluded that until the video starts playing it is impossible to determine the length of the video. However loading the video via a second hidden html5 element and playing it, may give access to the video length.
+
 \subsection{Videogular Heatmaps - vgHeatmap}
 \gls{Videogular} Heatmaps is a \gls{Videogular} plugin for giving areas of the scrub bar different colours. In our examples this is used to give a visual representation of the number of times each section of the video has been watched.
 
