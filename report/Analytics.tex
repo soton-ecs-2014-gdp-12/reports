@@ -11,21 +11,21 @@
 
 \section{Introduction}
 
-One of the main requirements states  that video and question events should be emitted from the Videogular player (\cref{Req:Analytics events}. We decided that instead of putting analytics events directly into the \gls{vgQuestions} plugin we would make a new plugin to handle analytics.
+One of the main requirements states  that video and question events should be emitted from the Videogular player (\cref{Req:Analytics events}). We decided that instead of putting analytics events directly into the \gls{vgQuestions} plugin we would make a new plugin to handle analytics.
 
 This plugin will monitor how the user uses the \gls{Videogular} video player and the \gls{vgQuestions} plugin and store events related to this. If a server is configured this will send the users data to a server where it can be aggregated and processed.
 
 \section{Design}
 
-The reason for designing the plugin to be separate from the main \gls{vgQuestions} plugin is because not all users of the core functionality will also want to perform analytics. This means that for users that are not interested their will be no overhead of collecting the data. This can be important on mobile devices that have smaller processing power available.
+The reason for designing the plugin to be separate from the main \gls{vgQuestions} plugin is because not all users of the core functionality will also want to perform analytics. This means that for users that are not interested there will be no overhead of collecting the data. This can be important on mobile devices that have smaller processing power available.
 
 In addition, implementing this as a separate plugin means that it is not dependant on any of the other plugins and therefore fulfils \cref{Req:Standalone}.
 
-Since the plugin is the published deliverable it will be used with an external server to capture the data. This will be able to aggregates this and store it in some format. It is configured to post data via \gls{REST} calls (\cref{Req:Server architecture}) to a server defined in the analytics configuration file.
+Since the plugin is the published deliverable and is not able to be directly demonstrated it will be used with an external server to capture data and illustrate its operation. This will be able to aggregates this and store it in some format. It is configured to post data via \gls{REST} calls (\cref{Req:Server architecture}) to a server defined in the analytics configuration file.
 
-There will be a published \gls{API} to be used with the analytics plugin that will detail all events will be published form the plugin. A well documented API is important (\cref{Req:Documentation}) so that developers can easily create a service that collects and uses the data.
+There will be a published \gls{API} to be used with the analytics plugin that will detail all events published from the plugin. A well documented API is important (\cref{Req:Documentation}) so that developers can easily create a service that collects and uses the data.
 
-In the event that the server is unable to be contacted it should queue the results until it comes back online. Once a request fails to be sent the plugin should try sending all queued events at an interval until the server comes back online or the application is closed. If the application is closed before the server comes back online the data will be lost.
+In the event that the server is unable to be contacted it should queue the results until it comes back online. Once a request fails to be sent the plugin should pause sending events and queue them. It will try sending all queued events at intervals until the server comes back online or the application is closed. If the application is closed before the server comes back online the data will be lost.
 
 \section{Implementation}
 
@@ -36,7 +36,7 @@ $rootScope.$broadcast('analytics','show_question', data);
 \end{lstlisting}
 
 In \autoref{code:analytics_message_passing} we broadcast to the \lstinline|analytics| channel an event with the name
-\lstinline|show\_question| with the content of the data variable. This is used in \gls{vgQuestions} to detail how people are using the overlay.
+\lstinline|show_question| with the content of the data variable. This is used in \gls{vgQuestions} to detail how people are using the overlay.
 
 \begin{figure}
 \centering
@@ -76,7 +76,7 @@ By using the publish/subscribe model we can design the plugin so that they will 
 
 In addition to listening to the messages sent by the \gls{vgQuestions} plugin the vgAnalytics plugin also listens to a number of \gls{Videogular} video events. This is to track information such as when the user pauses, continues and stops the video. These hooks are placed onto the videogular object and then are emitted on the \lstinline|analytics| channel.
 
-By ensuring that all events that will be sent to the analytics server are published to the \lstinline|analytics| channel we ease the introduction of further plugins. If they wish to process the statistics generated on the client they  can listen to this channel without interacting with the vgAnalytics plugin. This keeps the plugin a very seperate unit (\cref{Req:Standalone}) while allowing easy access to the data that it uses.
+By ensuring that all events that will be sent to the server are published to the \lstinline|analytics| channel we ease the introduction of further plugins. If they wish to process the statistics generated on the client they  can listen to this channel without interacting with the vgAnalytics plugin. This keeps the plugin a very seperate unit (\cref{Req:Standalone}) while allowing easy access to the data that it uses.
 
 The deliverable API is listed in \autoref{Table:analytics_api} and describes all messages that are sent from the vgQuestions and vgAnalytics plugin to the configured server.
 
