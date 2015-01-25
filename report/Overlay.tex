@@ -162,5 +162,5 @@ When the user responds to the question, that response is send to the worker in a
 
 Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the annotation, so the worker responds with an \lstinline|endAnnotation| message.
 
-\section{Conclusion}
+\section{Conclusions}
 An internal representation of the questions is given by the \acrlong{DF} that is used to display the questions to the user in the overlays. \gls{CSS} is used to keep the appearance of the questions consistent. \Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur.
