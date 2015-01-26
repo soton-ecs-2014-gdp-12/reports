@@ -2,13 +2,13 @@
   font=\sffamily,
   every matrix/.style={ampersand replacement=\&,column sep=1.4cm,row sep=2cm},
   source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
+  sourceSecond/.style={draw,thick,fill=yellow!20,inner sep=.3cm},
   vg-plugin/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
-  analytics-frontend/.style={draw,thick,rounded corners,fill=red!20,inner sep=.3cm},
   videogular/.style={draw,thick,circle,fill=blue!20},
   process/.style={draw,thick,circle,fill=blue!20},
   sink/.style={source,fill=green!20},
   datastore/.style={draw,very thick,shape=datastore,inner sep=.3cm},
-  server/.style={source,fill=green!20},
+  server/.style={sourceSecond,fill=green!20},
   dots/.style={gray,scale=2},
   to/.style={->,>=stealth',shorten >=1pt, shorten <=1pt,semithick,font=\sffamily\footnotesize},
   between/.style={<->,>=stealth',shorten >=1pt, shorten <=1pt,semithick,font=\sffamily\footnotesize},
@@ -27,13 +27,11 @@
       \&
       \& \node[vg-plugin] (analytics) {analytics};
       \& \node[server] (analytics-server) {analytics server}; \\
-
-    \& \& \& \node[analytics-frontend] (analytics-frontend) {analytics-frontend}; \\
   };
 
   \draw[to] (questions.17) --
-      node[midway,above] {user responses} (poll-server.166);
-  \draw[to] (poll-server.-166) --
+      node[midway,above] {user responses} (poll-server.167);
+  \draw[to] (poll-server.-167) --
       node[midway,below] {results} (questions.-17);
   \draw[to] (questions) --
       node[midway,right] {user interactions}
@@ -45,11 +43,6 @@
       node[midway,above] {data} (analytics-server.168);
   \draw[to] (analytics-server.-168) --
       node[midway,below] {acks} (analytics.-18);
-  \draw[to] (analytics-frontend) to[bend left=22] node[midway,above] {}
-      node[midway,below] {events} (heatmap);
-  \draw[to] (analytics-server) --
-      node[midway,right] {user interactions}
-      (analytics-frontend);
   \draw[between] (videogular) -- node[midway,above,sloped] {events} (cuepoints);
   \draw[between] (videogular) -- node[midway,above,sloped] {events}(analytics);
   \draw[between] (videogular) -- node[midway,above,sloped] {events}(questions);
