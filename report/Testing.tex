@@ -56,6 +56,10 @@ We have used this as our unit test framework for AngularJS projects.
 
 Python has included in its standard packages, a module called unittest. This module is designed to be similar to the JUnit testing framework for Java and we have used this for all of our python based projects as a unit test framework.
 
+\subsection{Locust}
+
+Locust\footnote{\url{http://locust.io/}} is a distributed load testing tool that allows you to define a site access pattern. By designing a site access pattern you specify how often sites are visited relative to others and therefore can tailor the access patterns to your likely use case.
+
 \section{Videogular Questions Example} 
 \label{Section:Videogular Questions Example}
 
@@ -120,9 +124,7 @@ If the ability to vote does not work then this will fail as it relies on being a
 
 \subsubsection{Load testing}
 
-For load testing we have used Locust\footnote{\url{http://locust.io/}} which spawns a number of testing clients and executes a defined pattern of site usage.
-
-We chose three patterns to test the example results server:
+For the load testing we have used Locust and have chosen three access patterns to test the example results server:
 
 \begin{itemize}
 \item Visiting the root page - This is to determine that the webserver is still responding to basic HTTP requests
