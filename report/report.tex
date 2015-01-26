@@ -22,6 +22,7 @@
 \usetikzlibrary{calc}
 \usepackage{environ}
 \usepackage{pdflscape}
+\usepackage[titletoc]{appendix}
 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1\linewidth}}
 \newcommand{\eoline}{\tabularnewline \hline}
@@ -215,7 +216,9 @@ Dr Gary Wills for acting as an external source of help regarding the coursework.
 
 %TC:ignore
 \appendix
+\cleardoublepage
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\begin{appendices}
 \include{AppendixProjectManagement}
 \include{AppendixDeployment}
 \include{AppendixAccessibilityStandards}
@@ -229,6 +232,7 @@ Dr Gary Wills for acting as an external source of help regarding the coursework.
 \include{AppendixBrief}
 \include{AppendixFFBug}
 \include{AppendixAuthorship}
+\end{appendices}
 
 %TC:endignore
 
