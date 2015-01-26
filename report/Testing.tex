@@ -240,7 +240,7 @@ This front end tests the Videogular Analytics plugin to ensure that the data rec
 \label{Subsubsection:Videogular Heatmaps in example}
 %Heatmap, user stories, run through
 
-One of the analytics used in the example site is the \gls{Videogular} Heatmap. When running an instance of \gls{Videogular} Questions Example this could be used to dynamically update the heat map in the example analytics page (see \autoref{Figure: Heat map display}).
+One of the analytics used in the example site is the \gls{Videogular} Heatmap. When running an instance of \gls{Videogular} Questions Example this can be used to dynamically update the heat map in the example analytics page (see \autoref{Figure: Heat map display}).
 
 \begin{figure}[h]
 	\centering
@@ -248,7 +248,33 @@ One of the analytics used in the example site is the \gls{Videogular} Heatmap. W
 	\caption{\label{Figure: Heat map display} The heat map has dynamically updated}
 \end{figure}
 
+This is used to test that the Videogular Analytics plugin is able to properly export the timing data. The processing on the client side matches up start and end marks. These marks shown in \autoref{Figure:Analytics time periods} are then further processed to produce the data that the analytics can use.
+
+If these are not able to be processed then this indicates an issue with the events being sent from the Videogular Analytics plugin. If they are able to be sent but the heatmap does not display then there is an issue with the heatmap.
+
+Running this against the predefined data is used as a regression test for Videogular Heatmap to ensure it is working correctly.
+
+By running an instance of the Example Videogular Questions site and voting with the analytics we perform end to end testing as this data is passed through a number of our plugins to reach the Analytics front end to be loaded by the Heatmap plugin.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.4]{../figures/analytics_time_periods.png}
+	\caption{\label{Figure:Analytics time periods} Analytics events after being processed into viewer time periods}
+\end{figure}
+
 The added feature of displaying the frequencies was also tested. These displayed well and matched the frequencies represented by the colours used. A screen reader could still access the data as it was declared in hidden text.
+
+\subsection{Videogular Analytics integration with Videogular Questions}
+
+To test integration with Videogular Questions we have included a set of dynamic graphs that update as events about question results are sent. \autoref{Figure:Analytics Question Graphs} shows an example of the results of questions that have been sent from the plugin.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.8]{../figures/analytics_graphs.png}
+	\caption{\label{Figure:Analytics Question Graphs} Graph showing results of questions sent from Videogular Analytics}
+\end{figure}
+
+If the question data is not being recieved this means that the Videogular Analytics plugin has not been able to properly access the Videogular Questions events. This test was used as a regression test to ensure that the Videogular Analytics plugin is correctling accessing all published analytics events and forwarding them to the REST server.
 
 \subsection{Accessibility}
 
