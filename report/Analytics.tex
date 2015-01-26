@@ -41,7 +41,8 @@ In \autoref{code:analytics_message_passing} we broadcast to the \lstinline|analy
 \begin{figure}
 \centering
 \begin{sequencediagram}
-  \newinst[0.5]{q}{vgQuestions plugin}
+  \newthread[white]{q}{vgQuestions plugin}
+
   \newinst[0.3]{c}{analytics channel}
   \newinst[0.3]{a}{vgAnalytics}
   \newinst[1.4]{r}{REST Service}
