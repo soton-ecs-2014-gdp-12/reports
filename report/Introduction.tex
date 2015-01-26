@@ -1,36 +1,40 @@
 %% ----------------------------------------------------------------
 %% Introduction.tex
-%% ---------------------------------------------------------------- 
-\chapter{Introduction} 
+%% ----------------------------------------------------------------
+\chapter{Introduction}
 \label{Chapter:Introduction}
 
 \begin{preamble}
 	\preamblequote{Without annotations a video is like a book without a contents.}{Professor Mike Wald on Synote}
 \end{preamble}
 
-\section{Problem} 
+\section{Problem}
 \label{Section:Problem}
 
-Videos combined with quizzes and polls are often used for educational purposes in many applications including \glspl{MOOC} and university lectures. For the authors of these resources this often involves splitting videos up into sections with a poll/quiz after each section to gauge understanding. Using this approach requires the author to have video editing skills in order to insert the quizzes. It would be useful if quizzes could be saved and included directly into videos without the need to edit them. The new media created could be analysed to make discoveries about how best to present information to viewers so that they can take the most information in. 
+Videos combined with quizzes and polls are used for educational purposes in many settings, including \glspl{MOOC} and university lectures. For the authors of these resources, this often involves splitting videos up into sections with a poll or quiz after each section to gauge understanding. This approach requires the author to have video editing skills, and can be time-consuming. It would be useful if quizzes could be created and included directly into videos without the need for video editing. The resulting media could be analysed to discover how best to present information for learning.
 
-\section{Goals and Scope} 
+\section{Goals and Scope}
 \label{Section:Goals and Scope}
+
 This project will be split into three main sections:
+
 \begin{description}[%
   before={\setcounter{descriptcount}{0}},%
   ,font=\bfseries\stepcounter{descriptcount}\thedescriptcount~]
-\item[Quiz Authoring Tool] \hfill \\
-The authoring tool (designed with accessibility in mind) will allow users to:
-\begin{itemize}
-\item Specify sets of questions and polls to appear in the video
-\item The time at which question sets should appear
-\item Actions that should be taken when questions are answered (e.g. skip back to a certain point if the answer is incorrect)
-\end{itemize}
+	\item[Quiz Authoring Tool] \hfill \\
+	The authoring tool (designed with accessibility in mind) will allow users to specify:
 
-The export feature will produce a \gls{DF} compatible with the video player that contains all of the above information.
+	\begin{itemize}
+		\item sets of questions and polls to appear in the video,
+		\item the time at which question sets should appear, and
+		\item actions to be taken when questions are answered (e.g. skip back in the video if the answer is incorrect).
+	\end{itemize}
 
-\item[Overlaid Video Player] \hfill \\
-A library will be implemented which allows quizzes and polls to be overlaid on web videos, playable in the main browsers (Firefox, IE and Chrome) on different platforms (PC, Mac and Android). These videos could be any of the main video formats (MP4, WebM, OGG). The \gls{DF} specifying the questions will be interpreted by the library and shown in the overlay. Accessibility considerations for the overlaid videos will be investigated.
-\item[Video and Quiz Analytics] \hfill \\
-Metrics of user behaviour will be recorded and methods of displaying these to the author will be explored.
+	The export feature will produce a \gls{DF} compatible with the video player that contains all of the above information.
+
+	\item[Overlaid Video Player] \hfill \\
+	A library will be implemented to allow quizzes and polls to be overlaid on Web videos, playable in the major browsers (Mozilla Firefox, Microsoft Internet Explorer and Google Chrome) on different platforms (PC, Mac OS X and Android). These videos could be any of the main video formats (MP4, WebM, OGG). The library will read the \gls{DF} and show the questions on the overlay at the appropriate time. Accessibility considerations for the overlaid videos will be investigated.
+
+	\item[Video and Quiz Analytics] \hfill \\
+	Metrics of user behaviour will be recorded and methods of displaying these to the author will be explored.
 \end{description}
