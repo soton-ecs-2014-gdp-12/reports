@@ -209,31 +209,6 @@ The pass marks show each test was tested by us and was successful, and also acce
 
 Testing of sending events
 
-\subsection{Deliverable signoff tests}
-
-The tests in table \autoref{table:vgAnalytics Deliverable signoff tests} were presented to the client as the deliverable items for the example analytics tool.
-
-These tests were ran on the analytics tool example using preloaded data so that we had a repeatable set of data that was always valid.
-
-\begin{center}
-\begin{longtable}{|L{0.9}|L{0.03}|} 
-\caption{\label{table:vgAnalytics Deliverable signoff tests}vgAnalytics Deliverable signoff tests} \\
-\hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline
-\endfirsthead
-\hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
-\multicolumn{2}{c}{Continues on the next page...} \endfoot
-\endlastfoot
-All events are listed at the top of the events log page, including the type and details of the events & \CheckmarkBold \eoline
-The sections that the users have watched are correctly calculated and shown at the bottom & \CheckmarkBold \eoline
-Watched video segments are calculated correctly and show how many times all users have viewed a section. & \CheckmarkBold \eoline
-The results page shows the user responses. & \CheckmarkBold \eoline
-The results page also shows correct answers and whether users rewatched sections. & \CheckmarkBold \eoline
-The ``\% watched by correct answers'' and ``Time watched by correct answers'' graphs show two ways you could represent the data in a different way. & \XSolidBrush \eoline
-\end{longtable}
-\end{center}
-
-Here the final requirement was queried by the customer. The example graphs shown did not have an vertical axis. This was fixed by adding an axis after the customer meeting however during the meeting this did not affect signoff since it was an example of possible graphs that could be created.
-
 \subsection{Front End}
 
 \todo{More content needed and an intro here}
@@ -260,9 +235,51 @@ The video issues were the same as for the Videogular Questions Example site (see
 
 Using graphs has created many accessibility issues for visually impaired or cognitively impaired users as the data is not described in text. This would be an important consideration for any developer using our plugins in their own site. As a proof-of-concept our example site purely shows that graphs could be used as a method of automatically producing a visual representation of the data.
 
+\subsection{Deliverable signoff tests}
+
+The tests in table \autoref{table:vgAnalytics Deliverable signoff tests} were presented to the client as the deliverable items for the example analytics tool.
+
+These tests were ran on the analytics tool example using preloaded data so that we had a repeatable set of data that was always valid.
+
+\begin{center}
+\begin{longtable}{|L{0.9}|L{0.03}|} 
+\caption{\label{table:vgAnalytics Deliverable signoff tests}vgAnalytics Deliverable signoff tests} \\
+\hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline
+\endfirsthead
+\hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
+\multicolumn{2}{c}{Continues on the next page...} \endfoot
+\endlastfoot
+All events are listed at the top of the events log page, including the type and details of the events & \CheckmarkBold \eoline
+The sections that the users have watched are correctly calculated and shown at the bottom & \CheckmarkBold \eoline
+Watched video segments are calculated correctly and show how many times all users have viewed a section. & \CheckmarkBold \eoline
+The results page shows the user responses. & \CheckmarkBold \eoline
+The results page also shows correct answers and whether users rewatched sections. & \CheckmarkBold \eoline
+The ``\% watched by correct answers'' and ``Time watched by correct answers'' graphs show two ways you could represent the data in a different way. & \XSolidBrush \eoline
+\end{longtable}
+\end{center}
+
+Here the final requirement was queried by the customer. The example graphs shown did not have an vertical axis. This was fixed by adding an axis after the customer meeting however during the meeting this did not affect signoff since it was an example of possible graphs that could be created.
+
 \section{Authoring Tool}
 
 The authoring tool is primary deliverable as it is the only item that is designed as a tool and not as a proof of concept example site deliverable. Therefore the primary types of testing are deliverable signoff tests and accessibility testing.
+
+\subsection{Accessibility}
+\label{Section:Testing_Authoring_tool_accessibility}
+
+The authoring tool was found to be generally accessible conforming to most of the \gls{WCAG} 2.0 standards (see \autoref{table: authoring tool conformance}). The areas that were lacking were providing textual alternatives and error checking.
+
+There were no alternatives provided for the video. However as this would be used with Synote transcripts could be used from there. In future, support for extra accessibility features such as transcripts, captions or signed versions could be included in the authoring tool.
+
+In creating the questions there is no help provided for error checking. This is because it was decided not to narrow the options available to the users. In the occurrences where errors are identified these are generally highlighted by surrounding the component with a red border. More information on how the system would be used would be required in order to create helpful error messages.
+
+Two keyboard accessibility issues were found, both of which were due to browser bugs. The first was that Google Chrome and Chromium did not allow multiple items to be selected in a \texttt{\textless select multiple\textgreater} element using only the keyboard. During the course of the project, a fix was made to Google Chrome and Chromium which allowed multiple \textit{adjacent} items to be selected with the keyboard \citep{ChromiumMultipleSelectBug}, which is an improvement but still not a complete fix.
+
+The second keyboard accessibility issue was that collapsible section headings caused ``focus loops'' in Mozilla Firefox, where pressing the Tab key from the last button on the heading caused the focus to move back to the heading itself, preventing the user from focussing any content after the heading. This was reported on the Mozilla bug tracker \citep{FirefoxFocusLoopBug} (see \autoref{Chapter:Firefox Bug Report}), where another user pointed out that the HTML causing the bug was invalid. We rewrote the HTML to be valid, which fixed the issue.
+
+Another issue found was in the use of the \texttt{\textless select\textgreater} element as the colour of highlighted options is not editable in the \gls{CSS}. To solve this issue the elements would all need rewriting to take a completely different structure to allow the \gls{CSS} to modify the colours used.
+
+Accessibility in the authoring tool was good but there are improvements that could be made in future including adding support for accessibility features such as subtitles, providing error correction support and rewriting the \texttt{\textless select\textgreater} elements to allow editing of colours.
 
 \subsection{Deliverable signoff tests}
 
@@ -289,24 +306,6 @@ A full walkthrough is attempted, all question types are able to be added and pre
 \end{center}
 
 The pass marks show each test was tested by us and was successful, and also accepted by the client after review of the deliverable report.
-
-\subsection{Accessibility}
-\label{Section:Testing_Authoring_tool_accessibility}
-
-The authoring tool was found to be generally accessible conforming to most of the \gls{WCAG} 2.0 standards (see \autoref{table: authoring tool conformance}). The areas that were lacking were providing textual alternatives and error checking.
-
-There were no alternatives provided for the video. However as this would be used with Synote transcripts could be used from there. In future, support for extra accessibility features such as transcripts, captions or signed versions could be included in the authoring tool.
-
-In creating the questions there is no help provided for error checking. This is because it was decided not to narrow the options available to the users. In the occurrences where errors are identified these are generally highlighted by surrounding the component with a red border. More information on how the system would be used would be required in order to create helpful error messages.
-
-Two keyboard accessibility issues were found, both of which were due to browser bugs. The first was that Google Chrome and Chromium did not allow multiple items to be selected in a \texttt{\textless select multiple\textgreater} element using only the keyboard. During the course of the project, a fix was made to Google Chrome and Chromium which allowed multiple \textit{adjacent} items to be selected with the keyboard \citep{ChromiumMultipleSelectBug}, which is an improvement but still not a complete fix.
-
-The second keyboard accessibility issue was that collapsible section headings caused ``focus loops'' in Mozilla Firefox, where pressing the Tab key from the last button on the heading caused the focus to move back to the heading itself, preventing the user from focussing any content after the heading. This was reported on the Mozilla bug tracker \citep{FirefoxFocusLoopBug} (see \autoref{Chapter:Firefox Bug Report}), where another user pointed out that the HTML causing the bug was invalid. We rewrote the HTML to be valid, which fixed the issue.
-
-Another issue found was in the use of the \texttt{\textless select\textgreater} element as the colour of highlighted options is not editable in the \gls{CSS}. To solve this issue the elements would all need rewriting to take a completely different structure to allow the \gls{CSS} to modify the colours used.
-
-Accessibility in the authoring tool was good but there are improvements that could be made in future including adding support for accessibility features such as subtitles, providing error correction support and rewriting the \texttt{\textless select\textgreater} elements to allow editing of colours.
-
 
 \section{Conclusions}
 
