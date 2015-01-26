@@ -18,23 +18,43 @@ These deliverable signoff tests were used as manual regression tests. These were
 
 \section{Tools}
 
-To allow for automated testing to take place JSHint, Karma and Jasmine were used. These tools are described in the following subsections.
+We have used a number and range of different tools during testing to ensure that the quality of our code is to the high standard the customer required. For each repository we have decided on what types of tests are applicable and can be implemented to properly test the application.
+
+Where possible we have used unit test style tools to automate repeatable types of tests. Anyone working with a repository that has unit tests should follow the following policies:
+
+\begin{itemize}
+\item \textbf{Running unit tests after checking out new code} - This is to ensure that all code checked out is currently working. If it does not they are encouraged to look into fixing the problem themselves or determining which commit broke the build and contact the committer to find the reason for this.
+
+\item \textbf{Create unit tests for new functionality} - The unit tests form part of our continuous testing plan with the aim to ensure all code on master branches runs properly. Adding unit tests for new features helps ensure this as others will be able to run them to check your new features are working correctly after other code modifications have been made.
+
+\item \textbf{Run unit tests before committing new code} - As a final check before submitting new code, all unit tests should be run on the repository. This acts as a final confirmation to ensure that no new code has broken old code. This forms part of our regression testing. Any older code that has been broken must be reviewed and fixed to ensure that the master branch runs properly.
+
+\item \textbf{Fix broken unit tests} - When a unit test is identified that it is not working as intended it should be reviewed to see if it is still applicable and ensure that it is modified to work if so. There may be multiple reasons why a unit test has been broken so it may be needed to contact the person who originally broke the unit test to find out what was changed and why.
+\end{itemize}
+
+The tools we have used in the testing sections below are described fully in the following subsections.
 
 \subsection{JSHint}
 
-JSHint is a tool for static code analysis of JavaScript, which can detect many instances of bad coding practice in source files before they cause errors. Included in each of our repositories which contain JavaScript is a configuration file for JSHint, which enforces use of ECMAScript 5 Strict Mode, and prohibits use of undeclared variables or type coercion. JSHint was run at regularly during the project and any issues it highlighted were fixed.
+JSHint is a tool for static code analysis of JavaScript, which can detect many instances of bad coding practice in source files before they cause errors. Included in each of our repositories containing JavaScript is a configuration file for JSHint, which enforces use of ECMAScript 5 Strict Mode, and prohibits use of undeclared variables or type coercion. JSHint was run at regularly during the project and any issues it highlighted were fixed. For repositories that had JSHint set up for use it was recommended to run this before committing.
 
 \subsection{Karma}
 
 Karma allows tests to be run in browsers (or headlessly) in an automated manner.  It then also aggregates and displays the results making it easy to see if the tests have passed or failed.
 
-Karma is included within Angular seed (see \autoref{Section:Overall_Testing}), which means it was available from the start.
+Karma is included within Angular seed (see \autoref{Section:Overall_Testing}), which means it was available from the start. The inclusion in Angular seed was one of the reasons we used it as it is an industry standard for AngularJS.
 
 \subsection{Jasmine}
 
 Jasmine is a testing framework for JavaScript. It has simple syntax and works well with Karma.
 
-Jasmine was also included in Angular seed (see \autoref{Section:Overall_Testing}).
+Jasmine was also included in Angular seed (see \autoref{Section:Overall_Testing}) and therefore already set up for our use.
+
+We have used this as our unit test framework for AngularJS projects.
+
+\subsection{Python unittest module}
+
+Python has included in its standard packages, a module called unittest. This module is designed to be similar to the JUnit testing framework for Java and we have used this for all of our python based projects as a unit test framework.
 
 \section{Videogular Questions Example} 
 \label{Section:Videogular Questions Example}
@@ -58,13 +78,12 @@ Client had reservations about UX testing due to toolkit style nature of the proj
 
 \subsection{Example Results Server}
 \label{Subsection:Example Results Server in example}
+
 For the example results server we had a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is a therefore well suited to individual unit tests.
 
 Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python.
 
 The flask library had a test client and recommended test skeleton\footnote{\url{http://flask.pocoo.org/docs/0.10/testing/}} which we made use of to run the unit tests. This used the unittest standard python library which meant it was easy to test with but also allowed calling of methods by simulating HTTP requests.
-
-These tests are recommended to be run before committing new code to the repository and formed one part of the quality assurance testing. Any tests that failed were reviewed before committing and fixed if they were at fault. No code should have been committed to master branches that caused tests to fail. All code on the master branch was expected to pass these tests on checkout.
 
 We split the testing into 6 areas to test the main components of the application.
 
