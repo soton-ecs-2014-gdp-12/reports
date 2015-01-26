@@ -204,12 +204,40 @@ The pass marks show each test was tested by us and was successful, and also acce
 
 \section{Example Analytics}
 
-\subsection{Back End - Example Analytics Server}
+The example analytics back-end was written as an example to demonstrate and test the analytics plugin. This example was split into two sections to verify data was received and then show an example of how this data could be used.
+
+The back-end is the server receiving the data and processing it and the front-end is concerned with loading the gathered data from the analytics displaying this to the user.
+
+\subsection{Back-end - Example Analytics Server}
 \label{Subsection:Analytics server in example}
 
-Testing of sending events
+The analytics back-end server receives the REST calls from the analytics plugin and is then able to process them. For this example implementation we have chosen not to store the data but forward it to the front end. This will demonstrate that the analytics plugin is able to make REST calls. Storage could be used for later recall of the information but 
+
+\subsubsection{Cross Origin request testing}
+
+\cref{Req:Standalone} states that each plugin should operate in a standalone manner. It needed to be ensure that the example server and analytics plugin works correctly when performing cross origin requests. To permit this on the example server we have included testing code to permit all cross origin requests, see \autoref{code:analyticsCrossOrigin}.
+
+\begin{lstlisting}[language=javascript,caption={Code showing appending Cross Origin headers to all responses}, label={code:analyticsCrossOrigin}]
+app.all('*', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers",
+	           "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
+\end{lstlisting}
+
+To test analytics worked cross domain we set up the analytics back-end and the analytics plugin on two different testing servers. This was able to correctly pass data between the two and therefore passed cross origin testing.
+
+\subsubsection{Reloading processed data}
+
+The back-end acted as a testing platform for the front end. A large set of data was recorded from the analytics plugin and saved to allow for repeated testing of the same pieces of data. The back-end plugin has a tool to specify a data file that has already been processed to be replayed.
+
+Any front end client connecting to the back-end Videogular Analytics server will be sent all events in the loaded piece of data. This allows the front end website to be quickly tested with a set of data that encompasses all features of the Analytics plugin. This data set allows comparison between a known valid set of data and data that Videogular Analytics creates allowing you to easily identify issues that occur.
+
 
 \subsection{Front End}
+
+
 
 \todo{More content needed and an intro here}
 
