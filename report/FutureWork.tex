@@ -4,70 +4,72 @@
 \chapter{Future work} \label{Chapter: Future Work}
 
 \begin{preamble}
-This framework is very much just the beginning, there are a number of interesting improvements that can be made to enhance and extend the project. This chapter details a number of these potential improvements.
+This framework is just the beginning of the work that could be undertaken in this area, there are a number of interesting improvements that can be made to enhance and extend the project. This chapter details a number of these potential improvements.
 \end{preamble}
 
 \section{Introduction}
 
-During the project we have found a number of areas that could have been expanded. Some of these we have looked into but have not had time to further add to the project and others have been suggested as points of future work by our client. A number of the important items of future work have been detailed below.
+During the project a number of areas were found that could have been expanded. Some of these have been looked into but not implemented due to time constraints and others have been suggested as points of future work by the client. A number of the important items of future work have been detailed below.
 
 \section{Integration with Synote}
 
-The most important part of our project is ensuring that the work we have done is easily integrated into Synote.
+The most important part of the project is ensuring that the work done is able to be easily integrated into Synote.
 
-Therefore during the process we have been in communication with the current developer of Synote to ensure that the work we are doing will be able to be used.
+Therefore during the process there was communication with the current developer of Synote to ensure that the work done will be able to be used.
 
-One key requirement was that the work we are doing should be able to stand alone and not require any additional Synote framework but that Synote should be able to communicate with these pieces of work easily (see \cref{Req:Standalone}).
+One key requirement was that the all work done should be able to standalone and not require any additional Synote framework but that Synote should be able to communicate with these pieces of work easily (see \cref{Req:Standalone}).
 
-To ensure this all, our services use an open standard to communicate using either \gls{REST} calls (\cref{Req:Server architecture}), with an associated documentation of each call and how it can be used, or protocols such as web sockets. These services can be run as small webservers which will allow Synote to communicate with them easily. In addition since these are standalone we have been able to pick the best language for the associated service. This has decreased the complexity of our services which should reduce the time needed to learn how the software works in order to continue our work.
+To ensure this all, all services use an open standard to communicate using either \gls{REST} calls (\cref{Req:Server architecture}), with associated documentation of each call and how it can be used, or protocols such as Web sockets. These services can be run as small Web servers which will allow Synote to communicate with them easily. In addition since these are standalone we have been able to pick the best language for the associated service. This has decreased the complexity which should reduce the time needed to learn how the software works in order to continue from this project.
 
 The core of the project uses \gls{AngularJS} and the \gls{Videogular} player as this was recommended as the latest version of Synote will be written in Angular. All of the plugins were written for the \gls{Videogular} player and therefore will be able to be easily integrated into the primary Synote codebase. The plugins are the only part that will be integrated into Synote directly and therefore were best suited to be written in Angular. The other services will communicate with Synote and therefore did not need to be written in Angular.
 
 \section{Additional Video Players}
 
-Since our plugins are built upon the \gls{Videogular} system we have not been concerned with how the video is played. The base \gls{Videogular} system plays the common video formats.
+Since the plugins are built upon the \gls{Videogular} system there was no concern with how the video is played. The base \gls{Videogular} system plays the common video formats.
 
-To further expand our system we could look at fixing the \gls{Videogular} YouTube Plugin\footnote{\url{https://github.com/NamPNQ/bower-videogular-youtube}}. This would allow users to specify a youtube video to use for the quiz and removes the problems with getting all formats of video for all browsers.
+To further expand the system the \gls{Videogular} YouTube Plugin\footnote{\url{https://github.com/NamPNQ/bower-videogular-youtube}} could be fixed. This would allow users to specify a YouTube video to use in the authoring tool and removes the problems with getting all formats of video for all browsers.
 
-This was not worked on due to the possible time requirement and was decided out of scope by the client. However some work was done looking into the changes required and it appeared to be possible to fix for the latest version.
+This was not worked on due to the time requirement and was decided out of scope by the client. However some work was done looking into the changes required and it appeared to be possible to fix for the latest version.
 
 \section{Video Encoding}
 
-To display video using the default Videogular plugin you need to have the video in a number of formats to ensure all browsers can play the video. Therefore if the user wishes to use their own video they will need to manually convert the video to all required formats before it will be usable on all operating systems/browsers.
+To display video using the default \gls{Videogular} plugin the video needs to be in a number of formats to ensure all browsers can play the video. Therefore if the user wishes to use their own video they will need to manually convert the video to all required formats before it will be usable on all operating systems/browsers.
 
-The process of converting the video to each of the required formats is not triveal. In addition finding what video formats are required requires knowledge of what you are looking for. This has a high barrier to entry and therefore could prevent possible users being able to use the tools.
+The process of converting the video to each of the required formats is non-trivial. In addition, finding out that video formats are required requires knowledge of what to look for. This has a high barrier to entry and therefore could prevent possible users being able to use the tools.
 
-There are a number of open source video conversion tools that could be used. An idea for an improvement would be to modify the authoring tool to allow a user to upload a video. Once this has been uploaded it will be automatically stored and converted to the correct formats. The server would then store these new formats and either set up the quiz with the video or give the user the newly converted video URL's for inclusion to their quiz.
+There are a number of open source video conversion tools that could be used. An idea for an improvement would be to modify the authoring tool to allow a user to upload a video. Once this has been uploaded it will be automatically stored and converted to the correct formats. The server would then store these new formats and either set up the quiz with the video or give the user the newly converted video URLs for inclusion to their quiz.
 
 This would be helpful to reduce the barrier to entry (\cref{Req:User interface}) as the user would not need to convert the video to the correct format which can be highly technical.
 
 \section{Mobile Interfaces}
 
-Creating interfaces that work well with mobile interfaces is a difficult task and therefore we have only spent the time to ensure that our basic examples work on most mobile devices.
+Creating interfaces that work well with mobile interfaces is a difficult task and therefore minimal time was spent to ensure that our basic examples work on most mobile devices.
 
 Further work would be concerned with getting the plugin to work on all devices as iPhones have shown to have significant issues with playing video and overlaying content (see \autoref{Section:Compatibility}).
 
-Tablets have been shown to work fine with the plugins as they generally have near desktop size resolutions and full capabilities to play video without forcing the user to maximise the screen. Therefore work in the area would be focussed on display this information on a phone.
+Tablets have been shown to work fine with the plugins as they generally have near desktop size resolutions and full capabilities to play video without forcing the user to maximise the screen. Therefore work in the area would be focussed on display this information on a mobile phone.
 
 There may be other improvement that can be made for small screen applications such as making buttons much larger (easier to press) and hiding the video while the popup is shown (so the phone does not need to render the video and popup in front of part of it).
 
 \section{Second Screen}
 
-A previous project \todo{cite} worked on the possibility of creating a second screening application that worked with Synote. This allowed you to have two views of Synote and display different data on a second screen. This screen would usually be a mobile device for audience members \todo{is this true?}.
+A previous project \todo{cite} worked on the possibility of creating a second screening application that worked with Synote. This allowed two views of Synote to be viewed and display different data on a second screen. The second screen could often be a mobile device.
 
-If we had time to continue our work we would look into extending the plugin that we have developed to have a "second screen" option for users. This would allow users to turn their mobile device into a second screen for our popups to allow them to answer the questions on their device.
+If further time were available extension of the plugins developed to have a "second screen" option for users could be investigated. This would allow users to turn their mobile device into a second screen for our popups to allow them to answer the questions on their device.
 
-This would also allow a user to take advantage of additional lecture features such as subtitling. Another project is currently being ran to get in lecture subtitles and this could be a feature added as one of our plugins.
+This would also allow a user to take advantage of additional lecture features such as subtitling. Another project is currently being run to get in-lecture subtitles and this could be a feature added as another plugin.
 
 \section{Angular 2}
 
-At the 2014 ng-europe conference during a talk about the future development of Angular details about the 2.0 release were given. It is slated for an early 2016 release, with Angular 1.x receiving bug fixes for another 2 years.
+At the 2014 ng-europe conference during a talk about the future development of Angular details about the 2.0 release were given. It is slated for an early 2016 release, with Angular 1.x receiving bug fixes for another 2 years. \tod{reference this}
 
 Currently it seems that Angular 2.0 is a complete rewrite of the Angular ecosystem and is only related to Angular 1.x by name. Upon its release applications wishing to stay upto date will need to be rewritten from scratch. As this project is currently built around Videogular, it would first need to be updated and rewritten. The framework's main customer, Synote, is currently in development and as such is using Angular 1.x. 
 
 As such there is potential future work for investigating Angular 2.0 upon its final release. At that time much more information regarding potential upgrade paths would exist.
 
 \section{Accessibility}
+
+With the focus on accessibility there were several improvements that could be made to the plugins to create a much more accessible system for users.
 
 \subsection{Cuepoints and Heatmap}
 
@@ -81,20 +83,20 @@ The elements used to create dropdowns and multiple select boxes could also be re
 
 \section{Use of Graphs}
 
-In our Example Analytics site graphs have been used as a representation but they have no textual alternative. In future, any graphs used should be made accessible to screen readers and users with cognitive impairments.
+In the Example Analytics site graphs have been used as a representation but they have no textual alternative. In future, any graphs used should be made accessible to screen readers and users with cognitive impairments.
 
-Since the analytics website is an example we did not work on making this entirely accessible as we prioritised deliverables that the customer explicitly requested rather than this example website.
+Since the analytics website is an example making this entirely accessible was not a high priority as we prioritised deliverables that the customer explicitly requested rather than this example website.
 
 \section{Conclusions}
 
-The primary focus of our project towards future work has always been easing the integration into Synote. We have followed the requirements to ease integration (\cref{Req:Standalone}) to aid this.
+The primary focus of this project towards future work has always been easing the integration into Synote. The requirements to ease integration (\cref{Req:Standalone}) were followed to aid this.
 
-As we have based our project on the Videogular player as a plugin, we have the ability to look into fixing the YouTube plugin. This will lower the barrier to entry (\cref{Req:User friendliness}) as users will not need to upload video and encode it correctly for different browsers. This was decided out of scope by the client. Another way of doing this would be automatically re-encoding the video on upload, which is a possible improvement too.
+As the project was based on the Videogular player as a plugin, fixing the YouTube plugin should be a high priority for future work. This will lower the barrier to entry (\cref{Req:User friendliness}) as users will not need to upload video and encode it correctly for different browsers. This was decided out of scope by the client. Another way of doing this would be automatically re-encoding the video on upload, which is also a possible improvement.
 
-We did some research into mobile interfaces and found a number of problems with browser and differing phone behaviour and sizes. This is a very hard problem and therefore to focus on our original problem we did not look at doing this.
+Some research into mobile interfaces was done and found a number of problems with browser and differing phone behaviour and sizes. This is a very hard problem and therefore to focus on the original problem we did not look at doing this.
 
-Previous work with second screening could be reviewed and re-implemented using our software but this would primarily rely on having the tools work on mobile devices (which are generally used for the second screening application).
+Previous work with second screening could be reviewed and re-implemented in this project but this would primarily rely on having the tools working on mobile devices (which are generally used for the second screening application).
 
-Angular 2 does not look like it will present a problem as Angular 1 is likely to be support for a decent period of time. Therefore the support of the application will not become problematic as deprecation of Angular 1 is not going to be soon. More information will be available when Angular 2 is released in the future.
+Angular 2 does not look like it will present a problem as Angular 1 is likely to be support for a reasonable period of time. Therefore the support of the application will not become problematic as deprecation of Angular 1 will not be soon. More information will be available when Angular 2 is released in the future.
 
 Accessibility is a general topic that can be improved in all areas of our applications but much of these problems fall down to making the videos more accessible by adding captions and reducing the use of colours as the sole mean of conveying information. Keyboard accessibility (\cref{Req:Keyboard accessibility}) has been focussed on in terms of accessibility as this was one of the original requirements.
