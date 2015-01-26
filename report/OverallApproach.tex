@@ -1,147 +1,178 @@
 %% ----------------------------------------------------------------
 %% OverallApproach.tex
-%% ---------------------------------------------------------------- 
-\chapter{Overall Approach} 
+%% ----------------------------------------------------------------
+\chapter{Overall Approach}
 \label{Chapter:Overall Approach}
 
 \begin{preamble}
-To create a quality framework an overall approach for the project was decided on.
+	To create a quality framework an overall approach for the project was decided on.
 
-This was done by first summarising the research conducted into previous work, as well as defining where this project fits within that ecosystem. Specific requirements were gathered from the client and an analysis of the needs of other project stakeholders conducted. This led to a list of requirements that the project would need to meet. Additionally though was put into the general system design of the framework.
+	This was done by first summarising the research conducted into previous work, as well as defining where this project fits within that ecosystem. Specific requirements were gathered from the client and an analysis of the needs of other project stakeholders conducted. This led to a list of requirements that the project would need to meet. Additionally, thought was put into the general system design of the framework.
 \end{preamble}
 
 \section{Reviewing Previous Work}
-Having reviewed the \href{Chapter:Previous Work}{previous work} some design decisions for the project could be proposed to the client:
+Having reviewed the Previous Work (\autoref{Chapter:Previous Work}), some design decisions for the project could be proposed to the client:
 \begin{itemize}
-\item A basic quiz standard would need to be defined to allow interoperability between the authoring tool and overlaid video player. It was decided not to use the \gls{QTI} standard to define the quizzes due to the complexity and difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
+	\item A basic quiz standard would need to be defined to allow interoperability between the authoring tool and questions overlay. It was decided not to use the \gls{QTI} standard to define the question sets due to the complexity of the standard, and the difficulty of implementing accessibility. The time constraint on this project would mean that more time would be spent on ensuring compliance with \gls{QTI} than implementing the tools.
 
-\item One of the main features the interactive video must have is the ability to provide immediate feedback to allow for effective formative assessment to take place.
+	\item The interactive video had to be able to provide immediate feedback, to allow effective formative assessment to take place.
 
-\item A HTML5 video player will be used to play the videos. This will enable mobile devices that no longer support Flash to play the interactive videos. The HTML5 control elements will simplify the implementation of keyboard accessibility.
+	\item A \gls{HTML5} video player would be used to play the videos, enabling mobile devices that do not support Flash to play the interactive videos. Using \gls{HTML5} for the control elements would also simplify the implementation of keyboard accessibility.
 
-\item The overlaid video player will need to emit events that can be captured and used to analyse the viewing patterns of the interactive videos. This would allow the viewing patterns to be compared and contrasted with traditional videos.
+	\item The questions overlay would need to emit events that can be captured and used to analyse the users' viewing patterns. This would allow viewing patterns to be compared and contrasted with traditional videos.
 \end{itemize}
 
 \section{Client Requirements}
-With the end aim of integrating this project into the new version of Synote there were some specific requirements that our client had with regards to implementation.
+Because the long-term aim is to integrate this project into the new version of Synote, there were some specific requirements that our client had with regards to implementation.
 
-The new version of Synote will be written in AngularJS and HTML5. To make it more easily compatible the overlaid video player should also be written using this framework. With this new requirement it was agreed that \gls{Videogular}\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} should be used. This is a HTML5 video player for \gls{AngularJS}. The nature of the library makes it very easy to write plugins for this to get the extra functionality required.
+The new version of Synote will be written in \gls{AngularJS} and \gls{HTML5}. To make it more easily compatible the questions overlay should also be written using this framework. With this new requirement it was agreed that \gls{Videogular}\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} should be used. \gls{Videogular} is a \gls{HTML5} video player for \gls{AngularJS}. The nature of the library makes it very easy to write plugins to add the required functionality.
 
-In addition to quizzes, the inclusion of polls must be supported within the overlaid video player.
+In addition to quizzes, the inclusion of polls must be supported within the questions overlay.
 
 \subsection{AngularJS}
 \label{Section:AngularJS}
+
 \gls{AngularJS}\footnote{\url{https://angularjs.org/}} is a JavaScript Framework that extends HTML attributes. It is an open source library made by Google.
 
-The underlying architectural pattern used by \gls{AngularJS} is client side \gls{MVC}. This is where the data (model), appearance (view) and actions that can be applied (controller) are separated out to make encapsulation and code reuse easier. 
+The underlying architectural pattern used by \gls{AngularJS} is client side \gls{MVC}. This is where the data (Model), appearance (View) and actions that can be applied (Controller) are separated out to make encapsulation and code reuse easier.
 
 The framework allows custom HTML tags and attributes to be created using directives. Directives allow the user to specify the behaviour of specific elements they have created.
 
-One of \gls{AngularJS}'s most prominent features is its use of two-way binding. This synchronises the views with the data held in the model. This is especially useful when dealing with dynamic content as when extra content is added it is automatically shown in the view.
+One of \gls{AngularJS}'s most prominent features is its use of two-way data binding. This synchronises the views with the data held in the model. This is especially useful when dealing with dynamic content, as when extra content is added it is automatically shown in the view.
 
 \section{Stakeholder Analysis}
-To decide on an approach for the project the project the stakeholders needed to be identified and analysed. Their requests have been prioritised by categorising each stakeholder (see \autoref{fig:Stakeholder matrix}).
+To decide on an approach for the project the stakeholders needed to be identified and analysed. Their requests have been prioritised by categorising each stakeholder (see \autoref{fig:Stakeholder matrix}).
+
 \begin{figure}[h!]
-\centering
-\input{StakeholderMatrix}
-\caption{Stakeholder matrix for the project\label{fig:Stakeholder matrix}}
+	\centering
+	\input{StakeholderMatrix}
+	\caption{Stakeholder matrix for the project\label{fig:Stakeholder matrix}}
 \end{figure}
 
 Our supervisor and client, Professor Mike Wald, had the most interest and power in the project. As the project proposer it would be his ideas that would form the basis of the project.
 
-Yunjia Li is the lead developer for the new version of Synote. As the aim of the project was to provide code that could be used within this he had a lot of interest in the project. His requirements would need to be taken into account to ensure interoperability between the two systems, which gave him power in the project.
+Yunjia Li is the lead developer for the new version of Synote. As the aim of the project was to provide code for Synote he had a lot of interest in the project. His requirements would need to be taken into account to ensure interoperability between the two systems, which gave him power in the project.
 
-Due to the nature of the project the developers on the project would be major stakeholders. All work would need to be evenly distributed to allow all members of the group to attain the same marks.
+Due to the nature of the project the developers themselves would be major stakeholders. Work would need to be evenly distributed to give all members of the group the same opportunities to obtain marks.
 
 The University of Southampton sets the mark scheme and guidelines for the project. These would need to be satisfied to make the project successful.
 
-2fdevs are the development team who created the \gls{Videogular} player. The project would be creating plugins for this player so would rely on certain attributes of \gls{Videogular} such as accessibility. 
+2fdevs are the development team who created the \gls{Videogular} player. The project would be creating plugins for this player, and so would rely on certain attributes of \gls{Videogular}, such as accessibility.
 
-Shameem Bajar is a 3rd year student who has an Individual Project based around this project. Her interest levels would be high as her work depends on the output of this project. 
+Shameem Bajar is a 3rd year student who has an Individual Project based around this project. Her interest levels would be high as her work depends on the output of this project.
 
-The users would be interested in the outcome of the project as the decisions made will affect how easy the system is to use and whether all of the desired functionality is available.
+The users would be stakeholders, as the decisions made will affect how easy the system is to use and whether the desired functionality is available.
 
 Requirements from all stakeholders will be considered but any conflicts will be dealt with by prioritising the needs of the most influential party (closer to the top right of \autoref{fig:Stakeholder matrix}).
 
 \section{Requirements Analysis}
 \label{Section:Requirements Analysis}
-Looking at the needs of all the stakeholders a set of requirements for the project were agreed.
+Considering the needs of all stakeholders, a set of requirements for the project were agreed. The reasons for each being included are specified in italics.
+
 \subsection{Functional Requirements}
 \begin{requirement}[label=\textbf{F\arabic*}]
-\item \textbf{Question types}  \label{Req:Question types} \hfill \\
-The overlaid video player must be able to display single choice, multiple choice, range selector, rating and text based answer types.
+	\item \textbf{Question types}  \label{Req:Question types} \hfill \\ 
+		The questions overlay must be able to display multiple choice (with one or more selectable answers), range selector, rating, and text based answer types. The stakeholders for each are described in italics after each one.
 
-\textit{The users to ask questions that require set responses.}
-\item \textbf{Jumping to content} \label{Req:Jumping to content} \hfill \\ 
-There should be a feature to jump to specific content if a question is answered incorrectly.
+		\textit{Authors wish to ask questions that require set responses.}
 
-\textit{This is a method of giving instant feedback which was one of the things found to be important in the Previous Work (see \autoref{Chapter:Previous Work}).}
-\item \textbf{Analytics events} \label{Req:Analytics events} \hfill \\ 
-Video and question events should be emitted from the overlaid video player in order than analytics data can be calculated.
+	\item \textbf{Jumping to content} \label{Req:Jumping to content} \hfill \\ 
+		There should be a feature to jump to specific content if a question is answered incorrectly.
 
-\textit{Analysis of existing work showed a lack of analysis of video usage behaviour so this would help facilitate new analysis.}
-\item \textbf{Cuepoints} \label{Req:Cuepoints} \hfill \\ The locations of the questions should be marked visually on the scrub bar of the video.
+		\textit{This is a method of giving instant feedback, which was one of the things found to be important in the Previous Work (see \autoref{Chapter:Previous Work}).}
 
-\textit{Users wish to see where the questions are in the video.}
-\item \textbf{Poll responses} \label{Req:Poll responses} \hfill \\ The responses to polls must be able to be sent to and recorded on a server to allow viewing of the results.
+	\item \textbf{Analytics events} \label{Req:Analytics events} \hfill \\ 
+		Video and question events should be emitted from the questions overlay so that analytics data can be calculated.
 
-\textit{One of our client's requirements.}
-\item \textbf{Instant feedback} \label{Req:Instant feedback} \hfill \\ Once a question or set of questions have been answered there must be a way of receiving instant feedback on performance.
+		\textit{Analysis of existing work showed a lack of analysis of video usage behaviour, so this would help facilitate new analysis.}
 
-\textit{Found to be important in the analysis of existing work.}
+	\item \textbf{Cuepoints} \label{Req:Cuepoints} \hfill \\ 
+		The locations of the questions should be marked visually on the scrub bar of the video.
+
+		\textit{Users wish to see where the questions are in the video.}
+
+	\item \textbf{Poll responses} \label{Req:Poll responses} \hfill \\ 
+		The responses to polls must be able to be sent to a server, and results from the server must be able to be displayed.
+
+		\textit{This is one of our client's requirements.}
+
+	\item \textbf{Instant feedback} \label{Req:Instant feedback} \hfill \\ 
+		Once a question or set of questions have been answered there must be a way of receiving instant feedback on performance.
+
+		\textit{Found to be important in the analysis of existing work.}
 \end{requirement}
 
 \subsection{Non-Functional Requirements}
 \begin{requirement}[label=\textbf{N\arabic*}]
-\item \textbf{Video player used} \label{Req:Video player used} \hfill \\ Videogular should be used as the video player with components written in AngularJS and HTML5.
+	\item \textbf{Video player used} \label{Req:Video player used} \hfill \\ 
+		\gls{Videogular} should be used as the video player, and components should be written in \gls{AngularJS} and \gls{HTML5}.
 
-\textit{One of Yunjia's requirements.}
-\item \textbf{Standalone} \label{Req:Standalone} \hfill \\ The plugins created should be standalone code but still be easy to integrate into the new version of Synote.
+		\textit{One of Yunjia's requirements.}
 
-\textit{One of the client's requirements.}
-\item \textbf{Browser compatibility} \label{Req:Browser compatibility} \hfill \\ The overlaid video player must work on Internet Explorer, Firefox and Chrome 
+	\item \textbf{Standalone} \label{Req:Standalone} \hfill \\ 
+		The plugins created should be standalone, but still easy to integrate into the new version of Synote.
 
-\textit{One of the client's requirements.}
-\item \textbf{Operating System Compatibility} \label{Req:OS compatibility} \hfill \\ The overlaid video player must work on Windows, OSX and Android.
+		\textit{One of the client's requirements.}
 
-\textit{One of the client's requirements.}
-\item \textbf{Extensibility} \label{Req:Extensibility} \hfill \\ The overlaid video player must be extensible so that further features can be added. 
+	\item \textbf{Browser compatibility} \label{Req:Browser compatibility} \hfill \\ 
+		The questions overlay must work on Microsoft Internet Explorer 8, Mozilla Firefox and Google Chrome.
 
-\textit{Makes incremental development easier for the developers and any missing features that are wanted for integration into Synote could easily be added.}
-\item \textbf{Keyboard Accessibility}\label{Req:Keyboard accessibility} \hfill \\ The overlaid video player and authoring tool must be completely accessible to a keyboard-only user.
+		\textit{One of the client's requirements.}
 
-\textit{Users may not be able to use a mouse so the applications need to be accessible to a keyboard only user.}
-\item \textbf{Use of colour}\label{Req:Use of colour} \hfill \\ Any colours used should be customisable.
+	\item \textbf{Operating System Compatibility} \label{Req:OS compatibility} \hfill \\ 
+		The questions overlay must work on Windows, Mac OS X and Android.
 
-\textit{Users may have visual impairments such as colour blindness so they may be able to use the application only if it is in certain colours.}
-\item \textbf{User interface} \label{Req:User interface} \hfill \\ A Graphical User Interface (GUI) must be provided for the Authoring Tool so that non-technical users can create quizzes.
+		\textit{One of the client's requirements.}
 
-\textit{One of the client's requirements is to reduce the barrier to entry.}
-\item \textbf{User friendliness} \label{Req:User friendliness} \hfill \\ To allow maximum use of these tools the use of all tools should not require extensive training.
+	\item \textbf{Extensibility} \label{Req:Extensibility} \hfill \\ 
+		The questions overlay must be extensible so that further features can be added. 
 
-\textit{One of the client's requirements is to reduce the barrier to entry.}
-\item \textbf{Documentation} \label{Req:Documentation} \hfill \\ The plugins built should have usage examples documented to allow less technical users to implement their own system.
+		\textit{Makes incremental development easier for the developers, and allows any missing features that are wanted for integration into Synote to be added easily.}
 
-\textit{One of the client's requirements is to reduce the barrier to entry.}
-\item \textbf{Testing Examples} \label{Req:Testing Examples} \hfill \\ The plugins built should have usage examples created as a proof of concept.
+	\item \textbf{Keyboard Accessibility}\label{Req:Keyboard accessibility} \hfill \\ 
+		The questions overlay and authoring tool must be completely accessible to a keyboard-only user.
 
-\textit{One of the client's requirements is ensure the framework is easy to integrate.}
-\item \textbf{Server architecture} \label{Req:Server architecture} \hfill \\ Any server behaviour should be accessed by \gls{REST} calls with no requirement that all servers should be on the same host.
+		\textit{Users may not be able to use a mouse.}
 
-\textit{One of Yunjia's requirements to allow easier integration into Synote.}
-\item \textbf{Scalability} \label{Req:Scalability} \hfill \\ All tools should scale when they are used by large numbers of people.
+	\item \textbf{Use of colour}\label{Req:Use of colour} \hfill \\ 
+		Any colours used should be customisable.
 
-\textit{One of the client's requirements is to ensure performance does not degrade when use of the tools are scaled.}
+		\textit{Users may have visual impairments such as colour blindness, so they may only be able to use the application if it is in certain colours.}
+
+	\item \textbf{User interface} \label{Req:User interface} \hfill \\ 
+		A Graphical User Interface (GUI) must be provided for the Authoring Tool so that non-technical users can create quizzes.
+
+		\textit{One of the client's requirements is to reduce the barrier to entry.}
+
+	\item \textbf{User friendliness} \label{Req:User friendliness} \hfill \\ 
+		To allow maximum use of these tools, no tools should not require extensive training.
+
+		\textit{One of the client's requirements is to reduce the barrier to entry.}
+
+	\item \textbf{Documentation and Testing Examples} \label{Req:Documentation} \hfill \\ 
+		The plugins we build should have usage examples, to allow less technical users to implement their own system.
+
+		\textit{One of the client's requirements is to reduce the barrier to entry, and to ensure that the framework is easy to integrate.}
+
+	\item \textbf{Server architecture} \label{Req:Server architecture} \hfill \\ 
+		Any server behaviour should be accessed by \gls{REST} calls, which should work across hosts.
+
+		\textit{One of Yunjia's requirements to allow easier integration into Synote.}
+
+	\item \textbf{Scalability} \label{Req:Scalability} \hfill \\ 
+		All tools should scale when they are used by large numbers of people.
+
+		\textit{One of the client's requirements is to ensure performance does not degrade when use of the tools are scaled.}
 \end{requirement}
 
-\section{Modular Webserver Approach}
+\section{Modular Web server Approach}
 \label{Section:Modular Approach}
 
-It is important for our project to be easily integrated into other projects, specifically we are looking to have it integrated into the latest version of Synote (see \autoref{Section:Synote}). To accomplish this we have designed the back end systems to ensure they can be run without depending on any other modules. All of the functionality will be able to be accessed by \gls{REST} calls as set out by \cref{Req:Server architecture}.
+It is important for our project to be easily integrated into other projects, particularly the latest version of Synote (see \autoref{Section:Synote}). To accomplish this the design of the back-end systems ensures that they can be run without depending on any other modules. All of the functionality will be accessible via \gls{REST} calls as set out by \cref{Req:Server architecture}.
 
-By abstracting all calls to using \gls{REST} this means that other services will be able to interact with out back end services in a language independent way which will also allow the application to be standalone (\cref{Req:Standalone}). To facilitate this we have had to ensure that all \gls{REST} responses are returned with a Cross-Origin header. This allows servers who are not on the same machine to be able to communicate with the \gls{REST} service.
+Abstracting all calls using \gls{REST} means that other services will be able to interact with the back-end services in a language independent way, which will also make the application standalone (\cref{Req:Standalone}). To facilitate this, all \gls{REST} responses are returned with a \texttt{Cross-Origin} header. This allows servers which are not on the same machine to communicate with the \gls{REST} service.
 
-These features will allow an external application to be able to run the webserver separately and communicate with our server side code. This ensures that the only dependency added by those that use our code will be that they need to be able to make \gls{REST} calls.
+These features will allow an external application to run the Web server separately and communicate with our server side code. The only dependency added by those who use our code will be that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
 
