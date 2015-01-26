@@ -202,18 +202,12 @@ Caesar Example's second question at the end of the example will have a poll to s
 
 The pass marks show each test was tested by us and was successful, and also accepted by the client after review of the deliverable report.
 
-\section{Example Analytics}
-
-The example analytics back-end was written as an example to demonstrate and test the analytics plugin. This example was split into two sections to verify data was received and then show an example of how this data could be used.
-
-The back-end is the server receiving the data and processing it and the front-end is concerned with loading the gathered data from the analytics displaying this to the user.
-
-\subsection{Back-end - Example Analytics Server}
+\section{Example Analytics Server}
 \label{Subsection:Analytics server in example}
 
-The analytics back-end server receives the REST calls from the analytics plugin and is then able to process them. For this example implementation we have chosen not to store the data but forward it to the front end. This will demonstrate that the analytics plugin is able to make REST calls. Storage could be used for later recall of the information but 
+The analytics back-end server receives the REST calls from the analytics plugin and is then able to process them. For this example implementation we have chosen not to store the data but forward it to the front end. This will demonstrate that the analytics plugin is able to make REST calls. Storage could be used for later recall and processing of the information into 
 
-\subsubsection{Cross Origin request testing}
+\subsection{Cross Origin request testing}
 
 \cref{Req:Standalone} states that each plugin should operate in a standalone manner. It needed to be ensure that the example server and analytics plugin works correctly when performing cross origin requests. To permit this on the example server we have included testing code to permit all cross origin requests, see \autoref{code:analyticsCrossOrigin}.
 
@@ -228,20 +222,21 @@ app.all('*', function(req, res, next) {
 
 To test analytics worked cross domain we set up the analytics back-end and the analytics plugin on two different testing servers. This was able to correctly pass data between the two and therefore passed cross origin testing.
 
-\subsubsection{Reloading processed data}
+\subsection{Reloading processed data}
+\label{Section:reloading processed data}
 
 The back-end acted as a testing platform for the front end. A large set of data was recorded from the analytics plugin and saved to allow for repeated testing of the same pieces of data. The back-end plugin has a tool to specify a data file that has already been processed to be replayed.
 
 Any front end client connecting to the back-end Videogular Analytics server will be sent all events in the loaded piece of data. This allows the front end website to be quickly tested with a set of data that encompasses all features of the Analytics plugin. This data set allows comparison between a known valid set of data and data that Videogular Analytics creates allowing you to easily identify issues that occur.
 
 
-\subsection{Front End}
+\section{Example Analytics Front End}
 
+The example analytics front end loads up events from the Videogular Analytics plugin. These events are obtained by a websocket to example analytics server. In the current model the Example analytics server acts as an intermediary between this and the Videogular Analytics plugin that can serve additional events as described in \autoref{Section:reloading processed data}.
 
+This front end tests the Videogular Analytics plugin to ensure that the data received is not missing or corrupting events. This is done by loading the data into different formats and processing it. The data processing assumes a number of standard data elements expected from the Videogular Analytics based on the API (\autoref{Table:analytics_api}).
 
-\todo{More content needed and an intro here}
-
-\subsubsection{Videogular Heatmaps}
+\subsection{Videogular Heatmaps}
 \label{Subsubsection:Videogular Heatmaps in example}
 %Heatmap, user stories, run through
 
@@ -255,7 +250,7 @@ One of the analytics used in the example site is the \gls{Videogular} Heatmap. W
 
 The added feature of displaying the frequencies was also tested. These displayed well and matched the frequencies represented by the colours used. A screen reader could still access the data as it was declared in hidden text.
 
-\subsubsection{Accessibility}
+\subsection{Accessibility}
 
 The example analytics site generally conformed to the WCAG 2.0 standards (see \autoref{table: va conformance}). The non-conformances found were a lack of alternatives for the video and graphs.
 
