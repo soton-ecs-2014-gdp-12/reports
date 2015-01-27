@@ -87,7 +87,7 @@ Considering the needs of all stakeholders, a set of requirements for the project
 		\textit{Analysis of existing work showed a lack of analysis of video usage behaviour, so this would help facilitate new analysis.}
 
 	\item \textbf{Cuepoints} \label{Req:Cuepoints} \hfill \\ 
-		The locations of the questions should be marked visually on the scrub bar of the video.
+		The locations of the questions should be marked visually on the \gls{scrub bar} of the video.
 
 		\textit{Users wish to see where the questions are in the video.}
 
@@ -170,74 +170,74 @@ Considering the needs of all stakeholders, a set of requirements for the project
 
 It is important for our project to be easily integrated into other projects, particularly the latest version of Synote (see \autoref{Section:Synote}). To accomplish this the design of the back-end systems ensures that they can be run without depending on any other modules. All of the functionality will be accessible via \gls{REST} calls as set out by \cref{Req:Server architecture}.
 
-Abstracting all calls using \gls{REST} means that other services will be able to interact with the back-end services in a language independent way, which will also make the application standalone (\cref{Req:Standalone}). To facilitate this, all \gls{REST} responses are returned with a \texttt{Cross-Origin} header. This allows servers which are not on the same machine to communicate with the \gls{REST} service.
+Abstracting all calls using \gls{REST} means that other services are able to interact with the back-end services in a language independent way, which also makes the application standalone (\cref{Req:Standalone}). To facilitate this, all \gls{REST} responses are returned with a \texttt{Cross-Origin} header. This allows servers which are not on the same machine to communicate with the \gls{REST} service.
 
-These features will allow an external application to run the Web server separately and communicate with our server side code. The only dependency added by those who use our code will be that they need to be able to make \gls{REST} calls.
+These features allow an external application to run the Web server separately and communicate with our server side code. The only dependency added by those who use our code is that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
 
-We decided on the following set of components, the interactions of which are shown in \autoref{fig:System architecture diagram}:
+The following set of components were decided on, the interactions of which are shown in \autoref{fig:System architecture diagram}:
 
 \begin{itemize}
 	\item
-		\textbf{Videogular Questions} will display questions over a \gls{Videogular} video player according to a quiz defined in a \gls{DF}. If the quiz contains polls, it will also send responses to a results server, and display results it receives back.
+		\textbf{Videogular Questions} displays questions over a \gls{Videogular} video player according to a quiz defined in a \gls{DF}. If the quiz contains polls, it sends responses to a results server, and displays the results that are sent back.
 	\item
-		\textbf{Videogular Analytics} will log events from \gls{Videogular} (e.g. when the user plays or pauses the video) and Videogular Questions (e.g. when the user answers a question) and send them to an analytics server.
+		\textbf{Videogular Analytics} logs events from \gls{Videogular} (e.g. when the user plays or pauses the video) and Videogular Questions (e.g. when the user answers a question) and sends them to an analytics server.
 	\item
-		\textbf{Videogular Cuepoints} will display marks on the scrub bar indicating when questions will appear.
+		\textbf{Videogular Cuepoints} displays marks on the \gls{scrub bar} indicating when questions will appear.
 	\item
-		The \textbf{results server} will receive responses from Videogular Questions and return the aggregated results on request.
+		The \textbf{results server} receives responses from Videogular Questions and returns the aggregated results on request.
 	\item
-		The \textbf{analytics server} will receive event logs from Videogular Analytics, and provide a separate Web front-end, the \textbf{analytics front-end}, which will display analysis of the events.
+		The \textbf{analytics server} receives event logs from Videogular Analytics, and provides a separate Web front-end, the \textbf{analytics front-end}, which displays analysis of the events.
 	\item
-		\textbf{Videogular Heatmap} will overlay a heatmap onto the scrub bar of the \gls{Videogular} player, for visualisation of analytics results.
+		\textbf{Videogular Heatmap} overlays a heat map onto the \gls{scrub bar} of the \gls{Videogular} player, for visualisation of analytics results.
 	\item
-		An \textbf{authoring tool} will allow a user to create \glspl{DF} without having to write them manually.
+		An \textbf{authoring tool} allows a user to create \glspl{DF} without having to write them manually.
 \end{itemize}
 
 \begin{figure}[h!]
-\centering
-\input{SystemArchitectureDiagram}
-\caption{System architecture diagram for the project \label{fig:System architecture diagram}}
+	\centering
+	\input{SystemArchitectureDiagram}
+	\caption{System architecture diagram for the project \label{fig:System architecture diagram}}
 \end{figure}
 
 The results and analytics servers (including the analytics front-end) are examples only, and not themselves deliverables (see \autoref{Section:Deliverables}).
 
-As the expected behaviour of our plugins will depend on the application they were used in, an example site would be required to test the other components.
+As the expected behaviour of our plugins depends on the application they are used in, an example site was required to test the other components.
 
-We decided to separate the server components as they do completely separate jobs, and because some deployments may use one but not the other. Similarly, Videogular Analytics is separate from Videogular Questions as it only depends on \gls{Videogular}. Videogular Cuepoints and Videogular Heatmaps are separate components as they can be used in other, completely unrelated, projects.
+The server components were separated as they do completely separate jobs, and because some deployments may use one but not the other. Similarly, Videogular Analytics is separate from Videogular Questions as it only depends on \gls{Videogular}. Videogular Cuepoints and Videogular Heatmap are separate components as they can be used in other, completely unrelated projects.
 
 \section{Deliverables}
 \label{Section:Deliverables}
 
-The following set of deliverables was agreed in order to meet the requirements:
+The following set of deliverables was agreed on in order to meet the requirements:
 
 \begin{itemize}
-\item Videogular Questions: a plugin for adding polls and questions to videos
-\begin{itemize}
-\item Source code, under the MIT licence
-\item An example proof-of-concept website
-\end{itemize}
-\item Videogular Cuepoints: a plugin which displays informational marks on the scrub bar of a video
-\begin{itemize}
-\item Source code, under the MIT licence
-\item Demonstration of usage in Videogular Questions example site
-\end{itemize}
-\item Videogular Analytics: a plugin for reporting of events within the Videogular player
-\begin{itemize}
-\item Source code, under the MIT licence
-\item An API specification for Videogular Analytics
-\item An example site showing basic usage of the analytics data collected from the plugin
-\end{itemize}
-\item Videogular Heatmap: a plugin which displays heat map information on the scrub bar of a video
-\begin{itemize}
-\item Source code, under the MIT licence
-\item Demonstration of usage in Videogular Analytics example site
-\end{itemize}
-\item Authoring tool: a Web application to produce the \gls{DF} to be used with Videogular Questions
-\begin{itemize}
-\item Source code, under the MIT licence
-\end{itemize}
+	\item Videogular Questions: a plugin for adding polls and questions to videos
+		\begin{itemize}
+			\item Source code, under the MIT licence
+			\item An example proof-of-concept Web site
+		\end{itemize}
+	\item Videogular Cuepoints: a plugin which displays informational marks on the \gls{scrub bar} of a video
+		\begin{itemize}
+			\item Source code, under the MIT licence
+			\item Demonstration of usage in Videogular Questions example site
+		\end{itemize}
+	\item Videogular Analytics: a plugin for reporting of events within the Videogular player
+		\begin{itemize}
+			\item Source code, under the MIT licence
+			\item An API specification for Videogular Analytics
+			\item An example site showing basic usage of the analytics data collected by the plugin
+		\end{itemize}
+	\item Videogular Heatmap: a plugin which displays heat map information on the \gls{scrub bar} of a video
+		\begin{itemize}
+			\item Source code, under the MIT licence
+			\item Demonstration of usage in Videogular Analytics example site
+		\end{itemize}
+	\item Authoring tool: a Web application to produce the \gls{DF} to be used with Videogular Questions
+		\begin{itemize}
+			\item Source code, under the MIT licence
+		\end{itemize}
 \end{itemize}
 
 
@@ -246,5 +246,5 @@ The following set of deliverables was agreed in order to meet the requirements:
 
 Software testing is necessary on projects of all sizes, especially on large projects such as this. To ensure quality throughout the project each part of the framework has been thoroughly tested.
 
-One method of doing that is with example sites, this satisfies \cref{Req:Documentation} and \cref{Req:Testing Examples}. Due to the free-form nature of AngularJS's project structure we decided to sue one of the industry standards, angular-seed\footnote{\url{https://github.com/angular/angular-seed}}. angular-seed is a skeleton in which one can create AngularJS web apps. It includes two testing frameworks all ready set up, Karma and Jasmine. More details about Karma, Jasmine and other tests performed can be found in \autoref{Chapter: Testing}.
+In this project, this was done by creating example sites, satisfying \cref{Req:Documentation}. Due to the free-form nature of AngularJS's project structure one of the industry standards, angular-seed\footnote{\url{https://github.com/angular/angular-seed}}, was used. angular-seed is a skeleton with which one can create AngularJS Web apps. It includes two testing frameworks (Karma and Jasmine) already set up. More details about Karma, Jasmine and other tests performed can be found in \autoref{Chapter: Testing}.
 
