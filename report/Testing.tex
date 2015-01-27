@@ -10,27 +10,27 @@ Software testing is necessary on projects of all sizes, especially on large proj
 
 \section{Introduction}
 
-During development we used a number of testing methods for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\cref{App:Deliverable Report}).
+During development number of testing methods were used for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\cref{App:Deliverable Report}).
 
-A number of sections have a deliverable sign-off table. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. This was usually done during the client/supervisor meetings. During final tests we created a number deliverable sign-off tests that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report that was presented to the client and signed off.
+A number of sections have a deliverable sign-off table. While working in an agile method a working program that could be presented to the client at any time was kept. This was usually done during the client/supervisor meetings. During final tests number deliverable sign-off tests were created that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report (see \cref{App:Deliverable Report}) that was presented to the client and signed off.
 
 These deliverable sign-off tests were used as manual regression tests. These were used during the final changes and bug fixes to ensure the functionality that the client wished were still present and working correctly.
 
 \section{Tools}
 
-We have used a number and range of different tools during testing to ensure that the quality of our code is to the high standard the customer required. For each repository we have decided on what types of tests are applicable and can be implemented to properly test the application.
+A number and range of different tools have been used during testing to ensure that the quality of the code is to the high standard the customer required. For each repository the types of tests that are applicable were decided and can be implemented to properly test the application.
 
 \subsection{Unit Testing Plan}
 \label{Section:Testing_unittesting}
 
-Where possible we have used unit test style tools to automate repeatable types of tests. Anyone working with a repository that has unit tests should follow the following policies:
+Where possible unit test style tools have been used to automate repeatable types of tests. Anyone working with a repository that has unit tests should follow the following policies:
 
 \begin{itemize}
 \item \textbf{Running unit tests after checking out new code} - This is to ensure that all code checked out is currently working. If it does not they are encouraged to look into fixing the problem themselves or determining which commit broke the build and contact the committer to find the reason for this.
 
 \item \textbf{Create unit tests for new functionality} - The unit tests form part of our continuous testing plan with the aim to ensure all code on master branches runs properly. Adding unit tests for new features helps ensure this as others will be able to run them to check your new features are working correctly after other code modifications have been made.
 
-\item \textbf{Run unit tests before committing new code} - As a final check before submitting new code, all unit tests should be run on the repository. This acts as a final confirmation to ensure that no new code has broken old code. This forms part of our regression testing. Any older code that has been broken must be reviewed and fixed to ensure that the master branch runs properly.
+\item \textbf{Run unit tests before committing new code} - As a final check before submitting new code, all unit tests should be run on the repository. This acts as a final confirmation to ensure that no new code has broken old code. This forms part of the regression testing. Any older code that has been broken must be reviewed and fixed to ensure that the master branch runs properly.
 
 \item \textbf{Fix broken unit tests} - When a unit test is identified that it is not working as intended it should be reviewed to see if it is still applicable and ensure that it is modified to work if so. There may be multiple reasons why a unit test has been broken so it may be needed to contact the person who originally broke the unit test to find out what was changed and why.
 \end{itemize}
@@ -45,25 +45,25 @@ JSHint is a tool for static code analysis of JavaScript, which can detect many i
 
 Karma allows tests to be run in browsers (or headlessly) in an automated manner.  It then also aggregates and displays the results making it easy to see if the tests have passed or failed.
 
-Karma is included within Angular seed (see \autoref{Section:Overall_Testing}), which means it was available from the start. The inclusion in Angular seed was one of the reasons we used it as it is an industry standard for AngularJS.
+Karma is included within Angular seed (see \autoref{Section:Overall_Testing}), which means it was available from the start. The inclusion in Angular seed was one of the reasons it was used as it is an industry standard for AngularJS.
 
 \subsection{Jasmine}
 
 Jasmine is a testing framework for JavaScript. It has simple syntax and works well with Karma.
 
-Jasmine was also included in Angular seed (see \autoref{Section:Overall_Testing}) and therefore already set up for our use.
+Jasmine was also included in Angular seed (see \autoref{Section:Overall_Testing}) and therefore already set up for use.
 
-We have used this as our unit test framework for AngularJS projects.
+This has been used as the unit test framework for AngularJS code within the project.
 
 \subsection{Python unittest module}
 
-Python has included in its standard packages, a module called unittest. This module is designed to be similar to the JUnit testing framework for Java and we have used this for all of our python based projects as a unit test framework.
+Python has included in its standard packages, a module called unittest. This module is designed to be similar to the JUnit testing framework for Java and this has been used for all python based projects as a unit test framework.
 
 \subsection{Locust}
 
 Locust\footnote{\url{http://locust.io/}} is a distributed load testing tool that allows you to define a site access pattern. By designing a site access pattern you specify how often sites are visited relative to others and therefore can tailor the access patterns to your likely use case.
 
-We have used this tool as it is able to give percentile data to see statistics on how fast all requests are fulfilled. Many other similar tools only give an average request time which will cause problems when some users are kept waiting for a much longer time. Having access to a full set of statistics allows us to run performance checks and improve features so no users are left waiting.
+This tool has been used as it is able to give percentile data to see statistics on how fast all requests are fulfilled. Many other similar tools only give an average request time which will cause problems when some users are kept waiting for a much longer time. Having access to a full set of statistics allows the running of performance checks and improvement of features so no users are left waiting.
 
 \section{Videogular Questions Example} 
 \label{Section:Videogular Questions Example}
@@ -73,35 +73,34 @@ The Videogular Questions Example site was written as testing and documentation f
 \subsection{Videogular Questions}
 \label{Subsection:Videogular Questions in example}
 
-There are several tests written for the \gls{vgQuestions} plugin. These use Jasmine, and can be run in an automated way using karma.
+There are several tests written for the \gls{vgQuestions} plugin. These use Jasmine, and can be run in an automated way using Karma.
 
 These tests exercise the web worker component of the \gls{vgQuestions} plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
 
-The examples created in the (videogular-questions-example) repository, use individual or collections of features. These were used in the development of these features, and in the demonstration of these features to the customer.  These examples complement the Jasmine tests, as they exercise the display elements of the plugin.
+The examples created in the Videogular Questions Example repository use individual or collections of features. These were used in the development of these features, and in the demonstration of these features to the customer.  These examples complement the Jasmine tests, as they exercise the display elements of the plugin.
 
-\todo{Check the following paragraph}
-There was no user experience texting done directly as part of the project, as the client had reservations about UX testing due to the toolkit style nature of the project. Shameem performed some user experience testing, these were discussed in a meeting with both Shameem and the client \autoref{subsection:Meeting10Nov}. The concensous was that while the results were informative, they did not relate to our project.
+There was no user experience testing done directly as part of the project, as the client had reservations about user experience testing due to the toolkit style nature of the project. Shameem performed some user experience testing for the Videogular Questions Example site and these were discussed in a meeting with both Shameem and the client \autoref{subsection:Meeting10Nov}. The consensus was that while the results were informative, they were outside the scope of this project.
 
 \subsection{Videogular Cuepoints}
 \label{Subsection:Videogular Cuepoints in example}
-\gls{Videogular} Cuepoints was integrated into the example site, and configured to mark the times at which pop-ups were displayed. The issue where marks could only be displayed once the video began to play (as described in \autoref{Subsection:vgCuepoints}) was the only problem encountered.
+\gls{Videogular} Cuepoints was integrated into the example site, and configured to mark the times at which pop ups were displayed. The issue where marks could only be displayed once the video began to play (as described in \autoref{Subsection:vgCuepoints}) was the only problem encountered.
 
 \subsection{Example Results Server}
 \label{Subsection:Example Results Server in example}
 
-For the example results server we had a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is a therefore well suited to individual unit tests.
+For the example results server there was a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is, therefore, well suited to individual unit tests.
 
 Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python.
 
-The flask library had a test client and recommended test skeleton\footnote{\url{http://flask.pocoo.org/docs/0.10/testing/}} which we made use of to run the unit tests. This used the unittest standard python library which meant it was easy to test with but also allowed calling of methods by simulating HTTP requests.
+The Flask library had a test client and recommended test skeleton\footnote{\url{http://flask.pocoo.org/docs/0.10/testing/}} which was made use of to run the unit tests. This used the unittest standard python library which meant it was easy to test with but also allowed calling of methods by simulating HTTP requests.
 
-We split the testing into 6 areas to test the main components of the application.
+The testing was split into 6 areas to test the main components of the application: cross-origin resource sharing, routing, database setup, voting, getting results and load testing.
 
 \subsubsection{Cross-Origin Resource Sharing tests}
 
-One of the main requirements by the customer was that these units should be able to be accessed via REST calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these REST calls will not fail we need to implement cross origin resource sharing headers as discussed in \autoref{Section:Modular Approach}.
+One of the main requirements by the customer was that these units should be able to be accessed via \gls{REST} calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these \gls{REST} calls will not fail cross origin resource sharing headers were implemented as discussed in \autoref{Section:Modular Approach}.
 
-This checks to ensure that the CORS header is correctly sent in the HTTP reply. If this is not set the web browser will likely reject the loading of the page and the application will fail.
+This checks to ensure that the Cross-Origin Resource Sharing (CORS) header is correctly sent in the HTTP reply. If this is not set the web browser will likely reject the loading of the page and the application will fail.
 
 In addition, it ensures that the response is the one expected and not an error state to ensure that the web application is also sending the correct content.
 
@@ -137,7 +136,7 @@ For the load testing we have used Locust and have chosen three access patterns t
 \item Requesting data - This is to test that the server is still able to return data
 \end{itemize}
 
-These three URL's were visited repeatedly by the user clients over a period of time.
+These three URLs were visited repeatedly by the user clients over a period of time.
 
 \begin{table}
 \caption{Time taken for each request to complete in milliseconds while stress testing the example results server}
@@ -160,11 +159,11 @@ Total / Average & 3263 & 32 & 110 & 120 & 160 & 210 & 270 & 400 & 638 \\
 
 \autoref{Table:stress_testing_results_server} shows the time taken for a response to be handled and returned.
 
-Here you can see that the time taken for result requests takes less than 6 milliseconds 50\% of the time and all requests were dealt with in at most 326 milliseconds. The voting REST point takes slightly longer as it needs to store data to the sqlite database but still took at max 638 milliseconds. All these tests were performed when 50 Locust users were using the website continuously and therefore we feel the performance wills scale. This is because one user will only ever make one vote and one results request per poll and this tested for 50 users continuously making these requests.
+Here you can see that the time taken for result requests takes less than 6 milliseconds 50\% of the time and all requests were dealt with in at most 326 milliseconds. The voting \gls{REST} point takes slightly longer as it needs to store data to the sqlite database but still took at most 638 milliseconds. All these tests were performed when 50 Locust users were using the website continuously and therefore it was agreed that the performance should scale. This is because one user will only ever make one vote and one results request per question and this tested for 50 users continuously making these requests.
 
-Although this is only an example this ties in with \cref{Req:Scalability} that the results server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of a couple minutes.
+Although this is only an example this ties in with \cref{Req:Scalability} that the results server should perform normally when a lecture room full of people is using it. The testing shows that the application is able to cope with 50 people continuously voting and therefore should be able to cope with a much less strenuous 300 people casting votes over a period of several minutes.
 
-There is also scope to move the backend database to something that is purely in memory to further increase the speed, as the major factor will be writing the data back to the hard disk.
+There is also scope to move the back-end database to something that is purely in memory to further increase the speed, as the major factor will be writing the data back to the hard disk.
 
 \subsection{Accessibility}
 \label{Subsection: vqe accessibility}
@@ -181,9 +180,9 @@ As a proof-of-concept this site showed that it is possible to create an accessib
 
 \subsection{Deliverable signoff tests}
 
-These tests in \autoref{table:vgQuestions Deliverable signoff tests} were presented to the client as the deliverable items for the Videogular Questions and vgCuepoint plugins.
+These tests in \autoref{table:vgQuestions Deliverable signoff tests} were presented to the client as the deliverable items for the Videogular Questions and Videogular Cuepoint plugins.
 
-These tests were ran on the videogular questions example website. This had examples of all types of questions and therefore was used as a deliverable for the customer.
+These tests were ran on the Videogular Questions Example website. This had examples of all types of questions and therefore was used as a deliverable for the customer.
 
 \begin{center}
 \begin{longtable}{|L{0.9}|L{0.03}|} 
@@ -205,17 +204,17 @@ Caesar Example's second question at the end of the example will have a poll to s
 \end{longtable}
 \end{center}
 
-The pass marks show each test was tested by us and was successful, and also accepted by the client after review of the deliverable report.
+The pass marks show each test was tested by the developers on this project and was successful, and also accepted by the client after review of the deliverable report.
 
 
 \section{Example Analytics Server}
 \label{Subsection:Analytics server in example}
 
-The analytics back-end server receives the REST calls from the analytics plugin and is then able to process them. For this example implementation we have chosen not to store the data but forward it to the front-end. This will demonstrate that the analytics plugin is able to make REST calls. Storage could be used for later recall and processing of the information into 
+The analytics back-end server receives the \gls{REST} calls from the \gls{Videogular} Analytics plugin and is then able to process them. For this example implementation it was chosen not to store the data but forward it to the front-end. This will demonstrate that the Videogular Analytics plugin is able to make \gls{REST} calls. Storage could be used to collate the information for later recall.
 
-\subsection{Cross Origin request testing}
+\subsection{Cross-Origin Request testing}
 
-\cref{Req:Standalone} states that each plugin should operate in a standalone manner. It needed to be ensure that the example server and analytics plugin works correctly when performing cross origin requests. To permit this on the example server we have included testing code to permit all cross origin requests, see \autoref{code:analyticsCrossOrigin}.
+\cref{Req:Standalone} states that each plugin should operate in a standalone manner. It needed to be ensure that the example server and analytics plugin works correctly when performing cross origin requests. To permit this on the example server testing code has been included to permit all cross origin requests, see \autoref{code:analyticsCrossOrigin}.
 
 \begin{lstlisting}[language=javascript,caption={Code showing appending Cross Origin headers to all responses}, label={code:analyticsCrossOrigin}]
 app.all('*', function(req, res, next) {
@@ -226,22 +225,22 @@ app.all('*', function(req, res, next) {
 });
 \end{lstlisting}
 
-To test analytics worked cross domain we set up the analytics back-end and the analytics plugin on two different testing servers. This was able to correctly pass data between the two and therefore passed cross origin testing.
+To test that the analytics worked cross-domain the analytics example site and the Videogular Analytics plugin were set up on two different testing servers. This was able to correctly pass data between the two and therefore passed cross-origin testing.
 
 \subsection{Reloading processed data}
 \label{Section:reloading processed data}
 
-The back-end acted as a testing platform for the front-end. A large set of data was recorded from the analytics plugin and saved to allow for repeated testing of the same pieces of data. The back-end plugin has a tool to specify a data file that has already been processed to be loaded.
+The back-end acted as a testing platform for the front-end. A large set of data was recorded from the Videogular Analytics plugin and saved to allow for repeated testing of the same pieces of data. The back-end plugin has a tool to specify a data file that has already been processed to be loaded.
 
-Any front-end client connecting to the back-end Videogular Analytics server will be sent all events in the loaded piece of data. This allows the front-end website to be quickly tested with a set of data that encompasses all features of the Analytics plugin. This data set allows comparison between a known valid set of data and data that Videogular Analytics creates allowing you to easily identify issues that occur.
+Any front-end client connecting to the back-end \gls{Videogular} Analytics server will be sent all events in the loaded piece of data. This allows the front-end website to be quickly tested with a set of data that encompasses all features of the \gls{Videogular} Analytics plugin. This data set allows comparison between a known valid set of data and data that \gls{Videogular} Analytics creates allowing you to easily identify issues that occur.
 
-This helps to faster identify cases where Videogular Analytics is not conforming to the API standard.
+This helps to faster identify cases where \gls{Videogular} Analytics is not conforming to the \gls{API} standard.
 
 \section{Example Analytics Front-End}
 
-The example analytics front-end loads up events from the Videogular Analytics plugin. These events are obtained by a websocket to example analytics server. In the current model the Example analytics server acts as an intermediary between this and the Videogular Analytics plugin that can serve additional events as described in \autoref{Section:reloading processed data}.
+The example analytics front-end loads up events from the \gls{Videogular} Analytics plugin. These events are obtained by a websocket to example analytics server. In the current model the example analytics server acts as an intermediary between this and the \gls{Videogular} Analytics plugin that can serve additional events as described in \autoref{Section:reloading processed data}.
 
-This front-end tests the Videogular Analytics plugin to ensure that the data received is not missing or corrupting events. This is done by loading the data into different formats and processing it. The data processing assumes a number of standard data elements expected from the Videogular Analytics based on the API (\autoref{Table:analytics_api}).
+This front-end tests the \gls{Videogular} Analytics plugin to ensure that the data received is not missing or corrupting events. This is done by loading the data into different formats and processing it. The data processing assumes a number of standard data elements expected from the Videogular Analytics based on the \gls{API} (\autoref{Table:analytics_api}).
 
 \subsection{Videogular Heatmaps}
 \label{Subsubsection:Videogular Heatmaps in example}
@@ -255,13 +254,13 @@ One of the analytics used in the example site is the \gls{Videogular} Heatmap. W
 	\caption{\label{Figure: Heat map display} The heat map has dynamically updated}
 \end{figure}
 
-This is used to test that the Videogular Analytics plugin is able to properly export the timing data. The processing on the client side matches up start and end marks. These marks shown in \autoref{Figure:Analytics time periods} are then further processed to produce the data that the analytics can use.
+This is used to test that the \gls{Videogular} Analytics plugin is able to properly export the timing data. The processing on the client side matches up start and end marks. These marks shown in \autoref{Figure:Analytics time periods} are then further processed to produce the data that the analytics can use.
 
-If these are not able to be processed then this indicates an issue with the events being sent from the Videogular Analytics plugin. If they are able to be sent but the heatmap does not display then there is an issue with the heatmap.
+If these are not able to be processed then this indicates an issue with the events being sent from the \gls{Videogular} Analytics plugin. If they are able to be sent but the heat map does not display then there is an issue with the heat map.
 
-Running this against the predefined data is used as a regression test for Videogular Heatmap to ensure it is working correctly.
+Running this against the predefined data is used as a regression test for \gls{Videogular} Heatmap to ensure it is working correctly.
 
-By running an instance of the Example Videogular Questions site and voting with the analytics we perform end to end testing as this data is passed through a number of our plugins to reach the Analytics front-end to be loaded by the Heatmap plugin.
+By running an instance of the Videogular Questions Example site and voting with the analytics we perform end-to-end testing as this data is passed through a number of our plugins to reach the Analytics front-end to be loaded by the \gls{Videogular} Heatmap plugin.
 
 \begin{figure}[h]
 	\centering
@@ -273,7 +272,7 @@ The added feature of displaying the frequencies was also tested. These displayed
 
 \subsection{Videogular Analytics integration with Videogular Questions}
 
-To test integration with Videogular Questions we have included a set of dynamic graphs that update as events about question results are sent. \autoref{Figure:Analytics Question Graphs} shows an example of the results of questions that have been sent from the plugin.
+To test integration with \gls{vgQuestions} we have included a set of dynamic graphs that update as events about question results are sent. \autoref{Figure:Analytics Question Graphs} shows an example of the results of questions that have been sent from the plugin.
 
 \begin{figure}[h]
 	\centering
@@ -281,15 +280,15 @@ To test integration with Videogular Questions we have included a set of dynamic 
 	\caption{\label{Figure:Analytics Question Graphs} Graph showing results of questions sent from Videogular Analytics}
 \end{figure}
 
-If the question data is not being recieved this means that the Videogular Analytics plugin has not been able to properly access the Videogular Questions events. This test was used as a regression test to ensure that the Videogular Analytics plugin is correctling accessing all published analytics events and forwarding them to the REST server.
+If the question data is not being received this means that the \gls{Videogular} Analytics plugin has not been able to properly access the \gls{vgQuestions} events. This test was used as a regression test to ensure that the Videogular Analytics plugin is correctly accessing all published analytics events and forwarding them to the \gls{REST} server.
 
 \subsection{Accessibility}
 
-The example analytics site generally conformed to the WCAG 2.0 standards (see \autoref{table: va conformance}). The non-conformances found were a lack of alternatives for the video and graphs.
+The example analytics site generally conformed to the \gls{WCAG} 2.0 standards (see \autoref{table: va conformance}). The non-conformances found were a lack of alternatives for the video and graphs.
 
-The video issues were the same as for the Videogular Questions Example site (see \autoref{Subsection: vqe accessibility}). However the cuepoints were not used. The heatmaps had a textual option that could be displayed which gave additional methods for conveying the information.
+The video issues were the same as for the Videogular Questions Example site (see \autoref{Subsection: vqe accessibility}). However the cuepoints were not used. The heat maps had a textual option that could be displayed which gave additional methods for conveying the information.
 
-Using graphs has created many accessibility issues for visually impaired or cognitively impaired users as the data is not described in text. This would be an important consideration for any developer using our plugins in their own site. As a proof-of-concept our example site purely shows that graphs could be used as a method of automatically producing a visual representation of the data.
+Using graphs has created many accessibility issues for visually impaired or cognitively impaired users as the data is not described in text. This would be an important consideration for any developer using our plugins in their own site. As a proof-of-concept the example site purely shows that graphs could be used as a method of automatically producing a visual representation of the data.
 
 \subsection{Deliverable signoff tests}
 
@@ -318,7 +317,7 @@ Here the final requirement was queried by the customer. The example graphs shown
 
 \section{Authoring Tool}
 
-The authoring tool is primary deliverable as it is the only item that is designed as a tool and not as a proof of concept example site deliverable. Therefore the primary types of testing are deliverable signoff tests and accessibility testing.
+The authoring tool is primary deliverable as it is the only item that is designed as a tool and not as a proof-of-concept example site deliverable. Therefore the primary types of testing are deliverable signoff tests and accessibility testing.
 
 \subsection{Accessibility}
 \label{Section:Testing_Authoring_tool_accessibility}
@@ -331,7 +330,7 @@ In creating the questions there is no help provided for error checking. This is 
 
 Two keyboard accessibility issues were found, both of which were due to browser bugs. The first was that Google Chrome and Chromium did not allow multiple items to be selected in a \texttt{\textless select multiple\textgreater} element using only the keyboard. During the course of the project, a fix was made to Google Chrome and Chromium which allowed multiple \textit{adjacent} items to be selected with the keyboard \citep{ChromiumMultipleSelectBug}, which is an improvement but still not a complete fix.
 
-The second keyboard accessibility issue was that collapsible section headings caused ``focus loops'' in Mozilla Firefox, where pressing the Tab key from the last button on the heading caused the focus to move back to the heading itself, preventing the user from focussing any content after the heading. This was reported on the Mozilla bug tracker \citep{FirefoxFocusLoopBug} (see \cref{App:Firefox Bug Report}), where another user pointed out that the HTML causing the bug was invalid. We rewrote the HTML to be valid, which fixed the issue.
+The second keyboard accessibility issue was that collapsible section headings caused ``focus loops'' in Mozilla Firefox, where pressing the Tab key from the last button on the heading caused the focus to move back to the heading itself, preventing the user from focussing any content after the heading. This was reported on the Mozilla bug tracker \citep{FirefoxFocusLoopBug} (see \cref{App:Firefox Bug Report}), where another user pointed out that the HTML causing the bug was invalid. The HTML was rewritten to be valid, which fixed the issue.
 
 Another issue found was in the use of the \texttt{\textless select\textgreater} element as the colour of highlighted options is not editable in the \gls{CSS}. To solve this issue the elements would all need rewriting to take a completely different structure to allow the \gls{CSS} to modify the colours used.
 
