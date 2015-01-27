@@ -5,9 +5,7 @@
 \chapter{Videogular Questions} \label{Chapter:VideogularQuestions}
 
 \begin{preamble}
-A videogular plugin was written to provide the core functionality. It allows for questions to be overlaid on top of the video and handles user interaction.
-
-This plugin is called videogular-questions or \gls{vgQuestions} for short.
+A \gls{Videogular} plugin was written to provide the core functionality. It allows for questions to be overlaid on top of the video and handles user interaction. This plugin is called \gls{vgQuestions}.
 
 It provides a utility library which wraps the messaging passing interface making it easy to create content (used for the \gls{DF}).
 
@@ -65,9 +63,9 @@ This plugin was one of the primary focusses of the project, an accessible system
 
 \end{figure}
 
-The core of \gls{vgQuestions} is a \gls{DF} that is loaded in a \gls{webworker} that will talk to \gls{vgQuestions} as shown in \autoref{Figure:vgquestions-architecture}. This uses a well defined message passing interface to allow easy communication. As the \gls{DF} is provided by the user this makes the plugin exceptionally flexible. Many items of this can easily be changed to create a dynamic set of questions however most users will not interact with this directly.
+The core of \gls{vgQuestions} is a \gls{DF} that is loaded in a \gls{webworker} that will interact with \gls{vgQuestions} as shown in \autoref{Figure:vgquestions-architecture}. This uses a well defined message passing interface to allow easy communication. Most users will not use the message passing interface and will instead use the authoring tool (see \autoref{Chapter:Authoring Tool}) to create a \gls{DF} that interfaces with the \gls{webworker} file \lstinline|questions-worker.js|. This makes the plugin exceptionally flexible.
 
-The general use case is that the \gls{DF} will be generated through use of the authoring tool however the ability to manually create this file is open. This lets the user interface with the questions-worker.js library and configure the actions of the questions. The questions-worker.js library handles communication with vgQuestions, loading a JavaScript object that contains description of the quiz.
+One of the issues discussed for this section was accessibility. It was decided that \gls{CSS} should be used for the styling to allow users to alter the styling to suit their needs. Keyboard accessibility would be an additional focus.
 
 \section{Implementation}
 The implementation of the questions overlay was split into three sections. The first was deciding how to represent the question sets internally. Next was how to represent the questions within the user interface. The final section was implementing the back end communication between the question representations and the video.
@@ -75,31 +73,23 @@ The implementation of the questions overlay was split into three sections. The f
 \subsection{Annotations}
 \label{Section:Annotations}
 
-One of the main issues to address early on was how to represent the quiz and poll questions. The \gls{QTI} specification was investigated, but was found to be complicated and incomplete \todo{What does incomplete mean here?} for the project needs. It was decided to design a new format for representing the data and logic that is used for a particular application of videogular-questions.
+One of the main issues to address early on was how to represent the questions. The \gls{QTI} specification was investigated, but was found to be complicated and made implementing accessibility features difficult. It was decided to design a new format for representing the data and logic that is used for a particular application of \gls{vgQuestions}.
 
-This new format separates the front end of the library (responsible for interacting with the \gls{DOM}), from the data and logic regarding the questions by means of a message passing interface. This is achieved in a rigorous way in the browser by means of a \gls{webworker}. This is a sandboxed separate thread that runs in the background of the webpage. They run independently of standard user-space scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}
+This new format separates the front end of the library (responsible for interacting with the \gls{DOM}), from the data and logic regarding the questions by means of a message passing interface. This is achieved in a rigorous way in the browser by using a \gls{webworker}. This is a sandboxed separate thread that runs in the background of the page. They run independently of standard user-space scripts.  More can be found out about their use within this project in \autoref{Subsection:WebWorkers}.
 
-Using JavaScript, rather than a pure data representation (e.g. JSON or XML) allows you to include logic for the application to follow. This makes it extremely flexible and concise, and the isolation provided by the \gls{webworker} mitigates many security concerns with having an application that executes data given as input as code.
+Using JavaScript rather than a pure data representation (e.g. JSON or XML) allows the inclusion of logic for the application to follow. This makes it extremely flexible and concise, and the isolation provided by the \gls{webworker} mitigates many security concerns with having an application that executes data given as input as code.
 
-Every item in an annotation can have an action and condition function. The action function is called when a item finishes. The action function is given the state of the annotations, such that it can make decisions and then affect the state of the video accordingly. For example, in the above example, this is used to only have the ``skip back" question show, if the answer given to the previous question is incorrect.
+Every item in an annotation can have an action and condition function. The action function is called when a item finishes. The action function is given the state of the annotations, such that it can make decisions and then affect the state of the video accordingly. For example, \autoref{code:questionworker} this is used to only have the ``skip back" question show, if the answer given to the previous question is incorrect.
 
-The condition function is called to determine if the respective item will show. By default, when an annotation is shown, each item is shown in sequence. However, if an item has a condition function, this is evaluated, and the item only shown if the condition function returns \lstinline|true|. If the condition function returns \lstinline|false|, the item is skipped. This functionality is used in the above example to have the video skip back if the user wants it to.
+The condition function is called to determine if the respective item will show. By default, when an annotation is shown, each item is shown in sequence. However, if an item has a condition function, this is evaluated, and the item only shown if the condition function returns \lstinline|true|. If the condition function returns \lstinline|false|, the item is skipped. This functionality is used in the example to have the video skip back on the request of the user.
 
 An early decision was to define the difference between a poll and a quiz question. The decision made was that a poll is a type of quiz question that does not have a correct answer.
 
-Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations was implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
-
-By having a standard \gls{DF} that uses JavaScript functions it was possible to write template functions that could be outputted from the authoring tool and read by the overlay correctly.
-
-In reviewing the types of questions we would support we produced a class diagram (\autoref{Figure:questions_class_diagram}) to represent the type of data that the questions would have. Once the additional question types of textual and range were implemented this gave us conformance to \cref{Req:Question types}.
-
 If the \lstinline|record_response| type was set to a \lstinline|true| value, the question would become a poll and report back the results to a server. If the \lstinline|correct_answer| attribute was set then the question would have a true value and would be shown to the user, if requested. This allows a user to possible have a poll type question that stores the data collected and also has a right answer. This provides maximum usability and therefore doesn't distinguish between a quiz or a poll in the underlying code.
 
-Single question is a sub type of Multiple question where min and max (the minimum and maximum selected number of answers) is 1.
+Initially basic question types (single choice, multiple choice and scale questions) were focused on. A variety of visualisations were implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
 
-Similarly, the stars question is similar to the range question where the \lstinline|step value| is 1.
-
-\autoref{code:questionworker} shows an example of the quiz definition file that could be used by the Videogular Questions plugin.
+In reviewing the types of questions we would support we produced a class diagram (\autoref{Figure:questions_class_diagram}) to represent the type of data that the questions would have. Once the additional question types of textual and range were implemented this gave us conformance to \cref{Req:Question types}.
 
 \begin{figure}
 \centering
@@ -108,11 +98,15 @@ Similarly, the stars question is similar to the range question where the \lstinl
 \label{Figure:questions_class_diagram}
 \end{figure}
 
+As seen in \autoref{Figure:questions_class_diagram} Single Question is a sub type of Multiple Question where min and max (the minimum and maximum selected number of answers) is 1. Similarly, the stars question is similar to the range question where the \lstinline|step value| is 1. These decisions were made to simplify the code to make a consistent interface easier to produce.
+
+By having a standardised \gls{DF} that uses JavaScript functions it was possible to write template functions that could be outputted from the authoring tool and read by the overlay correctly.
+
 \subsection{Front End - User Interface}
 
-The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made and user studies were done in collaboration with a third year project student.
+The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made (see \cref{App:Question Mockups}) and user studies were done in collaboration with a third year project student (see \cref{App:User Study Results}).
 
-A set of example \gls{CSS} files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own.
+A set of example \gls{CSS} files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own. The styles provided had a high contrast to meet the \gls{WCAG} 2.0 colour contrast standards. Keyboard accessibility was ensured throughout.
 
 \subsection{Back End - WebWorkers}
 \label{Subsection:WebWorkers}
@@ -149,14 +143,14 @@ For example, when an answer is submitted by the user this would sent a message t
     {s}{endAnnotation}
   \end{call}
 \end{sequencediagram}
-\caption{Sequence diagram showing interactions between the front end and webworker}
+\caption{Sequence diagram showing interactions between the front end and WebWorker}
 \label{Figure:sequence_diagram_frontend_webworker}
 
 \end{figure}
 
-\autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the above example is used. Initially, the worker sends an \lstinline|annotationStart| message which contains the times which annotations will occur.
+\autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the \autoref{code:questionworker} is used. Initially, the worker sends an \lstinline|annotationStart| message which contains the times which annotations will occur.
 
-When the first time point is reached, the front end sends a \lstinline|annotationStart| message to the worker containing the id of that annotation. The worker then replies with a \lstinline|showQuestion| message containing the contents of the first question. Note that here the functions are not sent to the front end and it is just the JSON representation of the question is sent.
+When the first time point is reached, the front end sends a \lstinline|annotationStart| message to the worker containing the \lstinline|id| of that annotation. The worker then replies with a \lstinline|showQuestion| message containing the contents of the first question. Note that here the functions are not sent to the front end and it is just the JSON representation of the question is sent.
 
 When the user responds to the question, that response is sent to the worker in a \lstinline|questionResult| message. In this case the user responded incorrectly, therefore when the \gls{webworker} evaluated the condition on the second question it evaluated to \lstinline|false|. This meant that the worker replied with another \lstinline|showQuestion| message.
 
@@ -166,6 +160,6 @@ Once the user responds to the second question, the response is again sent to the
 
 An internal representation of the questions is given by the \gls{DF} that is used to display the questions to the user in the overlays. This allows all aspects of the questions presented to the user to be customised. This \gls{DF} can be manually written or it can be created by an authoring tool (\autoref{Chapter:Authoring Tool}).
 
-We have used \gls{CSS} to keep the appearance of the questions consistent but this also allows a developer to quickly change how the questions are shown with little technical knowledge of the system helping to fulfil \cref{Req:Use of colour}.
+We have used \gls{CSS} to keep the appearance of the questions consistent and accessible but this also allows a developer to quickly change how the questions are shown with little technical knowledge of the system helping to fulfil \cref{Req:Use of colour}.
 
 \Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur. By abstracting this to another thread we have been able to utilise additional processing and ensure that the user has a good experience since the page is not likely to freeze due to the additional thread. In addition, separating the front end and back end and only communicating via a message passing system provides low coupling which will allows customising one without affecting the other.
