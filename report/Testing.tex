@@ -10,7 +10,7 @@ Software testing is necessary on projects of all sizes, especially on large proj
 
 \section{Introduction}
 
-During development we used a number of testing methods for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\autoref{Chapter:Deliverable Report}).
+During development we used a number of testing methods for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\cref{App:Deliverable Report}).
 
 A number of sections have a deliverable signoff table. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. This was usually done during the client/supervisor meetings. During final tests we created a number deliverable signoff tests that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report that was presented to the client and signed off.
 
@@ -328,7 +328,7 @@ In creating the questions there is no help provided for error checking. This is 
 
 Two keyboard accessibility issues were found, both of which were due to browser bugs. The first was that Google Chrome and Chromium did not allow multiple items to be selected in a \texttt{\textless select multiple\textgreater} element using only the keyboard. During the course of the project, a fix was made to Google Chrome and Chromium which allowed multiple \textit{adjacent} items to be selected with the keyboard \citep{ChromiumMultipleSelectBug}, which is an improvement but still not a complete fix.
 
-The second keyboard accessibility issue was that collapsible section headings caused ``focus loops'' in Mozilla Firefox, where pressing the Tab key from the last button on the heading caused the focus to move back to the heading itself, preventing the user from focussing any content after the heading. This was reported on the Mozilla bug tracker \citep{FirefoxFocusLoopBug} (see \autoref{Chapter:Firefox Bug Report}), where another user pointed out that the HTML causing the bug was invalid. We rewrote the HTML to be valid, which fixed the issue.
+The second keyboard accessibility issue was that collapsible section headings caused ``focus loops'' in Mozilla Firefox, where pressing the Tab key from the last button on the heading caused the focus to move back to the heading itself, preventing the user from focussing any content after the heading. This was reported on the Mozilla bug tracker \citep{FirefoxFocusLoopBug} (see \cref{App:Firefox Bug Report}), where another user pointed out that the HTML causing the bug was invalid. We rewrote the HTML to be valid, which fixed the issue.
 
 Another issue found was in the use of the \texttt{\textless select\textgreater} element as the colour of highlighted options is not editable in the \gls{CSS}. To solve this issue the elements would all need rewriting to take a completely different structure to allow the \gls{CSS} to modify the colours used.
 
