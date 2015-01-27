@@ -7,8 +7,7 @@
 
 \section{Introduction}
 
-This appendix contains our coding conventions, from the GitHub repository
-\footnote{\url{https://github.com/soton-ecs-2014-gdp-12/conventions}}.
+This appendix contains the coding conventions, from the GitHub repository\footnote{\url{https://github.com/soton-ecs-2014-gdp-12/conventions}}.
 
 \section{General}
 
@@ -80,15 +79,14 @@ omitted.
 \section{Issue tracker usage guidelines}
 
 If an issue doesn't seem to fit with any particular repository, file it
-against the \texttt{videogular-questions} repository.
+against the \gls{vgQuestions} repository.
 
 The issue type should be described with a label (one of bug,
 enhancement, or investigate).
 
 \subsection{waffle.io and Sprint management}
 
-There is a waffle.io board
-\footnote{\url{https://waffle.io/soton-ecs-2014-gdp-12/videogular-questions/}}
+There is a waffle.io board\footnote{\url{https://waffle.io/soton-ecs-2014-gdp-12/videogular-questions/}}
 for tracking the Sprints.
 
 Each Sprint will have a milestone on each repository, named ``Sprint '',
@@ -99,7 +97,7 @@ milestone.
 \section{JavaScript coding
 conventions}
 
-Strict mode should be used (\texttt{'use strict';}). Semicolons should
+Strict mode should be used (\lstinline|`use strict';|). Semicolons should
 never be omitted.
 
 In object definitions, trailing commas should always be used. For
@@ -166,15 +164,14 @@ be followed.
 JSHint directive comments should be kept to a minimum, with
 configuration moved into the \texttt{.jshintrc} file where possible. If
 file-specific configuration is necessary, it should go at the top of the
-file (before \texttt{'use strict';}) unless:
+file (before \lstinline|`use strict';|) unless:
 
 \begin{itemize}
 \item
   it is specific to a section of the file, or
 \item
   it describes the changes made to the environment by a particular line
-  of code, for example by the \texttt{importScripts} method in a Web
-  Worker. In this case the directive should be on the next line,
+  of code, for example by the \texttt{importScripts} method in a \gls{webworker}. In this case the directive should be on the next line,
   indented. For example:
 
 \begin{lstlisting}[language=javascript]
@@ -234,7 +231,7 @@ followed.
 
 \subsection{File names}
 
-File names should be Python style, that is, words separated by
+File names should be python style, that is, words separated by
 underscores (e.g. \texttt{voluminous\_octopus.py}).
 
 When a virtual environment is used, it should be called \texttt{venv}.
