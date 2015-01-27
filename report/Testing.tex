@@ -12,13 +12,16 @@ Software testing is necessary on projects of all sizes, especially on large proj
 
 During development we used a number of testing methods for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\cref{App:Deliverable Report}).
 
-A number of sections have a deliverable signoff table. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. This was usually done during the client/supervisor meetings. During final tests we created a number deliverable signoff tests that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report that was presented to the client and signed off.
+A number of sections have a deliverable sign-off table. While working in an agile method we ensured we kept a working program that could be presented to the client at any time. This was usually done during the client/supervisor meetings. During final tests we created a number deliverable sign-off tests that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report that was presented to the client and signed off.
 
-These deliverable signoff tests were used as manual regression tests. These were used during the final changes and bug fixes to ensure the functionality that the client wished were still present and working correctly.
+These deliverable sign-off tests were used as manual regression tests. These were used during the final changes and bug fixes to ensure the functionality that the client wished were still present and working correctly.
 
 \section{Tools}
 
 We have used a number and range of different tools during testing to ensure that the quality of our code is to the high standard the customer required. For each repository we have decided on what types of tests are applicable and can be implemented to properly test the application.
+
+\subsection{Unit Testing Plan}
+\label{Section:Testing_unittesting}
 
 Where possible we have used unit test style tools to automate repeatable types of tests. Anyone working with a repository that has unit tests should follow the following policies:
 
@@ -362,5 +365,12 @@ The pass marks show each test was tested by us and was successful, and also acce
 
 \section{Conclusions}
 
-\todo{Comment on the conclusions of the testing.}
+Working in an agile manner meant that each week work was presented to the client. This meant that the primary types of testing are ensuring functionality works through integration tests and the final deliverable reports. The example websites have been created to demonstrate that the plugin works and to allow testing of them in the environment they are planned to be used in.
 
+Some repositories have been tested using a unit testing strategy(\autoref{Section:Testing_unittesting}) which is focussed on ensuring that regression tests are ran and detection of errors before committing code. For these repositories the master branch should always build and function correctly. This has allowed meetings with the client to always demonstrate working projects while we are at any stage of development.
+
+The analytics front-end server is an example of our integration testing. Here Videogular, Videogular Analytics, and Videogular Heatmap is used to demonstrate a number of statistics about how a user is using the interface. We have tests for each of these modules but identified a number of issues that occurred after linking these plugins together. Videogular Questions, Videogular Analytics, and results server have been tested in this manner using the Videogular Examples website.
+
+In server applications that require a fast response load testing has been performed to ensure that performance degradation would not affect a users experience. This has been shown (\autoref{Table:stress_testing_results_server}) to cause any user to have high latency and suggestions have been made to improve it if needed.
+
+These tests have demonstrated to the client that this has been thoroughly tested and they have signed off the deliverable report(\cref{App:Deliverable Report}) presented to them. The documentation provided also includes recommended practices for continued work to satisfy \cref{Req:Documentation}.
