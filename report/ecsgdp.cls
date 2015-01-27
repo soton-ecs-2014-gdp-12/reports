@@ -104,9 +104,9 @@
 \newcounter{descriptcount}
 \renewcommand*\thedescriptcount{\arabic{descriptcount}}
 \usepackage{listings}
-\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}\usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
    bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
-   colorlinks,linkcolor={blue},citecolor={blue},urlcolor={red},
+   colorlinks,linkcolor={RoyalBlue},citecolor={RoyalBlue},urlcolor={Maroon},
    pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
 \pdfstringdefDisableCommands{
    \let\\\space
