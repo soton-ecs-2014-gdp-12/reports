@@ -5,7 +5,7 @@
 \label{Chapter:Authoring Tool}
 
 \begin{preamble}
-The authoring tool section details the motivation for creating a tool that is able to produce the \gls{DF} used by the \gls{vgQuestions} plugin. One of the key features was that the tool should be accessible and is able to describe the wide range of features the \gls{vgQuestions} plugin supports.
+The authoring tool chapter details the motivation for creating a tool that is able to produce the \gls{DF} used by the \gls{vgQuestions} plugin. One of the key features was that the tool should be accessible and is able to describe the wide range of features the \gls{vgQuestions} plugin supports.
 \end{preamble}
 
 \section{Introduction}
@@ -22,7 +22,7 @@ Care has been taken to ensure that the authoring tool can be easily used within 
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=\textwidth]{../figures/authoring_tool/state_diagram.png}
+		\includegraphics[width=0.85\textwidth]{../figures/authoring_tool/state_diagram.png}
 
 	\caption{
 		\label{Figure:Authoring_Tool_state_diagram}
@@ -44,7 +44,7 @@ Two different approaches were suggested for showing the advanced options for the
 
 \section{Implementation}
 \label{Section:Authoring_Implementation}
-Once the wireframes were drawn up they could be turned into static HTML. Elements of this webpage were then incrementally given the functionality they required. The main challenge was ascertaining how the functionality fitted in with the \gls{AngularJS} Framework. 
+Once the wireframes were drawn up they could be turned into static HTML. Elements of this webpage were then incrementally given the functionality they required. The main challenge was ascertaining how the functionality fitted in with the \gls{AngularJS} framework. 
 
 Each section of the page had to have its own directive so that independent behaviours could be achieved. This kept the HTML pages short and readable as the behaviour was dealt with by the JavaScript and the styling dealt with by the \gls{CSS}.
 
@@ -85,12 +85,15 @@ A controller holding model data stores the state of the controller which is repr
 	\caption{\label{Figure: Authoring two way binding} Client-centric data binding updating the model in the parent controller by data bubbling illustrated in an state diagram} 	
 \end{figure}
 
-\autoref{Figure: Authoring two way binding} shows the process of the changing the view and the parent updating accordingly. Each time the model is updated the controller runs any appropriate action to change the display of the view then sends the updated model to its parent. This change is bubbled upwards at each level until it reaches the root controller who stores the new data in its global model.
+\autoref{Figure: Authoring two way binding} shows the process of the changing the view and the parent updating accordingly. Each time the model is updated the controller runs any appropriate action to change the display of the view then sends the updated model to its parent. This change is bubbled upwards at each level until it reaches the root controller which stores the new data in its global model.
 
 \subsection{Exporting of Data}
 \label{Section:Authoring_export_data}
 
 As the user is selecting the options for their question sets, the data will be bubbled up as described in \autoref{Section:Authoring_Data_bubbling}. Once they have finished they will be able to press the \keys{Export} button. When this is pressed the global model is reviewed, and the corresponding \gls{DF} is generated.
+
+First the global options are processed and the basic file is created. This uses a default template which is stored in the authoring tool. The template used is shown in \autoref{code:authoringToolTemplate}. This has two sections that are replaced with content that are generated in a later stage. These are \lstinline|WORKER_URL| and \lstinline|ANNOTATION_DATA|. \lstinline|WORKER_URL| is replaced by the URL. This may need to be modified if the \gls{vgQuestions} plugin has been modified to move the \gls{webworker} location. \lstinline|ANNOTATION_DATA| is replaced with the generated question data that is generated below.
+
 \begin{lstlisting}[language=javascript,caption={Base template for authoring tool \gls{DF} generation},label={code:authoringToolTemplate} ]
 /* jshint worker: true */
 "use strict";
@@ -100,8 +103,6 @@ importScripts("WORKER_URL");
 /* global loadAnnotations */
 loadAnnotations(ANNOTATION_DATA);
 \end{lstlisting}
-
-First the global options are processed and the basic file is created. This uses a default template which is stored in the authoring tool. The template used is shown in \autoref{code:authoringToolTemplate}. This has two sections that are replaced with content that are generated in a later stage. These are \lstinline|WORKER_URL| and \lstinline|ANNOTATION_DATA|. \lstinline|WORKER_URL| is replaced by the URL. This may need to be modified if the \gls{vgQuestions} plugin has been modified to move the \gls{webworker} location. \lstinline|ANNOTATION_DATA| is replaced with the generated question data that is generated below.
 
 Once the template has been created, each question set is processed. This involves taking all the settings for the question set, storing it the question set format, and then processing and generating JavaScript for each question in the question set.
 
@@ -115,9 +116,9 @@ Once all of the questions in a question set has been processed it will continue 
 
 Some options allow you to add results at the end of the video. These settings are stored up and once the all question sets have been processed this is added onto the end of the \lstinline|ANNOTATION_DATA| string.
 
-Once all of these options have been calculated the final template is produced. The template string is processed and content is inserted to generate the finished \gls{DF}. To allow the user to download the file easily we construct a blob url with the code in \autoref{code:authoringToolFileDownload}. Without using a data URL we would require the user to copy the text generated and save it. This was not a user friendly option so we investigated possible other uses. Offering a file for download was problematic as JavaScript does not have any write permission for files due to its client side nature. A data blob URL provides an acceptable solution by mocking up a file URL. This may encounter issues with larger files due to the max length permitted in a URL but we have not yet seen these issues occur.
+Once all of these options have been calculated the final template is produced. The template string is processed and content is inserted to generate the finished \gls{DF}. To allow the user to download the file easily we construct a \gls{blob} URI with the code in \autoref{code:authoringToolFileDownload}. Without using a data URL we would require the user to copy the text generated and save it. This was not a user friendly option so we investigated possible other uses. Offering a file for download was problematic as JavaScript does not have any write permission for files due to its client side nature. A data \gls{blob} URL provides an acceptable solution by mocking up a file URL. This may encounter issues with larger files due to the max length permitted in a URL but these issues have not yet been seen.
 
-\begin{lstlisting}[language=javascript,caption={The final \gls{DF} is offered for downloading using a data blob URL},label={code:authoringToolFileDownload} ]
+\begin{lstlisting}[language=javascript,caption={The final \gls{DF} is offered for downloading using a data \gls{blob} URL},label={code:authoringToolFileDownload} ]
 var url = "data:text/json;charset=utf8," + encodeURIComponent(data);
 window.open(url, "_blank");
 window.focus();
@@ -127,20 +128,20 @@ window.focus();
 
 The preview tool works in a similar way to the export tool (\autoref{Section:Authoring_export_data}) by generating the \gls{DF} and creating the \gls{blob} URI. Once this has been done this is passed to the \gls{vgQuestions} plugin embedded in the authoring tool, which loads up the newly created set of questions.
 
-This allows for immediate feedback when creating the set of questions and makes it easier to create a set for non-technical users (\cref{Req:User friendliness}). Since we have embedded the \gls{vgQuestions} plugin we will be sure that this will react the same when added to a website using the plugin.
+This allows for immediate feedback when creating the set of questions and makes it easier to create a set for non-technical users (\cref{Req:User friendliness}). Since the \gls{vgQuestions} plugin has been embedded it is sure that this will react the same when added to a website using the plugin.
 
 \section{Conclusions}
 \label{Section:Authoring_Conclusion}
 
-The tool we have produced allows a user to create the \gls{DF} in the correct format that can be used \gls{vgQuestions} to display user created question sets.
+The tool that has been produced allows a user to create the \gls{DF} in the correct format that can be used \gls{vgQuestions} to display user created question sets.
 
-\cref{Req:Keyboard accessibility} outlines the importance of accessibility so we have designed the authoring tool to be as accessible as possible and \autoref{Section: Conformance of Authoring Tool} details our conformance to the \gls{WCAG} standards. In \autoref{Section:Testing_Authoring_tool_accessibility} we have ran through a number of testing methods applied to the authoring tool to demonstrate that it is accessible and outlined any further issues.
+\cref{Req:Keyboard accessibility} outlines the importance of accessibility so the authoring tool has been designed to be as accessible as possible and \autoref{Section: Conformance of Authoring Tool} details the conformance to the \gls{WCAG} standards. In \autoref{Section:Testing_Authoring_tool_accessibility} a number of testing methods are applied to the authoring tool to demonstrate that it is accessible and outlined any further issues.
 
-\autoref{Figure:Authoring_Tool} is an image showing our final user interface. The colour scheme was chosen to be high contrasting to fulfil \cref{Req:Use of colour}. In addition the \gls{CSS} used to set this colour scheme is in a single place and is easy to change as to meet \cref{Req:Use of colour}.
+\autoref{Figure:Authoring_Tool} is an image showing the final user interface. The colour scheme was chosen to be high contrasting to fulfil \cref{Req:Use of colour}. In addition the \gls{CSS} used to set this colour scheme is in a single place and is easy to change as to meet \cref{Req:Use of colour}.
 
-To further decrease the barrier to entry (\cref{Req:User friendliness}) we used the \gls{Videogular} and \gls{vgQuestions} plugin to allow a preview of the question set they have created. One of the useful side effects of \cref{Req:Standalone} has meant that it has been easy to integrate \gls{vgQuestions} into the authoring tool.
+To further decrease the barrier to entry (\cref{Req:User friendliness})the \gls{Videogular} and \gls{vgQuestions} plugin were used to allow a preview of the question set they have created. One of the useful side effects of \cref{Req:Standalone} has meant that it has been easy to integrate \gls{vgQuestions} into the authoring tool.
 
-Some more work may needed to investigate how large a \gls{DF} may be produced when using the data \gls{blob} URL approach to allow the user to download the file. While no problems have occurred during testing, \autoref{Section:Authoring_export_data} identifies possible issues that may occur for exceptionally large question sets.
+Some more work may needed to investigate how large a \gls{DF} may be produced when using the data \gls{blob} URI approach to allow the user to download the file. While no problems have occurred during testing, \autoref{Section:Authoring_export_data} identifies possible issues that may occur for exceptionally large question sets.
 
 \begin{landscape}
 
