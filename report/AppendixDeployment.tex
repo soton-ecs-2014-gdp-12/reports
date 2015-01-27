@@ -10,32 +10,32 @@ An appendix detailing how each of the tools can be deployed to a website.
 
 \section{Introduction}
 
-This is divided into the different types of web server applications we have used. Different web technologies have been used based on their strengths on what was needed to be produced.
+This is divided into the different types of Web server applications we have used. Different Web technologies have been used based on their strengths on what was needed to be produced.
 
-Each repository has a section in the README.md file detailing how to set up and install the tool. The individual guides have been reproduced below.
+Each repository has a section in the \lstinline|README.md| file detailing how to set up and install the tool. The individual guides have been reproduced below.
 
 \section{Deployment of all projects}
 
-To deploy many of these projects they require you to run \lstinline|npm install| which will also run \lstinline|bower install|. The specific requirements for each application is defined in the README.md file in each repository.
+To deploy many of these projects they require you to run \lstinline|npm install| which will also run \lstinline|bower install|. The specific requirements for each application is defined in the \lstinline|README.md| file in each repository.
 
 \section{Deployment of Flask Applications} \label{Section:Deployment Flask Applications}
 
-The only flask application is the poll server therefore this guide is customised to deploy the poll server.
+The only Flask application is the results server therefore this guide is customised to deploy the results server.
 
-To deploy the poll server using apache first you need to clone the repository.
+To deploy the poll server using Apache first you need to clone the repository.
 
-Then the apache httpd.conf file needs to be configured by adding the following entry somewhere in the file:
+Then the Apache \lstinline|httpd.conf| file needs to be configured by adding the following entry somewhere in the file:
 
 \begin{lstlisting}[caption={Apache configuration}, label={code:apacheConfig_flask}]
 <VirtualHost <hostname>:80>
 	ServerName <hostname>
-	WSGIDaemonProcess poll_server user=<user> group=<group> threads=5
-	WSGIScriptAlias / /<location>/poll_server.wsgi
-	ErrorLog logs/poll_server-error_log
-	CustomLog logs/poll_server-access_log common
+	WSGIDaemonProcess results_server user=<user> group=<group> threads=5
+	WSGIScriptAlias / /<location>/results_server.wsgi
+	ErrorLog logs/results_server-error_log
+	CustomLog logs/results_server-access_log common
 
 	<Directory <location>>
-		WSGIProcessGroup poll_server
+		WSGIProcessGroup results_server
 		WSGIApplicationGroup %{GLOBAL}
 		Order deny,allow
 		Allow from all
@@ -46,10 +46,10 @@ Then the apache httpd.conf file needs to be configured by adding the following e
 Parameters needing changes:
 
 \begin{itemize}
-\item \textless hostname\textgreater is the hostname of the server. e.g. website.domain.net
-\item \textless location\textgreater is the location of the sourcecode on the server. e.g. /var/www/poll\_server/
-\item \textless user\textgreater is the user you want the script to run under, by default apache
-\item \textless group\textgreater is the group you want the script to run under, by default apache
+\item \textless hostname\textgreater is the hostname of the server. e.g. \lstinline|website.domain.net|
+\item \textless location\textgreater is the location of the source code on the server. e.g. /var/www/results\_server/
+\item \textless user\textgreater is the user you want the script to run under, by default Apache
+\item \textless group\textgreater is the group you want the script to run under, by default Apache
 \item The \lstinline|ErrorLog| and \lstinline|CustomLog| parameters can be changed to any location
 
 \end{itemize}
@@ -60,14 +60,14 @@ The only Node.js application is the example analytics backend therefore this gui
 
 Apache cannot directly run Node.js webservices therefore it needs to be ran by node itself.
 
-This can be run by using \lstinline|npm start| which will run the node server. This needs to be running on the server all the time you want the server to be accessible.
-A web search will return details of how to turn a node.js webserver into a service however it can just be run from the command line using screen or a similar program.
+This can be run by using \lstinline|npm start| which will run the Node server. This needs to be running on the server all the time you want the server to be accessible.
+A web search will return details of how to turn a Node.js webserver into a service however it can just be run from the command line using screen or a similar program.
 
-You can configure apache to proxy any connections to the node server. This is how we suggest integrating an apache server with node.
+You can configure Apache to proxy any connections to the Node server. This is how we suggest integrating an Apache server with Node.
 
 To do this mod\_proxy needs to be installed, web searches will find guides to install this for your chosen operating system.
 
-Then the apache httpd.conf file needs to be configured by adding the following entry somewhere in the file:
+Then the Apache \lstinline|httpd.conf| file needs to be configured by adding the following entry somewhere in the file:
 
 \begin{lstlisting}[caption={Apache configuration}, label={code:apacheConfig_nodejs}]
 <VirtualHost <hostname>:80>
@@ -99,10 +99,10 @@ Parameters needing changes:
 
 \section{Deployment of AngularJs Files} \label{Section:Deployment of AngularJs Files}
 
-The authoring tool and videogular questions example respositories are both written in AngularJS.
+The authoring tool and \gls{Videogular} Questions example repositories are both written in AngularJS.
 
 AngularJS files are JavaScript and therefore can be run on a normal Apache webserver.
 
-To install these repositories you must clone the repository to a location served by apache and then install the dependencies by running \lstinline|npm install|
+To install these repositories you must clone the repository to a location served by Apache and then install the dependencies by running \lstinline|npm install|
 
 Once this has been performed the application will be able to be used.
