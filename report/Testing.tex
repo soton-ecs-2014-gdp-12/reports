@@ -60,6 +60,8 @@ Python has included in its standard packages, a module called unittest. This mod
 
 Locust\footnote{\url{http://locust.io/}} is a distributed load testing tool that allows you to define a site access pattern. By designing a site access pattern you specify how often sites are visited relative to others and therefore can tailor the access patterns to your likely use case.
 
+We have used this tool as it is able to give percentile data to see statistics on how fast all requests are fulfilled. Many other similar tools only give an average request time which will cause problems when some users are kept waiting for a much longer time. Having access to a full set of statistics allows us to run performance checks and improve features so no users are left waiting.
+
 \section{Videogular Questions Example} 
 \label{Section:Videogular Questions Example}
 
@@ -206,7 +208,7 @@ The pass marks show each test was tested by us and was successful, and also acce
 \section{Example Analytics Server}
 \label{Subsection:Analytics server in example}
 
-The analytics back-end server receives the REST calls from the analytics plugin and is then able to process them. For this example implementation we have chosen not to store the data but forward it to the front end. This will demonstrate that the analytics plugin is able to make REST calls. Storage could be used for later recall and processing of the information into 
+The analytics back-end server receives the REST calls from the analytics plugin and is then able to process them. For this example implementation we have chosen not to store the data but forward it to the front-end. This will demonstrate that the analytics plugin is able to make REST calls. Storage could be used for later recall and processing of the information into 
 
 \subsection{Cross Origin request testing}
 
@@ -226,15 +228,17 @@ To test analytics worked cross domain we set up the analytics back-end and the a
 \subsection{Reloading processed data}
 \label{Section:reloading processed data}
 
-The back-end acted as a testing platform for the front end. A large set of data was recorded from the analytics plugin and saved to allow for repeated testing of the same pieces of data. The back-end plugin has a tool to specify a data file that has already been processed to be replayed.
+The back-end acted as a testing platform for the front-end. A large set of data was recorded from the analytics plugin and saved to allow for repeated testing of the same pieces of data. The back-end plugin has a tool to specify a data file that has already been processed to be loaded.
 
-Any front end client connecting to the back-end Videogular Analytics server will be sent all events in the loaded piece of data. This allows the front end website to be quickly tested with a set of data that encompasses all features of the Analytics plugin. This data set allows comparison between a known valid set of data and data that Videogular Analytics creates allowing you to easily identify issues that occur.
+Any front-end client connecting to the back-end Videogular Analytics server will be sent all events in the loaded piece of data. This allows the front-end website to be quickly tested with a set of data that encompasses all features of the Analytics plugin. This data set allows comparison between a known valid set of data and data that Videogular Analytics creates allowing you to easily identify issues that occur.
 
-\section{Example Analytics Front End}
+This helps to faster identify cases where Videogular Analytics is not conforming to the API standard.
 
-The example analytics front end loads up events from the Videogular Analytics plugin. These events are obtained by a websocket to example analytics server. In the current model the Example analytics server acts as an intermediary between this and the Videogular Analytics plugin that can serve additional events as described in \autoref{Section:reloading processed data}.
+\section{Example Analytics Front-End}
 
-This front end tests the Videogular Analytics plugin to ensure that the data received is not missing or corrupting events. This is done by loading the data into different formats and processing it. The data processing assumes a number of standard data elements expected from the Videogular Analytics based on the API (\autoref{Table:analytics_api}).
+The example analytics front-end loads up events from the Videogular Analytics plugin. These events are obtained by a websocket to example analytics server. In the current model the Example analytics server acts as an intermediary between this and the Videogular Analytics plugin that can serve additional events as described in \autoref{Section:reloading processed data}.
+
+This front-end tests the Videogular Analytics plugin to ensure that the data received is not missing or corrupting events. This is done by loading the data into different formats and processing it. The data processing assumes a number of standard data elements expected from the Videogular Analytics based on the API (\autoref{Table:analytics_api}).
 
 \subsection{Videogular Heatmaps}
 \label{Subsubsection:Videogular Heatmaps in example}
@@ -254,7 +258,7 @@ If these are not able to be processed then this indicates an issue with the even
 
 Running this against the predefined data is used as a regression test for Videogular Heatmap to ensure it is working correctly.
 
-By running an instance of the Example Videogular Questions site and voting with the analytics we perform end to end testing as this data is passed through a number of our plugins to reach the Analytics front end to be loaded by the Heatmap plugin.
+By running an instance of the Example Videogular Questions site and voting with the analytics we perform end to end testing as this data is passed through a number of our plugins to reach the Analytics front-end to be loaded by the Heatmap plugin.
 
 \begin{figure}[h]
 	\centering
