@@ -39,7 +39,7 @@ The tools we have used in the testing sections below are described fully in the 
 
 \subsection{JSHint}
 
-JSHint is a tool for static code analysis of JavaScript, which can detect many instances of bad coding practice in source files before they cause errors. Included in each of our repositories containing JavaScript is a configuration file for JSHint, which enforces use of ECMAScript 5 Strict Mode, and prohibits use of undeclared variables or type coercion. JSHint was run at regularly during the project and any issues it highlighted were fixed. For repositories that had JSHint set up for use it was recommended to run this before committing.
+JSHint is a tool for static code analysis of JavaScript, which can detect many instances of bad coding practice in source files before they cause errors. Included in each of the repositories containing JavaScript is a configuration file for JSHint, which enforces use of ECMAScript 5 Strict Mode, and prohibits use of undeclared variables or type coercion. JSHint was run at regularly during the project and any issues it highlighted were fixed. For repositories that had JSHint set up for use it was recommended to run this before committing.
 
 \subsection{Karma}
 
@@ -57,25 +57,25 @@ This has been used as the unit test framework for AngularJS code within the proj
 
 \subsection{Python unittest module}
 
-Python has included in its standard packages, a module called unittest. This module is designed to be similar to the JUnit testing framework for Java and this has been used for all python based projects as a unit test framework.
+Python has included in its standard packages, a module called \lstinline|unittest|. This module is designed to be similar to the JUnit testing framework for Java and this has been used for all python based projects as a unit test framework.
 
 \subsection{Locust}
 
-Locust\footnote{\url{http://locust.io/}} is a distributed load testing tool that allows you to define a site access pattern. By designing a site access pattern you specify how often sites are visited relative to others and therefore can tailor the access patterns to your likely use case.
+Locust\footnote{\url{http://locust.io/}} is a distributed load testing tool that allows definition of a site access pattern. By designing a site access pattern you specify how often sites are visited relative to others and therefore can tailor the access patterns to your likely use case.
 
 This tool has been used as it is able to give percentile data to see statistics on how fast all requests are fulfilled. Many other similar tools only give an average request time which will cause problems when some users are kept waiting for a much longer time. Having access to a full set of statistics allows the running of performance checks and improvement of features so no users are left waiting.
 
 \section{Videogular Questions Example} 
 \label{Section:Videogular Questions Example}
 
-The Videogular Questions Example site was written as testing and documentation for how Videogular Questions, Videogular Cuepoints and Example results server could be used. This is helps to fulfil \cref{Req:Documentation} and \cref{Req:Documentation}.
+The Videogular Questions Example site was written as testing and documentation for how Videogular Questions, Videogular Cuepoints and Example results server could be used. This is helps to fulfil \cref{Req:Documentation}.
 
 \subsection{Videogular Questions}
 \label{Subsection:Videogular Questions in example}
 
 There are several tests written for the \gls{vgQuestions} plugin. These use Jasmine, and can be run in an automated way using Karma.
 
-These tests exercise the web worker component of the \gls{vgQuestions} plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
+These tests exercise the \gls{webworker} component of the \gls{vgQuestions} plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
 
 The examples created in the Videogular Questions Example repository use individual or collections of features. These were used in the development of these features, and in the demonstration of these features to the customer.  These examples complement the Jasmine tests, as they exercise the display elements of the plugin.
 
@@ -90,23 +90,23 @@ There was no user experience testing done directly as part of the project, as th
 
 For the example results server there was a small set of functions to test with a small number of possible inputs and a well defined set of responses. This is, therefore, well suited to individual unit tests.
 
-Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in Python.
+Flask\footnote{\url{http://flask.pocoo.org/}} is a python web application framework that allows you to create web applications with simple routing patterns in python.
 
-The Flask library had a test client and recommended test skeleton\footnote{\url{http://flask.pocoo.org/docs/0.10/testing/}} which was made use of to run the unit tests. This used the unittest standard python library which meant it was easy to test with but also allowed calling of methods by simulating HTTP requests.
+The Flask library had a test client and recommended test skeleton\footnote{\url{http://flask.pocoo.org/docs/0.10/testing/}} which was made use of to run the unit tests. This used the \lstinline|unittest| standard python library which meant it was easy to test with but also allowed calling of methods by simulating HTTP requests.
 
 The testing was split into 6 areas to test the main components of the application: cross-origin resource sharing, routing, database setup, voting, getting results and load testing.
 
 \subsubsection{Cross-Origin Resource Sharing tests}
 
-One of the main requirements by the customer was that these units should be able to be accessed via \gls{REST} calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these \gls{REST} calls will not fail cross origin resource sharing headers were implemented as discussed in \autoref{Section:Modular Approach}.
+One of the main requirements by the customer was that these units should be able to be accessed via \gls{REST} calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these \gls{REST} calls will not fail Cross-Origin Resource Sharing (CORS) headers were implemented as discussed in \autoref{Section:Modular Approach}.
 
-This checks to ensure that the Cross-Origin Resource Sharing (CORS) header is correctly sent in the HTTP reply. If this is not set the web browser will likely reject the loading of the page and the application will fail.
+This checks to ensure that the CORS header is correctly sent in the HTTP reply. If this is not set the web browser will likely reject the loading of the page and the application will fail.
 
 In addition, it ensures that the response is the one expected and not an error state to ensure that the web application is also sending the correct content.
 
 \subsubsection{Routing tests}
 
-The routing tests are to ensure that the application correctly starts and is accessible.
+The routing tests are to ensure that the application correctly starts and is available.
 
 If this fails to load up the testing URL which returns "Hello World!" then it is unlikely to be able to perform some of the more complex functions.
 
@@ -128,7 +128,7 @@ If the ability to vote does not work then this will fail as it relies on being a
 
 \subsubsection{Load testing}
 
-For the load testing we have used Locust and have chosen three access patterns to test the example results server:
+For the load testing Locust was used and three access patterns were chosen to test the example results server:
 
 \begin{itemize}
 \item Visiting the root page - This is to determine that the webserver is still responding to basic HTTP requests
@@ -272,7 +272,7 @@ The added feature of displaying the frequencies was also tested. These displayed
 
 \subsection{Videogular Analytics integration with Videogular Questions}
 
-To test integration with \gls{vgQuestions} we have included a set of dynamic graphs that update as events about question results are sent. \autoref{Figure:Analytics Question Graphs} shows an example of the results of questions that have been sent from the plugin.
+To test integration with \gls{vgQuestions} a set of dynamic graphs were included that update as events about question results are sent. \autoref{Figure:Analytics Question Graphs} shows an example of the results of questions that have been sent from the plugin.
 
 \begin{figure}[h]
 	\centering
@@ -368,8 +368,8 @@ Working in an agile manner meant that each week work was presented to the client
 
 Some repositories have been tested using a unit testing strategy(\autoref{Section:Testing_unittesting}) which is focussed on ensuring that regression tests are ran and detection of errors before committing code. For these repositories the master branch should always build and function correctly. This has allowed meetings with the client to always demonstrate working projects while we are at any stage of development.
 
-The analytics front-end server is an example of our integration testing. Here Videogular, Videogular Analytics, and Videogular Heatmap is used to demonstrate a number of statistics about how a user is using the interface. We have tests for each of these modules but identified a number of issues that occurred after linking these plugins together. Videogular Questions, Videogular Analytics, and results server have been tested in this manner using the Videogular Examples website.
+The analytics front-end server is an example of integration testing performed. Here \gls{Videogular}, Videogular Analytics, and Videogular Heatmap is used to demonstrate a number of statistics about how a user is using the interface. There are tests for each of these modules but identified a number of issues that occurred after linking these plugins together. Videogular Questions, Videogular Analytics, and results server have been tested in this manner using the Videogular Examples website.
 
 In server applications that require a fast response load testing has been performed to ensure that performance degradation would not affect a users experience. This has been shown (\autoref{Table:stress_testing_results_server}) to cause any user to have high latency and suggestions have been made to improve it if needed.
 
-These tests have demonstrated to the client that this has been thoroughly tested and they have signed off the deliverable report(\cref{App:Deliverable Report}) presented to them. The documentation provided also includes recommended practices for continued work to satisfy \cref{Req:Documentation}.
+These tests have demonstrated to the client that this has been thoroughly tested and they have signed off the deliverable report (\cref{App:Deliverable Report}) presented to them. The documentation provided also includes recommended practices for continued work to satisfy \cref{Req:Documentation}.
