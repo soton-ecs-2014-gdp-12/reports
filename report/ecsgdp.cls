@@ -179,8 +179,8 @@
       {\large A group design project report submitted for}
       {\large the award of \\ \par \degreename \par}
       \vfill
-      {\normalsize Supervisor: \supname \par}
-      {\normalsize Examiner: \examname \par}
+      {\normalsize Project Supervisor: \supname \par}
+      {\normalsize Second Examiner: \examname \par}
       \vfill
       \hspace{6mm}\parbox[t][51mm][s]{130mm}{
         \center
