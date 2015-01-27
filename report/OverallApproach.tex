@@ -5,7 +5,7 @@
 \label{Chapter:Overall Approach}
 
 \begin{preamble}
-	To create a quality framework an overall approach for the project was decided on.
+	To create a high quality framework an overall approach for the project was decided on.
 
 	This was done by first summarising the research conducted into previous work, as well as defining where this project fits within that ecosystem. Specific requirements were gathered from the client and an analysis of the needs of other project stakeholders conducted. This led to a list of requirements that the project would need to meet. Additionally, thought was put into the general system design of the framework.
 \end{preamble}
@@ -171,9 +171,9 @@ Considering the needs of all stakeholders, a set of requirements for the project
 
 It is important for our project to be easily integrated into other projects, particularly the latest version of Synote (see \autoref{Section:Synote}). To accomplish this the design of the back-end systems ensures that they can be run without depending on any other modules. All of the functionality will be accessible via \gls{REST} calls as set out by \cref{Req:Server architecture}.
 
-Abstracting all calls using \gls{REST} means that other services are able to interact with the back-end services in a language independent way, which also makes the application standalone (\cref{Req:Standalone}). To facilitate this, all \gls{REST} responses are returned with a \texttt{Cross-Origin} header. This allows servers which are not on the same machine to communicate with the \gls{REST} service.
+Abstracting all calls using \gls{REST} means that other services are able to interact with the back-end services in a language independent way, which also makes the application standalone (\cref{Req:Standalone}). To facilitate this, all \gls{REST} responses are returned with a Cross-Origin header. This allows servers which are not on the same machine to communicate with the \gls{REST} service.
 
-These features allow an external application to run the Web server separately and communicate with our server side code. The only dependency added by those who use our code is that they need to be able to make \gls{REST} calls.
+These features allow an external application to run the Web server separately and communicate with our server side code. The only dependency added by those who use the code in this project is that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
 
@@ -181,7 +181,7 @@ The following set of components were decided on, the interactions of which are s
 
 \begin{itemize}
 	\item
-		\textbf{Videogular Questions} displays questions over a \gls{Videogular} video player according to a quiz defined in a \gls{DF}. If the quiz contains polls, it sends responses to a results server, and displays the results that are sent back.
+		\textbf{Videogular Questions} displays questions over a \gls{Videogular} video player according to a quiz defined in a \gls{DF}. If any of the questions are polls, it sends responses of the poll(s) to a results server, and displays the results that are sent back.
 	\item
 		\textbf{Videogular Analytics} logs events from \gls{Videogular} (e.g. when the user plays or pauses the video) and Videogular Questions (e.g. when the user answers a question) and sends them to an analytics server.
 	\item
@@ -208,6 +208,7 @@ As the expected behaviour of our plugins depends on the application they are use
 
 The server components were separated as they do completely separate jobs, and because some deployments may use one but not the other. Similarly, Videogular Analytics is separate from Videogular Questions as it only depends on \gls{Videogular}. Videogular Cuepoints and Videogular Heatmap are separate components as they can be used in other, completely unrelated projects.
 
+\newpage %only the first line was on the page
 \section{Deliverables}
 \label{Section:Deliverables}
 
