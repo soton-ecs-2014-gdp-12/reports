@@ -6,7 +6,7 @@
 
 \section{Introduction}
 
-This appendix contains the minutes of meetings held with the group's supervisor, client and second examiner, as recorded by Harry Cutts. It also contains minutes for our Sprint Retrospectives, where there were any.
+This appendix contains the minutes of meetings held with the group's supervisor, client and second examiner, as recorded by Harry Cutts. It also contains minutes for our Sprint Retrospectives, where they happened.
 
 Unless otherwise stated, all five group members attended all meetings. Mike Wald attended all client/supervisor meetings as both client and supervisor.
 
@@ -28,15 +28,14 @@ mobile interface was later added to this version.
 
 A version for the Raspberry Pi was produced.
 
-The new version of Synote is to be built with a node.js back-end, which
-will interact with an AngularJS front-end via a ReST API. The code is to
-be hosted on GitHub.
+The new version of Synote is to be built with a Node.js back-end, which
+will interact with an AngularJS front-end via a \gls{REST} \gls{API}. The code is to be hosted on GitHub.
 
 \subsubsection{Our task}
 
 Our task is to work on software for interactive video quizzes to be
 integrated with Synote at a later date. The solution must be accessible.
-We may wish to use the QTI standard for defining quizzes.
+We may wish to use the \gls{QTI} standard for defining quizzes.
 
 This has been done before by a Masters student called Nadia, but her
 work was not compatible with AngularJS. Mike will send Nadia's
@@ -48,7 +47,7 @@ Other requirements:
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  Use ReSTful APIs to connect the front-end and back-end
+  Use ReSTful \glspl{API} to connect the front-end and back-end
 \item
   Define a data structure which we can statically serve for the proof of
   concept
@@ -63,7 +62,7 @@ Other requirements:
 \end{itemize}
 
 The project should be managed in an Agile way. Harry suggested that we
-follow SCRUM. Yunjia recommended the RallyDev application for issue
+follow Scrum. Yunjia recommended the RallyDev application for issue
 management.
 
 We will hold these meetings with Mike regularly at 14:00 on Mondays. The
@@ -78,7 +77,7 @@ Harry suggested not scheduling anything over Christmas.
 
 We should find some users and talk to them
 
-SCRUM (with 1 week sprints) would be good to try.
+Scrum (with 1 week sprints) would be good to try.
 
 We each should:
 
@@ -100,7 +99,7 @@ GitHub organisation and add everyone in the group.
 Shameem Bajar, a third-year student of Information Technology in
 Organisations, also attended.
 
-We presented a prototype system built on Videogular over the last week.
+We presented a prototype system built on \gls{Videogular} over the last week.
 
 Videogular Quiz wasn't worth building on.
 
@@ -118,7 +117,7 @@ Aspects which we haven't covered in our prototype:
 \end{itemize}
 
 A big use case for this project is for the live version. Another is for
-MOOCs.
+\glspl{MOOC}.
 
 Our technical goals are to overlay quiz questions and polls over online
 videos, with analytics support.
@@ -194,7 +193,7 @@ We demonstrated:
 \end{itemize}
 
 We explained the architecture on which we had decided for the questions
-front-end, in which a WebWorker (a sandboxed JavaScript thread) is used
+front-end, in which a \gls{webworker} (a sandboxed JavaScript thread) is used
 to execute potentially unsafe quiz definitions. This allows us to use
 JavaScript to define quizzes in a flexible manner without a complicated
 markup language.
@@ -220,7 +219,7 @@ at the end of each chunk in a longer video.
 
 \subsection{Sprint retrospective}
 
-In the traditional SCRUM way, we discussed how well our first sprint had
+In the traditional Scrum way, we discussed how well our first sprint had
 gone.
 
 \subsubsection{The good}
@@ -271,7 +270,7 @@ We demonstrated:
 \item
   Charts showing results of in-video polls.
 \item
-  The heat map plug-in for Videogular.
+  The heat map plugin for Videogular.
 \item
   Our Videogular Analytics plug-in acquiring analytics data, and it
   being processed into a heat map.
