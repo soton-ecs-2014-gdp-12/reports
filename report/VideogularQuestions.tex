@@ -5,7 +5,7 @@
 \chapter{Videogular Questions} \label{Chapter:VideogularQuestions}
 
 \begin{preamble}
-	A \gls{Videogular} plugin was written to provide the core functionality. It allows for questions to be overlaid on top of the video and handles user interaction. This plugin is called \gls{vgQuestions}. It also provides utility functions for the \gls{DF} messaging passing interface, making it easy to create content.
+	A \gls{Videogular} plugin was written to provide the core functionality of the project. It allows for questions to be overlaid on top of the video and handles user interaction. This plugin is called \gls{vgQuestions}. It also provides utility functions for the \gls{DF} messaging passing interface, making it easy to create content.
 \end{preamble}
 
 \section{Introduction}
@@ -81,7 +81,7 @@ The condition function is called to determine if the respective item will show. 
 
 An early decision was to define the difference between a poll and a quiz question. The decision made was that a poll is a type of quiz question that does not have a correct answer.
 
-If the \lstinline|record_response| attribute is set to \lstinline|true|, the question becomes a poll and sends the results to a server. If the \lstinline|correct_answer| attribute is set then the question has a correct answer which will be shown to the user, if requested. This allows a user to possible have a poll type question that stores the data collected and also has a right answer. This provides maximum flexibility, and the underlying code doesn't distinguish between a quiz or a poll.
+In the code this is captured in the \lstinline|record_response| attribute. If the \lstinline|record_response| attribute is set to \lstinline|true|, the question becomes a poll and sends the results to a server. If the \lstinline|correct_answer| attribute is set then the question has a correct answer which will be shown to the user, if requested. This allows a user to possible have a poll type question that stores the data collected and also has a right answer. This provides maximum flexibility, and the underlying code doesn't distinguish between a quiz or a poll.
 
 Basic question types (single choice, multiple choice and scale questions) were implemented first. A variety of visualisations were implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
 
@@ -146,11 +146,11 @@ For example, when an answer is submitted by the user this would sent a message t
 
 \autoref{Figure:sequence_diagram_frontend_webworker} illustrates messages that could pass between the \gls{webworker}, and the front end when the \autoref{code:questionworker} is used. Initially, the worker sends an \lstinline|annotationStart| message which contains the times which \glspl{annotation} will occur.
 
-When the first time point is reached, the front end sends a \lstinline|annotationStart| message to the worker containing the \lstinline|id| of that \gls{annotation}. The worker then replies with a \lstinline|showQuestion| message containing the contents of the first question. Note that here the functions are not sent to the front end and it is just the JSON representation of the question is sent.
+When the first time point is reached, the front end sends a \lstinline|annotationStart| message to the \gls{webworker} containing the \lstinline|id| of that \gls{annotation}. The worker then replies with a \lstinline|showQuestion| message containing the contents of the first question. Note that here the functions are not sent to the front end and it is just the JSON representation of the question is sent.
 
-When the user responds to the question, that response is sent to the worker in a \lstinline|questionResult| message. In this case the user responded incorrectly, therefore when the \gls{webworker} evaluated the condition on the second question it evaluated to \lstinline|false|. This meant that the worker replied with another \lstinline|showQuestion| message.
+When the user responds to the question, that response is sent to the \gls{webworker} in a \lstinline|questionResult| message. In this case the user responded incorrectly, therefore when the \gls{webworker} evaluated the condition on the second question it evaluated to \lstinline|false|. This meant that the \gls{webworker} replied with another \lstinline|showQuestion| message.
 
-Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the \gls{annotation}, so the worker responds with an \lstinline|endAnnotation| message.
+Once the user responds to the second question, the response is again sent to the \gls{webworker}. In this case, this was the final question in the \gls{annotation}, so the \gls{webworker} responds with an \lstinline|endAnnotation| message.
 
 \section{Conclusions}
 
@@ -158,4 +158,4 @@ An internal representation of the questions is given by the \gls{DF} that is use
 
 We have used \gls{CSS} to keep the appearance of the questions consistent and accessible but this also allows a developer to quickly change how the questions are shown with little technical knowledge of the system helping to fulfil \cref{Req:Use of colour}.
 
-\Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur. By abstracting this to another thread we have been able to utilise additional processing and ensure that the user has a good experience since the page is not likely to freeze due to the additional thread. In addition, separating the front end and back end and only communicating via a message passing system provides low coupling which will allows customising one without affecting the other.
+\Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur. By abstracting this to another thread utilisation of additional processing has been enabled and it is possible to ensure that the user has a better experience since the page is not as likely to freeze due to the additional thread sharing some of the processing. In addition, separating the front-end and back-end and only communicating via a message passing system provides low coupling which will allows customising one without affecting the other.
