@@ -6,12 +6,12 @@
 \label{Chapter:Video Player}
 
 \begin{preamble}
-	Specific improvements to \gls{Videogular} were made in three areas: accessibility, compatibility and the scrub bar. Each were conducted independently, and the contributions were readily accepted back into the \gls{Videogular} project or published as separate plugins. These were made to ensure that the \gls{Videogular} player met our accessibility needs and to add required features to the player.
+	Specific improvements to \gls{Videogular} were made in three areas: accessibility, compatibility and scrub bar extensions. Each were conducted independently, and the contributions were readily accepted back into the \gls{Videogular} project or published as separate plugins. These were made to ensure that the \gls{Videogular} player met our accessibility needs and to add required features to the player.
 \end{preamble}
 
 \section{Introduction}
 
-After reviewing the \gls{Videogular} project we found that it was lacking in a number of aspects. Therefore to fulfil requirements such as \cref{Req:Keyboard accessibility} the following goals were identified for this part of the project:
+After reviewing the \gls{Videogular} project it was found that it was lacking in a number of aspects. Therefore to fulfil requirements such as \cref{Req:Keyboard accessibility} the following goals were identified for this part of the project:
 
 \begin{itemize}
 	\item investigate \gls{Videogular} to allow for its use within the new version of Synote
@@ -26,7 +26,7 @@ After reviewing the \gls{Videogular} project we found that it was lacking in a n
 \gls{Videogular} has the option to display HTML controls for the video player, replacing the browser's built-in controls. However, when the project began there was no way for the user to access these controls without a mouse. The main problem was that the controls did not identify themselves as interactive elements, and so could not be `focused' (selected with the tab key). This also prevented them from being picked up by a screen reader.
 
 \subsection{Design and Implementation}
-Some online video players allow the player as a whole to be focused, and then controlled with various keyboard shortcuts. The problem with this method is that accessibility aids, such as screen readers, will not have information on these controls, and so users of those technologies will have to be instructed. It is also not accessible to users of a clicker, who can only press one key and so require individually focusable controls.
+Some online video players allow the player as a whole to be focused, and then controlled with various keyboard shortcuts. The problem with this method is that accessibility aids, such as screen readers, will not have information on these controls, and so users of those technologies will require further instruction. It is also not accessible to users of a clicker, who can only press one key and so require individually focusable controls.
 
 Instead, the controls were made individually focusable by using semantic markup where possible, and \gls{ARIA} attributes otherwise. When a control is in focus, a visual indicator is displayed to highlight it. Buttons can then be pressed using the space bar (\fref{Figure:Accessibility/Screenshots/Button}); the scrub bar can be moved using the left and right arrow keys (\fref{Figure:Accessibility/Screenshots/ScrubBar}); and the volume can be adjusted using the up and down arrow keys when the mute button is focused (\fref{Figure:Accessibility/Screenshots/Volume}).
 
@@ -67,7 +67,7 @@ Android phones correctly interpret the inline directive and will play the video 
 
 The overlay which displays questions appears above the video and obstructs it. Placing the overlay in the middle of the screen requires complex \gls{CSS} to correctly locate it on small screens. There are still some issues with the pop-up location on some mobile devices where the browser reports an incorrect screen size. Until these devices are compliant with the specification, it is too time consuming to fix each individual case.
 
-All tablets tested, running iOS or Android, display the pop-up fine. This is because they allow a video to be played inline and have content appear above the video. They also do not need additional \gls{CSS} to position the pop-up as they normally have laptop-size screens (\textgreater 1024 pixels wide) which do not require any video scaling. (The video was 700 pixels wide at its maximum size.)
+All tablets tested, running iOS or Android, display the pop-up correctly. This is because they allow a video to be played inline and have content appear above the video. They also do not need additional \gls{CSS} to position the pop-up as they normally have laptop-size screens (\textgreater 1024 pixels wide) which do not require any video scaling. (The video was 700 pixels wide at its maximum size.)
 
 The best user experience with this application is using it on a desktop with an up-to-date browser. This will definitely work and display as intended. As the screen size of the device gets smaller the user experience is significantly reduced as the video and poll overlay will be much smaller than recommended. To support a number of browsers and operating systems a range of video formats are supplied to the \gls{Videogular} plugin so that the browser can pick one that is supported.
 
@@ -80,12 +80,12 @@ The team behind \gls{Videogular}, 2fdevs, are actively seeking members of the co
 
 \subsection{Videogular Cuepoints}
 \label{Subsection:vgCuepoints}
-\gls{Videogular} Cuepoints is a \gls{Videogular} plugin for displaying `cuepoints', marks on the scrub bar which can be positioned at different times. For example, cuepoints could indicate the start of a section in the video, or (in this case) a time when a pop-up will appear.
+\gls{Videogular} Cuepoints is a \gls{Videogular} plugin for displaying `cuepoints', marks on the scrub bar which can be positioned at different times. For example, cuepoints could indicate the start of a section in the video, or (in this case) a time when a pop up will appear.
 
 \subsubsection{Design and Implementation}
 Like the rest of Videogular Controls, each cuepoint is represented by an HTML element which is positioned using \gls{CSS}. This allows users of the plugin to style them with their own stylesheets.
 
-Cuepoint positions are specified in the \texttt{config} object which is given as a parameter to cuepoints, and a stylesheet for custom theming can be specified in the same way.
+Cuepoint positions are specified in the \texttt{config} object which is given as a parameter to cuepoints, and a stylesheet for a custom theme can be specified in the same way.
 
 One problem found during implementation was that the cuepoints cannot be displayed before the video has begun playing. This is due to \gls{Videogular} not setting the video length variable until the video plays, and so this variable cannot be used to calculate the positions of the cuepoints until then.
 
