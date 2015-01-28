@@ -49,37 +49,13 @@
 
 \section{Project Management}
 
-During the project process, a number of important papers and research books have been reviewed to provide the necessary background in eAssessment (\autoref{Chapter:Previous Work}).
-
-This project required a constant balance of academic and industrial work although the client was interested in both. The industrial work involved producing the plugins to work with \gls{Videogular} and a number of the deliverable examples. The academic work involved researching into into accessibility on browsers and operating systems to fulfil the clients requirements(\cref{Req:Browser compatibility}, \cref{Req:OS compatibility}).
-
-Throughout the project work was completed at a steady rate (\autoref{fig:tasksweek}) and work periods were distributed evenly over a 40 hour working week with some additional work at weekends and later at night (\autoref{fig:punch card}). The Gantt charts produced (\cref{App:Gantt Charts}) were used to plan progress during meetings to ensure that client priority deliverables had enough time.
+Throughout the project, work was completed at a steady rate (\autoref{fig:tasksweek}) and work periods were distributed evenly over a 40 hour working week with some additional work at weekends and later at night (\autoref{fig:punch card}). The Gantt charts produced (\cref{App:Gantt Charts}) were used to track progress during meetings to ensure that client's priority deliverables had enough time.
 
 The key to this project's success was the use of the agile software development
 process. It allowed maximum reactivity and flexibility to ensure client
-satisfaction. Regular meetings occurred between the developers and the client,
-to keep the client apprised of the progress, and the clients feedback on the
-work done, and plans.
-
-The development team also met regularly with additional meetings when
-necessary. During the start of the project, and some integration phases it was
-beneficial to meet to work. However, much work was also done individually.
-
-%Paragraph:
-%planning and progress
-%team worked independently
-%optimal use of teams skills
-%strengths weaknesses of team
-
-%Paragraph:
-%strengths weaknesses of process
-
-%Paragraph:
-%strengths weaknesses of design
-
-%Paragraph:
-%strengths weaknesses of results
-
+satisfaction. Regular meetings occurred between the developers and the client. These were
+to keep the client apprised of the progress, and obtain the client's feedback on the
+work done (\cref{App:Minutes of Meetings}). The development team also met regularly with additional meetings when necessary. During the start of the project, and some integration phases, it was beneficial to meet to work collaboratively. However, work was also done individually.
 
 
 %Extensive review of related work and references; References relate both to academic and industrial work
@@ -87,22 +63,29 @@ beneficial to meet to work. However, much work was also done individually.
 
 %Justified evaluation of the strengths and weaknesses of the team, process, design, and results
 
-\section{Framework Design}
+\section{System Overview}
 
 %Clear evidence of original thinking, considerable knowledge and understanding and ability to face considerable challenge
 
-During the initial stages of the project, considerable effort was spent on the general approach. This resulted in an approach that, while being quite complicated, drawing on a large number of tools and technologies, provided the appropriate flexibility.
+During the initial stages of the project, considerable effort was spent on fully comprehending the problem and investigating potential technical solutions. This resulted in an approach that, while being quite complicated, drew on a large number of tools and technologies. This provided the appropriate flexibility and functionality. 
 
-Using modern web technologies, e.g. the \gls{webworker} (JavaScript sandbox) allowed the use of a programmatic \gls{DF}, rather than using exhaustive data format.
+The plugin (\gls{vgQuestions}) central to this project involved overlaying quizzes and polls onto videos. From the review of previous work it was found that instantaneous feedback is key to learning, therefore this was an important feature of the \gls{vgQuestions} plugin. Another important client requirement was that all plugins should be extensible. Using \gls{AngularJS} for the user interface of the \gls{vgQuestions} plugin, gives the required extensibility with the additional benefits of efficient reuse of code and high levels of customisability. 
 
-During the course of the project, it was appropriate to separate the functionality that was implemented in to several small modules, which were then published.
+In order for a dynamic set of questions to be displayed to the user, \glspl{webworker} (JavaScript sandboxed threads) have been utilised. This allowed for the use of a programmatic \gls{DF}, rather than using an exhaustive data format. This was a very different approach to using the \gls{QTI} definition standard; making accessibility considerations easier to implement without restricting the options available to authors.
 
-Instantaneous feedback is key to learning, and this why this was built in as a key feature to the \gls{vgQuestions} plugin.
+The creation of the \gls{DF} is a non-trivial task. Thus, an authoring tool was produced to reduce the barrier to entry, enabling non-technical users to use the system. Accessibility considerations were a key factor in the development of the authoring tool to satisfy the client's requirements (\cref{Req:Keyboard accessibility} and \cref{Req:Use of colour}). 
+
+In user generated sites that use the \gls{vgQuestions} plugin, there is the option to include analytics functionality provided by the \gls{Videogular} Analytics plugin. This enables future work researching the different ways users interact with eAssessment and learning systems to develop the next generation of interactive learning videos.
+
+There have been a number of areas that are promising for further development in this system. The client is interested in additional plugins to handle additional video formats. The \gls{vgQuestions} abstraction supports different video formats without the need to modify any code in the plugin.
+
+Further work towards accessibility (as outlined in \autoref{Section: Accessibility future work}) will increase the range of users able to use the system. A fully accessible system would allow new research that could improve eAssessment for people with disabilities.
 
 \section{Summary}
 
-Creating \gls{vgQuestions} and the associated tools in the framework has been a challenging project. It now allows users to go right from the creation stage, to the publishing stage, through to the analytics stage. Having met all goals the team looks forward to the client using it within Synote, and hopefully seeing it used elsewhere online.
+During the project process, a number of important papers and research books have been reviewed to provide the necessary background in eAssessment (\autoref{Chapter:Previous Work}). Using the information gathered from both these academic and industrial works the team has produced an innovative  product that has fully satisfied the client.
+
+Creating \gls{vgQuestions} and the associated tools in the framework has been a challenging project. It now allows users to go from the creation stage, through the publishing stage, and on to the analytics stage. Having met all goals the team looks forward to the client using the project within Synote, and hopefully seeing it used elsewhere online.
 
 %Very challenging project, met all goals, ready to be used
 %Publishable/patentable approach, thoroughly tested, evidence of client satisfaction
-
