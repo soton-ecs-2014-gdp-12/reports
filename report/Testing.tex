@@ -35,7 +35,7 @@ Where possible unit test style tools have been used to automate repeatable types
 \item \textbf{Fix broken unit tests} - When a unit test is identified that it is not working as intended it should be reviewed to see if it is still applicable and ensure that it is modified to work if so. There may be multiple reasons why a unit test has been broken so it may be needed to contact the person who originally broke the unit test to find out what was changed and why.
 \end{itemize}
 
-The tools we have used in the testing sections below are described fully in the following subsections.
+The tools that were used in the testing sections below are described fully in the following subsections.
 
 \subsection{JSHint}
 
@@ -260,7 +260,7 @@ If these are not able to be processed then this indicates an issue with the even
 
 Running this against the predefined data is used as a regression test for \gls{Videogular} Heatmap to ensure it is working correctly.
 
-By running an instance of the Videogular Questions Example site and voting with the analytics we perform end-to-end testing as this data is passed through a number of our plugins to reach the Analytics front-end to be loaded by the \gls{Videogular} Heatmap plugin.
+By running an instance of the Videogular Questions Example site and voting with the analytics end-to-end testing is performed as this data is passed through a number of our plugins to reach the Analytics front-end to be loaded by the \gls{Videogular} Heatmap plugin.
 
 \begin{figure}[h]
 	\centering
@@ -294,7 +294,7 @@ Using graphs has created many accessibility issues for visually impaired or cogn
 
 The tests in table \autoref{table:vgAnalytics Deliverable signoff tests} were presented to the client as the deliverable items for the example analytics tool.
 
-These tests were ran on the analytics tool example using preloaded data so that we had a repeatable set of data that was always valid.
+These tests were ran on the analytics tool example using preloaded data so that there was had a repeatable set of data that was always valid.
 
 \begin{center}
 \begin{longtable}{|L{0.9}|L{0.03}|} 
@@ -366,7 +366,7 @@ The pass marks show each test was tested by us and was successful, and also acce
 
 Working in an agile manner meant that each week work was presented to the client. This meant that the primary types of testing are ensuring functionality works through integration tests and the final deliverable reports. The example websites have been created to demonstrate that the plugin works and to allow testing of them in the environment they are planned to be used in.
 
-Some repositories have been tested using a unit testing strategy(\autoref{Section:Testing_unittesting}) which is focussed on ensuring that regression tests are ran and detection of errors before committing code. For these repositories the master branch should always build and function correctly. This has allowed meetings with the client to always demonstrate working projects while we are at any stage of development.
+Some repositories have been tested using a unit testing strategy(\autoref{Section:Testing_unittesting}) which is focussed on ensuring that regression tests are ran and detection of errors before committing code. For these repositories the master branch should always build and function correctly. This has allowed meetings with the client to always demonstrate working projects while at any stage of development.
 
 The analytics front-end server is an example of integration testing performed. Here \gls{Videogular}, Videogular Analytics, and Videogular Heatmap is used to demonstrate a number of statistics about how a user is using the interface. There are tests for each of these modules but identified a number of issues that occurred after linking these plugins together. Videogular Questions, Videogular Analytics, and results server have been tested in this manner using the Videogular Examples website.
 
