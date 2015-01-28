@@ -158,6 +158,6 @@ Once the user responds to the second question, the response is again sent to the
 
 An internal representation of the questions is given by the \gls{DF} that is used to display the questions to the user in the overlays. This allows all aspects of the questions presented to the user to be customised. This \gls{DF} can be manually written or it can be created by an authoring tool (\autoref{Chapter:Authoring Tool}).
 
-We have used \gls{CSS} to keep the appearance of the questions consistent and accessible but this also allows a developer to quickly change how the questions are shown with little technical knowledge of the system helping to fulfil \cref{Req:Use of colour}.
+\gls{CSS} was used to keep the appearance of the questions consistent and accessible but this also allows a developer to quickly change how the questions are shown with little technical knowledge of the system helping to fulfil \cref{Req:Use of colour}.
 
 \Glspl{webworker} are used to communicate with the front end to provide the necessary messages for the expected actions to occur. By abstracting this to another thread utilisation of additional processing has been enabled and it is possible to ensure that the user has a better experience since the page is not as likely to freeze due to the additional thread sharing some of the processing. In addition, separating the front-end and back-end and only communicating via a message passing system provides low coupling which will allows customising one without affecting the other.
