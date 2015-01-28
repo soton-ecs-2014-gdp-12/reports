@@ -24,7 +24,7 @@ Having reviewed the Previous Work (\autoref{Chapter:Previous Work}), some design
 \end{itemize}
 
 \section{Client Requirements}
-Because the long-term aim is to integrate this project into the new version of Synote, there were some specific requirements that our client had with regards to implementation.
+Because the long-term aim is to integrate this project into the new version of Synote, there were some specific requirements that the client had with regards to implementation.
 
 The new version of Synote will be written in \gls{AngularJS} and \gls{HTML5}. To make it more easily compatible the questions overlay should also be written using this framework. With this new requirement it was agreed that \gls{Videogular}\footnote{\url{https://github.com/2fdevs/videogular}}\footnote{\url{https://github.com/2fdevs/bower-videogular-controls}} should be used. \gls{Videogular} is a \gls{HTML5} video player for \gls{AngularJS}. The nature of the library makes it very easy to write plugins to add the required functionality.
 
@@ -95,7 +95,7 @@ Considering the needs of all stakeholders, a set of requirements for the project
 	\item \textbf{Poll responses} \label{Req:Poll responses} \hfill \\ 
 		The responses to polls must be able to be sent to a server, and results from the server must be able to be displayed.
 
-		\textit{This is one of our client's requirements.}
+		\textit{This is one of the client's requirements.}
 
 	\item \textbf{Instant feedback} \label{Req:Instant feedback} \hfill \\ 
 		Once a question or set of questions have been answered there must be a way of receiving instant feedback on performance.
@@ -169,11 +169,11 @@ Considering the needs of all stakeholders, a set of requirements for the project
 \section{Modular Web server Approach}
 \label{Section:Modular Approach}
 
-It is important for our project to be easily integrated into other projects, particularly the latest version of Synote (see \autoref{Section:Synote}). To accomplish this the design of the back-end systems ensures that they can be run without depending on any other modules. All of the functionality will be accessible via \gls{REST} calls as set out by \cref{Req:Server architecture}.
+It is important for this project to be easily integrated into other projects, particularly the latest version of Synote (see \autoref{Section:Synote}). To accomplish this the design of the back-end systems ensures that they can be run without depending on any other modules. All of the functionality will be accessible via \gls{REST} calls as set out by \cref{Req:Server architecture}.
 
 Abstracting all calls using \gls{REST} means that other services are able to interact with the back-end services in a language independent way, which also makes the application standalone (\cref{Req:Standalone}). To facilitate this, all \gls{REST} responses are returned with a Cross-Origin header. This allows servers which are not on the same machine to communicate with the \gls{REST} service.
 
-These features allow an external application to run the Web server separately and communicate with our server side code. The only dependency added by those who use the code in this project is that they need to be able to make \gls{REST} calls.
+These features allow an external application to run the Web server separately and communicate with the server side code. The only dependency added by those who use the code in this project is that they need to be able to make \gls{REST} calls.
 
 \section{System Architecture}
 
@@ -204,7 +204,7 @@ The following set of components were decided on, the interactions of which are s
 
 The results and analytics servers (including the analytics front-end) are examples only, and not themselves deliverables (see \autoref{Section:Deliverables}).
 
-As the expected behaviour of our plugins depends on the application they are used in, an example site was required to test the other components.
+As the expected behaviour of the plugins depends on the application they are used in, an example site was required to test the other components.
 
 The server components were separated as they do completely separate jobs, and because some deployments may use one but not the other. Similarly, Videogular Analytics is separate from Videogular Questions as it only depends on \gls{Videogular}. Videogular Cuepoints and Videogular Heatmap are separate components as they can be used in other, completely unrelated projects.
 

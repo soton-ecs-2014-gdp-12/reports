@@ -6,7 +6,7 @@
 \label{Chapter:Video Player}
 
 \begin{preamble}
-	Specific improvements to \gls{Videogular} were made in three areas: accessibility, compatibility and scrub bar extensions. Each area was conducted independently, and the contributions were readily accepted back into the \gls{Videogular} project or published as separate plugins. These were made to ensure that the \gls{Videogular} player met our accessibility needs and to add required features to the player.
+	Specific improvements to \gls{Videogular} were made in three areas: accessibility, compatibility and scrub bar extensions. Each area was conducted independently, and the contributions were readily accepted back into the \gls{Videogular} project or published as separate plugins. These were made to ensure that the \gls{Videogular} player met the accessibility needs and to add required features to the player.
 \end{preamble}
 
 \section{Introduction}
@@ -74,7 +74,7 @@ The best user experience with this application is using it on a desktop with an 
 \section{Scrub Bar Extensions}
 \label{Section:Scrub Bar Extensions}
 
-\gls{Videogular} has been designed and implemented in such a way as to allow for directive-based plugins to be developed to extend its functionality. When using the \gls{Videogular} Controls, the native browser controls are replaced with an HTML based interface. All our interface changes are for \gls{Videogular} Controls, not the native browser controls.
+\gls{Videogular} has been designed and implemented in such a way as to allow for directive-based plugins to be developed to extend its functionality. When using the \gls{Videogular} Controls, the native browser controls are replaced with an HTML based interface. All the interface changes are for \gls{Videogular} Controls, not the native browser controls.
 
 The team behind \gls{Videogular}, 2fdevs, are actively seeking members of the community to develop new plugins for their system, and so were willing to discuss the plugins and their architectural design.
 
@@ -95,7 +95,7 @@ In future, the ability to specify a different \gls{CSS} class for each cuepoint 
 There may also be scope for investigating why the \gls{Videogular} player does not set the length variable before it starts playing and if there are any fixes for this. Initial investigation concluded that until the video starts playing it is impossible to determine the length of the video. However, loading the video via a second hidden \gls{HTML5} element and playing it may give access to the video length.
 
 \subsection{Videogular Heatmap}
-\gls{Videogular} Heatmap is a \gls{Videogular} plugin for giving areas of the scrub bar different colours. In our examples this is used to give a visual representation of the number of times each section of the video has been watched.
+\gls{Videogular} Heatmap is a \gls{Videogular} plugin for giving areas of the scrub bar different colours. In the examples this is used to give a visual representation of the number of times each section of the video has been watched.
 
 \subsubsection{Design and Implementation}
 An early design decision was to use \gls{CSS} to colour the sections as this would allow different colours to be specified (see \cref{Req:Use of colour}). This also would allow developers to develop their own colour schemes with meanings if they desired.
@@ -112,6 +112,6 @@ An extra option that was added for improved accessibility was the ability to lab
 
 Several improvements to \gls{Videogular} were made during the course of the project, primarily focussing on accessibility. With these changes the \gls{Videogular} player is now accessible to users who only navigate websites using the keyboard. All changes made have been adopted by the \gls{Videogular} project. Compatibility with a number platforms and devices was reviewed and the only major problem found was that Safari forces video to be full-screen on iPhones.
 
-We created two \gls{Videogular} plugins to allow us to display markers and statistical data on the \gls{scrub bar}. Both of these have been designed for use in our example websites, cuepoints for points where questions appear and the heat map to demonstrate how often sections of a video have been watched.
+We created two \gls{Videogular} plugins to allow us to display markers and statistical data on the \gls{scrub bar}. Both of these have been designed for use in the example websites, cuepoints for points where questions appear and the heat map to demonstrate how often sections of a video have been watched.
 
 
