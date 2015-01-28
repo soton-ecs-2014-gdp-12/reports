@@ -12,13 +12,13 @@ Software testing is necessary on projects of all sizes, especially on large proj
 
 During development number of testing methods were used for each section of the project to reflect the different types of module. All sections that have requirements that directly specify features such as \cref{Req:Keyboard accessibility} will have user acceptance tests performed. These tests directly form part of the deliverables report (\cref{App:Deliverable Report}).
 
-A number of sections have a deliverable sign-off table. While working in an agile method a working program that could be presented to the client at any time was kept. This was usually done during the client/supervisor meetings. During final tests number deliverable sign-off tests were created that were used to prove to the customer that the software worked correctly. These were presented in the deliverable report (see \cref{App:Deliverable Report}) that was presented to the client and signed off.
+A number of sections have a deliverable sign-off table. While working in an agile method a working program that could be presented to the client at any time was kept. This was usually done during the client/supervisor meetings. During final tests number deliverable sign-off tests were created that were used to prove to the client that the software worked correctly. These were presented in the deliverable report (see \cref{App:Deliverable Report}) that was presented to the client and signed off.
 
 These deliverable sign-off tests were used as manual regression tests. These were used during the final changes and bug fixes to ensure the functionality that the client wished were still present and working correctly.
 
 \section{Tools}
 
-A number and range of different tools have been used during testing to ensure that the quality of the code is to the high standard the customer required. For each repository the types of tests that are applicable were decided and can be implemented to properly test the application.
+A number and range of different tools have been used during testing to ensure that the quality of the code is to the high standard the client required. For each repository the types of tests that are applicable were decided and can be implemented to properly test the application.
 
 \subsection{Unit Testing Plan}
 \label{Section:Testing_unittesting}
@@ -77,7 +77,7 @@ There are several tests written for the \gls{vgQuestions} plugin. These use Jasm
 
 These tests exercise the \gls{webworker} component of the \gls{vgQuestions} plugin over the message passing interface. A script is used, which contains messages to send, and expected responses. A test passes if the script runs as expected with no missing or extra messages.
 
-The examples created in the Videogular Questions Example repository use individual or collections of features. These were used in the development of these features, and in the demonstration of these features to the customer.  These examples complement the Jasmine tests, as they exercise the display elements of the plugin.
+The examples created in the Videogular Questions Example repository use individual or collections of features. These were used in the development of these features, and in the demonstration of these features to the client.  These examples complement the Jasmine tests, as they exercise the display elements of the plugin.
 
 There was no user experience testing done directly as part of the project, as the client had reservations about user experience testing due to the toolkit style nature of the project. Shameem performed some user experience testing for the Videogular Questions Example site and these were discussed in a meeting with both Shameem and the client \autoref{subsection:Meeting10Nov}. The consensus was that while the results were informative, they were outside the scope of this project.
 
@@ -98,7 +98,7 @@ The testing was split into 6 areas to test the main components of the applicatio
 
 \subsubsection{Cross-Origin Resource Sharing Tests}
 
-One of the main requirements by the customer was that these units should be able to be accessed via \gls{REST} calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these \gls{REST} calls will not fail Cross-Origin Resource Sharing (CORS) headers were implemented as discussed in \autoref{Section:Modular Approach}.
+One of the main requirements by the client was that these units should be able to be accessed via \gls{REST} calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these \gls{REST} calls will not fail Cross-Origin Resource Sharing (CORS) headers were implemented as discussed in \autoref{Section:Modular Approach}.
 
 This checks to ensure that the CORS header is correctly sent in the HTTP reply. If this is not set the web browser will likely reject the loading of the page and the application will fail.
 
@@ -182,7 +182,7 @@ As a proof-of-concept this site showed that it is possible to create an accessib
 
 These tests in \autoref{table:vgQuestions Deliverable sign-off tests} were presented to the client as the deliverable items for the Videogular Questions and Videogular Cuepoint plugins.
 
-These tests were ran on the Videogular Questions Example website. This had examples of all types of questions and therefore was used as a deliverable for the customer.
+These tests were ran on the Videogular Questions Example website. This had examples of all types of questions and therefore was used as a deliverable for the client.
 
 \begin{center}
 \begin{longtable}{|L{0.9}|L{0.03}|} 
@@ -314,7 +314,7 @@ The ``\% watched by correct answers'' and ``Time watched by correct answers'' gr
 \end{longtable}
 \end{center}
 
-Here the final requirement was queried by the customer. The example graphs shown did not have an vertical axis. This was fixed by adding an axis after the customer meeting however during the meeting this did not affect sign-off since it was an example of possible graphs that could be created.
+Here the final requirement was queried by the client. The example graphs shown did not have an vertical axis. This was fixed by adding an axis after the client meeting however during the meeting this did not affect sign-off since it was an example of possible graphs that could be created.
 
 \section{Authoring Tool}
 
