@@ -85,7 +85,7 @@ In the code this is captured in the \lstinline|record_response| attribute. If th
 
 Basic question types (single choice, multiple choice and scale questions) were implemented first. A variety of visualisations were implemented including check boxes, radio buttons and sliding scales. Validation was needed to ensure that the specified minimum and maximum limits were followed.
 
-In reviewing the types of questions to support we produced a class diagram (\autoref{Figure:questions_class_diagram}) to describe the type of data that the questions would have. Once the additional question types of textual and range were implemented \cref{Req:Question types} was satisfied.
+In reviewing the types of questions to support a class diagram was produced (\autoref{Figure:questions_class_diagram}) to describe the type of data that the questions would have. Once the additional question types of textual and range were implemented \cref{Req:Question types} was satisfied.
 
 \begin{figure}
 	\centering
@@ -103,6 +103,8 @@ By having a standardised \gls{DF} that uses JavaScript functions, it was possibl
 The appearance of the overlay depends on the question type to be shown. The layout of these different types was carefully considered for accessibility and ease of use. Mockups were made (see \cref{App:Question Mockups}) and user studies were done in collaboration with a third year project student (see \cref{App:User Study Results}).
 
 A set of example \gls{CSS} files are supplied with the project that layout the questions according to the feedback received. Developers using any part of the project can use these styles as is, or modify/develop their own. The styles provided had a high contrast to meet the \gls{WCAG} 2.0 colour contrast standards. Keyboard accessibility was ensured throughout.
+
+The final user interface produced can be viewed in \autoref{Figure:Screenshots/example poll}, \autoref{Figure:Screenshots/single question}, \autoref{Figure:Screenshots/multiple question}, \autoref{Figure:Screenshots/stars question}, \autoref{Figure:Screenshots/text question} and \autoref{Figure:Screenshots/range question}.
 
 \subsection{Back-end - WebWorkers}
 \label{Subsection:WebWorkers}

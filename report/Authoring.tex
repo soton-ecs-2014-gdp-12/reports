@@ -53,7 +53,7 @@ Angular allowed the dynamic nature of the data to define the appearance of the p
 \subsection{Data Bubbling}
 \label{Section:Authoring_Data_bubbling}
 
-Within the authoring tool we have made use of the ability to use two way binding and watches with AngularJS. This allows us to template a number of reusable elements such as the time picker and means we don't have to rewrite the class each time we wish to use it. This reduced the time taken to produce the authoring tool.
+Within the authoring tool the ability to use two way binding and watches with AngularJS was used. This allows us to template a number of reusable elements such as the time picker and means we don't have to rewrite the class each time we wish to use it. This reduced the time taken to produce the authoring tool.
 
 The root controller holds the global state of the authoring tool. This global state is updated by the child controllers that each own specific parts of the global model. This bubbling of data through the controllers is the key to how the authoring tool was built.
 
@@ -63,7 +63,7 @@ The root controller holds the global state of the authoring tool. This global st
 	\caption{\label{Figure: Bubbling model data} Bubbling of model data up controllers} 	
 \end{figure}
 
-\autoref{Figure: Bubbling model data} shows the general structure of the controllers. In our implementation we have a large number of controllers and levels to encapsulate the different aspects of the question sets being created. In this diagram controllers A and B will bubble any modified model data up to the root controller. If model data in controller B1 or B2 changes, their new model will bubble up to controller B. Controller B will then will then bubble its model combined with the new model data to the root controller.
+\autoref{Figure: Bubbling model data} shows the general structure of the controllers. There are a large number of controllers and levels to encapsulate the different aspects of the question sets being created. In this diagram controllers A and B will bubble any modified model data up to the root controller. If model data in controller B1 or B2 changes, their new model will bubble up to controller B. Controller B will then will then bubble its model combined with the new model data to the root controller.
 
 This bubbling technique works for any number of or levels of children, provided the model data is correctly bubbled up through each layer. It also makes adding new controllers at any point simple as only the bubbling of the data up the levels needs to be handled.
 
@@ -116,7 +116,7 @@ Once all of the questions in a question set has been processed it will continue 
 
 Some options allow you to add results at the end of the video. These settings are stored up and once the all question sets have been processed this is added onto the end of the \lstinline|ANNOTATION_DATA| string.
 
-Once all of these options have been calculated the final template is produced. The template string is processed and content is inserted to generate the finished \gls{DF}. To allow the user to download the file easily we construct a \gls{blob} URI with the code in \autoref{code:authoringToolFileDownload}. Without using a data URL we would require the user to copy the text generated and save it. This was not a user friendly option so we investigated possible other uses. Offering a file for download was problematic as JavaScript does not have any write permission for files due to its client side nature. A data \gls{blob} URL provides an acceptable solution by mocking up a file URL. This may encounter issues with larger files due to the max length permitted in a URL but these issues have not yet been seen.
+Once all of these options have been calculated the final template is produced. The template string is processed and content is inserted to generate the finished \gls{DF}. To allow the user to download the file easily a \gls{blob} URI is constructed with the code in \autoref{code:authoringToolFileDownload}. Without using a data URL it would require the user to copy the text generated and save it. This was not a user friendly option so we investigated possible other uses. Offering a file for download was problematic as JavaScript does not have any write permission for files due to its client side nature. A data \gls{blob} URL provides an acceptable solution by mocking up a file URL. This may encounter issues with larger files due to the max length permitted in a URL but these issues have not yet been seen.
 
 \begin{lstlisting}[language=javascript,caption={The final \gls{DF} is offered for downloading using a data \gls{blob} URL},label={code:authoringToolFileDownload} ]
 var url = "data:text/json;charset=utf8," + encodeURIComponent(data);

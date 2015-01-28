@@ -19,7 +19,7 @@ Therefore during the process there was communication with the current developer 
 
 One key requirement was that the all work done should be able to standalone and not require any additional Synote framework but that Synote should be able to communicate with these pieces of work easily (see \cref{Req:Standalone}).
 
-To ensure this all, all services use an open standard to communicate using either \gls{REST} calls (\cref{Req:Server architecture}), with associated documentation of each call and how it can be used, or protocols such as Web sockets. These services can be run as small Web servers which will allow Synote to communicate with them easily. In addition since these are standalone we have been able to pick the best language for the associated service. This has decreased the complexity which should reduce the time needed to learn how the software works in order to continue from this project.
+To ensure this all, all services use an open standard to communicate using either \gls{REST} calls (\cref{Req:Server architecture}), with associated documentation of each call and how it can be used, or protocols such as Web sockets. These services can be run as small Web servers which will allow Synote to communicate with them easily. In addition, since these are standalone, the best language for the associated service could be chosen. This has decreased the complexity which should reduce the time needed to learn how the software works in order to continue from this project.
 
 The core of the project uses \gls{AngularJS} and the \gls{Videogular} player as this was recommended as the latest version of Synote will be written in Angular. All of the plugins were written for the \gls{Videogular} player and therefore will be able to be easily integrated into the primary Synote codebase. The plugins are the only part that will be integrated into Synote directly and therefore were best suited to be written in Angular. The other services will communicate with Synote and therefore did not need to be written in Angular.
 
@@ -85,7 +85,7 @@ The elements used to create dropdowns and multiple select boxes could also be re
 
 In the Example Analytics site graphs have been used as a representation but they have no textual alternative. In future, any graphs used should be made accessible to screen readers and users with cognitive impairments.
 
-Since the analytics website is an example making this entirely accessible was not a high priority as we prioritised deliverables that the customer explicitly requested rather than this example website.
+Since the analytics website is an example making this entirely accessible was not a high priority the deliverables that the customer explicitly requested were prioritised rather than this example website.
 
 \section{Summary}
 
@@ -93,7 +93,7 @@ The primary focus of this project towards future work has always been easing the
 
 As the project was based on the Videogular player as a plugin, fixing the YouTube plugin should be a high priority for future work. This will lower the barrier to entry (\cref{Req:User friendliness}) as users will not need to upload video and encode it correctly for different browsers. This was decided out of scope by the client. Another way of doing this would be automatically re-encoding the video on upload, which is also a possible improvement.
 
-Some research into mobile interfaces was done and found a number of problems with browser and differing phone behaviour and sizes. This is a very hard problem and therefore to focus on the original problem we did not look at doing this.
+Some research into mobile interfaces was done and found a number of problems with browser and differing phone behaviour and sizes. This is a very hard problem and therefore to focus on the original problem this was not looked at.
 
 Previous work with second screening could be reviewed and re-implemented in this project but this would primarily rely on having the tools working on mobile devices (which are generally used for the second screening application).
 
