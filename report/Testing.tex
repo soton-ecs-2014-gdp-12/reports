@@ -55,7 +55,7 @@ Jasmine was also included in Angular seed (see \autoref{Section:Overall_Testing}
 
 This has been used as the unit test framework for AngularJS code within the project.
 
-\subsection{Python unittest module}
+\subsection{Python unittest Module}
 
 Python has included in its standard packages, a module called \lstinline|unittest|. This module is designed to be similar to the JUnit testing framework for Java and this has been used for all python based projects as a unit test framework.
 
@@ -96,7 +96,7 @@ The Flask library had a test client and recommended test skeleton\footnote{\url{
 
 The testing was split into 6 areas to test the main components of the application: cross-origin resource sharing, routing, database setup, voting, getting results and load testing.
 
-\subsubsection{Cross-Origin Resource Sharing tests}
+\subsubsection{Cross-Origin Resource Sharing Tests}
 
 One of the main requirements by the customer was that these units should be able to be accessed via \gls{REST} calls (see \cref{Req:Server architecture}). In addition the requirement stated that there should be no reliance that these servers are on the same host. To ensure that these \gls{REST} calls will not fail Cross-Origin Resource Sharing (CORS) headers were implemented as discussed in \autoref{Section:Modular Approach}.
 
@@ -104,29 +104,29 @@ This checks to ensure that the CORS header is correctly sent in the HTTP reply. 
 
 In addition, it ensures that the response is the one expected and not an error state to ensure that the web application is also sending the correct content.
 
-\subsubsection{Routing tests}
+\subsubsection{Routing Tests}
 
 The routing tests are to ensure that the application correctly starts and is available.
 
 If this fails to load up the testing URL which returns "Hello World!" then it is unlikely to be able to perform some of the more complex functions.
 
-\subsubsection{Database Setup tests}
+\subsubsection{Database Setup Tests}
 
 Before the application can be used it needs have its database set up. This is performed by accessing `/setup'. This set of unit tests test setting up a database and ensure that if this URL is visited twice, it successfully detects that the database is already set up and does not recreate it. 
 
 This is important to ensure that the database is set up correctly and that when setup is visited again data in the database is not lost.
 
-\subsubsection{Voting tests}
+\subsubsection{Voting Tests}
 
 These tests try a number of different ways to vote by sending a number of different formats of invalid and valid data to check if the application correctly deals with the data. All return codes and responses are checked to ensure no invalid vote is accepted or valid one rejected.
 
-\subsubsection{Getting results tests}
+\subsubsection{Getting Results Tests}
 
 A number of valid votes are constructed and then sent into the system. Then these are attempted to be retrieved. The returned values are checked to ensure that they have not been corrupted. This submits one and multiple votes to ensure that all votes are correctly collated and returned.
 
 If the ability to vote does not work then this will fail as it relies on being able to put votes into the system.
 
-\subsubsection{Load testing}
+\subsubsection{Load Testing}
 
 For the load testing Locust was used and three access patterns were chosen to test the example results server:
 
@@ -178,15 +178,15 @@ The cuepoints are only conveyed through the changing of colour on the scrub bar.
 
 As a proof-of-concept this site showed that it is possible to create an accessible questions overlay when combined with Synote.
 
-\subsection{Deliverable signoff tests}
+\subsection{Deliverable Sign-Off Tests}
 
-These tests in \autoref{table:vgQuestions Deliverable signoff tests} were presented to the client as the deliverable items for the Videogular Questions and Videogular Cuepoint plugins.
+These tests in \autoref{table:vgQuestions Deliverable sign-off tests} were presented to the client as the deliverable items for the Videogular Questions and Videogular Cuepoint plugins.
 
 These tests were ran on the Videogular Questions Example website. This had examples of all types of questions and therefore was used as a deliverable for the customer.
 
 \begin{center}
 \begin{longtable}{|L{0.9}|L{0.03}|} 
-\caption{\label{table:vgQuestions Deliverable signoff tests}vgQuestions Example Deliverable signoff tests} \\
+\caption{\label{table:vgQuestions Deliverable sign-off tests}vgQuestions Example Deliverable sign-off tests} \\
 \hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline
 \endfirsthead
 \hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
@@ -206,13 +206,12 @@ Caesar Example's second question at the end of the example will have a poll to s
 
 The pass marks show each test was tested by the developers on this project and was successful, and also accepted by the client after review of the deliverable report.
 
-
 \section{Example Analytics Server}
 \label{Subsection:Analytics server in example}
 
 The analytics back-end server receives the \gls{REST} calls from the \gls{Videogular} Analytics plugin and is then able to process them. For this example implementation it was chosen not to store the data but forward it to the front-end. This will demonstrate that the Videogular Analytics plugin is able to make \gls{REST} calls. Storage could be used to collate the information for later recall.
 
-\subsection{Cross-Origin Request testing}
+\subsection{Cross-Origin Request Testing}
 
 \cref{Req:Standalone} states that each plugin should operate in a standalone manner. It needed to be ensure that the example server and analytics plugin works correctly when performing cross origin requests. To permit this on the example server testing code has been included to permit all cross origin requests, see \autoref{code:analyticsCrossOrigin}.
 
@@ -227,7 +226,7 @@ app.all('*', function(req, res, next) {
 
 To test that the analytics worked cross-domain the analytics example site and the Videogular Analytics plugin were set up on two different testing servers. This was able to correctly pass data between the two and therefore passed cross-origin testing.
 
-\subsection{Reloading processed data}
+\subsection{Reloading Processed Data}
 \label{Section:reloading processed data}
 
 The back-end acted as a testing platform for the front-end. A large set of data was recorded from the Videogular Analytics plugin and saved to allow for repeated testing of the same pieces of data. The back-end plugin has a tool to specify a data file that has already been processed to be loaded.
@@ -270,7 +269,7 @@ By running an instance of the Videogular Questions Example site and voting with 
 
 The added feature of displaying the frequencies was also tested. These displayed well and matched the frequencies represented by the colours used. A screen reader could still access the data as it was declared in hidden text.
 
-\subsection{Videogular Analytics integration with Videogular Questions}
+\subsection{Videogular Analytics Integration with Videogular Questions}
 
 To test integration with \gls{vgQuestions} a set of dynamic graphs were included that update as events about question results are sent. \autoref{Figure:Analytics Question Graphs} shows an example of the results of questions that have been sent from the plugin.
 
@@ -290,15 +289,15 @@ The video issues were the same as for the Videogular Questions Example site (see
 
 Using graphs has created many accessibility issues for visually impaired or cognitively impaired users as the data is not described in text. This would be an important consideration for any developer using the plugins in their own site. As a proof-of-concept the example site purely shows that graphs could be used as a method of automatically producing a visual representation of the data.
 
-\subsection{Deliverable signoff tests}
+\subsection{Deliverable Sign-Off tests}
 
-The tests in table \autoref{table:vgAnalytics Deliverable signoff tests} were presented to the client as the deliverable items for the example analytics tool.
+The tests in table \autoref{table:vgAnalytics Deliverable sign-off tests} were presented to the client as the deliverable items for the example analytics tool.
 
 These tests were ran on the analytics tool example using preloaded data so that there was had a repeatable set of data that was always valid.
 
 \begin{center}
 \begin{longtable}{|L{0.9}|L{0.03}|} 
-\caption{\label{table:vgAnalytics Deliverable signoff tests}vgAnalytics Deliverable signoff tests} \\
+\caption{\label{table:vgAnalytics Deliverable sign-off tests}vgAnalytics Deliverable sign-off tests} \\
 \hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline
 \endfirsthead
 \hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
@@ -313,11 +312,11 @@ The ``\% watched by correct answers'' and ``Time watched by correct answers'' gr
 \end{longtable}
 \end{center}
 
-Here the final requirement was queried by the customer. The example graphs shown did not have an vertical axis. This was fixed by adding an axis after the customer meeting however during the meeting this did not affect signoff since it was an example of possible graphs that could be created.
+Here the final requirement was queried by the customer. The example graphs shown did not have an vertical axis. This was fixed by adding an axis after the customer meeting however during the meeting this did not affect sign-off since it was an example of possible graphs that could be created.
 
 \section{Authoring Tool}
 
-The authoring tool is primary deliverable as it is the only item that is designed as a tool and not as a proof-of-concept example site deliverable. Therefore the primary types of testing are deliverable signoff tests and accessibility testing.
+The authoring tool is primary deliverable as it is the only item that is designed as a tool and not as a proof-of-concept example site deliverable. Therefore the primary types of testing are deliverable sign-off tests and accessibility testing.
 
 \subsection{Accessibility}
 \label{Section:Testing_Authoring_tool_accessibility}
@@ -336,13 +335,13 @@ Another issue found was in the use of the \texttt{\textless select\textgreater} 
 
 Accessibility in the authoring tool was good but there are improvements that could be made in future including adding support for accessibility features such as subtitles, providing error correction support and rewriting the \texttt{\textless select\textgreater} elements to allow editing of colours.
 
-\subsection{Deliverable signoff tests}
+\subsection{Deliverable Sign-Off Tests}
 
-The tests in \autoref{table:Authoring tool Deliverable signoff tests} were presented to the client as the deliverable items for the authoring tool.
+The tests in \autoref{table:Authoring tool Deliverable sign-off tests} were presented to the client as the deliverable items for the authoring tool.
 
 \begin{center}
 \begin{longtable}{|L{0.9}|L{0.03}|}
-\caption{\label{table:Authoring tool Deliverable signoff tests}Authoring tool Deliverable signoff tests} \\
+\caption{\label{table:Authoring tool Deliverable sign-off tests}Authoring tool Deliverable sign-off tests} \\
 \hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline
 \endfirsthead
 \hline \textbf{Detail of test} & \rot{\textbf{Pass }}\\ \hline \endhead
