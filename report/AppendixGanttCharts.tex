@@ -13,6 +13,9 @@
 
 \begin{landscape}
 
+\section{Initial Plan}
+\label{Section:Gantt Initial Plan}
+
 \begin{figure}[h!]
 \begin{ganttchart}[
     hgrid,
@@ -32,7 +35,7 @@
 \end{ganttchart}
 
 \caption{Gantt Chart prior to the Christmas vacation.}
-\label{ganttChart3}
+\label{ganttCharti1}
 \end{figure}
 
 \begin{figure}[h!]
@@ -57,7 +60,59 @@
 \end{ganttchart}
 
 \caption{Gantt Chart after the  Christmas vacation}
-\label{ganttChart4}
+\label{ganttCharti2}
+\end{figure}
+
+\newpage
+
+\section{Actual}
+
+\begin{figure}[h!]
+\begin{ganttchart}[
+    hgrid,
+    vgrid,
+    x unit=1.8mm,
+    time slot format=isodate
+    ]{2014-09-29}{2014-12-14}
+    \gantttitlecalendar{year, month, week=1} \\
+
+    \ganttbar{Prototyping}{2014-09-29}{2014-10-12} \\
+    \ganttgroup{Weekly Sprints}{2014-10-13}{2014-12-14} \\
+    \ganttbar{Quiz and poll display component}{2014-10-13}{2014-11-16}\\
+    \ganttmilestone{Progress Seminar 1}{2014-10-22} \\
+    \ganttbar{Authoring tool}{2014-10-20}{2014-12-14}\\
+    \ganttbar{Analytics tool}{2014-11-10}{2014-12-14}\\
+    \ganttmilestone{Progress Seminar 2}{2014-11-19}\\
+    \ganttmilestone{Agree deliverables with customer}{2014-12-14}
+\end{ganttchart}
+
+\caption{Gantt Chart prior to the Christmas vacation.}
+\label{ganttCharta1}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{ganttchart}[
+    hgrid,
+    vgrid,
+    x unit=1.8mm,
+    time slot format=isodate
+    ]{2014-12-15}{2015-02-22}
+    \gantttitlecalendar{year, month, week=12} \\
+
+    \ganttgroup{Christmas}{2014-12-15}{2015-01-04} \\
+    \ganttgroup{Exams}{2015-01-12}{2015-01-24} \\
+    \ganttbar{Group report finalisation and review}{2015-01-05}{2015-01-29}\\
+    \ganttmilestone{Group Report}{2015-01-29} \\
+    \ganttbar{Individual reflection}{2015-01-25}{2015-02-02}\\
+    \ganttmilestone{Individual Reflection submission}{2015-02-02} \\
+    \ganttbar{Poster and Presentation creation}{2015-01-30}{2015-02-05}\\
+    \ganttmilestone{Poster and Presentation submission}{2015-02-05} \\
+    \ganttbar{Presentation rehearsal}{2015-02-03}{2015-02-11}\\
+    \ganttmilestone{Final Presentation}{2015-02-11}
+\end{ganttchart}
+
+\caption{Gantt Chart after the  Christmas vacation}
+\label{ganttCharta2}
 \end{figure}
 
 \end{landscape}
