@@ -21,7 +21,7 @@ The reason for designing the plugin to be separate from the main \gls{vgQuestion
 
 Since the plugin is not able to be directly demonstrated it will be used with an external server to capture data and illustrate its operation. The aggregates the data and stores it in some format. It is configured to post data via \gls{REST} calls (\cref{Req:Server architecture}) to a server defined in the analytics configuration file.
 
-There is a published \gls{API} to be used with the analytics plugin that details all events published from the plugin. A well documented API is important (\cref{Req:Documentation}) so that developers can easily create a service that collects and uses the data.
+There is a published \gls{API} to be used with the analytics plugin that details all events published from the plugin. A well documented \gls{API} is important (\cref{Req:Documentation}) so that developers can easily create a service that collects and uses the data.
 
 In the event that the server is unable to be contacted it should queue the results until it comes back online. Once a send request fails the plugin pauses sending events and queues them. It tries sending all queued events at intervals until the server comes back online or the application is closed. If the application is closed before the server comes back online the data is lost.
 
@@ -104,8 +104,8 @@ stop & the video is stopped & The time the video was stopped at \\
 \end{tabular}
 \end{table}
 
-\section{Conclusions}
+\section{Summary}
 
-The analytics plugin has been designed to interact with the \gls{vgQuestions} plugin only by communicating via the publish/subscribe model. This means that it is simple to access the events with another plugin or include additional events to be sent to the server without modification of this plugin.
+The \gls{Videogular} Analytics plugin has been designed to interact with the \gls{vgQuestions} plugin only by communicating via the publish/subscribe model. This means that it is simple to access the events with another plugin or include additional events to be sent to the server without modification of this plugin.
 
 A well documented analytics \gls{API} has been created (see \autoref{Table:analytics_api}) to ensure that the events sent are able to be understood and used easily in another application. The ability to add more events makes this a dynamic plugin which can be easily adapted for specific research uses.
